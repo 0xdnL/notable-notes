@@ -7,5 +7,6 @@
 - [github.com/notable/notable](https://github.com/notable/notable)
 
 ## usage
+
 - clone this repo
 - open repo dir using `notable`
