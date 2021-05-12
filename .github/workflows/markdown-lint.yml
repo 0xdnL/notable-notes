@@ -10,7 +10,7 @@ jobs:
     - name: lint files
       uses: avto-dev/markdown-lint@v1
       with:
-        args: './notes'
+        args: 'README.md'
 
 #    - name: Lint changelog file
 #      uses: docker://avtodev/markdown-lint:v1 # fastest way
@@ -26,4 +26,3 @@ jobs:
 #        rules: '/lint/rules/changelog.js'
 #        config: '/lint/config/changelog.yml'
 #        args: './CHANGELOG.md'
-
