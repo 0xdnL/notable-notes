@@ -2,7 +2,7 @@
 tags: [python]
 title: rbenv
 created: '2021-06-01T13:18:20.553Z'
-modified: '2021-06-01T13:43:31.387Z'
+modified: '2021-09-23T06:30:36.341Z'
 ---
 
 # rbenv
@@ -12,6 +12,7 @@ modified: '2021-06-01T13:43:31.387Z'
 ## install
 
 > Compatibility note: `rbenv` is incompatible with `rvm` !
+
 ```sh
 brew install rbenv
 
@@ -26,12 +27,13 @@ sudo apt install rbenv
 ```
 
 ## usage
+
 ```sh
 rbenv install --list
-
 ```
 
 ## see also
+
 - [github.com/rbenv/rbenv](https://github.com/rbenv/rbenv)
 - [[rvm]]
 - [[pyenv]]
