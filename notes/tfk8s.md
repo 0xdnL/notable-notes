@@ -44,4 +44,3 @@ helm template ./chart-path -f values.yaml | tfk8s   # convert a helm chart to te
 - [[iam-policy-json-to-terraform]]
 - [[helm]]
 - [github.com/jrhouston/tfk8s](https://github.com/jrhouston/tfk8s)
-

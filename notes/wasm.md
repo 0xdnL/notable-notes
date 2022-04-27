@@ -11,7 +11,7 @@ modified: '2022-04-07T07:02:20.355Z'
 > designed as portable target for compiliation of high-level langs like c, c++, rust
 
 - brackets are called `s-expressions` (`lisp`) and used to represent tree-like structures
-  -  root of the tree is a `module` (like `javascript` modules)
+  - root of the tree is a `module` (like `javascript` modules)
 - basic building blocks of `wasm` are instructions that operate on the stack
 - uses structured control flow (`if` `else` `loop`) and avoids `GOTO` jumps, which allows parsing source in one pass
 - `wasm` uses `linear memory model` as memory addressing technique in which memory is organized in a single contagious address space. (aka flat memory model)
