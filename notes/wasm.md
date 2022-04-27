@@ -1,7 +1,7 @@
 ---
 title: wasm
 created: '2020-08-19T07:23:59.679Z'
-modified: '2022-02-02T10:03:31.300Z'
+modified: '2022-04-07T07:02:20.355Z'
 ---
 
 # wasm
@@ -45,6 +45,7 @@ int sign(int x) { return (x % 2) * (2 - (x % 4)); }
 
 - [[asm]]
 - [[rust]]
+- [[go]]
 - [[clang]]
 - [[emcc]]
 - [evilmartians.com/chronicles/hands-on-webassembly-try-the-basics](https://evilmartians.com/chronicles/hands-on-webassembly-try-the-basics)

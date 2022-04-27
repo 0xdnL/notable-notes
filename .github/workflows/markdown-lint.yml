@@ -24,4 +24,4 @@ jobs:
       with:
         #entrypoint: ""
         #args: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
-        args: ./notes --ignore MD025
+        args: ./notes --disable MD013 MD025

@@ -2,7 +2,7 @@
 tags: [brew, macos]
 title: pbcopy
 created: '2019-07-30T06:19:49.205Z'
-modified: '2022-04-09T09:32:27.445Z'
+modified: '2022-04-27T09:54:48.419Z'
 ---
 
 # pbcopy
