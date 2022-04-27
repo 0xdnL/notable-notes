@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/igorshubovych/markdownlint-cli:latest
-      volume: 
+      volumes: 
       - $PWD:/workdir
       workdir: /workdir
     steps:
