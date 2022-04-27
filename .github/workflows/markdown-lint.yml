@@ -15,8 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/igorshubovych/markdownlint-cli:latest
-      volumes: 
-      - /__w/notable-notes/notable-notes:/workdir
+      options: -v /__w/notable-notes/notable-notes:/workdir:rw
       workdir: /workdir
     steps:
     - name: debug output
