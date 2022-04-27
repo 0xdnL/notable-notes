@@ -21,3 +21,5 @@ jobs:
     - name: debug output
       run: |
         pwd
+        ls -lah
+        tree .
