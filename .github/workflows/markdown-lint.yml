@@ -1,6 +1,16 @@
 name: GitHub Actions Demo
 on: [push]
+
 jobs:
+  node-docker:
+    runs-on: ubuntu-latest
+    container:
+      image: node:14.15.0-alpine3.12
+    steps:
+    - name: Log the node version
+      run: |
+        node -v
+        cat /etc/os-release  
   lint-markdown:
     name: lint file
     runs-on: ubuntu-latest
