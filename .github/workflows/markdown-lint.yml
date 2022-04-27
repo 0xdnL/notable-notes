@@ -24,4 +24,4 @@ jobs:
       with:
         entrypoint: ash
         #args: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
-        args: -h
+        args: ls -lah
