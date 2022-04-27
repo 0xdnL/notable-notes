@@ -12,7 +12,7 @@ jobs:
 #        node -v
 #        cat /etc/os-release  
   lint-markdown:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     container:
       image: ghcr.io/igorshubovych/markdownlint-cli:latest
       options: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
