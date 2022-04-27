@@ -16,8 +16,8 @@ jobs:
     container:
       image: ghcr.io/igorshubovych/markdownlint-cli:latest
       options: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
-      steps:
-      - name: debug output
-        run: |
-          pwd
-          ls -lah
+    steps:
+    - name: debug output
+      run: |
+        pwd
+        ls -lah
