@@ -11,13 +11,13 @@ jobs:
       run: |
         node -v
         cat /etc/os-release  
-  lint-markdown:
-    name: lint file
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/igorshubovych/markdownlint-cli:latest
-      volumes: $PWD:/workdir
-      workdir: /workdir
-    steps:
-    - run: |
-        pwd
+#  lint-markdown:
+#    name: lint file
+#    runs-on: ubuntu-latest
+#    container:
+#      image: ghcr.io/igorshubovych/markdownlint-cli:latest
+#      volumes: $PWD:/workdir
+#      workdir: /workdir
+#    steps:
+#    - run: |
+#        pwd
