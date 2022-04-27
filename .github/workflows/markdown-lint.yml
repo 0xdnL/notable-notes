@@ -16,7 +16,7 @@ jobs:
     container:
       image: ghcr.io/igorshubovych/markdownlint-cli:latest
       volumes: 
-      - $PWD:/workdir
+      - /__w/notable-notes/notable-notes:/workdir
       workdir: /workdir
     steps:
     - name: debug output
