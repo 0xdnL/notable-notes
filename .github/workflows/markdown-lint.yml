@@ -9,8 +9,8 @@ jobs:
       uses: actions/checkout@v2
     - name: lint files
       uses: avto-dev/markdown-lint@v1
-#      with:
-#        args: 'README.md'
+      with:
+        args: './notes'
 
 #    - name: Lint changelog file
 #      uses: docker://avtodev/markdown-lint:v1 # fastest way
