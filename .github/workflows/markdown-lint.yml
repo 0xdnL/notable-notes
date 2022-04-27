@@ -13,11 +13,13 @@ jobs:
 #        cat /etc/os-release  
   lint-markdown:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/igorshubovych/markdownlint-cli:latest
-      options: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
+    #container:
+    #  image: ghcr.io/igorshubovych/markdownlint-cli:latest
+    #  options: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
     steps:
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: debug output
-      run: |
-        pwd
-        ls -lah
+      uses: docker://ghcr.io/igorshubovych/markdownlint-cli:latest
+      with:
+        args: -v ${{github.workspace}}:/workdir:rw --workdir /workdir
