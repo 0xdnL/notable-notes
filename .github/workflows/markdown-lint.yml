@@ -1,14 +1,11 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  lint-changelog:
-    name: Lint changelog file
+  lint-markdown:
+    name: lint file
     runs-on: ubuntu-latest
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-    - name: lint files
-      uses: ghcr.io/igorshubovych/markdownlint-cli:latest
-      with:
-        args: ['./notes', "--ignore MD025"]
-
+    container:
+      image: ghcr.io/igorshubovych/markdownlint-cli:latest
+      volumes: $PWD:/workdir
+      workdir: /workdir
+      
