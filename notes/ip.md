@@ -12,7 +12,7 @@ modified: '2022-03-04T07:44:42.167Z'
 ## install
 `apt install iproute2`, `yum install iproute`
 
-## flags
+## option
 
 ```sh
 -s, -stats, -statistics       # Output more information. -s -s => more verbose

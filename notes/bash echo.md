@@ -9,7 +9,7 @@ modified: '2022-11-25T11:23:48.428Z'
 
 > write arguments to stdout
 
-## flags
+## option
 
 ```sh
 -n        # do not append a newline

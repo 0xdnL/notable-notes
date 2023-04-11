@@ -15,7 +15,7 @@ modified: '2023-03-15T08:24:53.787Z'
 brew install curl
 ```
 
-## flags
+## option
 
 ```sh
 -O                         # write output to a file named like original
