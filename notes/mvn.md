@@ -2,7 +2,7 @@
 tags: [buildsystem, java]
 title: mvn
 created: '2019-07-30T06:19:49.084Z'
-modified: '2023-04-11T11:09:32.728Z'
+modified: '2023-04-11T11:54:25.409Z'
 ---
 
 # mvn
@@ -13,6 +13,18 @@ modified: '2023-04-11T11:09:32.728Z'
 
 ```sh
 sdk install maven
+```
+
+## env
+
+```sh
+MAVEN_CLI_OPTS        # used to pass options to the Maven CLI
+MAVEN_OPTS            # used to configure the JVM that runs Maven
+MAVEN_ARGS            # contains args passed to maven before cli args, e.g. options and goals could be defined with the value -B -V checkstyle:checkstyle
+
+MVNW_REPOURL          # e.g. when using a mirror
+MVNW_USERNAME
+MVNW_PASSWORD
 ```
 
 ## option
@@ -62,9 +74,19 @@ sdk install maven
 ## usage
 
 ```sh
-mvn help:effective-pom -Doutput=effective-pom.xml
-
+mvn help:active-profiles 	    # displays a list of the profiles which are currently active for this build.
+mvn help:all-profiles 	      # displays a list of available profiles under the current project.
+mvn -B help:all-profiles      # list profiles
+mvn help:describe 	          # displays a list of the attributes for a Maven Plugin and/or goals (aka Mojo - Maven plain Old Java Object).
 mvn help:describe -Dcmd=compile
+mvn help:effective-pom 	      # displays the effective POM as an XML for this build, with the active profiles factored in, or a specified artifact. If verbose, a comment is added to each XML element describing the origin of the line.
+mvn help:effective-pom -Doutput=effective-pom.xml
+mvn help:effective-settings 	# displays the calculated settings as XML for this project, given any profile enhancement and the inheritance of the global settings into the user-level settings.
+mvn help:evaluate 	          # evaluates Maven expressions given by the user in an interactive mode.
+mvn help:help 	              # display help information on maven-help-plugin.
+mvn help:help -Ddetail=true -Dgoal=GOAL # to display parameter details.
+mvn help:system 	            # displays a list of the platform details like system properties and environment variables.
+
 
 # commands will automatically download and install the plugin if it hasn't already been installed
 mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list            # list  goals by the order they will execute
