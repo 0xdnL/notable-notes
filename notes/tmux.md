@@ -2,19 +2,19 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2023-05-01T10:43:32.922Z'
+modified: '2023-05-06T14:54:21.253Z'
 ---
 
 # tmux
 
 > `terminal multiplexer` enables a number of terminals to be created, accessed, and controlled from a single screen
 
-    multiplexer
-
-    A device that interleaves several activities; a switching device.
-    (computing, telecommunications) A device that combines several input signals into a single output sign
-
 ```sh
+multiplexer
+
+A device that interleaves several activities; a switching device.
+(computing, telecommunications) A device that combines several input signals into a single output sign
+
  ┌──────┐      ┌──────────┬──────────┬───────────┬────────────┐
  │      │      │          │          │           │   pane     │
  │      │      │          │          │           ├────────────┤
