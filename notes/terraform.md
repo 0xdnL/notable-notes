@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-06-30T08:52:23.762Z'
+modified: '2023-08-11T07:44:21.898Z'
 ---
 
 # terraform
@@ -46,9 +46,7 @@ terraform state replace-provider 'registry.terraform.io/-/happycloud' 'terraform
 
 terraform state list | grep PROVIDER_RESOURCE | sed 's/"/\\"/g' | xargs -I {} terraform state rm '{}'
 
-
 terraform 0.13upgrade .
-
 
 terraform validate -json                  # json-flag for showing all warnings, and where
 terraform validate -json | jq '.diagnostics[] | {detail: .detail, filename: .range.filename, start_line: .range.start.line}'
@@ -57,11 +55,9 @@ terraform validate -json \
   | jq -r '[ del( .diagnostics[] | select( .detail | startswith( "Experimental features" ) ) ) | .diagnostics[] | { Detail:.detail, Address:.address, Filename:.range.filename, Line:.range.start.line } ] | ( .[0] | keys_unsorted | ( . , map( length*"-" ) ) ), .[] | map(.) | @tsv' \
   | column -ts $'\t'
 
-
 terraform fmt -diff -check  main.tf       # check format configuration
 
 terraform fmt -write main.tf              # format config
-
 
 terraform graph | dot -Tsvg > graph.svg
 
@@ -70,7 +66,6 @@ terraform graph -draw-cycles -module-depth=2
   | dot -Tsvg > graph.svg    # generate a visual representation of either a configuration or execution plan
 
 terraform console     # startes repl-like console       
-
 ```
 
 ## terraform console
