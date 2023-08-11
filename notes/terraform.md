@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-11T07:53:46.868Z'
+modified: '2023-08-11T07:54:38.325Z'
 ---
 
 # terraform
@@ -66,4 +66,32 @@ terraform graph -draw-cycles -module-depth=2
   | dot -Tsvg > graph.svg    # generate a visual representation of either a configuration or execution plan
 
 terraform console     # startes repl-like console
+```
+
+## terraform console
+
+> interactive repl for debugging
+
+```tf
+> [ for d in local.developers: d.alternative_email ]      // iterate example
+
+> data.aws_availability_zones.available                   // get value of data resource
+
+> [ for N in list("a","b","c"): "eu-central-1${N}"]       // generate list of strings
+[
+  "eu-central-1a",
+  "eu-central-1b",
+  "eu-central-1c",
+]
+
+element(["a", "b", "c"], length(["a", "b", "c"])-1)       // get last element
+```
+
+```tf
+module "vpc" {
+  ...
+  private_subnets      = slice(cidrsubnets(var.vpc_cidr, 6, 6, 6, 6),0,2)
+  public_subnets       = slice(cidrsubnets(var.vpc_cidr, 6, 6, 6, 6),2,4)
+  ...
+}
 ```
