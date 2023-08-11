@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-11T07:44:21.898Z'
+modified: '2023-08-11T07:49:15.246Z'
 ---
 
 # terraform
@@ -61,11 +61,11 @@ terraform fmt -write main.tf              # format config
 
 terraform graph | dot -Tsvg > graph.svg
 
-terraform graph -draw-cycles -module-depth=2 
+terraform graph -draw-cycles -module-depth=2
   -type=plan-destroy        `# -type=[plan|plan-destroy|apply|validate|input|refresh]` \
   | dot -Tsvg > graph.svg    # generate a visual representation of either a configuration or execution plan
 
-terraform console     # startes repl-like console       
+terraform console     # startes repl-like console
 ```
 
 ## terraform console
