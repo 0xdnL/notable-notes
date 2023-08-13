@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-13T07:58:17.487Z'
+modified: '2023-08-13T08:02:52.822Z'
 ---
 
 # terraform
@@ -85,49 +85,5 @@ terraform console     # startes repl-like console
 ]
 
 element(["a", "b", "c"], length(["a", "b", "c"])-1)       // get last element
-```
-
-```tf
-module "vpc" {
-  ...
-  private_subnets      = slice(cidrsubnets(var.vpc_cidr, 6, 6, 6, 6),0,2)
-  public_subnets       = slice(cidrsubnets(var.vpc_cidr, 6, 6, 6, 6),2,4)
-  ...
-}
-```
-
-## complex objects
-
-```tf
-resource "aws_route53_record" "example" {
-  for_each = {
-    for dvo in aws_acm_certificate.example.domain_validation_options : dvo.domain_name => {
-      name    = dvo.resource_record_name
-      record  = dvo.resource_record_value
-      type    = dvo.resource_record_type
-      zone_id = dvo.domain_name == "example.org" ? data.aws_route53_zone.example_org.zone_id : data.aws_route53_zone.example_com.zone_id
-    }
-  }
-
-  allow_overwrite = true
-  name            = each.value.name
-  records         = [each.value.record]
-  ttl             = 60
-  type            = each.value.type
-  zone_id         = each.value.zone_id
-}
-
-variable "topic_subscriptions" {
-  description = "Map of topics for which the module should generate input queues including DLQ and subscriptions"
-  type = map(object({
-    topic_arn                  = string
-    name                       = optional(string)
-    queue_policy               = optional(string)
-    dlq_max_receive_count      = optional(number)
-    raw_message_delivery       = optional(bool)
-    visibility_timeout_seconds = optional(number)
-  }))
-  default = {}
-}
 ```
 
