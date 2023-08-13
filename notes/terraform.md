@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-13T08:02:52.822Z'
+modified: '2023-08-13T08:03:55.315Z'
 ---
 
 # terraform
@@ -68,22 +68,4 @@ terraform graph -draw-cycles -module-depth=2
 terraform console     # startes repl-like console
 ```
 
-## terraform console
-
-> interactive repl for debugging
-
-```tf
-> [ for d in local.developers: d.alternative_email ]      // iterate example
-
-> data.aws_availability_zones.available                   // get value of data resource
-
-> [ for N in list("a","b","c"): "eu-central-1${N}"]       // generate list of strings
-[
-  "eu-central-1a",
-  "eu-central-1b",
-  "eu-central-1c",
-]
-
-element(["a", "b", "c"], length(["a", "b", "c"])-1)       // get last element
-```
 
