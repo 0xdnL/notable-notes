@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-11T12:05:24.453Z'
+modified: '2023-08-13T07:54:10.617Z'
 ---
 
 # terraform
@@ -181,4 +181,5 @@ resource "null_resource" "provision_certs" {
 }
 ```
 
+## see also
 
