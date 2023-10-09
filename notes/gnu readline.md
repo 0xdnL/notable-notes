@@ -2,7 +2,7 @@
 tags: [shell]
 title: gnu readline
 created: '2019-07-30T06:19:49.019Z'
-modified: '2021-11-05T10:06:19.331Z'
+modified: '2023-09-15T06:30:36.453Z'
 ---
 
 # gnu readline
@@ -47,6 +47,8 @@ EOT
 ```
 
 ## see also
+
 - [[bash bind]]
-- [Is there a way to make alt-f and alt-b jump word forward on Mac? - Stack Overflow](https://stackoverflow.com/questions/20146972/is-there-a-way-to-make-alt-f-and-alt-b-jump-word-forward-and-backward-instead-of)
+- [[bash complete]]
+- [stackoverflow.com/is-there-a-way-to-make-alt-f-and-alt-b-jump-word-forward-and-backward-instead-of](https://stackoverflow.com/questions/20146972/is-there-a-way-to-make-alt-f-and-alt-b-jump-word-forward-and-backward-instead-of)
 - [readline - twobithistory.org](https://twobithistory.org/2019/08/22/readline.html)

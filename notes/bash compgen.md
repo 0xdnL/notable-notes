@@ -2,14 +2,14 @@
 tags: [shell/bash/builtin]
 title: bash compgen
 created: '2019-08-02T06:13:41.072Z'
-modified: '2022-04-27T14:20:30.288Z'
+modified: '2023-09-14T06:44:30.091Z'
 ---
 
 # bash compgen
 
 > display possible completions depending on the options
 
-## usage
+## env
 
 ```sh
 COMPREPLY     # array variable used to store the completions
@@ -18,6 +18,9 @@ COMP_CWORD    # index of COMP_WORDS array pointing to the word the current curso
               # - index of the word the cursor was when the tab key was pressed          
 COMP_LINE     # the current command line
 ```
+
+## option
+
 ```sh
 -d            # names of directory
 -e            # names of exported shell variables
@@ -28,6 +31,8 @@ COMP_LINE     # the current command line
 -u            # names of userAlias names
 -v            # names of shell variables
 ```
+
+## usage
 
 ```sh
 compgen -c                     # list all the commands you could run
@@ -45,8 +50,11 @@ compgen -k                      # names of Shell reserved words
 compgen -A function            # list all the functions you could run
 compgen -A function -abck      # list all the above in one go
 compgen -A variable | grep X    # get all variables starting with X; see also: `echo ${!X*}`
+```
 
+## example
 
+```sh
 compgen -W "now tomorrow never"
 now
 tomorrow
@@ -64,3 +72,4 @@ tomorrow
 
 - [[bash]]
 - [[bash type]]
+- [[bash complete]]

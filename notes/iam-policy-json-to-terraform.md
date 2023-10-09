@@ -2,7 +2,7 @@
 tags: [iac]
 title: iam-policy-json-to-terraform
 created: '2022-03-29T16:06:00.334Z'
-modified: '2023-03-23T08:48:25.701Z'
+modified: '2023-09-21T09:20:21.382Z'
 ---
 
 # iam-policy-json-to-terraform
@@ -32,6 +32,7 @@ iam-policy-json-to-terraform < some-policy.json
 
 ## see also
 
+- [[cat]]
 - [[terraform]]
 - [[tfk8s]]
 - [[go]]

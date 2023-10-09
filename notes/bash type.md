@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash type
 created: '2019-07-30T06:19:49.022Z'
-modified: '2021-05-12T08:46:51.330Z'
+modified: '2023-09-14T06:45:12.373Z'
 ---
 
 # bash type
@@ -10,6 +10,7 @@ modified: '2021-05-12T08:46:51.330Z'
 > A `builtin` is a command provided by the shell, rather than by an external program 
 
 ## usage
+
 ```sh
 type ls         # find out if command is avail and if builtin
 
@@ -26,6 +27,7 @@ type -a time   # all locations containing an executable named
 ```
 
 ## see also
+
 - [[bash compgen]]
 - [[bash command]]
 - [[which]]

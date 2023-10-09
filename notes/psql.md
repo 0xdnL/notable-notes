@@ -2,7 +2,7 @@
 tags: [database, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2023-05-04T12:30:45.313Z'
+modified: '2023-10-02T11:35:43.930Z'
 ---
 
 # psql
@@ -13,6 +13,10 @@ modified: '2023-05-04T12:30:45.313Z'
 
 ```sh
 apt install postgresql
+
+brew install postgresql@14
+brew services start postgresql@14                                                       # start postgresql@14 service
+$HOMEBREW_PREFIX/opt/postgresql@14/bin/postgres -D $HOMEBREW_PREFIX/var/postgresql@14   # start background service directly
 
 docker run -ti --rm -e POSTGRES_PASSWORD=password postgres psql -U postgres
 ```

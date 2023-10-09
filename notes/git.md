@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: git
 created: '2019-07-30T06:19:49.063Z'
-modified: '2023-06-01T05:23:12.654Z'
+modified: '2023-09-18T09:07:14.815Z'
 ---
 
 # git
@@ -494,6 +494,7 @@ git svn clone \
 - [[ssh]]
 - [[bfg]]
 - [[git-chglog]]
+- [[trunk]]
 - [[snv]]
 - [[fossil]]
 - [[gource]]
