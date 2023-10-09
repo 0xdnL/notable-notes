@@ -2,7 +2,7 @@
 tags: [coreutils, macos]
 title: dd
 created: '2019-07-30T06:19:49.033Z'
-modified: '2023-03-22T09:08:10.631Z'
+modified: '2023-10-05T09:41:04.262Z'
 ---
 
 # dd
@@ -40,8 +40,9 @@ dd if=/dev/zero of=/dev/mapper/backup2 status=progress
 
 ## see also
 
-- [[cryptsetup]]
 - [[pv]]
+- [[numfmt]]
+- [[cryptsetup]]
 - [macos illegal numeric value](https://rendezvouswithpavan.wordpress.com/2015/06/16/dd-bs-illegal-numeric-value-error-on-mac-os-x/)
 - [thomas-krenn.com/en/wiki/Linux_I/O_Performance_Tests_using_dd](https://www.thomas-krenn.com/en/wiki/Linux_I/O_Performance_Tests_using_dd)
 - [why is dd with direct flag much slower than dsync](https://stackoverflow.com/a/50882704/2087704)

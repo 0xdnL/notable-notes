@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: numfmt
 created: '2021-10-19T11:54:38.435Z'
-modified: '2023-03-22T09:49:49.262Z'
+modified: '2023-10-05T09:41:21.797Z'
 ---
 
 # numfmt
@@ -84,9 +84,9 @@ numfmt --field=2 --from-unit=1024 --to=iec-i --suffix B < <(echo 'MemTotal:     
 
 ## see also
 
-- [[unit]]
 - [[coreutils]]
 - [[free]]
+- [[dd]]
 - [[crane]]
 - [gnu.org/coreutils/manual/numfmt](https://www.gnu.org/software/coreutils/manual/html_node/numfmt-invocation.html)
 - [pixelbeat.org/docs/numfmt](https://www.pixelbeat.org/docs/numfmt.html)

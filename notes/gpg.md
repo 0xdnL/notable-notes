@@ -2,7 +2,7 @@
 tags: [crypto]
 title: gpg
 created: '2019-07-30T06:19:49.076Z'
-modified: '2023-07-31T07:43:06.086Z'
+modified: '2023-09-18T07:26:16.843Z'
 ---
 
 # gpg
@@ -20,6 +20,8 @@ modified: '2023-07-31T07:43:06.086Z'
 brew install gpg      # version 1: for embedded and server usage, as it brings less dependencies and smaller binaries
 brew install gpg2     # version 2: targeted to desktop; requires several other modules to be installed
 apt-get install gpg2
+
+brew install --cask gpg-suite     # for saving passphrase to keychain and avoiding prompt
 ```
 
 ## environment
@@ -221,10 +223,12 @@ gpg --verify FILE_SHA256SUMS.sig FILE_SHA256SUMS                    # verify fil
 
 ## see also
 
+- [[git]]
 - [[rvm]]
 - [[apt-key]]
 - [[paperkey]]
 - [[gpgconf]]
+- [[gpg-agent]]
 - [[keybase]]
 - [[openssl]]
 - [[gpg-connect-agent]]

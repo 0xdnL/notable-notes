@@ -2,20 +2,22 @@
 tags: [coreutils]
 title: sort
 created: '2019-07-30T06:19:49.240Z'
-modified: '2021-06-07T06:50:03.576Z'
+modified: '2023-10-05T09:19:12.590Z'
 ---
 
 # sort
 
 > sort or merge records (lines) of text and binary files
 
-## usage
+## option
 
 ```sh
 --key, -k                       #
 --numeric-sort, -n              #
 --general-numeric-sort, -g      #
 ```
+
+## usage
 
 ```sh
 sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4      # sort ip via gnu sort

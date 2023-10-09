@@ -2,7 +2,7 @@
 tags: [iac]
 title: terraform
 created: '2019-07-30T06:19:49.078Z'
-modified: '2023-08-31T08:07:55.146Z'
+modified: '2023-09-23T09:07:16.342Z'
 ---
 
 # terraform
@@ -13,6 +13,9 @@ modified: '2023-08-31T08:07:55.146Z'
 
 ```sh
 tfswitch 0.14.4
+
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
 ## environment variables
@@ -183,8 +186,21 @@ resource "null_resource" "provision_certs" {
 
 [terraform.io/docs/providers/tls](https://www.terraform.io/docs/providers/tls/index.html)
 
+## output.tf
+
+```json
+output "group_names" {
+  value = values(aws_iam_group.group)[*].name
+}
+
+output "group_names_1" {
+  value = toset([for g in aws_iam_group.group : g.name])
+}
+```
+
 ## see also
 
+- [[terragrunt]]
 - [[atlantis]]
 - [[tfswitch]]
 - [[terrascan]]

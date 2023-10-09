@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: coreutils
 created: '2020-09-01T07:42:52.948Z'
-modified: '2023-05-15T13:05:34.885Z'
+modified: '2023-09-20T06:25:35.454Z'
 ---
 
 # coreutils
@@ -16,6 +16,8 @@ modified: '2023-05-15T13:05:34.885Z'
 
 ```sh
 brew install coreutils
+
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # used commands with normal name instead of gName
 ```
 
 ## commonly used tools provided by this package include

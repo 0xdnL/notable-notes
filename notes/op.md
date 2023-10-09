@@ -2,7 +2,7 @@
 tags: [container]
 title: op
 created: '2021-02-01T08:18:52.088Z'
-modified: '2023-03-24T08:21:54.945Z'
+modified: '2023-09-21T11:33:27.737Z'
 ---
 
 # op
@@ -50,6 +50,8 @@ op create item CATEGORIE --template FILE
 
 ## see also
 
+- [[bw]]
+- [[ykman]]
 - [1password.com/downloads/command-line/](https://1password.com/downloads/command-line/)
 - [support.1password.com/command-line-getting-started/](https://support.1password.com/command-line-getting-started/)
 - [[xkcdpass]]

@@ -2,12 +2,46 @@
 tags: [go]
 title: govc
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-03-22T11:02:08.670Z'
+modified: '2023-10-02T08:51:04.408Z'
 ---
 
 # govc
 
-> govc is an vSphere CLI built on govmomi, the vSphere Go SDK. It has a robust inventory browser command.
+> vSphere cli built on govmomi, the vSphere Go SDK - a robust inventory browser command
+
+## install
+
+```sh
+go install github.com/vmware/govmomi/govc@latest
+```
+
+## env
+
+```sh
+GOVC_URL                    # URL of ESXi or vCenter instance to connect to user:pass@host
+GOVC_USERNAME               # USERNAME to use if not specified in GOVC_URL
+GOVC_PASSWORD               # PASSWORD to use if not specified in GOVC_URL
+GOVC_TLS_CA_CERTS           # Override system root certificate authorities
+GOVC_TLS_KNOWN_HOSTS        # File(s) for thumbprint based certificate verification
+GOVC_TLS_HANDSHAKE_TIMEOUT  # Limits the time spent performing the TLS handshake
+GOVC_INSECURE               # Disable certificate verification.
+GOVC_DATACENTER
+GOVC_DATASTORE
+GOVC_NETWORK
+GOVC_RESOURCE_POOL
+GOVC_HOST
+GOVC_GUEST_LOGIN            # guest credentials for guest operations
+GOVC_VIM_NAMESPACE          # vim namespace defaults to urn:vim25
+GOVC_VIM_VERSION            # vim version defaults to 6.0
+GOVC_VI_JSON                # uses JSON transport instead of SOAP
+```
+
+## option
+
+```sh
+-u        # ESXi or vCenter URL e.g. user:pass@host
+-debug    # trace requests and responses to ~/.govmomi/debug
+```
 
 ## usage
 
@@ -21,13 +55,9 @@ govc ls -l '/na Hamburg/host/'
 
 govc ls datastore
 
-# managed object IDs
-govc ls -l -i "/na Hamburg/network"
- # Network:network-42744 /na Hamburg/network/Docker-Netz DMZ ..
+govc ls -l -i "/na Hamburg/network"           # managed object IDs
 
-# reverse search, supply the -L switch
-govc ls -i -l -L "Network:network-42742"
- # Network:network-42742 /na Hamburg/network/Docker-Netz Test 
+govc ls -i -l -L "Network:network-42742"      # reverse search, supply the -L switch
 
 # list ResourcePool 
 govc ls -l 'host/*' | grep ResourcePool | awk '{print $1}' # | xargs -n1 -t govc pool.info
@@ -56,7 +86,6 @@ govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'
 govc datacenter.info                              
 govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'                           
 govc host.service.ls -host='/na Hamburg/host/naCluster02/vhost06.domain.net'                              
-
 
 
 # datastore

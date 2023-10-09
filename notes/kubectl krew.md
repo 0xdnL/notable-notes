@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl krew
 created: '2022-06-27T06:44:31.241Z'
-modified: '2023-03-22T10:19:58.605Z'
+modified: '2023-10-02T06:42:09.129Z'
 ---
 
 # kubectl krew
@@ -21,6 +21,10 @@ modified: '2023-03-22T10:19:58.605Z'
   tar zxvf "${KREW}.tar.gz" &&
   ./"${KREW}" install krew
 )
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+failed to retrieve plugin indexes: failed to list the remote URL for index default
+unset GIT_CONFIG
 ```
 
 ## usage
@@ -33,11 +37,6 @@ kubectl krew search
 kubectl krew install oidc-login     # install plugin
 
 kubectl access-matrix               # use plugin to see the level of access user has on namespaces
-```
-
-```sh
-failed to retrieve plugin indexes: failed to list the remote URL for index default
-unset GIT_CONFIG
 ```
 
 ## plugins

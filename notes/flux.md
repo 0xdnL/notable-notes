@@ -2,7 +2,7 @@
 tags: [container]
 title: flux
 created: '2022-01-17T13:49:51.051Z'
-modified: '2023-03-22T10:35:51.885Z'
+modified: '2023-09-13T12:50:59.082Z'
 ---
 
 # flux
@@ -19,6 +19,18 @@ brew install fluxcd/tap/flux
 
 ```sh
 flux check --pre
+
+flux bootstrap gitlab \
+  --token-auth \
+  --hostname=$GITLAB_HOST \
+  --owner=$GITLAB_USER \
+  --repository=flux-playground \
+  --branch=develop \
+  --path=clusters/kind-cluster \
+  --author-email $AUTHOR_MAIL \
+  --author-name $AUTHOR_NAME
+
+flux get kustomizations --watch
 ```
 
 ## see also
