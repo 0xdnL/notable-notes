@@ -2,7 +2,7 @@
 tags: [go]
 title: govc
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-10-02T08:51:04.408Z'
+modified: '2023-10-09T15:33:34.362Z'
 ---
 
 # govc
@@ -43,100 +43,87 @@ GOVC_VI_JSON                # uses JSON transport instead of SOAP
 -debug    # trace requests and responses to ~/.govmomi/debug
 ```
 
-## usage
+## ls - list
 
 ```sh
-# ls
 govc ls -h
-
 govc ls -l '*'
-
-govc ls -l '/na Hamburg/host/'
-
+govc ls -l '/path to/host/'
 govc ls datastore
-
-govc ls -l -i "/na Hamburg/network"           # managed object IDs
-
+govc ls -l -i "/path to/network"           # managed object IDs
 govc ls -i -l -L "Network:network-42742"      # reverse search, supply the -L switch
 
 # list ResourcePool 
 govc ls -l 'host/*' | grep ResourcePool | awk '{print $1}' # | xargs -n1 -t govc pool.info
 
-govc pool.info "/na Hamburg/host/naCluster02/Resources"
+govc pool.info "/path to/host/someCluster02/Resources"
+```
 
+## host
 
-# host
-govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'
+```sh
+govc host.info
 
-govc host.service.ls -host='/na Hamburg/host/naCluster02/vhost06.domain.net'
+govc host.service.ls
 
-host.service.ls
-
-govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'
-
-govc host.service.ls -host='/na Hamburg/host/naCluster02/vhost06.domain.net'
-
-govc host.storage.info -host='/na Hamburg/host/naCluster02/vhost06.domain.net'
+govc host.storage.info
  
-govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'
-# Name:              vhost01.domain.net
-#   Path:            /na Hamburg/host/naCluster02/vhost01.domain.net
-
-
 govc datacenter.info                              
-govc host.info -host='/na Hamburg/host/naCluster02/vhost01.domain.net'                           
-govc host.service.ls -host='/na Hamburg/host/naCluster02/vhost06.domain.net'                              
+```
 
+## datastore
 
-# datastore
+```sh
 govc datastore.ls -ds=datastore2 -l
 
 govc find vm -type m -datastore $(govc find -i datastore -name datastore3)
 
 for i in $(govc find vm -type m | grep -i "node" | cut -d/ -f2); do
-  DATASTORE="$( govc vm.info -json "$i" \
-      | jq --raw-output '.VirtualMachines[].Config.Hardware.Device[] | select(.DeviceInfo.Label=="CD/DVD drive 1" ) | .Backing.FileName')";
+  DATASTORE="$(govc vm.info -json "$i" | jq -r '.VirtualMachines[].Config.Hardware.Device[] | select(.DeviceInfo.Label=="CD/DVD drive 1" ) | .Backing.FileName')";
   printf "%s: %s" "$i" "$DATASTORE";
 done
+```
 
+## vm - virtualmachine
 
-# vm - virtualmachine
-govc vm.info -json ${vm} | jq '.VirtualMachines[].Guest.Net[] | .IpConfig | .IpAddress'
+```sh
+govc vm.info -json ./vm/foo | jq '.VirtualMachines[]' | grep -o -E '10\.32\.[0-9]{1,3}\.[0-9]{1,3}';
+govc vm.info -json ./vm/foo | jq '.VirtualMachines[].Guest.Net[] | .IpConfig | .IpAddress'
+govc vm.info -json ./vm/foo | jq '.VirtualMachines[].Guest.Net[] | .IpAddress[0]'   # find vm and its ip
+govc vm.info -json ./vm/foo | jq '.VirtualMachines[].Config.Hardware.Device[] | select(.Key== 2000) | .CapacityInBytes';
 
-govc vm.info -json ${vm} | jq '.VirtualMachines[]' | grep -o -E '10\.32\.[0-9]{1,3}\.[0-9]{1,3}';
+govc vm.power -off=true -vm.uuid=$UUID \&\& govc vm.power -on=true -vm.uuid=$UUID;  # restart vm
+```
 
-govc vm.info -json $REPLY | jq '.VirtualMachines[].Config.Hardware.Device[] | select(.Key== 2000) | .CapacityInBytes';
+## tags
 
-# restart vm
-for vm in $(govc find -type m -name "swarm-*.ddev.domain.net"); do
-  UUID=$(govc vm.info -json "$vm" | jq -r '.VirtualMachines[].Summary.Config.Uuid');
-  echo "$vm"
-  echo govc vm.power -off=true -vm.uuid=$UUID \&\& govc vm.power -on=true -vm.uuid=$UUID;
-done
-
-# tags
+```sh
 govc tags.ls
 
-govc tags.attached.ls -r vm/stats-db.node.dint.domain.net
-
+govc tags.attached.ls -r vm/foo.node.dev.domain.net
 govc tags.attached.ls backup_daily2230_noQuiese
 
 govc object.collect -json VirtualMachine:vm-365
+```
 
+## tasks
 
-# tasks
+```sh
 govc tasks -n=20 -f     # show current vsphere tasks
+```
 
+## metrics
 
-# metrics
-govc metric.ls ./vm/mq-1.node.dint.domain.net
-govc metric.sample ./vm/mq-1.node.dint.domain.net cpu.usage.average
+```sh
+govc metric.ls     ./vm/mq-1.node.dev.domain.net
+govc metric.sample ./vm/mq-1.node.dev.domain.net cpu.usage.average
+```
 
+## snapshot
 
-# snapshot
-govc snapshot.tree -vm ./vm/mq-1.node.dint.domain.net -D -i -d
-
-govc snapshot.create -vm ./vm/gitlab.node.dint.domain.net pre-gitlab-v12-upgrade
+```sh
+govc snapshot.tree -vm ./vm/mq-1.node.dev.domain.net -D -i -d
+govc snapshot.create -vm ./vm/gitlab.node.dev.domain.net pre-gitlab-v12-upgrade
 ```
 
 ## find
@@ -144,7 +131,7 @@ govc snapshot.create -vm ./vm/gitlab.node.dint.domain.net pre-gitlab-v12-upgrade
 ```sh
 govc find --help
 
-govc find -type p                                  
+govc find -type TYPE
 # -type 
 #  a    VirtualApp
 #  c    ClusterComputeResource
@@ -179,9 +166,6 @@ govc find . -type m -runtime.powerState poweredOn -guest.guestFamily linuxGuest
 govc find . -type m -runtime.powerState poweredOn -guest.guestId '*Linux*'
 
 govc find . -type m -runtime.powerState poweredOn -guest.guestId '*[ubuntu][Linux]*'
-
-
-govc vm.info -json ./vm/foo | jq '.VirtualMachines[].Guest.Net[] | .IpAddress[0]'   # find vm and its ip
 ```
 
 - [find with -guest.ipAddress argument returns more than one result](https://github.com/vmware/govmomi/issues/1089)
