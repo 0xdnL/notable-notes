@@ -2,7 +2,7 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2023-10-17T12:10:51.017Z'
+modified: '2023-11-09T19:36:49.630Z'
 ---
 
 # tmux
@@ -158,3 +158,4 @@ join-pane -t :1               # moves current pane to window target 1
 - [devhints.io/tmux](https://devhints.io/tmux)
 - [unix.stackexchange.com/questions/14300/moving-tmux-pane-to-window](https://unix.stackexchange.com/questions/14300/moving-tmux-pane-to-window)
 - [superuser.com/questions/758843/difference-between-global-server-session-and-window-options](https://superuser.com/questions/758843/difference-between-global-server-session-and-window-options)
+
