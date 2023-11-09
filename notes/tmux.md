@@ -35,11 +35,11 @@ A device that interleaves several activities; a switching device.
 ```sh
 /opt/homebrew/etc/tmux.conf
 $HOME/.tmux.conf
-$XDG_CONFIG_HOME/tmux/tmux.conf 
+$XDG_CONFIG_HOME/tmux/tmux.conf
 $HOME/.config/tmux/tmux.conf
 ```
 
-## env 
+## env
 
 ```sh
 TMUX            # tmux session
@@ -67,10 +67,12 @@ TMUX            # tmux session
 
 ```sh
 tmux    CMD     # run CMD via tmux cli
-C-b + : CMD     # run CMD in tmux command prompt 
+C-b + : CMD     # run CMD in tmux command prompt
 
         CMD -?  # short info about CMD
 ```
+
+## commands
 
 ```sh
 list-keys       lsk   [-1aN][-P prefix-string] [-T key-table] [key]
@@ -97,7 +99,6 @@ tmux -2 attach -t $SESSION
 kill-session -t myname     # kill session
 kill-server                # kill the tmux server and clients and destroy all sessions
 
-
 # there are three distinct classes of options: server, session, and window
 # these classes are exclusive: each option belongs to only one of the classes
 # there is never any inheritance between the option classes
@@ -106,8 +107,6 @@ show-options -g              # show options: global
 show-options -w              # show options: window
 
 set status-style "bg=red"
-
-
 
 new-window -k -n b-g_monitor
 split-window -v -p 50
@@ -120,7 +119,6 @@ set-window-option -t $SESSION:0 automatic-rename off
 movew                      # move window to the next unused number
 swap-window -s 1 -t 0      # swap -source SOURCE to -target TARGET
 swap-window -t -1          # swap current window with next
-
 
 join-pane -s 7 -t 6           # move window 7 as pane to window 6
 join-pane -t :1               # moves current pane to window target 1
@@ -158,4 +156,3 @@ join-pane -t :1               # moves current pane to window target 1
 - [devhints.io/tmux](https://devhints.io/tmux)
 - [unix.stackexchange.com/questions/14300/moving-tmux-pane-to-window](https://unix.stackexchange.com/questions/14300/moving-tmux-pane-to-window)
 - [superuser.com/questions/758843/difference-between-global-server-session-and-window-options](https://superuser.com/questions/758843/difference-between-global-server-session-and-window-options)
-
