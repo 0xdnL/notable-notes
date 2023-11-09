@@ -2,7 +2,7 @@
 tags: [container]
 title: crictl
 created: '2021-05-27T09:57:46.096Z'
-modified: '2023-05-30T07:25:29.582Z'
+modified: '2023-10-14T10:48:39.451Z'
 ---
 
 # crictl
@@ -21,13 +21,20 @@ dnf install cri-tools
 crictl start CONTAINER_ID
 
 crictl inspect CONTAINER_ID
+
+crictl ps -a
+
+crictl pods
+crictl pods --label run=nginx
+
+crictl images nginx
 ```
 
 ## see also
 
 - [[docker]], [[podman]]
 - [[ctr]]
-- [[kubectl]]
+- [[kubectl]], [[k3s]]
 - [[skopeo]]
 - [[buildah]]
 - [cri-o.io](https://cri-o.io/)

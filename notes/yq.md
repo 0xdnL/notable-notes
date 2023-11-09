@@ -2,7 +2,7 @@
 tags: [go]
 title: yq
 created: '2019-08-20T12:05:18.926Z'
-modified: '2023-04-20T11:40:38.472Z'
+modified: '2023-11-07T15:41:32.372Z'
 ---
 
 # yq
@@ -68,6 +68,8 @@ yq r file.yml services.application.image                # read file and print ..
 yq w -i -s ../update.yml file.yml                       # write/update file
 
 
+eksctl utils schema | yq -P                             # convert json output to yaml
+
 helm template CHART | yq eval-all                       # read multiple yaml documents
 
 readarray actions < <(yq e '.coolActions[]' sample.yaml)    # create a bash array
@@ -107,5 +109,6 @@ kubectl get node -o yaml | yq e '.items[].metadata.labels | (."kubernetes.io/rol
 - [[jq]]
 - [[kubectl]]
 - [[docker-compose]]
+- [[eksctl]]
 - [[bash readarray]]
 - [mikefarah.gitbook.io/yq](https://mikefarah.gitbook.io/yq/)

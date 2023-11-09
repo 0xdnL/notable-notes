@@ -2,7 +2,7 @@
 tags: [container]
 title: k3s
 created: '2021-10-15T07:36:40.840Z'
-modified: '2023-04-11T20:18:20.808Z'
+modified: '2023-10-14T09:27:20.587Z'
 ---
 
 # k3s
@@ -42,6 +42,7 @@ systemctl daemon-reload && systemctl restart k3s
 - [[k0s]]
 - [[k9s]]
 - [[kind]]
+- [[journalctl]]
 - [[vagrant]]
 - [[microk8s]]
 - [[minikube]]

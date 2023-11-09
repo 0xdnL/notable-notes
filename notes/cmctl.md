@@ -2,7 +2,7 @@
 tags: [container]
 title: cmctl
 created: '2022-03-16T06:30:28.296Z'
-modified: '2023-03-22T10:20:49.197Z'
+modified: '2023-10-14T12:02:45.571Z'
 ---
 
 # cmctl
@@ -38,5 +38,6 @@ cmctl check api
 ## see also
 
 - [[kubectl]]
+- [[k3s]]
 - [[go]]
 - [[openssl]]

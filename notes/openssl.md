@@ -2,7 +2,7 @@
 tags: [crypto, linux, network]
 title: openssl
 created: '2019-07-30T06:19:49.183Z'
-modified: '2023-07-12T08:13:51.407Z'
+modified: '2023-10-11T16:12:50.810Z'
 ---
 
 # openssl
@@ -27,7 +27,6 @@ openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 openssl x509   -in cert.crt -text -noout
 
 openssl crl2pkcs7 -nocrl -certfile CHAIN.pem | openssl pkcs7 -print_certs -text -noout
-
 
 openssl verify -CAfile foo.cain.crt foo.crt   # verify certificate against CAfile => foo.crt: OK
 ```

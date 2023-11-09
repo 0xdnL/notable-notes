@@ -2,7 +2,7 @@
 tags: [initsystem, linux, systemd]
 title: systemctl
 created: '2019-07-30T06:19:49.250Z'
-modified: '2020-09-03T12:28:57.192Z'
+modified: '2023-10-14T09:39:54.615Z'
 ---
 
 # systemctl
@@ -61,6 +61,8 @@ systemctl stop unit.service
 
 systemctl restart unit.service
 
+systemctl reboot
+
 
 systemctl status unit.service
 
@@ -74,5 +76,7 @@ systemctl --output=json status docker-volume-netshare.service
 ```
 
 ## see also
+
+- [[sudo]]
 - [[journalctl]]
 - [difference between service and systemctl? - serverfault.com](https://serverfault.com/questions/867322/what-is-the-difference-between-service-and-systemctl)

@@ -2,7 +2,7 @@
 tags: [container]
 title: minikube
 created: '2019-07-30T06:19:49.146Z'
-modified: '2023-05-30T08:54:46.922Z'
+modified: '2023-11-08T14:10:50.035Z'
 ---
 
 # minikube
@@ -77,7 +77,8 @@ minikube addons enable ingress            # provisions: configMap, ingress-contr
 ## see also
 
 - [[crc]]
-- [[k3s]]
+- [[k3s]], [[k3d]]
+- [[rdctl]]
 - [[kind]]
 - [[kubectl]]
 - [[kubernetes]]

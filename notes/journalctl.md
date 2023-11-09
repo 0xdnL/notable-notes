@@ -2,10 +2,12 @@
 tags: [linux, systemd]
 title: journalctl
 created: '2019-08-19T09:11:28.583Z'
-modified: '2023-03-23T08:40:13.237Z'
+modified: '2023-10-14T09:28:48.586Z'
 ---
 
 # journalctl
+
+## option
 
 ## usage
 
@@ -26,6 +28,7 @@ journalctl -xefu SERVICE
 
 ## see also
 
+- [[k3s]]
 - [[systemctl]]
 - [[syslog]]
 - [Use journalctl to View Your System's Logs](https://www.linode.com/docs/quick-answers/linux/how-to-use-journalctl/)

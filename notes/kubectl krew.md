@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl krew
 created: '2022-06-27T06:44:31.241Z'
-modified: '2023-10-02T06:42:09.129Z'
+modified: '2023-10-27T13:19:59.549Z'
 ---
 
 # kubectl krew
@@ -48,6 +48,7 @@ kubectl access-matrix               # use plugin to see the level of access user
 # krew                            v0.4.3
 # oidc-login                      v1.25.1
 # view-serviceaccount-kubeconfig  v2.2.8
+# explore
 
 kubectl example deployment
 
@@ -63,3 +64,4 @@ view-serviceaccount-kubeconfig
 - [[kubectl]]
 - [krew.sigs.k8s.io/plugins/](https://krew.sigs.k8s.io/plugins/)
 - [krew.sigs.k8s.io/docs/user-guide/setup/install/](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+- [github.com/keisku/kubectl-explore](https://github.com/keisku/kubectl-explore)

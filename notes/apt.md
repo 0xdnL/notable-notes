@@ -2,7 +2,7 @@
 tags: [linux, packagemanager, python]
 title: apt
 created: '2019-07-30T20:20:43.614Z'
-modified: '2023-06-28T08:24:27.222Z'
+modified: '2023-10-14T10:05:01.188Z'
 ---
 
 # apt
@@ -12,22 +12,28 @@ modified: '2023-06-28T08:24:27.222Z'
 ## usage
 
 ```sh
+apt list --installed
+
 apt update
+
+apt upgrade           # will automatically install but not remove packages
+
+apt full-upgrade      # performs the same function as apt-get dist-upgrade
 
 apt install PKG
 
 apt remove PKG
 
 apt autoremove         # remove former dependencies
-
-apt list --installed
 ```
 
 ## see also
 
+- [[sudo]]
 - [[apt-get]]
 - [[apt-key]]
 - [[apt-file]]
 - [[apt-cache]]
+- [[journalctl]]
 - [[brew]]
 - [[nix]]

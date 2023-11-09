@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectx
 created: '2020-10-09T09:19:33.429Z'
-modified: '2023-04-11T20:19:07.330Z'
+modified: '2023-10-16T10:44:59.785Z'
 ---
 
 # kubectx
@@ -12,7 +12,7 @@ modified: '2023-04-11T20:19:07.330Z'
 ## install
 
 ```sh
-brew install derailed/k9s/k9s
+brew install kubectx
 ```
 
 ## option
@@ -45,3 +45,4 @@ kubectx -                 # switch to the previous context
 - [[kubectl]]
 - [[kubens]]
 - [[k9s]]
+- [[kubie]]

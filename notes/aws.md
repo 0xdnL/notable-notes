@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2022-12-05T14:51:00.473Z'
+modified: '2023-11-08T14:15:28.897Z'
 ---
 
 # aws
@@ -12,7 +12,9 @@ modified: '2022-12-05T14:51:00.473Z'
 ## install
 
 ```sh
-curl -LO "https://awscli.amazonaws.com/AWSCLIV2.pkg" && installer -pkg ./AWSCLIV2.pkg -target /
+curl -LO "https://awscli.amazonaws.com/AWSCLIV2.pkg"
+
+installer -pkg ./AWSCLIV2.pkg -target /
 ```
 
 ## environment

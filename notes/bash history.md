@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash history
 created: '2019-08-02T06:42:37.603Z'
-modified: '2023-06-28T08:37:31.485Z'
+modified: '2023-10-14T10:29:17.490Z'
 ---
 
 # bash history
@@ -71,6 +71,7 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -30 | \
 ## see also
 
 - [[wc]]
+- [[bash export]]
 - [[bash fc]]
 - [[bash shopt]]
 - [[bash redirect]]

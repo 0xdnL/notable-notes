@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: imagemagick
 created: '2020-12-28T21:19:42.860Z'
-modified: '2023-03-24T08:26:48.898Z'
+modified: '2023-11-02T10:19:46.657Z'
 ---
 
 # imagemagick
@@ -46,3 +46,4 @@ convert \
 - [[ffmpeg]]
 - [[gs]]
 - [[youtube-dl]]
+- [[exiftool]]

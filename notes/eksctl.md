@@ -2,7 +2,7 @@
 tags: [container]
 title: eksctl
 created: '2021-10-13T09:32:12.878Z'
-modified: '2023-03-22T10:19:58.630Z'
+modified: '2023-11-07T15:41:45.634Z'
 ---
 
 # eksctl
@@ -84,6 +84,7 @@ eksctl create iamserviceaccount \
 
 ## see also
 
+- [[eks-anywhere]]
 - [[aws]]
 - [[kubectl]]
 - [[helm]]

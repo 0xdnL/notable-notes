@@ -2,7 +2,7 @@
 tags: [linux]
 title: tput
 created: '2019-07-30T06:19:49.254Z'
-modified: '2022-01-25T12:44:43.476Z'
+modified: '2023-11-03T17:32:12.968Z'
 ---
 
 # tput
@@ -29,21 +29,6 @@ setaf VALUE 	  # set foreground color
 setab VALUE 	  # set background color
 ```
 
-## color
-
-```sh
-0 	 # black
-1 	 # red
-2 	 # green
-3 	 # yellow
-4 	 # blue
-5 	 # magenta
-6 	 # cyan
-7 	 # white
-8 	 # not used
-9 	 # reset to default color
-```
-
 ## usage
 
 ```sh
@@ -59,6 +44,24 @@ tput longname     # prints term longname  e.g. "VT 100/ANSI X3.64 virtual termin
 
 tput setaf 2; echo '${LBC_VERSION} has been set.'       # print in green
 tput setaf 1; echo '${LBC_VERSION} has NOT been set.'   # print in red
+
+tput setaf 0      # BLACK
+tput setaf 1      # RED
+tput setaf 2      # GREEN
+tput setaf 3      # YELLOW
+tput setaf 4      # BLUE
+tput setaf 5      # MAGENTA
+tput setaf 6      # CYAN
+tput setaf 7      # WHITE
+tput setaf 8 	    # not used
+tput setaf 9 	    # reset to default color
+tput setaf 190    # LIME_YELLOW
+tput setaf 153    # POWDER_BLUE
+tput bold         # BRIGHT
+tput sgr0         # NORMAL
+tput blink        # BLINK
+tput smso         # REVERSE
+tput smul         # UNDERLINE
 ```
 
 ## see also
