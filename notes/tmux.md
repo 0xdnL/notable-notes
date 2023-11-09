@@ -2,7 +2,7 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2023-05-06T14:54:21.253Z'
+modified: '2023-10-17T12:10:51.017Z'
 ---
 
 # tmux
@@ -37,6 +37,12 @@ A device that interleaves several activities; a switching device.
 $HOME/.tmux.conf
 $XDG_CONFIG_HOME/tmux/tmux.conf 
 $HOME/.config/tmux/tmux.conf
+```
+
+## env 
+
+```sh
+TMUX            # tmux session
 ```
 
 ## option

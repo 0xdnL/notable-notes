@@ -2,7 +2,7 @@
 tags: [database, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2023-10-02T11:35:43.930Z'
+modified: '2023-11-07T13:33:04.416Z'
 ---
 
 # psql
@@ -43,9 +43,11 @@ psql -h HOST -p 5432 -U postgres
 
 \list             -- list all databases
 
-\connect DATABASE -- switch to database
+\c       DATABASE -- connect to database
+\connect DATABASE -- connect to database
 
-\dt               -- list all tables in the current database
+\dt               -- list all tables in current database
+\dn               -- list all schema in current database
 
 \z                -- list all of the tables, views, and sequences in the database
 
@@ -56,6 +58,10 @@ DESCRIBE TABLE
 
 \x auto         -- output format
 
+select version();   -- get server version
+```
+
+```sql
 -- init
 CREATE DATABASE bookstore;
 CREATE USER bookstore_user WITH ENCRYPTED PASSWORD 'secret';

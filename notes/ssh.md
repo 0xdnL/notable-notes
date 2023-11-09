@@ -2,12 +2,18 @@
 tags: [crypto, ssh]
 title: ssh
 created: '2019-07-30T06:19:49.245Z'
-modified: '2023-03-25T12:05:08.874Z'
+modified: '2023-10-14T09:40:53.073Z'
 ---
 
 # ssh
 
 > `secure shell`
+
+## install
+
+```sh
+apt-get install
+```
 
 ## env
 
@@ -62,6 +68,7 @@ ssh -C                          # compress all data stdin, stdout, stderr, x11, 
 
 - for session recon/system info use: [[uptime]], [[id]], [[w]], [[uname]], [[passwd]], [[quota]], [[date]], [[cal]], [[finger]], [[last]], [[bash history]]
 - [[git]]
+- [[sudo]]
 - [[sshpass]]
 - [[last]]
 - [[tty]]

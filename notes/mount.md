@@ -2,12 +2,18 @@
 tags: [linux]
 title: mount
 created: '2019-07-30T06:19:49.179Z'
-modified: '2023-03-22T08:24:06.653Z'
+modified: '2023-11-07T10:12:30.759Z'
 ---
 
 # mount
 
 > mount a filesystem 
+
+## options
+
+```sh
+
+```
 
 ## usage
 
@@ -40,3 +46,4 @@ mount | mount | grep "^/dev" | awk '{print $1" " $5}'   # filesystem of partitio
 - [[cryptsetup]]
 - [what-is-a-bind-mount - unix.stackexchange.com](https://unix.stackexchange.com/a/198591/193945)
 - [[column]]
+- [[df]]

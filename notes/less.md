@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: less
 created: '2022-05-17T19:16:57.688Z'
-modified: '2023-05-19T11:25:17.456Z'
+modified: '2023-10-14T09:27:01.667Z'
 ---
 
 # less
@@ -29,6 +29,8 @@ LESS_IS_MORE  # set to 1, less behaves (mostly) in conformance with the POSIX "m
 -s, --squeeze-blank-lines   # causes consecutive blank lines to be squeezed into a single blank line
 -r, --raw-control-chars     # causes "raw" control characters to be displayed
 -R, --RAW-CONTROL-CHARS     # like -r, but only ANSI "color" escape sequences and OSC 8 hyperlink sequences are output in "raw" form
+
+-i 
 ```
 
 ## usage

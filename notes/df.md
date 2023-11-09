@@ -2,7 +2,7 @@
 tags: [coreutils, filesystem]
 title: df
 created: '2019-07-30T06:19:49.036Z'
-modified: '2023-03-22T09:13:08.619Z'
+modified: '2023-11-07T10:12:19.765Z'
 ---
 
 # df
@@ -29,3 +29,4 @@ df -h
 
 - [[du]]
 - [[ls]]
+- [[mount]]

@@ -2,7 +2,7 @@
 tags: [container, linux, macos, virtualization]
 title: lima
 created: '2023-05-30T07:38:10.191Z'
-modified: '2023-06-15T06:12:51.762Z'
+modified: '2023-11-08T14:39:19.212Z'
 ---
 
 # lima
@@ -41,3 +41,4 @@ limactl disk list       # list all existing disks
 
 - [[colima]]
 - [[qemu]]
+- [[rdctl]]

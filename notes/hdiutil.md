@@ -2,7 +2,7 @@
 tags: [macos]
 title: hdiutil
 created: '2023-05-30T08:54:56.544Z'
-modified: '2023-05-30T09:07:26.826Z'
+modified: '2023-11-08T14:14:56.641Z'
 ---
 
 # hdiutil
@@ -25,10 +25,21 @@ hdiutil checksum IMAGE -type TYPE         # Calculate the specified checksum on 
                                           # TYPE: UDIF-CRC32 , UDIF-MD5 , CRC32 , MD5 , SHA , SHA1 , SHA256 , SHA384 , SHA512
 ```
 
+```sh
+imagehdiutil attach IMAGE.dmg    # mount the IMAGE.dmg to /Volumes/IMAGE
+
+sudo installer -package /Volumes/IMAGE/IMAGE.pkg -target /
+
+hdiutil detach /Volumes/IMAGE   # unmount the image
+```
+
 ## see also
 
+- [[installer]]
 - [[brew]]
 - [[mount]]
 - [[diskutil]]
 - [[docker]]
 - [[sha256sum]]
+- [[rdctl]]
+- [apple.stackexchange.com/Is-there-a-command-to-install-a-dmg](https://apple.stackexchange.com/a/73931/394965)

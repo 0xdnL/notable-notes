@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: uname
 created: '2023-05-15T13:04:32.582Z'
-modified: '2023-05-24T08:38:59.420Z'
+modified: '2023-10-10T06:51:45.900Z'
 ---
 
 # uname
@@ -40,3 +40,4 @@ uname -a
 
 - [[coreutils]]
 - [[make]]
+- [[arch]]

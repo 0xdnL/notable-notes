@@ -2,7 +2,7 @@
 tags: [network]
 title: tcpdump
 created: '2020-01-27T14:43:35.111Z'
-modified: '2022-06-16T10:54:24.329Z'
+modified: '2023-11-02T14:01:09.750Z'
 ---
 
 # tcpdump
@@ -98,6 +98,8 @@ tcpdump -nni ens192 -e icmp[icmptype] == 8      # check ping - capture only ping
 ssh user@host \
   "tcpdump -s0 -U -w - -n -i any 'dst 192.168.144.196||192.168.158.4 || port 53'" \
   | wireshark -k -i -
+
+tcpdump -i flannel.1 host 10.42.4.239 -n
 ```
 
 ## see also

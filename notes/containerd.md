@@ -2,7 +2,7 @@
 tags: [container]
 title: containerd
 created: '2020-03-12T13:44:44.636Z'
-modified: '2023-03-15T09:49:34.996Z'
+modified: '2023-11-08T14:38:33.532Z'
 ---
 
 # containerd
@@ -50,6 +50,7 @@ CNCF Cloud Native Computing Foundation
 - [[zip]]
 - [[ctr]]
 - [[docker]]
+- [[podman]]
 - [[nerdctl]]
 - [[container]]
 - [containerd.io/docs/getting-started](https://containerd.io/docs/getting-started/)

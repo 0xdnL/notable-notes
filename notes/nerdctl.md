@@ -2,7 +2,7 @@
 tags: [container]
 title: nerdctl
 created: '2022-01-27T09:39:31.754Z'
-modified: '2023-05-30T07:24:46.258Z'
+modified: '2023-11-08T14:18:29.014Z'
 ---
 
 # nerdctl
@@ -33,6 +33,7 @@ nerdctl run -d -p 8080:80 --name nginx nginx:alpine   # run a container with roo
 
 ## see also
 
+- [[rdctl]]
 - [[ctr]]
 - [[kim]]
 - [[colima]]

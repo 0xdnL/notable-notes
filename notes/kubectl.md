@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2023-05-25T15:52:23.863Z'
+modified: '2023-11-02T12:38:20.129Z'
 ---
 
 # kubectl
@@ -138,6 +138,8 @@ kubectl config use-context CONTEXT
 kubectl api-resources   # get all resource-names, alias and kinds
 
 kubectl get all     # get alle resoruce of current namespace
+
+kubectl get --raw /apis/
 ```
 
 ## node
@@ -186,6 +188,12 @@ kubectl get pods --show-labels | awk '{print $6}' | column -s, -t
 kubectl get pods -L 
 
 kubectl exec -it POD -- curl -s http://10.1.0.3  # double dash `--` signals end of command options, if not set -s would be interpreted as kubectl flag
+```
+
+## run
+
+```sh
+kubectl run debug-pod-dti --restart=Never --rm -i --tty --image ubuntu -- /bin/bash
 ```
 
 ## service
@@ -358,7 +366,7 @@ kubectl access-matrix               # use plugin to see the level of access user
 - [[helm]], [[kustomize]]
 - [[cmctl]], [[nerdctl]]
 - [[bazel]]
-- [[kubectx]], [[kubens]], [[kubeseal]], [[kubeval]]
+- [[kubectx]], [[kubens]], [[kubeseal]], [[kubeval]], [[kubie]]
 - [[kim]], [[opa]]
 - [[aws]], [[eksctl]], [[kops]]
 - [[minikube]], [[k3s]], [[k3d]], [[k0s]], [[k9s]]
