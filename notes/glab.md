@@ -1,7 +1,8 @@
 ---
+tags: [linux, macos]
 title: glab
 created: '2023-09-13T11:14:09.200Z'
-modified: '2023-09-13T11:22:20.257Z'
+modified: '2023-11-10T07:50:01.228Z'
 ---
 
 # glab

@@ -1,7 +1,8 @@
 ---
+tags: [linux, macos]
 title: exiftool
 created: '2023-11-02T10:19:52.199Z'
-modified: '2023-11-02T10:20:40.464Z'
+modified: '2023-11-10T07:50:10.158Z'
 ---
 
 # exiftool

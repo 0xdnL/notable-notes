@@ -1,7 +1,8 @@
 ---
+tags: [crypto]
 title: gpg-agent
 created: '2023-09-18T07:26:21.112Z'
-modified: '2023-09-18T07:48:39.763Z'
+modified: '2023-11-10T07:48:12.783Z'
 ---
 
 # gpg-agent

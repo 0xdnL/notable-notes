@@ -1,7 +1,8 @@
 ---
+tags: [container]
 title: rdctl
 created: '2023-11-08T14:10:55.947Z'
-modified: '2023-11-08T14:44:55.378Z'
+modified: '2023-11-10T07:47:50.984Z'
 ---
 
 # rdctl
