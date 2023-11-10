@@ -1,7 +1,8 @@
 ---
+tags: [crypto]
 title: ykman
 created: '2023-09-19T13:53:19.090Z'
-modified: '2023-09-20T13:25:56.161Z'
+modified: '2023-11-10T07:48:40.087Z'
 ---
 
 # ykman

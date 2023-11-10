@@ -1,7 +1,8 @@
 ---
+tags: [macos]
 title: plutil
 created: '2023-11-08T14:42:54.357Z'
-modified: '2023-11-08T14:44:30.458Z'
+modified: '2023-11-10T07:49:53.294Z'
 ---
 
 # plutil

@@ -1,7 +1,8 @@
 ---
+tags: [crypto]
 title: bw
 created: '2023-09-21T11:32:26.885Z'
-modified: '2023-09-21T11:40:15.836Z'
+modified: '2023-11-10T07:48:21.137Z'
 ---
 
 # bw
