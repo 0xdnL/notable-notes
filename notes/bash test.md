@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash test
 created: '2019-07-30T06:19:49.021Z'
-modified: '2022-06-02T12:09:52.169Z'
+modified: '2023-11-18T13:23:06.098Z'
 ---
 
 # bash test
@@ -91,7 +91,7 @@ if [ CMD ]; then CMD; fi
 
 ## see also
 
-- [[bash [ []]
+- [[bash [[]]
 - [[bash built-in vs keyword]]
 - [[bash if]]
 - [[bash arithmetic]]

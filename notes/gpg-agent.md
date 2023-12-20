@@ -2,7 +2,7 @@
 tags: [crypto]
 title: gpg-agent
 created: '2023-09-18T07:26:21.112Z'
-modified: '2023-11-10T07:48:12.783Z'
+modified: '2023-11-21T15:50:57.102Z'
 ---
 
 # gpg-agent
@@ -21,6 +21,13 @@ brew install gpg2
 GPG_TTY
 ```
 
+## gpg-agent.conf
+
+```sh
+default-cache-ttl 3600
+max-cache-ttl 7200
+```
+
 ## usage
 
 ```sh
@@ -29,6 +36,7 @@ gpg-agent
 
 ## see also
 
+- [[git]]
 - [[gpg]]
 - [[ssh]]
 - [[ssh-agent]]

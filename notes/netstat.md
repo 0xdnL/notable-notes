@@ -2,7 +2,7 @@
 tags: [net-tools, network]
 title: netstat
 created: '2019-08-28T22:19:06.348Z'
-modified: '2023-03-23T08:47:22.378Z'
+modified: '2023-11-18T12:28:37.492Z'
 ---
 
 # netstat
@@ -46,6 +46,7 @@ netstat -ant            # 🐜
 
 ## see also
 
+- [[ifconfig]]
 - [[ss]]
 - [[ip]]
 - [[nc]]

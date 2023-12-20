@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2023-11-02T12:38:20.129Z'
+modified: '2023-12-05T16:42:42.578Z'
 ---
 
 # kubectl
@@ -80,14 +80,14 @@ KUBE_EDITOR         # -
 ```
 
 
-### imperative commands / object configuration
+imperative commands / object configuration
 
 ```sh
 kubectl diff      # object configuration
 kubectl apply     # object configuration
 ``````
 
-### declarative commands / object configuration
+declarative commands / object configuration
 
 ```sh
 kubectl create      # object configuration
@@ -100,57 +100,123 @@ kubectl scale
 ## usage
 
 ```sh
-# merge config
-KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten > ~/.kube/merged_kubeconfig \
-  && mv ~/.kube/merged_kubeconfig ~/.kube/config
-
 kubectl version -o yaml | yq e                                        # get client and server version
-kubectl cluster-info                                                  # get addresses of the control plane and services
-kubectl api-versions                                                  # get all supported api version
 
-kubectl api-resources --sort-by=name -o wide                          # get all objects
-kubectl api-resources | awk '{if ( $2 ~ /^[a-z]{2,7}$/) {print $0}}'  # get only aliased objects
-kubectl api-resources --namespaced=true                               # all namespaced resources
-kubectl api-resources --namespaced=false                              # all non-namespaced resources
+kubectl cluster-info                                                  # get addresses of the control plane and services
+
+kubectl api-versions                                                  # get all supported api version
+```
+
+## api-resources
+
+> get all resource-names, alias and kinds
+
+```sh
+    --api-group=''      # Limit to resources in the specified API group
+    --cached=false      # Use the cached list of resources if available
+    --namespaced=true   # If false, non-namespaced resources will be returned, otherwise returning namespaced resources by default
+    --no-headers=false  # When using the default or custom-column output format, don't print headers (default print headers)
+-o, --output=''         # Output format wide|name
+    --sort-by=''        # If non-empty, sort list of resources using specified field The field can be either 'name' or 'kind'
+    --verbs=[]          # Limit to resources that support the specified verbs
+```
+
+```sh
+kubectl api-resources                                                 # get all resource-names, alias and kinds
 kubectl api-resources -o name                                         # all resources with simple output (only the resource name)
 kubectl api-resources -o wide                                         # all resources with expanded (aka "wide") output
+kubectl api-resources -o wide --sort-by=name                          # get all objects
+kubectl api-resources | awk '{if ( $2 ~ /^[a-z]{2,7}$/) {print $0}}'  # get only aliased objects
+kubectl api-resources --namespaced=true                               # all namespaced resources
 kubectl api-resources --verbs=list,get                                # all resources that support the "list" and "get" request verbs
 kubectl api-resources --verbs=list --namespaced -o name
 kubectl api-resources --api-group=extensions                          # all resources in the "extensions" API group
+```
 
+## config
+
+> view and edit kubectl config
+
+```sh
+kubectl config view [--flatten|--raw]
+
+kubectl config current-context
+
+kubectl config get-contexts
+kubectl config use-context CONTEXT
+kubectl config set-context CONTEXT --user minikube --cluster minikube --namespace NAMESPACE
+
+kubectl config get-clusters
+
+# merge configs
+KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten > ~/.kube/merged_kubeconfig \
+  && mv ~/.kube/merged_kubeconfig ~/.kube/config
+```
+
+## certificate
+
+> cert,certs from `cert-manager.io/v1`
+
+```sh
+kubectl get certificate --all-namespaces -ojsonpath="{range .items[*]}{.metadata.name} not before: {.status.notBefore} not after: {.status.notAfter}{'\n'}{end}"
+```
+
+## explain
+
+> explain resources
+
+```sh
 kubectl explain po
 kubectl explain --help
 kubectl explain --api-version=apps/v1 replicaset
 kubectl explain deployment.metadata
 kubectl explain deployment.spec
 kubectl explain deployment.spec.template.spec.containers --recursive    # 🤩 recursive: get a hierarchical view of the various fields.
+```
 
+[[kubectl krew]] `kubectl explore RESOURCE`
 
-kubectl config view [--flatten|--raw]
-kubectl config current-context
-kubectl config get-contexts
-kubectl config use-context CONTEXT
-kubectl config get-clusters
-kubectl config set-context CONTEXT --user minikube --cluster minikube --namespace NAMESPACE
-kubectl config use-context CONTEXT
+## events
 
+```sh
+kubectl get events --sort-by='.lastTimestamp'
 
-kubectl api-resources   # get all resource-names, alias and kinds
+kubectl get events --sort-by=.metadata.creationTimestamp
 
-kubectl get all     # get alle resoruce of current namespace
+kubectl get events --sort-by='.metadata.creationTimestamp' \
+  -o 'go-template={{range .items}}{{.involvedObject.name}}{{"\t"}}{{.involvedObject.kind}}{{"\t"}}{{.message}}{{"\t"}}{{.reason}}{{"\t"}}{{.type}}{{"\t"}}{{.firstTimestamp}}{{"\n"}}{{end}}'
+```
 
-kubectl get --raw /apis/
+[[go-template]]
+
+## get
+
+> display one or many resources
+
+```sh
+kubectl api-resources   # for a complete list of supported resources
+
+kubectl get nodes
+kubectl get crd volumesnapshotcontent -o yaml
+
+kubectl get pods                          # List all pods in ps output format
+kubectl get pods -o wide                  # List all pods in ps output format with more information (such as node name)
+kubectl get replicationcontroller web     # List a single replication controller with specified NAME in ps output format
+kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
+kubectl get -o json pod web-pod-13je7     # List a single pod in JSON output format
+kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
+kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
+kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}    # Return only the phase value of the specified pod
+kubectl get pod test-pod -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # List resource information in custom columns
+kubectl get rc,services                                   # List all replication controllers and services together in ps output format
+kubectl get rc/web service/frontend pods/web-pod-13je7    # List one or more resources by their type and names
 ```
 
 ## node
 
 ```sh
-kubectl get nodes
-
 kubectl get node NODE_NAME -o name
-
 kubectl get node NODE_NAME -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
-
 
 kubectl get nodes --selector='!node-role.kubernetes.io/master' --no-headers -o custom-columns=":metadata.name"
 
@@ -179,21 +245,60 @@ kubectl -n kube-system patch daemonset aws-node \
   --type json -p='[{"op": "remove", "path": "/spec/template/spec/nodeSelector/non-existing"}]'    # "scale up" daemonset
 ```
 
-## pod
+## exec
 
 ```sh
+kubectl exec -it POD -- curl -s http://10.1.0.3  # double dash `--` signals end of command options, if not set -s would be interpreted as kubectl flag
+
+kubectl exec -it POD -- cat /data/out.txt | tail -n 3
+```
+
+## get
+
+```sh
+kubectl get all     # get alle resoruce of current namespace
+
+kubectl get --raw /apis/
+
+kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
+
 kubectl get po POD_NAME -o yaml
 kubectl get pod
 kubectl get pods --show-labels | awk '{print $6}' | column -s, -t
 kubectl get pods -L 
-
-kubectl exec -it POD -- curl -s http://10.1.0.3  # double dash `--` signals end of command options, if not set -s would be interpreted as kubectl flag
 ```
 
 ## run
 
+> running adhoc pod without yaml-manifest / create and run a particular image in a pod
+
 ```sh
+kubectl run     # same as `kubectl create deployment`
+
 kubectl run debug-pod-dti --restart=Never --rm -i --tty --image ubuntu -- /bin/bash
+
+kubectl run curl            --image=radial/busyboxplus:curl -i --tty   # then run: nslookup my-nginx
+
+kubectl run echoserver      --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+
+kubectl run dnsutils        --image=tutum/dnsutils --generator=run-pod/v1 --command -- sleep infinity
+
+kubectl run hello-minikube  --image=k8s.gcr.io/echoserver:1.4 --port=8080
+
+kubectl run POD_NAME        --image=mongo:4.0 `# run pod on specific node `\
+  --overrides='{"apiVersion": "v1", "spec": {
+    "affinity": {
+      "nodeAffinity": {
+        "requiredDuringSchedulingIgnoredDuringExecution": {
+          "nodeSelectorTerms": [{
+              "matchFields": [{
+                  "key": "metadata.name",
+                  "operator": "In",
+                  "values": ["NODE_NAME"]
+                }]
+            }]
+        }}}}}' \ 
+  --command -- sleep infinity
 ```
 
 ## service
@@ -201,9 +306,6 @@ kubectl run debug-pod-dti --restart=Never --rm -i --tty --image ubuntu -- /bin/b
 > routes internal traffic
 
 ```sh
-kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
-
-
 kubectl apply   # makes incremental changes to an existing object
 STDOUT | kubectl apply -f -
 kubectl apply -f https://HOST/DEPLOYMENT.yaml
@@ -220,7 +322,6 @@ kubectl scale --replicas=1 kubia
 kubectl scale replicationcontroller kubia --replicas=1
 
 kubectl patch svc SERVICE -p '{"spec": {"type": "LoadBalancer"}}'
-
 
 # edit a resource from the default editor
 KUBE_EDITOR="nano" kubectl edit svc/SERVICE                  # use alternative editor
@@ -254,48 +355,6 @@ kubectl autoscale deployment DEPLOYMENT \
 kubectl patch deployment NAME --type=json -p='[{"op": "add", "path": "/spec/template/metadata/labels/this", "value": "that"}]'
 ```
 
-## run
-
-> running adhoc pod without yaml-manifest / create and run a particular image in a pod
-
-```sh
-kubectl run     # same as `kubectl create deployment`
-
-kubectl run curl            --image=radial/busyboxplus:curl -i --tty   # then run: nslookup my-nginx
-
-kubectl run echoserver      --image=gcr.io/google_containers/echoserver:1.4 --port=8080
-
-kubectl run dnsutils        --image=tutum/dnsutils --generator=run-pod/v1 --command -- sleep infinity
-
-kubectl run hello-minikube  --image=k8s.gcr.io/echoserver:1.4 --port=8080
-
-kubectl run POD_NAME        --image=mongo:4.0 `# run pod on specific node `\
-  --overrides='{"apiVersion": "v1", "spec": {
-    "affinity": {
-      "nodeAffinity": {
-        "requiredDuringSchedulingIgnoredDuringExecution": {
-          "nodeSelectorTerms": [{
-              "matchFields": [{
-                  "key": "metadata.name",
-                  "operator": "In",
-                  "values": ["NODE_NAME"]
-                }]
-            }]
-        }}}}}' \ 
-  --command -- sleep infinity
-```
-
-## events
-
-```sh
-kubectl get events --sort-by='.lastTimestamp'
-
-kubectl get events --sort-by=.metadata.creationTimestamp
-
-kubectl get events --sort-by='.metadata.creationTimestamp' \
-  -o 'go-template={{range .items}}{{.involvedObject.name}}{{"\t"}}{{.involvedObject.kind}}{{"\t"}}{{.message}}{{"\t"}}{{.reason}}{{"\t"}}{{.type}}{{"\t"}}{{.firstTimestamp}}{{"\n"}}{{end}}'
-```
-
 ## label
 
 ```sh
@@ -320,25 +379,43 @@ kubectl logs INGRESS_CONTROLLER -c controller \
 
 ## port-forward 
 
-> forward one or more local ports to a pod (requires node to have `socat` installed)
+> forward one or more local ports to a pod (requires node to have [[socat]] installed)
 
 ```sh
-kubectl port-forward pod/mypod 5000 6000                                    # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
-kubectl port-forward deployment/mydeployment 5000 6000                      # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
-kubectl port-forward service/myservice 8443:https                           # listen on port 8443 locally, forwarding to the targetPort of the service's port named "https" in a pod selected by the service
+kubectl port-forward                                 pod/mypod 5000 6000  # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
+kubectl port-forward                                 pod/mypod 8888:5000  # listen on port 8888 locally, forwarding to 5000 in the pod
+kubectl port-forward                                 pod/mypod :5000      # listen on a random port locally, forwarding to 5000 in the pod
+kubectl port-forward --address 0.0.0.0               pod/mypod 8888:5000  # listen on port 8888 on all addresses, forwarding to 5000 in the pod
+kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000  # listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
 
-kubectl port-forward pod/mypod 8888:5000                                    # listen on port 8888 locally, forwarding to 5000 in the pod
-kubectl port-forward kubia-manual 8888:8080
-kubectl port-forward pod/mypod :5000                                        # listen on a random port locally, forwarding to 5000 in the pod
+kubectl port-forward deployment/mydeployment 5000 6000                    # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
 
-kubectl port-forward --address 0.0.0.0 pod/mypod 8888:5000                  # listen on port 8888 on all addresses, forwarding to 5000 in the pod
-kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000    # listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
+kubectl port-forward service/myservice 8443:https                         # listen on port 8443 locally, forwarding to the targetPort of the service's port named "https" in a pod selected by the service
+```
+
+## pv - persistant volume
+
+```sh
+kubectl get pv pvc-c7d68f31-4104-4827-b63d-0181ed25c50e -o jsonpath='{.spec.awsElasticBlockStore.volumeID}'  # get volumeId
+```
+
+## pvc - persistant volume claim
+
+```sh
+kubectl get pvc
+```
+
+## sc - storageclass
+
+```sh
+kubectl get storageclass
 ```
 
 ## secrets
 
 ```sh
 kubectl get secrets --field-selector type=kubernetes.io/tls     # list only certificate secrets
+kubectl get secrets --field-selector type=Opaque
 
 kubectl get secrets SECRET -o json | jq -r '.data | to_entries[] | "\(.key): \(.value | @base64d)"';    # print secrets base64-decoded
 ```
@@ -358,7 +435,7 @@ kubectl krew install oidc-login     # install plugin
 kubectl access-matrix               # use plugin to see the level of access user has on namespaces
 ```
 
-[krew.sigs.k8s.io/docs/user-guide/quickstart/](https://krew.sigs.k8s.io/docs/user-guide/quickstart/)
+[[kubectl krew]], [krew.sigs.k8s.io/docs/user-guide/quickstart/](https://krew.sigs.k8s.io/docs/user-guide/quickstart/)
 
 ## see also
 

@@ -2,7 +2,7 @@
 tags: [coreutils, filesystem]
 title: du
 created: '2019-07-30T06:19:49.046Z'
-modified: '2023-03-22T09:13:33.358Z'
+modified: '2023-11-21T08:51:11.679Z'
 ---
 
 # du
@@ -29,6 +29,8 @@ BLOCKSIZE         # if set,     and -k is not specified, the block counts will b
 ## usage
 
 ```sh
+du --max-depth=1 -h
+
 du -sk ./* | sort -nr       # total in kb
 
 du -chsh ./*
@@ -42,9 +44,12 @@ du -hst                                           # sum up disk usage
 du -a . | sort -n -r | head -n 10                 # list-top-10-biggest-directories
 
 tar cf - /folder-with-big-files -P | pv -s $(du -sb /folder-with-big-files | awk '{print $1}') | gzip > big-files.tar.gz
+```
 
 
-# measure-disk-space-of-certain-file-types-in-aggregate
+## measure-disk-space-of-certain-file-types-in-aggregate
+
+```sh
 for i in $(find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u); do \
   echo "$i"": ""$(du -hac **/*."$i" | tail -n1 | awk '{print $1;}')";
 done | sort -h -k 2 -r
@@ -53,7 +58,9 @@ done | sort -h -k 2 -r
 ## see also
 
 - [[df]]
+- [[find]]
 - [[sort]]
 - [[tar]]
 - [[gzip]]
 - [[pv]]
+- [[numfmt]]

@@ -2,7 +2,7 @@
 tags: [shell]
 title: env
 created: '2020-01-17T07:48:51.293Z'
-modified: '2023-03-27T05:23:16.856Z'
+modified: '2023-11-20T07:55:53.398Z'
 ---
 
 # env
@@ -29,8 +29,8 @@ env         # print environment
 
 ## see also
 
-- [[bash export]]
 - [[bash]]
+- [[bash export]]
 - [[bash shopt]]
 - [[bash set]]
 - [[envsubst]]

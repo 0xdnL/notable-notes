@@ -2,7 +2,7 @@
 tags: [linux, macos, python]
 title: eyed3
 created: '2019-08-23T14:52:21.967Z'
-modified: '2023-05-11T10:51:56.275Z'
+modified: '2023-11-20T18:38:52.056Z'
 ---
 
 # eyed3

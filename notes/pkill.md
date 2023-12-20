@@ -2,7 +2,7 @@
 tags: [linux]
 title: pkill
 created: '2020-01-02T14:25:22.992Z'
-modified: '2023-03-22T08:19:12.976Z'
+modified: '2023-11-18T12:34:46.327Z'
 ---
 
 # pkill
@@ -31,5 +31,5 @@ pkill -HUP sshd
 - [[procps]]
 - [[pgrep]]
 - [[grep]]
-- [[bash kill]]
+- [[bash kill]], [[killall]], [[kill]]
 - [[ps]]

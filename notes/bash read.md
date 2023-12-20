@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash read
 created: '2019-07-30T06:19:49.017Z'
-modified: '2022-03-11T08:37:58.622Z'
+modified: '2023-11-20T18:28:18.689Z'
 ---
 
 # bash read
@@ -68,6 +68,7 @@ done < <(find . -print0)
 
 ## see also
 
+- [[bash ifs]]
 - [[bash redirects]]
 - [[bash exec]]
 - [[bash mapfile]] [[bash readarray]]

@@ -2,7 +2,7 @@
 tags: [go]
 title: go
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-05-10T12:15:24.340Z'
+modified: '2023-11-29T10:34:02.359Z'
 ---
 
 # go
@@ -13,14 +13,10 @@ modified: '2023-05-10T12:15:24.340Z'
 
 ```sh
 curl -O https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
+curl -O https://go.dev/dl/go1.21.4.darwin-arm64.pkg
+
 tar xvzf go1.13.7.linux-amd64.tar.gz && mv go /usr/local/
 ```
-
-## option
-
-```sh
-```
-
 
 ## environment
 
@@ -47,6 +43,36 @@ GO11MODULE
 ## usage
 
 ```sh
+go bug         # start a bug report
+
+go clean       # remove object files and cached files
+go doc         # show documentation for package or symbol
+
+go fix         # update packages to use new APIs
+go fmt         # gofmt (reformat) package sources
+go generate    # generate Go files by processing source
+
+go work        # workspace maintenance
+go run         # compile and run Go program
+go test        # test packages
+go tool        # run specified go tool
+go version     # print Go version
+go vet         # report likely mistakes in packages
+```
+
+## build
+
+> compile packages and dependencies
+
+```sh
+go build "./..."  # build all packages and commands in the current directory and all its subdirectories (recursively)
+```
+
+## env
+
+> print Go environment information
+
+```sh
 go help env                   # more information about a command
 go env                        # show current env vars go uses
 go env GOCACHE                # print specific value
@@ -54,7 +80,17 @@ go env -json                  # print in json format
 go env -w GO111MODULE=auto    # ..
 ```
 
+## install
+
+> compile and install packages and dependencies
+
+```sh
+go install -v golang.org/x/tools/gopls@latest
+```
+
 ## mod
+
+> module maintenance
 
 ```sh
 go mod init REPO/hello        # creates a new module, initializing the `go.mod` that describes it
@@ -66,6 +102,8 @@ go mod tidy                   # remove unused dependencies
 ```
 
 ## list
+
+> list packages or modules
 
 ```sh
 go list -m all                        # lists the current module and all its dependencies
@@ -86,12 +124,11 @@ go test -json           # Convert test output to JSON suitable for automated pro
 go clean -i github.com/motemen/gore...    # remove installed package
 ```
 
-### get
+## get
 
+> add dependencies to current module and install them
 > downloads the packages named by import paths, along with dependencies. Then installs named packages like `go install`
 > ⚠️ has been deprecated for installing binaries since `1.17`
-
-#### option
 
 ```sh
 -d      # stop after downloading the packages; that is, to not install packages
@@ -110,53 +147,14 @@ go get rsc.io/sampler@v1.3.1      # install with specific version, defaults to `
 go get ./...                      # install all dependencies of project recursively
 ```
 
-## language
-
-```
-  has                             doesn't have
-
-+ package system                - implicit numeric conversion
-+ first-class-functions         - constructors/destructors
-+ lexical-scope                 - operator overloading
-+ system call interface         - default parameter values
-+ immutable string in utf-8     - inheritance (type-based inheritance → subclasses)
-+ struct ~ class                - generics    `parametrics polimorphism` ≈ `generics`
-+ concurrency support (CSP)     - exceptions
-                                - macros
-+ `garbage collected`           - function annotations
-+ it's `staticallly typed`      - thread local storage
-                                - inheritance but composition of type
-                                - explicit declaration, interface-implementation required
-```
-
-## semicolon rule
-
-> `;` terminates statements
-
-if last token before new line:
-- is an `identifiere`   -> `int`, `float64`
-- is an `basic literal` -> `number`, `string`
-- is a `token`          -> `break`, `continues`, `fallthrough`, `return`, `++`, `--`, `)`, `}`
-
-if the new line comes after a `token` that could end the statement => insert `;`
-
-## runes atoi itoa
-
-> `runes` are unicode codepoints
-
-## strinconversion Atoi / Itoa
-
-```go
-n := strconv.Atoi(os.Args[1])             # converst a string to integer
-n := strconv.ParseInt(os.Args[1], 10, 0)
-```
-
 ## see also
 
+- [[language go]]
 - [[go-template]]
 - [[go datastructures]]
 - [[c]], [[gcc]], [[make]]
 - [[java]], [[javac]], [[mvn]]
+- [[python]]
 - [[wasm]]
 - [[rust]]
 - [[fmt]]

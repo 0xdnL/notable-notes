@@ -2,7 +2,7 @@
 tags: [python]
 title: youtube-dl
 created: '2019-07-30T06:19:49.267Z'
-modified: '2023-05-11T10:37:52.281Z'
+modified: '2023-11-20T18:38:56.885Z'
 ---
 
 # youtube-dl
@@ -15,6 +15,8 @@ modified: '2023-05-11T10:37:52.281Z'
 brew install youtube-dl
 
 pip install --upgrade youtube-dl
+
+curl -LO https://yt-dl.org/downloads/latest/youtube-dl # move to path and chmod a+rx FILE
 ```
 
 ## usage
@@ -47,5 +49,6 @@ youtube-dl `# extract audio from playlist starting at playlist-index: 17` \
 - [[imagemagick]]
 - [[ffmpeg]]
 - [[eyed3]]
-- [[python]]
+- [[pip]]
 - [[curl]]
+- [[chmod]]

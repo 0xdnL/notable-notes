@@ -2,7 +2,7 @@
 tags: [crypto, ssh]
 title: ssh
 created: '2019-07-30T06:19:49.245Z'
-modified: '2023-10-14T09:40:53.073Z'
+modified: '2023-11-18T15:57:34.404Z'
 ---
 
 # ssh
@@ -67,6 +67,7 @@ ssh -C                          # compress all data stdin, stdout, stderr, x11, 
 ## see also
 
 - for session recon/system info use: [[uptime]], [[id]], [[w]], [[uname]], [[passwd]], [[quota]], [[date]], [[cal]], [[finger]], [[last]], [[bash history]]
+- [[wg]]
 - [[git]]
 - [[sudo]]
 - [[sshpass]]

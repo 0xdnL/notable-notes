@@ -2,7 +2,7 @@
 tags: [iproute, network]
 title: ip
 created: '2019-09-03T11:51:54.855Z'
-modified: '2023-04-11T20:13:58.411Z'
+modified: '2023-11-18T15:54:36.121Z'
 ---
 
 # ip
@@ -136,6 +136,7 @@ ip neigh replace 192.168.1.1 lladdr 1:2:3:4:5:6 dev em1   # Replace the entry fo
 
 ## see also
 
+- [[wg]]
 - [[netstat]]
 - [[vagrant]]
 - [[arp]]

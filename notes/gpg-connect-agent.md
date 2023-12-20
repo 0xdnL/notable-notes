@@ -2,7 +2,7 @@
 tags: [linux]
 title: gpg-connect-agent
 created: '2019-08-28T21:55:26.962Z'
-modified: '2023-07-25T06:44:57.433Z'
+modified: '2023-11-21T15:50:39.164Z'
 ---
 
 # gpg-connect-agent
@@ -19,6 +19,7 @@ gpg-connect-agent 'getinfo std_env_names' /bye | awk '$1=="D" {print $2}' # list
 
 ## see also
 
+- [[git]]
 - [[gpg]]
 - [[pass]]
 - [services - How can I restart gpg-agent? - Super User](https://superuser.com/a/1183544/341187)

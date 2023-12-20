@@ -2,7 +2,7 @@
 tags: [container, rust]
 title: kubie
 created: '2023-10-16T10:43:44.965Z'
-modified: '2023-10-17T06:43:12.839Z'
+modified: '2023-11-17T12:29:06.241Z'
 ---
 
 # kubie
@@ -49,6 +49,7 @@ kubie update        # will check the latest kubie version and update your local 
 
 ## see also
 
+- [[bash prompt]]
 - [[kubectx]]
 - [[kubens]]
 - [[kubectl]]

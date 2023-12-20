@@ -2,7 +2,7 @@
 tags: [json, linux]
 title: jq
 created: '2019-07-30T06:19:49.141Z'
-modified: '2023-03-22T10:27:29.820Z'
+modified: '2023-12-08T13:01:21.995Z'
 ---
 
 # jq
@@ -84,13 +84,11 @@ jq -n -c '[{"foo": 1, "bar": 2}, {"foo": 3, "quux": 4}] | map(select( .bar ))'  
 
 ## see also
 
-- [[fx]]
-- [[jsonpath]]
+- [[jless]], [[fx]], [[jsonpath]]
 - [[yq]]
 - [[jwt]]
-- [[govc]]
-- [[aws]]
-- [[kubectl]]
+- [[curl]]
+- [[aws]], [[govc]], [[kubectl]]
 - [remysharp.com/drafts/jq-recipes](https://remysharp.com/drafts/jq-recipes)
 - [unix.stackexchange.com/jq-print-key-and-value-for-all-in-sub-object](https://unix.stackexchange.com/a/406425)
 - [stackoverflow.com/printing-multiple-values-on-the-same-line](https://stackoverflow.com/a/46131963)

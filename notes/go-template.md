@@ -2,7 +2,7 @@
 tags: [container, go]
 title: go-template
 created: '2019-07-30T06:19:49.074Z'
-modified: '2023-03-22T10:10:46.222Z'
+modified: '2023-11-21T10:21:06.973Z'
 ---
 
 # go-template 
@@ -95,6 +95,8 @@ kubectl get nodes `# get taints of nodes` \
 
 ## see also
 
+- [[helm]]
+- [[envsubst]]
 - [[go]]
 - [[kubectl]]
 - [[jsonpath]]

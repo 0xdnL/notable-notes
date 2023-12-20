@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash shopt
 created: '2019-07-30T06:19:49.237Z'
-modified: '2022-02-10T09:18:43.410Z'
+modified: '2023-11-20T13:08:56.822Z'
 ---
 
 # bash shopt
@@ -17,7 +17,7 @@ modified: '2022-02-10T09:18:43.410Z'
 Historically, the `set` was used to turn options on and off. As the number of options grew, `set` became more difficult to use because options are represented by single letter codes. 
 As a result, bash provides the `shopt` command to turn options on and off by name instead of a letter. 
 
-## usage
+## option
 
 ```sh
 -o        # restrict OPTNAMEs to those defined for use with `set -o'
@@ -27,8 +27,12 @@ As a result, bash provides the `shopt` command to turn options on and off by nam
 -u        # disable (unset) each OPTNAME
 ```
 
+## usage
+
 ```sh
-shopt -p                # print all options
+shopt    | column -t      # print all options as "on" or "off"
+shopt -p | column -t      # print all options as "-s" or "-u"
+
 shopt -p cdspell        # same as `unset -u`
 shopt -p promptvars     # same as `set -s`
 

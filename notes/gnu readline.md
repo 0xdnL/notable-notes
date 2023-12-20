@@ -2,7 +2,7 @@
 tags: [shell]
 title: gnu readline
 created: '2019-07-30T06:19:49.019Z'
-modified: '2023-09-15T06:30:36.453Z'
+modified: '2023-12-06T12:16:50.035Z'
 ---
 
 # gnu readline
@@ -12,6 +12,8 @@ modified: '2023-09-15T06:30:36.453Z'
 ## usage
 
 ```sh
+bind -p  | grep C-a
+
 CTRL + A      # move to beginning of line
 CTRL + B      # moves backward one character
 CTRL + E      # moves to end of line
@@ -36,9 +38,17 @@ CTRL + N      # next line in command history
 CTRL + P      # previous line in command history
 CTRL + R      # searches backward
 CTRL + S      # searches forward
+```
 
+## .inputrc
 
-# create canned macros by mapping key sequences to input strings
+```sh
+" ":" "     # map NBSP to regular space (left part has NBSP in quotes, right part has space)
+```
+
+> create canned macros by mapping key sequences to input strings
+
+```sh
 cat <<EOT > ~/.inputrc
 Control-o: "> output.txt"
 Control-j: "\C-a$(\C-e)"    # macro moves to the beginning of the line with Ctrl-A, 

@@ -1,8 +1,8 @@
 ---
-tags: [database, javascript]
+tags: [database/mongodb, javascript]
 title: mongo
 created: '2019-07-30T06:19:49.178Z'
-modified: '2023-04-30T11:30:01.101Z'
+modified: '2023-11-18T13:25:18.013Z'
 ---
 
 # mongo

@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: 'bash [['
 created: '2020-09-02T14:24:09.002Z'
-modified: '2022-11-25T10:53:23.523Z'
+modified: '2023-11-28T07:51:06.919Z'
 ---
 
 # bash \[\[
@@ -30,4 +30,5 @@ OPERATORS
 ## see also
 
 - [[bash test]]
+- [[bash until]]
 - [[bash built-in vs keyword]]

@@ -2,7 +2,7 @@
 tags: [container]
 title: flux
 created: '2022-01-17T13:49:51.051Z'
-modified: '2023-09-13T12:50:59.082Z'
+modified: '2023-11-24T08:31:50.562Z'
 ---
 
 # flux
@@ -35,6 +35,7 @@ flux get kustomizations --watch
 
 ## see also
 
+- [[kubectl]]
 - [[gitops]]
 - [[argocd]]
 - [fluxcd.io/docs](https://fluxcd.io/docs/)

@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash kill
 created: '2019-08-02T06:42:37.606Z'
-modified: '2023-06-28T08:27:34.830Z'
+modified: '2023-11-18T12:34:35.415Z'
 ---
 
 # bash kill
@@ -41,8 +41,7 @@ kill -15 PID         # SIGTERM
 
 - [[signal]]
 - [[bash jobs]]
-- [[kill]]
-- [[pkill]]
+- [[kill]], [[killall]], [[pkill]]
 - [[ps]]
 - [linux.die.net/man/2/kill](https://linux.die.net/man/2/kill)
 

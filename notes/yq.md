@@ -2,7 +2,7 @@
 tags: [go]
 title: yq
 created: '2019-08-20T12:05:18.926Z'
-modified: '2023-11-07T15:41:32.372Z'
+modified: '2023-11-28T08:26:24.569Z'
 ---
 
 # yq
@@ -101,14 +101,14 @@ kubectl get node -o yaml | yq e '.items[].metadata.labels | ."kubernetes.io/role
 
 # select two values via `(.val, .foo)`
 kubectl get node -o yaml | yq e '.items[].metadata.labels | (."kubernetes.io/role", ."node.kubernetes.io/instance-type") ' -
+
+kubectl get secret SECRET -o yaml | yq '.data | map(@base64d)'    # base64 decode secret values
 ```
 
 ## see also
 
 - [[yaml]]
 - [[jq]]
-- [[kubectl]]
-- [[docker-compose]]
-- [[eksctl]]
+- [[kubectl]], [[eksctl]], [[docker-compose]]
 - [[bash readarray]]
 - [mikefarah.gitbook.io/yq](https://mikefarah.gitbook.io/yq/)

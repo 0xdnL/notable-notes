@@ -1,8 +1,8 @@
 ---
-tags: [go]
+tags: [container, go]
 title: govc
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-10-09T15:33:34.362Z'
+modified: '2023-11-21T16:33:02.533Z'
 ---
 
 # govc

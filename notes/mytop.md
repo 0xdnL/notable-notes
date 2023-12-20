@@ -1,8 +1,8 @@
 ---
-tags: [database]
+tags: [database/mysql]
 title: mytop
 created: '2019-08-29T06:08:47.559Z'
-modified: '2023-04-30T11:32:03.522Z'
+modified: '2023-11-18T13:25:59.657Z'
 ---
 
 # mytop

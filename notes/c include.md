@@ -1,8 +1,8 @@
 ---
-tags: [c]
+tags: [c/preprocessor-directive]
 title: c include
 created: '2020-04-24T09:16:35.459Z'
-modified: '2020-07-02T06:41:23.031Z'
+modified: '2023-11-18T13:30:47.611Z'
 ---
 
 # c include

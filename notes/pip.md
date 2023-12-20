@@ -2,7 +2,7 @@
 tags: [python]
 title: pip
 created: '2019-08-02T07:21:18.995Z'
-modified: '2022-11-23T11:23:49.644Z'
+modified: '2023-11-18T14:33:05.233Z'
 ---
 
 # pip
@@ -28,8 +28,8 @@ pip install PACKAGE --user          # avoid "Operation not permitted" and using 
 
 ## see also
 
-- [[virtualenv]]
+- [[python]], [[virtualenv]]
 - [[gem]]
-- [[curl]]
+- [[curl]], [[youtube-dl]]
 - [How do I install pip on macOS or OS X? - Stack Overflow](https://stackoverflow.com/questions/17271319/how-do-i-install-pip-on-macos-or-os-x)
 - [How to install and use pip without sudo - GitHub](https://gist.github.com/haircut/14705555d58432a5f01f9188006a04ed)

@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: socat
 created: '2019-07-30T06:19:49.239Z'
-modified: '2023-03-16T09:13:18.415Z'
+modified: '2023-11-18T13:39:51.230Z'
 ---
 
 # socat
@@ -62,6 +62,7 @@ socat -d -d -lmlocal2 \
 
 ## see also
 
+- [[kubectl]] `port-forward`
 - [socat – Cindy Sridharan – Medium](https://medium.com/@copyconstruct/socat-29453e9fc8a6)
 - [[unix socket]]
 - [[nmap]]

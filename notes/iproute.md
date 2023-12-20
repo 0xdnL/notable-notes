@@ -2,7 +2,7 @@
 tags: [iproute, network]
 title: iproute
 created: '2020-09-03T06:34:08.653Z'
-modified: '2020-09-03T06:45:11.895Z'
+modified: '2023-11-18T15:29:02.607Z'
 ---
 
 # iproute
@@ -10,9 +10,15 @@ modified: '2020-09-03T06:45:11.895Z'
 > advanced IP routing and network device configuration tools
 
 ## install
-`apt install iproute2`, `yum install iproute`
+
+```sh
+apt install iproute2
+yum install iproute
+```
+
 
 ## usage
+
 - [[bridge]] -	show / manipulate bridge addresses and devices
 - [[ctstat]] -	alias for lnstat
 - [[devlink]] -	Devlink tool
@@ -34,6 +40,8 @@ modified: '2020-09-03T06:45:11.895Z'
 - [[tipc]] -	a TIPC configuration and management tool
 
 ## see also
+
+- [[mullvad]]
 - [[net-tools]]
 - [[net-tools vs iproute]]
 - [kernel.org/pub/linux/utils/net/iproute2/](http://kernel.org/pub/linux/utils/net/iproute2/)

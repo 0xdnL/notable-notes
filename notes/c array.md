@@ -1,8 +1,8 @@
 ---
-tags: [c]
+tags: [c, c/stdio.h]
 title: c array
 created: '2020-04-24T09:37:42.906Z'
-modified: '2020-05-16T11:30:43.705Z'
+modified: '2023-11-18T13:29:12.585Z'
 ---
 
 # c array

@@ -2,12 +2,14 @@
 tags: [linux, macos]
 title: git
 created: '2019-07-30T06:19:49.063Z'
-modified: '2023-09-18T09:07:14.815Z'
+modified: '2023-11-27T07:24:40.902Z'
 ---
 
 # git
 
 > distributed version-control system for tracking changes in source code during software development.
+
+[git-scm.com/docs/gitglossary](https://git-scm.com/docs/gitglossary)
 
 ## install
 
@@ -20,6 +22,61 @@ brew install git
 ```sh
 EDITOR      # see commit
 ```
+
+## .gitconfig
+
+```sh
+[alias]
+  cpl = !git checkout - && git pull
+  cbd = !git checkout -b "update-$(date +%F_%H%M)"
+
+[core]
+  editor = vim
+  hooksPath = .husky
+
+[init]
+  defaultBranch = main
+
+[user]
+  name = Some Name
+  email = name@mail.com
+
+[remote "origin"]
+  gh-resolved = base
+
+[pull]
+  ff = only   
+
+[bulkworkspaces]
+  WORKSPACE_NAME = PATH
+```
+
+```sh
+# seperate configs per remote
+
+cat <<EOF > ~/.gitconfig
+[includeIf "gitdir:~/gitlab.com/"]
+  path = ~/.gitconfig-gitlab
+
+[includeIf "gitdir:~/github.com/"]
+  path = ~/.gitconfig-github
+EOF
+
+cat <<EOF > ~/.gitconfig-github
+[user]
+  name  = user
+  email = user@mail.com
+  signingkey = AAAA1111AAAA1111
+
+[commit]
+  gpgsign = true
+
+[push]
+  default = simple
+EOF
+```
+
+[[gpg-agent]]
 
 ## add
 
@@ -81,12 +138,17 @@ git clean -d -f -x      # remove all files not under source control
 ## commit
 
 ```sh
-git commit -v     # using $EDITOR
+git commit -v                         # using $EDITOR
 git commit -m "title" -m "message"
 git commit -am ..
-git commit --allow-empty      # empty commit without changes -> for retriggers !
+git commit --allow-empty              # empty commit without changes -> for retriggers !
 
-# amend to already pushed commit
+git commit --amend -c COMMIT_SHA       # edith commit message of specific commit
+```
+
+add files/amend to already pushed commit
+
+```sh
 git add FILE-A FILE-B        # !!! only if nobody has pulled in the mean time !!!
 git commit --amend
 git push --force-with-lease
@@ -109,54 +171,6 @@ git config --global credential.helper 'store --file FILE'
 git config --global credential.https://HOST USER
 ```
 
-## .gitconfig
-
-```sh
-[alias]
-  cpl = !git checkout - && git pull
-  cbd = !git checkout -b "update-$(date +%F_%H%M)"
-
-[core]
-  editor = vim
-  hooksPath = .husky
-
-[init]
-  defaultBranch = main
-
-[user]
-  name = Some Name
-  email = name@mail.com
-
-[remote "origin"]
-  gh-resolved = base
-
-[pull]
-  ff = only   
-
-[bulkworkspaces]
-  WORKSPACE_NAME = PATH
-```
-
-```sh
-# seperate configs per remote
-
-cat <<EOF > ~/.gitconfig
-[includeIf "gitdir:~/gitlab.com/"]
-  path = ~/.gitconfig-gitlab
-
-[includeIf "gitdir:~/github.com/"]
-  path = ~/.gitconfig-github
-EOF
-
-cat <<EOF > ~/.gitconfig-github
-[user]
-  name  = user
-  email = user@mail.com
-
-[push]
-  default = simple
-EOF
-```
 
 ## column
 
@@ -165,6 +179,17 @@ seq 1 100 | git column --mode=column
 ```
 
 [[column]]
+
+## checkout 
+
+> switch branches or restore working tree files
+
+```sh
+git checkout .                                                # reset changes all file in directory
+git checkout FILE_NAME                                        # reset changes for FILE_NAME
+git checkout -b BRANCH_NAME                                   # create a new branch named BRANCH_NAME
+git checkout COMMIT_SHA -- FILE1/TO/RESTORE FILE2/TO/RESTORE  # restore one or multiple file from commit sha
+```
 
 
 ## diff
@@ -197,34 +222,23 @@ git help GUIDE
 
 ```sh
 git log ref..                 # list commits that are present on current branch and not merged into ref.A ref can be e.g. a branch name or a tag name.
-
 git log ..ref                 # list commit, that are present on ref and not merged into current branch.
-
 git reflog                    # list operations (like checkouts, commits etc.) made on local repository.
 
 git log --follow -p -- file   # follow file history
 
+git log -L:<function>:file    # git log of a specific function in a file
 
-git log HEAD..origin/master   # see where origin/master branch has diverged
-                              # "git and have 1 and 1 different commits each, respectively"
+git log HEAD..origin/master   # see where origin/master branch has diverged, "git and have 1 and 1 different commits each, respectively"
 
-git log --oneline --author="John Smith" 
-
-git log --format="%Cgreen%h%Creset %an"
+git log --oneline --author="John Smith"     # show commit of author John Smith
+git log --format="%Cgreen%h%Creset %an"     # show commit in green and author "15c74a6 author"
 
 git log --graph --oneline --decorate --color  # overview with references labels and history graph. One commit er line
-
-git log --graph --abbrev-commit --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
-
-git log -L:<function>:file      # git log of a specific function in a file
-
-git log --graph \
-  --pretty=format:"%Cred%h%Creset \
-  -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" \
-  --abbrev-commit
+git log --graph --abbrev-commit --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"  
 ```
 
-[[bash alias]]
+`git#shortlog` [[bash alias]]
 
 ## ls-files
 
@@ -431,7 +445,6 @@ git push -u origin --tags
 
 [Git-Basics-Working-with-Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 
-
 ### reverting changes
 
 ```sh
@@ -448,7 +461,7 @@ git log --all -- path/file.sh                                     # get hash to 
 git checkout e7s..37^ --  path/file.sh                            # note ^ after SHA !
 ```
 
-### pruge file from repository's history
+### purge file from repository's history
 
 ```sh
 #   Force Git to process, but not check out, the entire history of every branch and tag
@@ -463,30 +476,15 @@ git push origin --force --tags      # remove the sensitive file from your tagged
 
 ## svn
 
+> svn to git migraiton
+
 ```sh
-# svn to git migraiton
-git svn clone \
-  --stdlayout \
-  --no-metadata \
-  --authors-file=FILE \ `# see: svn log --xml`
-  svn://HOST/PATH DEST
-
-git svn clone \
-  --stdlayout \
-  --no-metadata \
-  --authors-file=FILE \
-  --prefix=origin/ \
-  https://repo/svn/PATH/TRUNK  DEST
-
-git svn clone \
-  --authors-file=FILE \
-  --prefix=origin/ \
-  --trunk=PATH/TRUNK \
-  https://repo/svn/general \
-  DEST
+git svn clone --authors-file=FILE                  --stdlayout --no-metadata svn://HOST/PATH             DEST
+git svn clone --authors-file=FILE --prefix=origin/ --stdlayout --no-metadata https://repo/svn/PATH/TRUNK DEST
+git svn clone --authors-file=FILE --prefix=origin/ --trunk=PATH/TRUNK        https://repo/svn/PATH/TRUNK DEST
 ```
 
-[how-to-migrate-svn-repository](http://stackoverflow.com/questions/79165/how-to-migrate-svn-repository-with-history-to-a-new-git-repository)
+[[svn]], [how-to-migrate-svn-repository](http://stackoverflow.com/questions/79165/how-to-migrate-svn-repository-with-history-to-a-new-git-repository)
 
 
 ## see also
@@ -495,7 +493,6 @@ git svn clone \
 - [[bfg]]
 - [[git-chglog]]
 - [[trunk]]
-- [[snv]]
 - [[fossil]]
 - [[gource]]
 - [ohshitgit.com/](https://ohshitgit.com/)

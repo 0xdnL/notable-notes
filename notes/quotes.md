@@ -2,10 +2,16 @@
 tags: [Notebooks]
 title: quotes
 created: '2019-07-30T06:19:27.513Z'
-modified: '2023-05-29T06:51:29.596Z'
+modified: '2023-12-19T13:10:30.330Z'
 ---
 
 # quotes
+
+```
+We build our computers the way we build our cities—over time, without a plan, on top of ruins.
+
+― Ellen Ullman, Life in Code: A Personal History of Technology
+```
 
 ```
 As a programmer, never underestimate your ability to come up with ridiculously complex soluations for simple problems

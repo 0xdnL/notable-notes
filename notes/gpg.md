@@ -2,7 +2,7 @@
 tags: [crypto]
 title: gpg
 created: '2019-07-30T06:19:49.076Z'
-modified: '2023-09-18T07:26:16.843Z'
+modified: '2023-11-21T16:30:12.548Z'
 ---
 
 # gpg
@@ -165,6 +165,13 @@ EOF
 gpg --gen-key --batch genkey.txt
 
 gpg --batch --passphrase '' --quick-gen-key USER_ID default default
+```
+
+## backup keys
+
+```sh
+gpg --output public.pgp --armor --export name@email.com
+gpg --output private.pgp --armor --export-secret-key name@email.com
 ```
 
 ## usage

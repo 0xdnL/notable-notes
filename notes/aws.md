@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2023-11-08T14:15:28.897Z'
+modified: '2023-12-06T17:24:11.169Z'
 ---
 
 # aws
@@ -63,14 +63,23 @@ AWS_WEB_IDENTITY_TOKEN_FILE         # path to file containing an OAuth 2.0 acces
 
 [docs.aws.amazon.com/cli/latest/userguide/cli-configure-options](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html)
 
-## usage
-
 ## configure
 
 ```sh
-aws configure
-aws configure list
-aws configure list-profiles
+aws configure                         # create a new configuration interactively
+aws configure add-model               # adds a service JSON model to the appropriate location in ~/.aws/models
+aws configure export-credentials      # export credentials in various formats
+aws configure get                     # get a configuration value from the config file.
+aws configure import                  # import csv credentials generated from the aws-web-console
+aws configure list                    # display configuration and hidden secret values for specified profile
+aws configure list-profiles           # list the profiles available to aws cli
+aws configure set                     #
+aws configure sso
+aws configure sso-session
+
+aws configure set default.region us-west-2
+aws configure set default.ca_bundle /path/to/ca-bundle.pem
+aws configure set profile.testing2.region eu-west-1
 
 aws --profile PROFILE configure set region REGION
 aws --profile PROFILE configure set default.region REGION
@@ -79,41 +88,14 @@ aws --profile PROFILE configure set aws_secret_access_key SECRET_ACCESS_KEY
 aws --profile PROFILE configure set aws_session_token AWS_SESSION_TOKEN
 ```
 
-```sh
-cat <<EOF > ~/.aws/config
-[profile PROFILE_NAME]
-aws_cli_auto_prompt     = on|on-partial
-aws_cli_file_encoding   = UTF-8
-aws_session_token       =
-ca_bundle               =
-cli_pager               =
-credential_source       = Ec2InstanceMetadata
-max_attempts            =
-output                  = json|yaml|yaml-stream|text|table
-region                  = REGION
-retry_mode              =
-role_arn                = ROLE_ARN
-role_session_name       =
-source_profile          = PROFILE_NAME
-web_identity_token_file =
-EOF
-
-cat <<EOF > ~/.aws/credentials
-[PROFILE_NAME]
-aws_access_key_id     = AWS_ACCESS_KEY_ID
-aws_secret_access_key = AWS_SECRET_ACCESS_KEY
-EOF
-```
-
-[stackoverflow.com/replace-aws-keys-with-iam-role-in-aws-credentials](https://stackoverflow.com/a/50382297/14523221)
-
 ## cloudtrail
 
 ```sh
 aws cloudtrail lookup-events --max-results 1
 
 aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=DescribeVpcs
-#   AttributeKeys: AccessKeyId, EventId, EventName, EventSource, ReadOnly, ResourceName, ResourceType, Username
+
+aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateQueue      # lookup who created a queue
 ```
 
 ## configservice
@@ -171,8 +153,8 @@ aws ec2 describe-instances \
   --query "Reservations[*].Instances[*].InstanceId"
  
   --query 'Images[?CreationDate>=`2016-04-01`][]'
-  --query "sort_by(Images, &CreationDate)[].Name"
-  --query "sort_by(Images, &CreationDate)[].[Name, ImageId]"
+  --query 'sort_by(Images, &CreationDate)[].Name'
+  --query 'sort_by(Images, &CreationDate)[].[Name, ImageId]'
   --query 'Images[*].[ImageId,CreationDate]' 
   --query 'sort_by(Images,&CreationDate)[-1].ImageId'
   --query 'reverse(sort_by(Images, &CreationDate))[0]'
@@ -199,7 +181,6 @@ aws autoscaling update-auto-scaling-group \
   --auto-scaling-group-name ASG_NAME \
   --min-size 3 --desired-capacity 3 --max-size 4 # increase/decrease capacities
 
-
 aws ec2 create-security-group \
 	--description 'RDS SG' \
 	--group-name 'RDS_SG' \
@@ -210,8 +191,18 @@ aws ec2 describe-subnets `# get public subnet id's used by eks clsuter`\
   --query 'Subnets[*].SubnetId' \
   --output json | jq -c .
 
-
 aws ec2 describe-instance-types --instance-types m6i.large | jq
+
+# snapshots
+
+aws ec2 create-snapshot --volume-id vol-02778124c6f96d1af --tag-specifications 'ResourceType=snapshot,Tags=[{Key="ec2:ResourceTag/ebs.csi.aws.com/cluster",Value="true"}]'
+
+aws ec2 describe-snapshots --snapshot-ids snap-1234567890abcdef0
+aws ec2 describe-snapshots --filters Name=tag:Stack,Values=prod           # based on tags
+aws ec2 describe-snapshots --filters "Name=storage-tier,Values=archive"   # only archived snapshots
+aws ec2 describe-snapshots --filters Name=volume-id,Values=049df61146c4d7901 --query "Snapshots[*].[SnapshotId]"                   --output text
+aws ec2 describe-snapshots --filters Name=status,Values=pending              --query "Snapshots[*].{ID:SnapshotId,Time:StartTime}" --owner-ids self 
+
 ```
 
 #### find vpc dependencies when 'DependencyViolation' occure
@@ -219,41 +210,18 @@ aws ec2 describe-instance-types --instance-types m6i.large | jq
 ```sh
 VPC="vpc-ID"
 
-aws ec2 describe-internet-gateways
-  --filters "Name=attachment.vpc-id,Values=$VPC" | jq -r '.InternetGateways[].InternetGatewayId'
-
-aws ec2 describe-subnets
-  --filters 'Name=vpc-id,Values='$VPC | grep SubnetId
-
-aws ec2 describe-route-tables
-  --filters 'Name=vpc-id,Values='$VPC | grep RouteTableId
-
-aws ec2 describe-network-acls
-  --filters 'Name=vpc-id,Values='$VPC | grep NetworkAclId
-
-aws ec2 describe-vpc-peering-connections
-  --filters 'Name=requester-vpc-info.vpc-id,Values='$VPC  | grep VpcPeeringConnectionId
-
-aws ec2 describe-vpc-endpoints
-  --filters 'Name=vpc-id,Values='$VPC | grep VpcEndpointId
-
-aws ec2 describe-nat-gateways
-  --filters 'Name=vpc-id,Values='$VPC | grep NatGatewayId
-
-aws ec2 describe-security-groups
-  --filters 'Name=vpc-id,Values='$VPC | grep GroupId
-
-aws ec2 describe-instances
-  --filters 'Name=vpc-id,Values='$VPC | grep InstanceId
-
-aws ec2 describe-vpn-connections
-  --filters 'Name=vpc-id,Values='$VPC | grep VpnConnectionId
-
-aws ec2 describe-vpn-gateways
-  --filters 'Name=attachment.vpc-id,Values='$VPC  | grep VpnGatewayId
-
-aws ec2 describe-network-interfaces
-  --filters 'Name=vpc-id,Values='$VPC | grep NetworkInterfaceId
+aws ec2 describe-internet-gateways       --filters "Name=attachment.vpc-id,Values=$VPC"         | jq -r '.InternetGateways[].InternetGatewayId'
+aws ec2 describe-subnets                 --filters 'Name=vpc-id,Values='$VPC                    | grep SubnetId
+aws ec2 describe-route-tables            --filters 'Name=vpc-id,Values='$VPC                    | grep RouteTableId
+aws ec2 describe-network-acls            --filters 'Name=vpc-id,Values='$VPC                    | grep NetworkAclId
+aws ec2 describe-vpc-peering-connections --filters 'Name=requester-vpc-info.vpc-id,Values='$VPC | grep VpcPeeringConnectionId
+aws ec2 describe-vpc-endpoints           --filters 'Name=vpc-id,Values='$VPC                    | grep VpcEndpointId
+aws ec2 describe-nat-gateways            --filters 'Name=vpc-id,Values='$VPC                    | grep NatGatewayId
+aws ec2 describe-security-groups         --filters 'Name=vpc-id,Values='$VPC                    | grep GroupId
+aws ec2 describe-instances               --filters 'Name=vpc-id,Values='$VPC                    | grep InstanceId
+aws ec2 describe-vpn-connections         --filters 'Name=vpc-id,Values='$VPC                    | grep VpnConnectionId
+aws ec2 describe-vpn-gateways            --filters 'Name=attachment.vpc-id,Values='$VPC         | grep VpnGatewayId
+aws ec2 describe-network-interfaces      --filters 'Name=vpc-id,Values='$VPC                    | grep NetworkInterfaceId
 ```
 
 ### remove in-/egress rules from default secgroup
@@ -297,14 +265,30 @@ curl 'https://ec2.shop' -H 'accept: json'
 - [ec2.shop](https://ec2.shop)
 - [docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 
-
-## elastic load balancers
+## ecs - elastic container service
 
 ```sh
-aws elb describe-load-balancers | jq '.LoadBalancerDescriptions[].LoadBalancerName'
+aws ecs list-account-settings
+aws ecs list-attributes --target-type container-instance --attribute-name ecs.awsvpc-trunk-id --cluster base-cluster --region eu-central-1
+aws ecs list-clusters
+aws ecs list-container-instances
+aws ecs list-services
+aws ecs list-services-by-namespace
+aws ecs list-tags-for-resource
+aws ecs list-task-definition-families
+aws ecs list-task-definitions | jq -r '.taskDefinitionArns[]'
+aws ecs list-tasks
+
+aws ecs describe-tasks --tasks TASK
+
+aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region eu-central-1
+
+aws ecs execute-command --cluster CLUSTER --task TASK --container CONTAINER --interactive --command "bash"
 ```
 
-## elastic kubernetes service
+[[ecs-cli]]
+
+## eks - elastic kubernetes service
 
 ```sh
 aws eks list-clusters
@@ -319,30 +303,15 @@ aws eks get-token --cluster-name CLUSTER_NAME | jq -r '.status.token'
 aws eks update-kubeconfig --region REGION --name CLUSTER_NAME
 
 aws eks describe-nodegroup --nodegroup-name NODE_GROUP-202200000012 --cluster-name CLUSTER_NAME
+
+aws eks update-kubeconfig --name CONTEXT
 ```
 
-## ecs - elastic container service
+## elb - elastic load balancers
 
 ```sh
-aws ecs list-task-definitions | jq -r '.taskDefinitionArns[]'
-
-aws ecs describe-tasks --tasks TASK
-
-aws ecs put-account-setting-default \
-  --name awsvpcTrunking \
-  --value enabled \
-  --region eu-central-1
-
-aws ecs list-attributes \
-  --target-type container-instance \
-  --attribute-name ecs.awsvpc-trunk-id \
-  --cluster base-cluster \
-  --region eu-central-1
-
-aws ecs execute-command --cluster CLUSTER --task TASK --container CONTAINER --interactive --command "bash"
+aws elb describe-load-balancers | jq '.LoadBalancerDescriptions[].LoadBalancerName'
 ```
-
-[[ecs-cli]]
 
 ## iam - identity and access management
 
@@ -390,7 +359,7 @@ aws iam get-group --group-name GROUP_NAME
 aws iam create-access-key --user-name USER_NAME
 ```
 
-## relational database service
+## rds - relational database service
 
 ```sh
 # create RDS Postgresql instance
@@ -450,12 +419,19 @@ aws --region us-east-1 route53domains get-domain-detail --domain-name DOMAIN | j
 ## ssm - aw services systems manager
 
 ```sh
-# get latest ecs-optimized amazon-linux 2 ami
-aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended \
-  | jq '.Parameters[].Value | fromjson'
+aws ssm describe-parameters --max-items 100 --query 'Parameters[*].Name'
 
-aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended \
-  --region eu-central-1 --query "Parameters[0].Value" | jq 'fromjson'
+aws ssm get-parameter --name "/PATH/TO/PARAMETER"
+
+aws ssm get-parameters-by-path --path "/PATH/TO/PARAMETER" --recursive --query "Parameters[*].Name"
+
+aws ssm list-tags-for-resource --resource-type Parameter --resource-id "/PATH/TO/PARAMETER"
+
+aws ssm put-parameter --name='NAME' --value='VALUE' --type='String' --tags Key=All,Value=MyVal Key=All2,Value=MyName
+
+# get latest ecs-optimized amazon-linux 2 ami
+aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended | jq '.Parameters[].Value | fromjson'
+aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended --query "Parameters[0].Value" | jq 'fromjson'
 ```
 
 ## sts - security token service
@@ -501,6 +477,8 @@ aws sqs list-queues | jq '.QueueUrls[] | select(endswith("dlq"))' \
     done
 ```
 
+[[bash eval]]
+
 ## s3 - simple storage service
 
 ```sh
@@ -512,8 +490,11 @@ aws s3 rm s3://BUCKET --recursive
 aws s3 cp   s3://BUCKET/KEY/FILE .                  # downlaod BUCKET object
 aws s3 sync s3://BUCKET_1 .                         # download all objects to local dir
 aws s3 sync s3://BUCKET_1 s3://BUCKET_2 --dryrun    # diff two buckets
+```
 
-# aws s3api
+## s3api
+
+```sh
 aws s3api list-buckets | jq -r '.Buckets[].Name'
 aws s3api list-buckets --query 'Buckets[*].Name'
 
@@ -524,30 +505,33 @@ aws s3api head-bucket --bucket BUCKET                       # return error if cr
 
 aws s3api get-object-lock-configuration --bucket BUCKET	--query 'ObjectLockConfiguration.ObjectLockEnabled'   # check if lock config enables
 
+aws s3api delete-objects --bucket BUCKET --delete "$(aws s3api list-object-versions --bucket BUCKET --query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
 
-aws s3api delete-objects --bucket BUCKET \
-  --delete "$(aws s3api list-object-versions --bucket BUCKET --query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+aws s3api delete-objects --bucket BUCKET --delete "$(aws s3api list-object-versions --bucket BUCKET --query='{Objects: DeleteMarkers[].{Key:Key,VersionId:VersionId}}')"
 
-aws s3api delete-objects --bucket BUCKET \
-  --delete "$(aws s3api list-object-versions --bucket BUCKET --query='{Objects: DeleteMarkers[].{Key:Key,VersionId:VersionId}}')"
+aws s3api list-object-versions --bucket BUCKET | jq '{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}'
 
-# aws s3api list-object-versions --bucket BUCKET | jq '{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}'
-# aws s3api list-object-versions --bucket BUCKET | jq -M '{Objects: [.["Versions","DeleteMarkers"][]|select(.Key == "key-value")| {Key:.Key,VersionId : .VersionId}], Quiet: false}'
+aws s3api list-object-versions --bucket BUCKET | jq -M '{Objects: [.["Versions","DeleteMarkers"][]|select(.Key == "key-value")| {Key:.Key,VersionId : .VersionId}], Quiet: false}'
+```
+
+## ssm - services systems manager / parameter store
+
+```sh
+ssm describe-parameters --max-result 50
 ```
 
 ## see also
 
-- [[cdk]]
+- [[jq]], [[yq]]
+- [[terraform]], [[cdk]]
 - [[aws-nuke]]
-- [[eksctl]]
+- [[eksctl]], [[kubectl]]
 - [[amazon-linux-extras]]
 - [[ec2-instance-selector]]
 - [[mc]]
-- [[kubectl]]
 - [[gcloud]]
-- [[jq]], [[yq]]
-- [[op]]
 - [[installer]]
 - [[localstack]], [[minikube]]
 - [[installer]]
 - [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html)
+- [stackoverflow.com/replace-aws-keys-with-iam-role-in-aws-credentials](https://stackoverflow.com/a/50382297/14523221)

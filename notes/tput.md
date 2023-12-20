@@ -2,7 +2,7 @@
 tags: [linux]
 title: tput
 created: '2019-07-30T06:19:49.254Z'
-modified: '2023-11-03T17:32:12.968Z'
+modified: '2023-11-15T09:04:49.917Z'
 ---
 
 # tput
@@ -66,6 +66,7 @@ tput smul         # UNDERLINE
 
 ## see also
 
+- [[bash prompt]]
 - [[diff]]
 - [[infocmp]]
 - [LinuxCommand.org: tput](http://linuxcommand.org/lc3_adv_tput.php)

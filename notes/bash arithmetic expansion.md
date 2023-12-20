@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash arithmetic expansion
 created: '2019-07-30T06:19:48.992Z'
-modified: '2022-04-06T11:38:20.902Z'
+modified: '2023-11-17T12:28:06.576Z'
 ---
 
 # bash arithmetic expansion
@@ -12,6 +12,8 @@ modified: '2022-04-06T11:38:20.902Z'
 ## usage
 
 ```sh
+$[EXPRESSION]         # deprecated in favor of (( ))
+
 $((EXPRESSION))       # is arithmetic expansion; return result
 
 ((EXPRESSION))        # don't return result; e.g. variable assignment

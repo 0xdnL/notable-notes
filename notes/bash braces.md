@@ -2,12 +2,12 @@
 tags: [shell/bash]
 title: bash braces
 created: '2019-09-24T06:43:14.231Z'
-modified: '2023-03-22T10:02:19.307Z'
+modified: '2023-11-20T18:15:15.508Z'
 ---
 
 # bash braces
 
-> `$` character introduces parameter expansion, command substitution, or arithmetic expansion
+> `$` character introduces parameter expansion, command substitution, or [[bash arithmetic expansion]]
 
 ## subshell
 
@@ -66,7 +66,7 @@ ls -l /etc/{resolv.conf, passwd}
 
 ## see also
 
-- [[bash arithmetic expansion]]
+- [[bash for]]
 - [[bash parameter expansion]]
 - [double-parenthesis-with-and-without-dollar - stackoverflow](https://stackoverflow.com/a/31255942/2087704)
 - [linuxjournal.com/bash-brace-expansion](https://www.linuxjournal.com/content/bash-brace-expansion)

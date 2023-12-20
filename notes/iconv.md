@@ -2,7 +2,7 @@
 tags: [linux]
 title: iconv
 created: '2020-03-16T16:29:57.096Z'
-modified: '2023-03-25T12:15:23.899Z'
+modified: '2023-12-06T12:08:26.152Z'
 ---
 
 # iconv
@@ -32,4 +32,4 @@ echo abc ß ? € à?ç | iconv -f UTF-8 -t ASCII//TRANSLIT
 
 - [[file]]
 - [[ffmpeg]]
-- [[ascii]]
+- [[ascii]], [[unicode]]

@@ -2,7 +2,7 @@
 tags: [macos, packagemanager]
 title: brew
 created: '2019-07-30T06:19:49.028Z'
-modified: '2023-06-19T07:10:18.111Z'
+modified: '2023-11-18T13:19:44.681Z'
 ---
 
 # brew
@@ -24,6 +24,14 @@ HOMEBREW_BREW_GIT_REMOTE        # at install put git mirror of Homebrew/brew her
 HOMEBREW_CORE_GIT_REMOTE        # at install put git mirror of Homebrew/homebrew-core here
 HOMEBREW_NO_INSTALL_CLEANUP     # don't run brew cleanup
 HOMEBREW_NO_ENV_HINTS           # don't show hints
+
+brew shellenv
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 ```
 
 ## usage
@@ -113,14 +121,17 @@ brew tap caskroom/cask       # get cask
 
 ## see also
 
+- [[bash]]
+- [[nix]]
+- [[ruby]]
+- [[asdf]]
+- [[coreutils]]
 - [[softwareupdate]]
 - [[xcode-select]]
-- [[asdf]]
 - [caskroom.github.io/search](https://caskroom.github.io/search)
 - [how to install and use gnu grep in macos](https://apple.stackexchange.com/questions/193288/how-to-install-and-use-gnu-grep-in-osx)
 - [how to replace macos utilities with gnu core utilities](https://apple.stackexchange.com/questions/69223/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities)
 - [how to use gnu sed on macos](https://stackoverflow.com/questions/30003570/how-to-use-gnu-sed-on-mac-os-x)
 - [Updating shell with Homebrew](https://johndjameson.com/blog/updating-your-shell-with-homebrew/)
 - [how to update bash on macos](https://superuser.com/questions/857250/how-to-update-bash-on-mac-os-x-yosemite)
-- [[nix]]
-- [[ruby]]
+

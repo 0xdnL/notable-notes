@@ -2,7 +2,7 @@
 tags: [database]
 title: sqlite
 created: '2019-07-30T06:19:49.240Z'
-modified: '2023-04-30T11:32:42.082Z'
+modified: '2023-12-07T13:39:57.992Z'
 ---
 
 # sqlite
@@ -12,6 +12,8 @@ modified: '2023-04-30T11:32:42.082Z'
 ## install
 
 ```sh
+brew install sqlite
+
 zypper install sqlite3
 ```
 

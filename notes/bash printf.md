@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash printf
 created: '2019-07-30T06:19:49.208Z'
-modified: '2023-05-19T10:38:37.969Z'
+modified: '2023-12-06T12:18:59.550Z'
 ---
 
 # bash printf
@@ -18,7 +18,7 @@ modified: '2023-05-19T10:38:37.969Z'
 ## format
 
 ```sh
-%b        # expand backslash escape sequences in the corresponding argument
+%b        # expand backslash escape sequences e.g. for prompt_command
 %q        # quote the argument in a way that can be reused as shell input
 %(fmt)T   # output the date-time string resulting from using FMT as a format string for strftime(3)
 ```
@@ -61,8 +61,9 @@ for ((i=32;i<127;i++)) do printf "\\$(printf %03o "$i")"; done printf "\n"    # 
 - [[stat]]
 - [[watch]]
 - [[bc]]
-- [[echo]]
+- [[bash echo]]
+- [[bash prompt]]
 - [[od]]
 - [[seq]]
-- [[ascii]]
+- [[ascii]], [[unicode]]
 - [[bash arithmetic expansion]]

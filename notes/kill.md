@@ -2,7 +2,7 @@
 tags: [linux]
 title: kill
 created: '2020-01-21T09:41:17.492Z'
-modified: '2023-03-22T08:01:47.102Z'
+modified: '2023-11-18T12:35:17.500Z'
 ---
 
 # kill
@@ -17,6 +17,7 @@ HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV SYS PIPE ALRM TERM URG
 STOP TSTP CONT CHLD TTIN TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2
 
 /bin/kill -l 15        # prints: TERM
+
 /bin/kill -l TERM      # prints: 15
 
 /bin/kill -signal_name PID
@@ -26,6 +27,7 @@ STOP TSTP CONT CHLD TTIN TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2
 
 ## see also
 
+- [[killall]], [[bash kill]]
 - [[procps]]
 - [[bash kill]]
 - [[signal]]

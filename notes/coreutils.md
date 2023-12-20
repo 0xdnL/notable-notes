@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: coreutils
 created: '2020-09-01T07:42:52.948Z'
-modified: '2023-09-20T06:25:35.454Z'
+modified: '2023-11-11T16:12:05.129Z'
 ---
 
 # coreutils
@@ -17,25 +17,43 @@ modified: '2023-09-20T06:25:35.454Z'
 ```sh
 brew install coreutils
 
-PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # used commands with normal name instead of gName
+brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
 ```
+
+[[find]], [[tar]], [[sed]], [[gawk]] [[gnutls]], [[indent]], [[getopt]], [[grep]]
+
+[apple.stackexchange.com/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities](https://apple.stackexchange.com/a/69332/394965)
+
+## env
+
+```sh
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"     # used commands with normal name instead of gName
+```
+
+## usage
+
+```sh
+brew info coreutils
+```
+
+[[brew]]
 
 ## commonly used tools provided by this package include
 
-- [[chmod]] - changes file modes/permissions
-- [[chown]] - change file owner and group ownership
+- [[chmod]]  - changes file modes/permissions
+- [[chown]]  - change file owner and group ownership
 - [[chroot]] - Changes the root directory
-- [[cp]] - copy files and directories
-- [[dd]] - copies and converts a file
-- [[df]] - shows disk free space on filesystems
-- [[du]] - shows disk usage on filesystems
-- [[ln]] - creates file links
-- [[ls]] - list directory contents
-- [[mkdir]] - create directories
-- [[mv]] - move/rename files
-- [[rm]] - remove/deletes files
-- [[rmdir]] - remove empty directories
-- [[touch]] - changes file timestamps or create empty files 
+- [[cp]]     - copy files and directories
+- [[dd]]     - copies and converts a file
+- [[df]]     - shows disk free space on filesystems
+- [[du]]     - shows disk usage on filesystems
+- [[ln]]     - creates file links
+- [[ls]]     - list directory contents
+- [[mkdir]]  - create directories
+- [[mv]]     - move/rename files
+- [[rm]]     - remove/deletes files
+- [[rmdir]]  - remove empty directories
+- [[touch]]  - changes file timestamps or create empty files 
 
 ## text/shell utilities
 
@@ -88,3 +106,4 @@ PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # used commands with nor
 - [[procps]]
 - [[net-tools]]
 - [wiki.debian.org/coreutils](https://wiki.debian.org/coreutils)
+

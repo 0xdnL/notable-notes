@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash readonly
 created: '2019-08-02T06:42:37.624Z'
-modified: '2022-02-10T09:07:55.251Z'
+modified: '2023-11-18T13:13:16.248Z'
 ---
 
 # bash readonly
@@ -26,6 +26,7 @@ readonly
 
 ## see also
 
+- [[bash]]
 - [[bash export]]
 - [[bash set]]
 - [[bash unset]]

@@ -2,7 +2,7 @@
 tags: [linux]
 title: envsubst
 created: '2020-04-24T11:43:39.417Z'
-modified: '2023-03-27T05:40:05.921Z'
+modified: '2023-11-16T11:43:34.029Z'
 ---
 
 # envsubst
@@ -41,6 +41,7 @@ envsubst variables < path/to/input            # replace env vars in input from a
 
 ## see also
 
+- [[go-template]]
 - [[env]]
 - [[sed]]
 - [gnu.org/software/gettext/manual/gettext.html#envsubst-Invocation](https://www.gnu.org/software/gettext/manual/gettext.html#envsubst-Invocation)
