@@ -2,21 +2,31 @@
 tags: [python]
 title: python
 created: '2019-07-30T06:19:49.222Z'
-modified: '2023-05-25T11:43:03.986Z'
+modified: '2023-11-18T14:50:28.084Z'
 ---
 
 # python
 
 > interpreted, interactive, object-oriented programming language
 
+## install
+
+```sh
+curl -LO https://www.python.org/ftp/python/3.12.0/python-3.12.0-macos11.pkg
+
+sudo installer -pkg python-3.12.0-macos11.pkg -target /
+```
+
 ## usage
 
 ```sh
 python                  # start repl
 python -q               # start repl without version info
+```
 
+## modules
 
-
+```sh
 python -m MODULE                                              # run library module as a script
 
 python3 -m http.server                                        # start web server
@@ -24,10 +34,11 @@ python3 -m http.server                                        # start web server
 python  -m json.tool < <(echo '{"foo":"bar", "val": 1}')      # pretty print json
 
 echo STRING | python -m base64                                # encode STRING
+```
 
+## command strings - program passed in as string
 
-# command strings - program passed in as string
-
+```sh
 python -c 'import sys,yaml; yaml.safe_load(sys.stdin)' < yamltest.txt     # validate yaml
 
 python -c 'import sys,json; print json.load(sys.stdin)[0]["Name"]' < <(docker network inspect terraform_default)
@@ -100,12 +111,11 @@ next(foo)
 
 ## see also
 
-- [[irb]]
+- [[brew]]
 - [[pip]]
-- [[pyenv]]
-- [[virtualenv]]
-- [[ruby]]
-- [[java]]
-- [[scala]]
+- [[pyenv]], [[virtualenv]]
+- [[go]]
+- [[ruby]], [[irb]]
+- [[java]], [[scala]]
 - [[php]]
 - [[yaml]]

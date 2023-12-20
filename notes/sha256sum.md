@@ -1,8 +1,8 @@
 ---
-tags: [linux]
+tags: [crypto, linux]
 title: sha256sum
 created: '2019-11-26T06:51:16.688Z'
-modified: '2023-05-30T09:03:13.871Z'
+modified: '2023-11-21T16:32:23.830Z'
 ---
 
 # sha256sum

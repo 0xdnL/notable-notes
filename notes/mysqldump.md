@@ -1,8 +1,8 @@
 ---
-tags: [database]
+tags: [database/mysql]
 title: mysqldump
 created: '2019-08-18T14:33:58.877Z'
-modified: '2022-02-02T09:34:01.761Z'
+modified: '2023-11-18T13:25:59.653Z'
 ---
 
 # mysqldump

@@ -1,8 +1,8 @@
 ---
-tags: [database]
+tags: [database/mongodb]
 title: mongod
 created: '2019-11-14T08:53:59.077Z'
-modified: '2022-02-03T16:09:58.243Z'
+modified: '2023-11-18T13:25:18.030Z'
 ---
 
 # mongod

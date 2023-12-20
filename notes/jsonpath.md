@@ -2,7 +2,7 @@
 tags: [json]
 title: jsonpath
 created: '2020-10-09T11:50:35.973Z'
-modified: '2023-03-22T10:27:39.363Z'
+modified: '2023-11-16T11:43:13.793Z'
 ---
 
 # jsonpath
@@ -76,18 +76,22 @@ kubectl get deployments -o jsonpath='{range .items[*]}
 
 kubectl get svc SERVICE          -o jsonpath='{.spec.clusterIP}'
                                               {.items[*].status.addresses[?(@.type=="ExternalIP")].address}
+
 kubectl get nodes                -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalDNS")].address}'
+
 kubectl get pods -l run=my-nginx -o jsonpath='{.items[0].metadata.name}'
+
 kubectl get pods                 -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.containers[*].image}{"\n"}{end}'
+
+kubectl get secret SECRET        -o jsonpath="{.data.name-password}" | base64 -d
 ```
 
 ## see also
 
+- [[jq]], [[yq]]
 - [[go-template]]
 - [[kubectl]]
 - [[xpath]]
-- [[jq]]
-- [[yq]]
 - [goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/)
 - [github.com/json-path/JsonPath](https://github.com/json-path/JsonPath)
 - [cburgmer.github.io/json-path-comparison/](https://cburgmer.github.io/json-path-comparison/)

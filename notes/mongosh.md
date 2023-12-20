@@ -1,8 +1,8 @@
 ---
-tags: [database]
+tags: [database/mongodb]
 title: mongosh
 created: '2021-09-07T07:21:44.793Z'
-modified: '2023-03-22T10:37:43.316Z'
+modified: '2023-11-18T13:25:18.044Z'
 ---
 
 # mongosh

@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: ffmpeg
 created: '2021-03-10T11:11:18.975Z'
-modified: '2023-03-23T10:15:21.149Z'
+modified: '2023-11-20T07:08:27.702Z'
 ---
 
 # ffmpeg
@@ -20,7 +20,7 @@ brew install ffmpeg
 ```sh
 ffmpeg -i FILE.mp3 -ss 00:00:00 -to 00:00:20 -c copy COPY.mp3   # crop audio file's first 20sek
 
-
+ffmpeg -i FILE.webm -vn -q:a 0 -map a out.mp3                                               # convert .webm to .mp3
 ffmpeg -i FILE.webp FILE.png                                                                # convert .webp to .png
 ffmpeg -i FILE.mov -vcodec h264 -acodec mp2 FILE.mp4                                        # convert .mov to .mp4
 ffmpeg -i FILE.mov -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis FILE.webm                     # convert .mov to .webm

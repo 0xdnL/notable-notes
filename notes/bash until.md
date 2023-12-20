@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: bash until
 created: '2019-07-30T06:19:49.023Z'
-modified: '2022-06-02T12:13:45.739Z'
+modified: '2023-11-28T07:50:53.905Z'
 ---
 
 # bash until
@@ -15,8 +15,11 @@ modified: '2022-06-02T12:13:45.739Z'
 until condition; do
   statements
 done
+```
 
-# wait for database to come up
+## wait examples
+
+```sh
 until nc -z -v -w30 "$DB_HOST" "$DB_PORT"; do
   echo "Waiting for database connection..."
   sleep 2;
@@ -32,11 +35,16 @@ done
 until [ $(docker info --format '{{.ContainersRunning}}') -eq 0 ]; do
   sleep 1;
 done
+
+until pg_isready -U postgres -h HOST -p 5432 -d postgres; do 
+  sleep 1;
+done
 ```
 
 ## see also
 
 - [[bash break]]
-- [[bash test []]]
-- [[nc]]
+- [[bash test]]
 - [[sleep]]
+- [[bash while]]
+- [[pg_isready]], [[docker]], [[ping]], [[nc]]

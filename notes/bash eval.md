@@ -2,12 +2,12 @@
 tags: [shell/bash/builtin]
 title: bash eval
 created: '2019-07-30T06:19:49.005Z'
-modified: '2022-01-17T08:08:05.670Z'
+modified: '2023-12-06T17:14:48.288Z'
 ---
 
 # bash eval
 
->`eval` - construct command by concatenating arguments
+> construct command by concatenating arguments
 
 ## usage
 
@@ -16,15 +16,22 @@ foo='ls -lah'
 eval $foo
 
 c="echo"; a1="Hello, "; a2="World!"; eval $c $a1 $a2
+```
 
-# Perform var assignment using var names passed as string values.
+## perform var assignment using var names passed as string values
+
+```sh
 key="mykey"
 val="myval"
 eval $key=$val
 
 echo $mykey
 myval
+```
 
+## building a command array
+
+```sh
 # building a command array because bash handles double-quotes differently
 # on command execution - this can be problematic when variables contain spaces
 # e.g. --network="${NETWORKD}"
@@ -39,9 +46,11 @@ cmd=(
   ${DOCKER_HOST_FQDN}
 )
 eval "${cmd[@]}"
+```
 
+## run cron command from file /etc/cron.d/repeatme
 
-# run cron command from file /etc/cron.d/repeatme
+```sh
 # */10 * * * * root program arg1 arg2
 eval $( cut -d ' ' -f 6- /etc/cron.d/repeatme)
 ```

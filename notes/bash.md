@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash
 created: '2019-07-30T06:19:49.025Z'
-modified: '2022-04-06T11:37:34.390Z'
+modified: '2023-11-18T13:21:35.972Z'
 ---
 
 # bash
@@ -140,13 +140,6 @@ FIGNORE
 FUNCNEST
 GLOBIGNORE
 
-HISTCONTROL
-HISTFILE
-HISTFILESIZE
-HISTIGNORE
-HISTSIZE
-HISTTIMEFORMAT
-
 HOME                  # home directory of the current user
 HOSTFILE
 IFS                   # Internal Field Separator that is used for word
@@ -226,29 +219,35 @@ echo \
 
 ## bash built-in vs keyword
 
-> `built-ins` really behave like external commands: they correspond to an action being executed with arguments that undergo direct variable expansion and word splitting and globbing. 
+> [[bash builtin]] really behave like external commands: they correspond to an action being executed with arguments that undergo direct variable expansion and word splitting and globbing. 
 > A builtin can modify the shell's internal state!
 > `keyword` is something that allows for sophisticated behavior! it's part of the shell's grammar.
 
-## usage 
+### shell built-in commands
+
+```sh
+man builtin
+```
+
+builtin, !, %, ., :, @, [, {, }, [[bash alias]], alloc, bg, bind, bindkey, break, breaksw, builtins, case, [[bash cd]], chdir, command, [[bash complete]], continue, default, dirs, do, done, echo, echotc, elif, else, end, endif, endsw, esac, eval, exec, exit, export, false, fc, fg, filetest, fi, for, foreach, getopts, glob, goto, hash, hashstat, [[bash history]], hup, if, jobid, jobs, kill, limit, local, log, login, logout, ls-F, nice, nohup, notify, onintr, popd, printenv, printf, pushd, pwd, read, [[bash readonly]], rehash, repeat, return, sched, set, setenv, settc, setty, setvar, shift, source, stop, suspend, switch, telltc, test, then, time, times, trap, true, type, ulimit, umask, unalias, uncomplete, unhash, unlimit, unset, unsetenv, until, wait, where, which, while
 
 ```sh
 compgen -b        # list built-ins
 compgen -k        # list keywords
 type COMMAND      # can return keyword, builtin or exec
 
-# [ vs [[
+# "[" vs "[["
 #   [   is a bultin
 #   [[  is a keyword
 STRING_WIHT_SPACES='some spaces here'
 if [[ -n $STRING_WIHT_SPACES ]]; then echo "The string is non-empty" fi
 if [  -n $STRING_WIHT_SPACES ];  then echo "The string is non-empty" fi       # bash: [: too many arguments
 
-
-# time is a keyword
-# it goes over whole line pipes and redirects
+# time is a keyword, it goes over whole line pipes and redirects
 time grep '^#' ~/.bashrc | { i=0; while read -r; do printf '%4d %s\n' "$((++i))" "$REPLY"; done; } > bashrc_numbered 2>/dev/null
 ```
+
+[[time]], [[bash time]], [[bash test]]
 
 ## see also
 
@@ -256,11 +255,9 @@ time grep '^#' ~/.bashrc | { i=0; while read -r; do printf '%4d %s\n' "$((++i))"
 - [[bash prompt]]
 - [[bash debugging]]
 - [[bash parameter expansion]]
-- [[bash test []]
 - [[bash compgen]]
-- [[bash time]]
-- [[time]]
 - [[bash variables]]
+- [[brew]]
 - [man7.org/linux/man-pages/man1/bash](https://man7.org/linux/man-pages/man1/bash.1.html)
 - [gnu.org/software/bash/manual/bash](https://www.gnu.org/software/bash/manual/bash.html?#What-is-a-shell_003f)
 - [tldp.org/html/internalvariables.html](https://www.tldp.org/LDP/abs/html/internalvariables.html)

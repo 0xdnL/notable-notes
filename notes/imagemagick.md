@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: imagemagick
 created: '2020-12-28T21:19:42.860Z'
-modified: '2023-11-02T10:19:46.657Z'
+modified: '2023-12-18T14:47:32.820Z'
 ---
 
 # imagemagick
@@ -19,6 +19,7 @@ brew install imagemagick
 
 ```sh
 convert IMAGE.png -resize 128x128 IMAGE_resized.png       # resize image
+convert IMAGE.gif -resize 50%  half_IMAGE.gif
 
 # generate pdf file
 convert xc:none -page Letter  FILE.pdf
@@ -26,6 +27,8 @@ convert xc:none -page A4      FILE.pdf
 convert xc:none -page 842x595 FILE.pdf
 
 convert FILE.txt -page Letter FILE.pdf
+
+convert "*.{png,jpeg}" -quality 100 outfile.pdf
 
 # make an impact image
 convert \

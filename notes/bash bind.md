@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash bind
 created: '2019-08-02T06:42:37.558Z'
-modified: '2023-05-28T16:56:23.007Z'
+modified: '2023-12-06T12:16:29.726Z'
 ---
 
 # bash bind
@@ -31,7 +31,14 @@ modified: '2023-05-28T16:56:23.007Z'
 ## usage
 
 ```sh
-bind -X       # list key sequences bound with -x and associated commands
+bind -l                     # list all the readline function names
+bind -p                     # display both the keybindings and corresponding function names
+bind -p  | grep C-a
+
+
+bind -f ~/.inputrc          # apply changes
+
+bind -X                     # list key sequences bound with -x and associated commands
 
 bind '"\e[24~":"foobar"'    # F12, prints "foobar" on cli ready for further editing
 bind '"\e[24~":"pwd\n"'     # keystroke to enter a command immediately add linebreak at end
@@ -40,4 +47,6 @@ bind '"\e[24~":"pwd\n"'     # keystroke to enter a command immediately add lineb
 ## see also
 
 - [[gnu readline]]
+- [[bash function]]
+- [[bash set]]
 - [stackoverflow.com/in-bash-how-do-i-bind-a-function-key-to-a-command](https://stackoverflow.com/questions/4200800/in-bash-how-do-i-bind-a-function-key-to-a-command)

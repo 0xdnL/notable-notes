@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash exec
 created: '2019-07-30T06:19:49.006Z'
-modified: '2022-04-27T14:22:02.698Z'
+modified: '2023-11-17T12:33:54.052Z'
 ---
 
 # bash exec
@@ -14,14 +14,19 @@ modified: '2022-04-27T14:22:02.698Z'
 - `echo $$ == /proc/self`
 - spawns new proc
 
+## option
+
+```sh
+-a NAME   # pass NAME as the zeroth argument to COMMAND
+-c        # execute COMMAND with an empty environment
+-l        # place a dash in the zeroth argument to COMMAND
+```
+
 ## usage
 
 ```sh
--cl
--a NAME
-```
+exec $SHELL -l    # restart shell as login
 
-```sh
 exec <FILE        # redirects stdin to a file - from that point on, all stdin comes from that file, rather than keyboard input 
                   # provides a method of reading a file line by line and possibly parsing each line of input using sed and/or awk
 
@@ -40,7 +45,6 @@ N > FILE          # affects only the newly-forked process, not the entire script
 exec 3<>/dev/tcp/www.google.com/80
 echo -e "GET / HTTP/1.1\r\nhost: http://www.google.com\r\nConnection: close\r\n\r\n" >&3
 cat <&3
-
 ```
 
 ```sh
@@ -64,6 +68,7 @@ cat <&5 # reply
 
 ## see also
 
+- [[bash]]
 - [[bash eval]]
 - [[bash read]]
 - [[filesystem hierarchy standard]]

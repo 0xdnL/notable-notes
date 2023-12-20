@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash complete
 created: '2019-07-30T06:19:48.994Z'
-modified: '2023-09-15T06:30:04.891Z'
+modified: '2023-11-18T13:00:56.020Z'
 ---
 
 # bash complete
@@ -36,8 +36,19 @@ _dothis_completions() {
 complete -F _dothis_completions dothis    # -F flag defining function that will provide the completions
 ```
 
+
+## enable autocomplete for alias
+
+```sh
+alias k=kubectl
+complete -o default -F __start_kubectl k
+```
+
+[kubernetes.io/docs/reference/kubectl/cheatsheet/#bash](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash)
+
 ## see also
 
+- [[bash alias]]
 - [[bash compgen]]
 - [[gnu readline]]
 - [Creating a bash completion script](https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html)

@@ -2,7 +2,7 @@
 tags: [linux, macos, Notebooks]
 title: ascii
 created: '2019-07-30T06:19:48.987Z'
-modified: '2023-05-19T11:04:19.568Z'
+modified: '2023-12-06T11:58:09.765Z'
 ---
 
 # ascii
@@ -68,8 +68,46 @@ J    | 112 | 4a  | 74
 78  x    79  y    7a  z    7b  {    7c  |    7d  }    7e  ~    7f del
 ```
 
+## table flip
+
+```sh
+(ﾉ °益°)ﾉ 彡 ┻━┻
+(╯°□°）╯︵ ┻━┻
+(ﾉ °益°)ﾉ 彡 ┻━┻
+(╯°□°)╯︵ ┻━┻
+(╯ಠ_ರೃ)╯︵ ┻━┻
+(┛◉Д◉)┛彡┻━┻
+(┛ò__ó)┛彡┻━┻
+(┛❍ᴥ❍﻿)┛彡┻━┻
+(ʘ∇ʘ)ク 彡 ┻━┻
+(╯°⍜°）╯︵ ┻━┻
+(┛ò__ó)┛︵ ┻━┻
+(ノÒ益Ó)ノ彡▔▔▏
+
+¯\_(ツ)_/¯Whatever
+(　-_･) ︻デ═一 ▸Boys
+┣┓웃┏♨❤♨┑유┏┥Romance
+ヽ(•‿•)ノHappy
+(⌣̩̩́_⌣̩̩̀)Sad
+ヽ(ಠ_ಠ)ノAngry
+(ﾉ °益°)ﾉ 彡 ┻━┻Rage
+(⊙⊙)(☉_☉)(⊙⊙)Surprised
+(・_・ヾConfused
+m(_ _)mApology
+(✖╭╮✖)Dead
+ヾ(￣0￣ )ノTired
+ヘ(‘◇’、)/Greet
+~旦_(^O^ )Drink
+♪(┌・。・)┌Dance
+( ˘˘з)♬♪Sing
+~(˘▾˘~) ~(˘▾˘)~ (~˘▾˘)~Friends
+ヽ(^o^)ρ┳┻┳°σ(^o^)/Sports
+
+```
+
 ## see also
 
+- [[unicode]]
 - [[bash printf]]
 - [[bash echo]]
 - [[man]]

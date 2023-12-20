@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: ls
 created: '2019-07-30T06:19:49.165Z'
-modified: '2022-06-20T06:42:05.132Z'
+modified: '2023-11-20T18:29:27.005Z'
 ---
 
 # ls
@@ -54,6 +54,7 @@ ls -l                             # prints file-mode, which consists of entry-ty
 
 ## see also
 
+- [[bash for]]
 - [[exa]]
 - [[lsattr]]
 - [[chmod]]

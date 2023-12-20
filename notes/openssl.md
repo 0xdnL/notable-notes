@@ -2,7 +2,7 @@
 tags: [crypto, linux, network]
 title: openssl
 created: '2019-07-30T06:19:49.183Z'
-modified: '2023-10-11T16:12:50.810Z'
+modified: '2023-12-01T16:22:29.368Z'
 ---
 
 # openssl
@@ -210,6 +210,8 @@ openssl passwd -1 MySecret   # generate shadow-style-hash: $1$sXiKzkus$haDZ9JpVr
 
 ```sh
 openssl rand -base64 32      # generate random numner
+
+openssl rand -base64 128 | tr -dc 'a-zA-Z0-9' | head -c 32
 ```
 
 [[shuf]]

@@ -2,21 +2,19 @@
 tags: [coreutils, macos]
 title: chmod
 created: '2019-10-04T09:17:53.956Z'
-modified: '2023-03-22T09:07:24.277Z'
+modified: '2023-11-20T18:02:18.472Z'
 ---
 
 # chmod
 
 > change file modes or Access Control Lists
 
-## usage
-
 ```sh
 chmod [u|g][+|-][r|w|x]
-#       |       |     ^
-#       |       |     |
-#       |       |     read write execute
-#       |       add or remove
+#       |    |     ^
+#       |    |     |
+#       |    |     read write execute
+#       |   add or remove
 #     user or group
 
 # _ rwx rwx rwx [int] owner:group
@@ -35,14 +33,17 @@ chmod [u|g][+|-][r|w|x]
 ## usage
 
 ```sh
-chmod 755 FILE
+chmod +x FILE       # set all x flags
 
+chmod 755 FILE
 chmod 644 DIR
 
 chmod -R 644 DIR
 
 chmod g-w FILE      # remove write from group
 chmod u+rw FILE     # give permission read, write to user
+
+chmod a+rx FILE
 ```
 
 ## see also

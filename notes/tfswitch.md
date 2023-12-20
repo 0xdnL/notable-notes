@@ -2,7 +2,7 @@
 tags: [iac]
 title: tfswitch
 created: '2021-01-18T10:13:21.713Z'
-modified: '2023-04-11T20:21:34.889Z'
+modified: '2023-11-17T12:30:55.182Z'
 ---
 
 # tfswitch
@@ -30,3 +30,4 @@ tfswitch --latest-stable=0.14
 
 - [[terraform]]
 - [tfswitch.warrensbox.com](https://tfswitch.warrensbox.com/)
+- [[pgenv]]

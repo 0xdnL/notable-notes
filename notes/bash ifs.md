@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash ifs
 created: '2019-07-30T06:19:49.012Z'
-modified: '2022-04-27T14:28:08.568Z'
+modified: '2023-11-20T18:13:05.265Z'
 ---
 
 # bash ifs
@@ -43,5 +43,6 @@ done
 
 ## see also
 
+- [[bash for]]
 - [WordSplitting - Greg's Wiki](http://mywiki.wooledge.org/WordSplitting)
 - [Word splitting [Bash Hackers Wiki]](http://wiki.bash-hackers.org/syntax/expansion/wordsplit)

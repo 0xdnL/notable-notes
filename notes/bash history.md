@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash history
 created: '2019-08-02T06:42:37.603Z'
-modified: '2023-10-14T10:29:17.490Z'
+modified: '2023-11-18T13:13:40.253Z'
 ---
 
 # bash history
@@ -62,6 +62,7 @@ shopt -s cmdhist         # force commands entered on more than one line to be ad
 PROMPT_COMMAND='history -a'
 
 history 1
+history -1
 
 # top 30 entries
 history | awk '{print $2}' | sort | uniq -c | sort -rn | head -30 | \
@@ -71,6 +72,7 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -30 | \
 ## see also
 
 - [[wc]]
+- [[bash]]
 - [[bash export]]
 - [[bash fc]]
 - [[bash shopt]]

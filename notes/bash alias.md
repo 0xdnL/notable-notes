@@ -2,27 +2,39 @@
 tags: [shell/bash/builtin]
 title: bash alias
 created: '2019-08-02T06:42:37.554Z'
-modified: '2022-04-06T11:38:03.695Z'
+modified: '2023-11-18T13:02:46.284Z'
 ---
 
 # bash alias
 
+> define or display aliases
+
+## option
+
+```sh
+-p        # print all defined aliases in a reusable format
+```
+
 ## usage
 
 ```sh
+alias             # prints all aliases
+
 alias l='ls -l'   # define alias
+```
 
-alias -p          # print all defined aliases in a reusable format
+## use alias to intercept to change future invocation
 
-
-# use alias to intercept to change future invocation
+```sh
 ls
 alias ls='/usr/bin/time ls'
 ls
 unalias ls
 ```
+
 ## see also
 
+- [[bash complete]]
 - [[bash unalias]]
 - [[git log]]
 - [[time]]

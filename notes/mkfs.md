@@ -2,7 +2,7 @@
 tags: [filesystem, linux]
 title: mkfs
 created: '2019-09-02T05:00:34.964Z'
-modified: '2023-03-22T09:14:18.112Z'
+modified: '2023-11-20T14:25:45.665Z'
 ---
 
 # mkfs
@@ -22,3 +22,4 @@ mkfs.ext4 /dev/sdb1         # shortcut command
 
 - [[fdisk]]
 - [[filesystem]]
+- [[tune2fs]]

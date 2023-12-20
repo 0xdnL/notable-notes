@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash declare
 created: '2019-07-30T06:19:48.996Z'
-modified: '2023-06-28T08:27:14.740Z'
+modified: '2023-11-20T18:26:07.769Z'
 ---
 
 # bash declare
@@ -50,4 +50,5 @@ declare | grep Colors   # Colors=([0]="purple" [1]="reddish-orange" [2]="light g
 - [[bash typeset]]
 - [[bash array]]
 - [[bash readarray]]
+- [[bash function]]
 - [declareref - tldp.org](http://tldp.org/LDP/abs/html/declareref.html)

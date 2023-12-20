@@ -1,8 +1,8 @@
 ---
-tags: [database]
+tags: [database/mongodb]
 title: mongodump
 created: '2019-11-14T08:15:23.493Z'
-modified: '2023-03-25T12:46:38.622Z'
+modified: '2023-11-18T13:25:18.036Z'
 ---
 
 # mongodump

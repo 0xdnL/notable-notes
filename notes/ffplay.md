@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: ffplay
 created: '2023-03-21T13:41:50.499Z'
-modified: '2023-03-23T10:15:21.127Z'
+modified: '2023-11-20T07:09:07.947Z'
 ---
 
 # ffplay
@@ -24,3 +24,4 @@ ffplay FILE.mp4
 ## see also
 
 - [[ffmpeg]]
+- [[cvlc]]

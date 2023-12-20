@@ -2,7 +2,7 @@
 tags: [linux, Notebooks]
 title: signal
 created: '2020-01-21T09:37:12.241Z'
-modified: '2023-05-05T07:07:35.739Z'
+modified: '2023-11-18T12:34:24.652Z'
 ---
 
 # signal
@@ -47,8 +47,7 @@ kill -l     # list signals
 ## see also
 
 - [[syscall]]
-- [[kill]]
-- [[bash kill]]
+- [[kill]], [[killall]], [[bash kill]]
 - [[bash trap]]
 - [[errno]]
 - [[nohup]]

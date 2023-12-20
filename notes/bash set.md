@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash set
 created: '2019-07-30T06:19:49.019Z'
-modified: '2023-03-22T10:07:28.455Z'
+modified: '2023-12-06T12:12:58.495Z'
 ---
 
 # bash set
@@ -45,22 +45,27 @@ set -o vi
 set -o xtrace           set -x
 ```
 
+## shell behavior
+
+```sh
+echo $-                       # prints The current set of options in your current shell
+set -o                        # print all options
+```
+
 ## usage
 
 ```sh
-set 1 2 3 | echo $@                         # set positional params
+set 1 2 3 | echo $@           # set positional params
 
-set | grep 'RANDOM='                        # find non exported variable
-
-# shell behavior
-echo $-                                     # prints The current set of options in your current shell
-set -o                                      # print all options
+set | grep 'RANDOM='          # find non exported variable
 ```
 
 ## see also
 
 - [[env]]
 - [[bash]]
+- [[bash bind]]
+- [[bash shopt]]
 - [[bash export]]
 - [[bash declare]]
 - [[bash unset]]

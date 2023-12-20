@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash prompt
 created: '2019-07-30T06:19:49.017Z'
-modified: '2023-06-28T08:35:02.463Z'
+modified: '2023-11-17T12:28:56.454Z'
 ---
 
 # bash prompt
@@ -15,16 +15,17 @@ modified: '2023-06-28T08:35:02.463Z'
 PS1
 
 PROMPT_DIRTRIM
+
 PROMPT_COMMAND
+PROMPT_DIRTRIM=1          # see also prompt PS1="\W"
 ```
 
 ## usage
 
 ```sh
-PS1="${GREEN}\u${DEFAULT}@${CYAN}${HOST}${DEFAULT}:${BLUE}\w${DEFAULT}${BRANCH}${GREY}${SETPROXY}${RED}${ERRPROMPT}${DEFAULT}\$ "
+PS1="\u@\w:\$"
 
-# PS2 - linebreak symbol e.g. ">"
-PS2='> ' # used in multiline commands
+PS2='> ' # used in multiline commands; linebreak symbol e.g. ">"
 
 # PS3 - select
 
@@ -33,19 +34,24 @@ PS4='$0.$LINENO+ '
 PS4='+ ${BASH_SOURCE##*/}.${LINENO} ${FUNCNAME}: '
 
 
-PROMPT_DIRTRIM=1          # see also prompt PS1="\W"
-
-# You can set this in your bash shell config to flip a table whenever a command fails with a non-zero exit status.
-PROMPT_COMMAND='[ $? -eq 0 ] || printf "(╯°□°）╯︵ ┻━┻\n"' 
-
-prompt_command () {
-  if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
-    ERRPROMPT=" "
-  else
-    ERRPROMPT='->($?) '
-  fi
-}
+PROMPT_COMMAND='[ $? -eq 0 ] || printf "(╯°□°）╯︵ ┻━┻\n"'  #  flip a table whenever a command return a non-zero exit status
 ```
+
+## prompt color
+
+```sh
+__aws_ps1() {
+
+  local YELLOW="\001$(tput setaf 3)\002"
+  local RESET="\001$(tput sgr0)\002"
+
+  printf "{%b} " "${YELLOW}${AWS_PROFILE}${RESET}";
+  #echo -e "{${YELLOW}${AWS_PROFILE}${RESET}}";
+}
+
+export PS1='$(__aws_ps1)..'
+```
+[[bash tput]]
 
 ## escape sequences
 
@@ -77,38 +83,24 @@ prompt_command () {
 \\              # a backslash
 \[              # begin  a sequence of non-printing characters, which could be used to embed a terminal  control  sequence  into  the prompt
 \]              # end a sequence of non-printing characters
-
-
-#   d         date in "Weekday Month Date" format (e.g., "Tue May 26")
-#   e         an ASCII escape character (033)
-#   h         hostname up to the first .
-#   H         full hostname
-#   j         number of jobs currently run in background
-#   l         basename of the shells terminal device name
-#   n         newline
-#   r         carriage return
-#   s         name of the shell, the basename of $0 (the portion following the final slash)
-#   t         current time in 24-hour HH:MM:SS format
-#   T         current time in 12-hour HH:MM:SS format
-#   @         current time in 12-hour am/pm format
-#   A         current time in 24-hour HH:MM format
-#   u         username of the current user
-#   v         version of bash (e.g., 4.00)
-#   V         release of bash, version + patch level (e.g., 4.00.0)
-#   w         Complete path of current working directory
-#   W         basename of the current working directory
-#   !         history number of this command
-#   #         the command number of this command
-#   $         if the effective UID is 0, a #, otherwise a $
-#   nnn       character corresponding to the octal number nnn
-#   \         a backslash
-#   [         begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt
-#   ]         end a sequence of non-printing characters
 ```
+
+```sh
+\[    \]    # are only special when you assign PS1
+\001  \002  # if print from a function that runs when the prompt use the bytes 
+```
+
+[wiki.archlinux.org/title/Bash/Prompt_customization](https://wiki.archlinux.org/title/Bash/Prompt_customizatio)
+[http://mywiki.wooledge.org/BashFAQ/053](http://mywiki.wooledge.org/BashFAQ/053)
+[https://stackoverflow.com/bash-prompt-and-echoing-colors-inside-a-function](https://stackoverflow.com/a/43462720/14523221)
 
 ## see also
 
 - [[bash]]
+- [[tput]]
+- [[psql]]
+- [[kubie]]
+- [[bash echo]], [[bash printf]]
 - [[bash select]]
 - [[bash debugging]]
 - [bneijt.nl/add-a-timestamp-to-your-bash-prompt/](https://bneijt.nl/blog/post/add-a-timestamp-to-your-bash-prompt/)

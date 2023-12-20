@@ -2,7 +2,7 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2023-11-09T19:36:49.630Z'
+modified: '2023-12-19T14:52:25.428Z'
 ---
 
 # tmux
@@ -78,7 +78,6 @@ C-b + : CMD     # run CMD in tmux command prompt
 list-keys       lsk   [-1aN][-P prefix-string] [-T key-table] [key]
 list-commands   lscm        [-F format] [command]
 
-list-sessions   ls          [-F format] [-f filter]
 list-windows    lsw   [-a]  [-F format] [-f filter] [-t target-session]
 list-panes      lsp   [-as] [-F format] [-f filter] [-t target-window]
 
@@ -86,10 +85,27 @@ list-buffers    lsb         [-F format] [-f filter]
 list-clients    lsc         [-F format] [-t target-session]
 ```
 
+## list-sessions
+
+```sh
+list-sessions ls          [-F format] [-f filter]
+
+tmux list-sessions -F '#{session_name}'
+tmux list-sessions -f "#{session_name} started at #{session_created_string}"
+tmux list-sessions -F "#S - Created on #{session_created}"
+tmux list-sessions | awk 'BEGIN{FS=":"}{print $1}' | xargs -n 1 tmux kill-session -t
+
+
+tmux list-sessions -F "#{session_id}: #{session_name}"                          # list sessions with both session IDs and names
+tmux list-sessions -F "#{session_name} (#{?session_attached,attached,empty})"   # list sessions with session names and attached/empty indicators
+tmux list-sessions -F "Session ID: #{session_id}\nSession Name: #{session_name}\nAttached?: #{?session_attached,Yes,No}"    # list sessions with custom formatting
+```
+
+
 ```sh
 source-file ~/.tmux.conf   # reloadload .tmux.conf withough killing tmux session
 
-tmux list-sessions | awk 'BEGIN{FS=":"}{print $1}' | xargs -n 1 tmux kill-session -t
+
 
 tmux new -s myname              # start new session
 

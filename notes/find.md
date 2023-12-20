@@ -2,7 +2,7 @@
 tags: [linux, regex]
 title: find
 created: '2019-07-30T06:19:49.054Z'
-modified: '2023-11-08T13:33:12.194Z'
+modified: '2023-11-20T13:50:50.784Z'
 ---
 
 # find
@@ -68,7 +68,7 @@ find . -mtime +1    # find files modified more than 48 hours ago
 
 ## see also
 
-- [[ls]]
+- [[ls]], [[du]]
 - [unix.stackexchange.com/manipulate-file-name-piped-from-find-command](https://unix.stackexchange.com/a/60470/193945)
 - [Exclude hidden files when searching with Unix/Linux find? - Super User](https://superuser.com/a/999448)
 - [stackoverflow.com/find-exec-with-multiple-commands](https://stackoverflow.com/questions/5119946/find-exec-with-multiple-commands)

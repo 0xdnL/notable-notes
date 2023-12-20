@@ -1,8 +1,8 @@
 ---
-tags: [c]
+tags: [c, c/string.h]
 title: string.h
 created: '2020-05-16T11:30:47.882Z'
-modified: '2023-03-25T12:41:18.140Z'
+modified: '2023-11-18T13:31:16.703Z'
 ---
 
 # string.h
