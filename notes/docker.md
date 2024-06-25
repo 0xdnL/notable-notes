@@ -2,7 +2,7 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2023-07-04T11:18:52.809Z'
+modified: '2024-06-06T06:31:03.099Z'
 ---
 
 # docker
@@ -49,10 +49,29 @@ DOCKER_TMPDIR                     # location for temporary Docker files
 export DOCKER_API_VERSION=1.38 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/path/to/certs DOCKER_HOST=tcp://10.32.23.187:2376
 ```
 
+## login
+
+> log in to a registry, if no server is specified, the default is defined by daemon
+
+```sh
+-p, --password string   # password
+    --password-stdin    # password from stdin
+-u, --username string   # username
+```
+
+```sh
+aws ecr get-login-password --region region | docker login --username AWS --password-stdin AWS_ACCOUNT_ID.dkr.ecr.region.amazonaws.com
+```
+
+[[aws]]
+
 ## usage
 
 ```sh
 docker ps --no-trunc                                          # wide view, full command
+
+docke pull REGISTRY/IMAGE:TAG
+docke pull REGISTRY/IMAGE@sha256:0afbf10990f3a9e4fbe8328740055ae86e531863b59307127ff2e531fa90b3bd
 
 docker system prune --all --volumes --force
 
@@ -75,10 +94,16 @@ docker image ls --filter label=org.opencontainers.image.vendor="Elastic"
 
 docker logs nginx 2>&1 | grep "127."    # debugging: grepping logs with 2>&1
 
-
 docker events
 
+docker swarm update --task-history-limit=1        # swarm task-history
 
+docker node inspect $(docker node ls --format '{{.Hostname}}')| jq -r '.[].ManagerStatus.Addr'    # get node ip
+```
+
+## inspect
+
+```sh
 docker inspect 0                        # low level information about container
 
 docker inspect CONTAINER_ID | jq '.[] | .Config .Image'
@@ -88,25 +113,66 @@ docker inspect --format '{{.State.Running}}' CONTAINER_ID    # container running
 docker inspect --format '{{ index .Config.Labels "com.foo.bar" }}' foo   # index function: can lookup arbitrary strings in the map
 
 docker inspect --format "{{.State.Status}}" CONTAINER_ID &>/dev/null
+```
 
+## stats
 
+```sh
 docker stats $(docker inspect -f '{{.Name}}' $(docker ps -q) | cut -c 2-)
 
 docker stats $(docker ps --format={{.Names}})
+```
 
+## network / docker overlay network
 
-docker swarm update --task-history-limit=1        # swarm task-history
+- network namepsace
+- XVLAN
+- Netlink
+- distributed KV-Store (consul)
 
-docker node inspect $(docker node ls --format '{{.Hostname}}')| jq -r '.[].ManagerStatus.Addr'    # get node ip
+```
+┌─────────────┐              (VXLAN Tunnel Endpoint)
+│ container ┌─┴────┐   ┌─────┐     ┌──────┐     ┌───────────────┐
+└───────────┤ veth ├───┤ br0 ├─────┤ VTEP ├─────┤  vxlan tunnel │
+            └──────┘   └─────┘     └──────┘     └───────────────┘
+                   ┌───────────────────┘
+VTEP encapsulates Frames by adding VXLAN-Header
 
+  ┌────────────────┬──────────────┐
+  │ Ethernet Frame │ VXLAN-Header │
+  └────────────────┴──┬───────────┘
+                      └─ VNID
+```
 
+`L3` segement routing IP (`network`), `L2` broadcast MAC (`Datalink`)
+
+```sh
 docker network inspect -f '{{range $container_id, $container_def := .Containers}} {{$container_id}}^{{index $container_def "Name"}} {{end}}'
 
-docker network disconnect -f $network_name $container_name
+docker network disconnect -f NETWORK CONTAINER
+
+docker exec container ip addr show    # debugging inside container
+docker exec container ip route
+
+docker network create -d bridge --subnet 1.2.3.0/24 my_bridge   # create entwork and attach container
+docker network create --driver bridge --subnet 192.168.100.0/24 --ip-range 192.168.100.0/24 my-bridge-network
+
+docker run -itd --name c2 --net my_bridge busybox sh
+docker run -itd --name c3 --net my_bridge --ip 20.10.0.254 busybox sh
+docker run -itd --name c3 --net my_bridge --ip 10.23.6.33 busybox sh
+docker run -d   --name c2 --net my_bridge -p 5000:80 nginx
+docker run -itd --name c1 busyboy sh
+docker run -itd --name c1-1 --network host busybox sh
 ```
+
+[[ip]], [[brctl]], [[nat]], [[servicemesh]]
+- [Docker Reference Architecture - success.docker.com](http://success.docker.com/article/networking)
+- [Demystifying Docker overlay networking – nigelpoulton.com](http://blog.nigelpoulton.com/demystifying-docker-overlay-networking/)
+
 
 ## see also
 
+- [[Dockerfile]]
 - [[brew]]
 - [[kubectl]]
 - [[docker-compose]]

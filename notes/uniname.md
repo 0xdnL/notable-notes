@@ -1,7 +1,8 @@
 ---
+tags: [linux, macos]
 title: uniname
 created: '2023-12-06T12:03:59.708Z'
-modified: '2023-12-06T12:06:21.637Z'
+modified: '2024-02-08T09:33:43.286Z'
 ---
 
 # uniname

@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: imagemagick
 created: '2020-12-28T21:19:42.860Z'
-modified: '2023-12-18T14:47:32.820Z'
+modified: '2023-12-22T14:02:47.420Z'
 ---
 
 # imagemagick
@@ -29,6 +29,8 @@ convert xc:none -page 842x595 FILE.pdf
 convert FILE.txt -page Letter FILE.pdf
 
 convert "*.{png,jpeg}" -quality 100 outfile.pdf
+
+convert -density 600 FILE1.pdf FILE2.pdf -resize 50% NEW_FILE.pdf
 
 # make an impact image
 convert \

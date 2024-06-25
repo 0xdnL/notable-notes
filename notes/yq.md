@@ -2,7 +2,7 @@
 tags: [go]
 title: yq
 created: '2019-08-20T12:05:18.926Z'
-modified: '2023-11-28T08:26:24.569Z'
+modified: '2024-06-19T08:44:07.101Z'
 ---
 
 # yq
@@ -103,6 +103,12 @@ kubectl get node -o yaml | yq e '.items[].metadata.labels | ."kubernetes.io/role
 kubectl get node -o yaml | yq e '.items[].metadata.labels | (."kubernetes.io/role", ."node.kubernetes.io/instance-type") ' -
 
 kubectl get secret SECRET -o yaml | yq '.data | map(@base64d)'    # base64 decode secret values
+```
+
+## base64d
+
+```sh
+kubectl get secret SECRET -o yaml | yq '.data |= with_entries(.value |= @base64d)|.data'    # decode each .data value
 ```
 
 ## see also

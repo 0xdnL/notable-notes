@@ -2,12 +2,16 @@
 tags: [iac]
 title: ansible-playbook
 created: '2019-11-28T11:53:47.807Z'
-modified: '2022-02-02T08:50:15.733Z'
+modified: '2024-03-23T15:50:08.818Z'
 ---
 
 # ansible-playbook
 
 > runs ansible playbooks, executing the defined tasks on the targeted hosts.
+
+## install
+
+see [[ansible]]
 
 ## usage
 
@@ -23,4 +27,4 @@ ansible-playbook -i hosts ansible-bootstrap-ubuntu-16.04.yml    # bootstraps mac
 
 ## see also
 
-- [[ansible]]
+- [[ansible-inventory]]

@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: iptables
 created: '2019-07-30T06:19:49.083Z'
-modified: '2022-03-04T07:51:32.001Z'
+modified: '2024-03-23T13:24:10.401Z'
 ---
 
 # iptables
@@ -69,6 +69,7 @@ iptables-restore < iptables_bckp
 ```
 
 ## rules
+
 ```sh
 iptables -I INPUT -s 198.51.100.0 -j DROP
   # -I    - insert will add it to the beginning of a chain and will be applied first 
@@ -91,8 +92,10 @@ iptables -A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp — dp
 
 
 ## netfilter tables
+
 > tables are made up of `built-in` chains and may also contain `user-defined` chains
 > built-in tables will depend on the kernel configuration and the installed modules
+
 ```sh
 iptables -vL -t nat
 ```
@@ -125,7 +128,10 @@ iptables -vL -t nat
 
 
 ## see also
+
+- [[kubectl]]
+- [[ufw]]
 - [[iptables-extensions]]
 - [[firewall-cmd]]
 - [[nat]]
-- https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/
+- [linode.com/docs/security/firewalls/control-network-traffic-with-iptables](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/)

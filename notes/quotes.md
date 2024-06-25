@@ -2,10 +2,20 @@
 tags: [Notebooks]
 title: quotes
 created: '2019-07-30T06:19:27.513Z'
-modified: '2023-12-19T13:10:30.330Z'
+modified: '2024-02-08T09:32:55.601Z'
 ---
 
 # quotes
+
+> some quotes found here and there
+
+## tech
+
+```
+Duplication is better htna the wrong abstractions
+
+- RDC
+```
 
 ```
 We build our computers the way we build our cities—over time, without a plan, on top of ruins.
@@ -41,20 +51,6 @@ Rob Pike's 5. Rule of Programming
 ```
 
 ```
-Duplication is better htna the wrong abstractions
-
-- RDC
-```
-
-
-```
-do you wish me a good morning, or mean that it is a good morning wether I want it or not; 
-or that you feel good this morning; or that it is a morning to bee goot on ? 
-
-- gandalf
-```
-
-```
 organizations which design systems .. are constrained to produce designs which are copies of the communication structures of the organization. 
 
 - M. Connoway "Connoway's Law"
@@ -64,6 +60,84 @@ organizations which design systems .. are constrained to produce designs which a
 A language that doesn't affect the way you think about programming is not worth knowing. 
 
 - Alan J. Perlis
+```
+
+```
+What Is Important Is Seldom Urgent and What Is Urgent Is Seldom Important 
+
+- Dwight D. Eisenhower
+```
+
+```
+Simplicity recognizes the imports thing while ignoring the trivial things 
+
+- amazon review, on the one thing
+```
+
+```
+"If you want to make an apple pie from scratch, you must first create the universe"
+
+– Dr. Carl Sagan
+```
+
+```
+The most important thing to do in solving a problem is to begin.
+
+– Frank Tyger
+```
+
+```
+You don’t understand anything until you learn it more than one way.
+
+– Marvin Minsky
+```
+
+```
+Misconception: Juniors get mentored from Seniors
+The reality is that seniors are just juniors preppered with years of experience
+dealing with all kinds of crap and problems thrown at them.
+```
+
+```
+There is something which unites magic and applied science (technology) while separating them from the "wisdom" of earlier ages.
+For the wise men of old, the cardinal problem of human life was how to conform the soul to objective reality, and the solution was wisdom, self-discipline, and virtue.
+For the modern, the cardinal problem is how to conform reality to the wishes of man, and the solution is a technique.
+```
+
+## morality
+
+```
+Evil prevails when good men fail to act.
+
+― Edmund Burke
+```
+
+```
+Courage is not the absence of fear, but rather the judgement that something is more important than fear. 
+
+- The Princess Diaries
+```
+
+
+```
+A strong man acts within that which constrains him. 
+
+(series wolfhall, cromwell to king henry VIII)
+```
+
+```
+Between stimulus and response, there is a space. In that space is our power to choose our response, and in our response lies our growth and our freedom.
+
+- Victor Fankl
+```
+
+## other
+
+```
+do you wish me a good morning, or mean that it is a good morning wether I want it or not; 
+or that you feel good this morning; or that it is a morning to bee goot on ? 
+
+- gandalf
 ```
 
 ```
@@ -84,23 +158,6 @@ Not only is the Universe stranger than we think, it is stranger than we can thin
 - Werner Heisenberg, Across the Frontiers 
 ```
 
-```
-Courage is not the absence of fear, but rather the judgement that something is more important than fear. 
-
-- The Princess Diaries
-```
-
-```
-What Is Important Is Seldom Urgent and What Is Urgent Is Seldom Important 
-
-- Dwight D. Eisenhower
-```
-
-```
-Simplicity recognizes the imports thing while ignoring the trivial things 
-
-- amazon review, on the one thing
-```
 
 ```
 The mass of men lead lives of quiet desperation. What is called Resignation is confirmed desperation. 
@@ -134,13 +191,6 @@ Every moment is always Present for Him. If you like to put it this way, He has a
 Living by faith includes the call to something greater than cowardly self-preservation. 
 
 - Tolkien
-```
-
-
-```
-A strong man acts within that which constrains him. 
-
-(series wolfhall, cromwell to king henry VIII)
 ```
 
 
@@ -202,12 +252,6 @@ cela est bien dit, mais il faut cultiver notre jardin.
 ```
 
 ```
-Between stimulus and response, there is a space. In that space is our power to choose our response, and in our response lies our growth and our freedom.
-
-- Victor Fankl
-```
-
-```
 The vast accumulations of knowledge—or at least of information—deposited by the nineteenth century 
 have been responsible for an equally vast ignorance. When there is so much to be known,
 when there are so many fields of knowledge in which the same words are used with different meanings,
@@ -222,18 +266,6 @@ And when we do not know, or when we do not know enough, we tend always to substi
 He who wants to become master in his field should study its history. Without historic foundation all knowledge remains incomplete and the judgment about appearances of the present unsure and immature
 
 - Friedrich Unger, History of Binary
-```
-
-```
-Misconception: Juniors get mentored from Seniors
-The reality is that seniors are just juniors preppered with years of experience
-dealing with all kinds of crap and problems thrown at them.
-```
-
-```
-There is something which unites magic and applied science (technology) while separating them from the "wisdom" of earlier ages.
-For the wise men of old, the cardinal problem of human life was how to conform the soul to objective reality, and the solution was wisdom, self-discipline, and virtue.
-For the modern, the cardinal problem is how to conform reality to the wishes of man, and the solution is a technique.
 ```
 
 ```
@@ -255,24 +287,6 @@ Flint Sky:    Fear. Deep rotting fear. They were infected by it.
               Strike it from your heart. Do not bring it into our village.
 
 - movie, apocalypto
-```
-
-```
-"If you want to make an apple pie from scratch, you must first create the universe"
-
-~ Dr. Carl Sagan
-```
-
-```
-The most important thing to do in solving a problem is to begin.
-
-– Frank Tyger
-```
-
-````
-You don’t understand anything until you learn it more than one way.
-
-– Marvin Minsky
 ```
 
 ## see also

@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: bash if
 created: '2019-07-30T06:19:49.011Z'
-modified: '2022-06-02T12:10:40.605Z'
+modified: '2024-01-30T09:16:21.274Z'
 ---
 
 # bash if
@@ -12,11 +12,6 @@ modified: '2022-06-02T12:10:40.605Z'
 ## usage
 
 ```sh
-statement1 && statement2  # and operator
-
-statement1 || statement2  # or operator
-
-
 if condition; then
   statements
 elif condition; then 
@@ -24,6 +19,14 @@ elif condition; then
 else
   statements
 fi
+```
+
+## operators
+
+```sh
+statement1 && statement2  # and operator
+
+statement1 || statement2  # or operator
 ```
 
 ## see also

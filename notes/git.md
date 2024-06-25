@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: git
 created: '2019-07-30T06:19:49.063Z'
-modified: '2023-11-27T07:24:40.902Z'
+modified: '2024-02-22T07:47:21.705Z'
 ---
 
 # git
@@ -23,60 +23,26 @@ brew install git
 EDITOR      # see commit
 ```
 
-## .gitconfig
+[[gitconfig]]
 
-```sh
-[alias]
-  cpl = !git checkout - && git pull
-  cbd = !git checkout -b "update-$(date +%F_%H%M)"
+## commands (145)
 
-[core]
-  editor = vim
-  hooksPath = .husky
+```txt
+porecelain (82)
+44 main commands  (add, commit, push, pull, ..)
+11 manipulators   (config, reflox, replace, ..)
+17 interrogators  (blame, fsck, rerere, ..)
+10 interactors    (send-email, p4, svn, ..)
 
-[init]
-  defaultBranch = main
+plumbing (63)
+19 manipulators   (apply, commit-tree, ..)
+21 interrogators  (cat-file, for-each-ref, ..)
+ 5 syncing        (fetch-pack, send-pack, ..)
+18 internal       (check-attr, sh-i18n, ..)
 
-[user]
-  name = Some Name
-  email = name@mail.com
 
-[remote "origin"]
-  gh-resolved = base
-
-[pull]
-  ff = only   
-
-[bulkworkspaces]
-  WORKSPACE_NAME = PATH
+"porecelain" refers to the higher-level commands and interfaces that provide user-friendly outputs and interactions
 ```
-
-```sh
-# seperate configs per remote
-
-cat <<EOF > ~/.gitconfig
-[includeIf "gitdir:~/gitlab.com/"]
-  path = ~/.gitconfig-gitlab
-
-[includeIf "gitdir:~/github.com/"]
-  path = ~/.gitconfig-github
-EOF
-
-cat <<EOF > ~/.gitconfig-github
-[user]
-  name  = user
-  email = user@mail.com
-  signingkey = AAAA1111AAAA1111
-
-[commit]
-  gpgsign = true
-
-[push]
-  default = simple
-EOF
-```
-
-[[gpg-agent]]
 
 ## add
 
@@ -169,6 +135,9 @@ git config --global http.sslKey KEY
 git config --global credential.helper osxkeychain
 git config --global credential.helper 'store --file FILE'
 git config --global credential.https://HOST USER
+
+git config --global alias.staash 'stash --all'      # define a git-alias
+git config --global alias.bb !better-branch.sh      # use alias to run a shell-script
 ```
 
 

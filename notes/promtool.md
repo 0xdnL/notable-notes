@@ -2,17 +2,22 @@
 tags: [cloud]
 title: promtool
 created: '2019-07-30T06:19:49.218Z'
-modified: '2023-05-24T08:42:35.056Z'
+modified: '2024-04-04T11:47:36.547Z'
 ---
 
 # promtool
 
 > query promtheus via cli
 
+## install
+
+```sh
+```
+
 ## usage
 
 ```sh
-promtool query instant http://prometheus.domain.net:9090 'node_memory_Cached_bytes{instance="docker-registry"}'
+promtool query instant http://prometheus:9090 'node_memory_Cached_bytes{instance="docker-registry"}'
 ```
 
 ## promql
@@ -44,4 +49,4 @@ rate(prometheus_local_storage_ingested_samples_total[5m])  179.4
 ## see also
 
 - [[prometheus]]
-
+- [[logcli]]

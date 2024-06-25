@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2023-12-06T17:24:11.169Z'
+modified: '2024-06-14T11:19:28.959Z'
 ---
 
 # aws
@@ -63,6 +63,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE         # path to file containing an OAuth 2.0 acces
 
 [docs.aws.amazon.com/cli/latest/userguide/cli-configure-options](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html)
 
+
 ## configure
 
 ```sh
@@ -86,6 +87,18 @@ aws --profile PROFILE configure set default.region REGION
 aws --profile PROFILE configure set aws_access_key_id ACCESS_KEY_ID
 aws --profile PROFILE configure set aws_secret_access_key SECRET_ACCESS_KEY
 aws --profile PROFILE configure set aws_session_token AWS_SESSION_TOKEN
+```
+
+## codeartifact
+
+```sh
+aws codeartifact delete-package-versions \
+  --repository REPO \
+  --domain DOMAIN \
+  --package 'foo-client' \
+  --format npm \
+  --namespace NAMESPACE \
+  --versions '0.0.378-foo-client.0'
 ```
 
 ## cloudtrail
@@ -522,7 +535,7 @@ ssm describe-parameters --max-result 50
 
 ## see also
 
-- [[jq]], [[yq]]
+- [[jp]], [[jq]], [[yq]]
 - [[terraform]], [[cdk]]
 - [[aws-nuke]]
 - [[eksctl]], [[kubectl]]

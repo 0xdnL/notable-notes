@@ -2,7 +2,7 @@
 tags: [database/postgresql, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2023-12-19T08:39:13.217Z'
+modified: '2024-06-17T09:53:42.564Z'
 ---
 
 # psql
@@ -13,6 +13,7 @@ modified: '2023-12-19T08:39:13.217Z'
 
 ```sh
 apt install postgresql
+apk add postgresql-client
 
 brew install postgresql@14
 brew services start postgresql@14                                                       # start postgresql@14 service
@@ -423,7 +424,7 @@ END $$;
 
 - [[pgenv]]
 - [[pg_dump]], [[pg_dumpall]]
-- [[mysql]]
+- [[mysql]], [[sqlite]]
 - [[mongo]]
 - [postgresql.org/docs/current](https://www.postgresql.org/docs/current/index.html)
 - [PSQL-META-COMMANDS](https://www.postgresql.org/docs/current/static/app-psql.html#APP-PSQL-META-COMMANDS)

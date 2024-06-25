@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: tune2fs
 created: '2023-11-20T14:25:54.630Z'
-modified: '2023-11-20T14:35:21.195Z'
+modified: '2024-02-08T09:33:56.903Z'
 ---
 
 # tune2fs

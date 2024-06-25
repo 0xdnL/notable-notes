@@ -2,7 +2,7 @@
 tags: [Notebooks]
 title: servicemesh
 created: '2020-05-11T06:38:47.231Z'
-modified: '2023-05-16T15:34:01.898Z'
+modified: '2024-01-11T12:42:39.321Z'
 ---
 
 # servicemesh
@@ -23,4 +23,4 @@ modified: '2023-05-16T15:34:01.898Z'
 - [[istioctl]]
 - [[kubectl]]
 - [[microservice]]
-- [[docker network]]
+- [[docker]]

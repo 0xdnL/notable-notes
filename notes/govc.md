@@ -2,17 +2,22 @@
 tags: [container, go]
 title: govc
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-11-21T16:33:02.533Z'
+modified: '2024-03-11T09:47:38.675Z'
 ---
 
 # govc
 
-> vSphere cli built on govmomi, the vSphere Go SDK - a robust inventory browser command
+> vSphere cli built on govmomi, vSphere [[go]] sdk - inventory browser command
 
 ## install
 
 ```sh
 go install github.com/vmware/govmomi/govc@latest
+
+# bash_completion
+curl -L https://raw.githubusercontent.com/vmware/govmomi/main/scripts/govc_bash_completion -o $HOMEBREW_PREFIX/etc/bash_completion.d/govc_bash_completion
+# or
+ln -s $HOME/go/pkg/mod/github.com/vmware/govmomi@v0.30.7/scripts/govc_bash_completion $HOMEBREW_PREFIX/etc/bash_completion.d/govc_bash_completion
 ```
 
 ## env
@@ -41,6 +46,25 @@ GOVC_VI_JSON                # uses JSON transport instead of SOAP
 ```sh
 -u        # ESXi or vCenter URL e.g. user:pass@host
 -debug    # trace requests and responses to ~/.govmomi/debug
+```
+
+## disk
+
+```sh
+govc disk.create
+
+govc disk.ls
+govc disk.ls -L=true -ds=DATASTORE -l $(kubectl get pv pvc-700f671b-0f62-44eb-8bc3-b4e443b73a27 -o yaml|yq '.spec.csi.volumeHandle')
+
+govc disk.register
+govc disk.rm
+govc disk.snapshot.create
+govc disk.snapshot.ls
+govc disk.snapshot.rm
+govc disk.tags.attach
+govc disk.tags.detach
+
+# see also: govc datastore.disk. govc vm.disk. govc find
 ```
 
 ## ls - list
@@ -147,6 +171,8 @@ govc find -type TYPE
 #  s    Datastore
 #  w    DistributedVirtualSwitch
 
+govc find . -type m -datastore $(govc find -i datastore -name DATASTORE)
+
 govc find -type m -name "*packer*"                                                # find vms which contain packer
 
 govc find . -type m -guest.ipAddress "10.32.22.8" -runtime.powerState poweredOn   # find host by IP
@@ -172,7 +198,9 @@ govc find . -type m -runtime.powerState poweredOn -guest.guestId '*[ubuntu][Linu
 
 ## see also
 
-- [[jq]]
+- [[aws]]
+- [[kubectl]]
+- [[jq]], [[yq]]
 - [velenux.wordpress.com/automate-your-vcenter-interactions-from-the-linux-commandline-with-govmomi-and-govc](https://velenux.wordpress.com/2016/09/19/automate-your-vcenter-interactions-from-the-linux-commandline-with-govmomi-and-govc/)
 - [Network info · Issue #742 · vmware/govmomi · GitHub](https://github.com/vmware/govmomi/issues/742)
 - [datastore.upload broken pipe · Issue #832 · vmware/govmomi · GitHub](https://github.com/vmware/govmomi/issues/832)

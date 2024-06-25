@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: date
 created: '2019-07-30T06:19:49.033Z'
-modified: '2023-11-11T16:04:18.105Z'
+modified: '2024-02-02T17:25:02.797Z'
 ---
 
 # date
@@ -115,8 +115,9 @@ for i in {1..5}; do mkdir $(gdate -d "$(gdate +%F) + $i day" +%F_%a); done
 
 gdate -d "2019-01-01" +%A                 # get short weekday from date
 
-# calculate days difference
-echo "$(( (  $(gdate "+%s") - $(gdate -d "2020-10-13T08:30:10+00:00" "+%s") )/(60*60*24) ))" 
+echo "days since date: $(( ( $(gdate "+%s") - $(gdate -d "2024-01-30T08:30:10+00:00" "+%s") )/(60*60*24) ))"
+
+echo "days since the epoch: $(( $(date -d "$(date +%Y-%m-%d)" +%s) / 86400))"
 ```
 
 ## see also

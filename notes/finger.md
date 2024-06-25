@@ -2,7 +2,7 @@
 tags: [linux]
 title: finger
 created: '2021-05-25T12:02:22.076Z'
-modified: '2023-03-22T11:06:10.887Z'
+modified: '2024-03-01T11:30:26.687Z'
 ---
 
 # finger
@@ -19,3 +19,4 @@ finger USER
 
 - [[id]]
 - [[ssh]]
+- [[pinky]]

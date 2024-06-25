@@ -1,7 +1,8 @@
 ---
+tags: [network]
 title: mullvad
 created: '2023-11-18T15:29:06.914Z'
-modified: '2023-11-18T15:47:14.163Z'
+modified: '2024-01-11T12:43:36.021Z'
 ---
 
 # mullvad

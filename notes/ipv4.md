@@ -2,7 +2,7 @@
 tags: [network]
 title: ipv4
 created: '2019-09-03T11:30:01.345Z'
-modified: '2020-09-11T06:55:39.034Z'
+modified: '2024-01-11T12:32:11.209Z'
 ---
 
 # ipv4
@@ -35,6 +35,7 @@ AND   1111 1111 . 11111 1111 . 0000 0000 . 0000 0000
 
 
 ## see also
-- [[ip]]
+
+- [[ip]], [[ipcalc]]
 - [[iptables]]
 - [[osi model]]

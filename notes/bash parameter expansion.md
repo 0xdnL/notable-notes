@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash parameter expansion
 created: '2019-07-30T06:19:49.015Z'
-modified: '2021-11-08T16:04:06.116Z'
+modified: '2024-05-02T06:16:35.524Z'
 ---
 
 # bash parameter expansion 
@@ -43,6 +43,15 @@ ${!}      # `$!` expands to the process ID of the job most recently placed into 
 
 ${_}      # `$_` At shell startup, set to the absolute pathname used to invoke the shell or shell script being executed 
           # set to final argument of previous command executed.
+```
+
+## asdf
+
+```sh
+${var?}   # if var isn't defined then bash will throw an error and _not_ execute, instead of expanding it to ""
+
+mv file1 file2 $subdir      # oops, I overwrote file2
+mv file1 file2 ${subdir?}   # error message instead of disaster
 ```
 
 ## indirect expansion
@@ -148,6 +157,8 @@ echo ${foo^^}   # all to upercase
 
 - [[tr]]
 - [[bash]]
+- [[bash true false :]]   # this doesn't work ?
+- [[bash true false ꞉]]   # this works ?!
 - [[bash braces]]
 - [[bash globbing]]
 - [[bash set unset]]

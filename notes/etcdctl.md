@@ -2,7 +2,7 @@
 tags: [systemd]
 title: etcdctl
 created: '2019-09-24T04:24:49.035Z'
-modified: '2023-03-23T08:43:43.627Z'
+modified: '2024-03-01T12:00:07.929Z'
 ---
 
 # etcdctl
@@ -61,7 +61,7 @@ etcdctl get foo
 ## see also
 
 - [github.com/etcd-io/etcd/etcdctl](https://github.com/etcd-io/etcd/tree/main/etcdctl)
-- [[kubectl]]
+- [[kubectl]], [[k3s]]
 - [[consul]]
 - [[zookeeper-shell]]
 - [[redis-cli]]

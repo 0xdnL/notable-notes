@@ -2,7 +2,7 @@
 tags: [json, linux]
 title: jq
 created: '2019-07-30T06:19:49.141Z'
-modified: '2023-12-08T13:01:21.995Z'
+modified: '2024-06-05T12:05:48.481Z'
 ---
 
 # jq
@@ -36,33 +36,42 @@ echo '[1, "foo", ["foo"]]' | jq '. | tojson'
 echo '"[1,\"foo\",[\"foo\"]]"' | jq '. | fromjson'
 
 diff <(jq -S . FILE_A.json) <(jq -S . FILE_A.json)    # diff by sorting first
+```
 
-# string interpolation
+## string interpolation
+
+```sh
 STDOUT | jq '.[]| "\(.id) \(.name)"'  # print in one line
 
 jq -n -r '["abc","def"] | "\(.[0]) \(.[1])"'
 
 
 STDOUT | jq -r '.auths | keys[]'   # get only keys from auths{} object
+```
 
+## select - get a object based on object's value
 
-# select - get a object based on object's value
+```sh
 jq '.VirtualMachines[].Config.Hardware.Device[] | select(.Key== 2000) | .CapacityInBytes'
 
 jq '.QueueUrls[] | select(endswith("STRING"))'              # get array-elemnts ending with "STRING"
 
 jq '.fields | select(.some | tonumber > 0) | .some)'        # convert string from .some `tonumber` then get if greater zero
+```
 
+## filter values
 
-# filter values
+```sh
 STDOUT | jq --unbuffered 'map(del(.database, .id, .isDefault, .jsonData, .orgId, .password, .typeLogoUrl, .user))' # removes from .[], ..map for array 
 
 STDOUT | jq --unbuffered 'map({access, basicAuth, name, type, url})'   # keeps whitelisted from .[]
 
 STDOUT | jq 'map(.price) | add'         #  will take an array of JSON objects as input and return the sum of their "price" fields
+```
 
+## edit
 
-# edit
+```sh
 echo '{"hello": "world"}' | jq --arg foo bar '. + {foo: $foo}'                # add field: {  "hello": "world", "foo": "bar"  }
 
 echo '{"hello": "world"}' | jq --arg foo bar '. + {hello: $foo}'              # override field value: { "hello": "bar" }
@@ -85,6 +94,7 @@ jq -n -c '[{"foo": 1, "bar": 2}, {"foo": 3, "quux": 4}] | map(select( .bar ))'  
 ## see also
 
 - [[jless]], [[fx]], [[jsonpath]]
+- [[jp]]
 - [[yq]]
 - [[jwt]]
 - [[curl]]

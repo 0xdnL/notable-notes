@@ -2,7 +2,7 @@
 tags: [json]
 title: jsonpath
 created: '2020-10-09T11:50:35.973Z'
-modified: '2023-11-16T11:43:13.793Z'
+modified: '2024-04-03T10:41:52.252Z'
 ---
 
 # jsonpath
@@ -57,7 +57,7 @@ size 	      # size of left (array or string) should match right
 empty 	    # left (array or string) should be empty
 ```
 
-## usage
+## kubectl
 
 ```sh
 kubectl get deployments -o jsonpath='{range .items[*]}
@@ -78,12 +78,14 @@ kubectl get svc SERVICE          -o jsonpath='{.spec.clusterIP}'
                                               {.items[*].status.addresses[?(@.type=="ExternalIP")].address}
 
 kubectl get nodes                -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalDNS")].address}'
+kubectl get nodes                -o jsonpath='{.items[*].spec.taints}{"\n"}' | jq
 
 kubectl get pods -l run=my-nginx -o jsonpath='{.items[0].metadata.name}'
-
 kubectl get pods                 -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.containers[*].image}{"\n"}{end}'
 
 kubectl get secret SECRET        -o jsonpath="{.data.name-password}" | base64 -d
+
+
 ```
 
 ## see also

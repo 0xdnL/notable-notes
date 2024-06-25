@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: unicode
 created: '2023-12-06T11:58:13.706Z'
-modified: '2023-12-06T12:12:14.960Z'
+modified: '2024-02-08T09:33:56.871Z'
 ---
 
 # unicode

@@ -2,7 +2,7 @@
 tags: [rust]
 title: aichat
 created: '2023-12-07T14:28:53.121Z'
-modified: '2023-12-07T14:31:53.907Z'
+modified: '2024-02-12T14:00:43.511Z'
 ---
 
 # aichat
@@ -52,8 +52,14 @@ what does this do ?
 echo 1;
 
 :::
+
+> .info     # print help message
+> .info     # view information
+
+> .model openai:gpt-4       # choose a model
+> .model localai:gpt4all-j
 ```
 
 ## see also
 
-- 
+- [github.com/sigoden/aichat/](https://github.com/sigoden/aichat/)

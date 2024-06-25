@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: bash case
 created: '2019-07-30T06:19:48.993Z'
-modified: '2021-11-16T08:24:42.397Z'
+modified: '2024-01-30T11:52:05.352Z'
 ---
 
 # bash case
@@ -10,7 +10,7 @@ modified: '2021-11-16T08:24:42.397Z'
 ## usage
 
 ```sh
-case expression in
+case EXPRESSION in
   pattern1)
     statements 
     ;;
@@ -26,4 +26,6 @@ esac
 ## see also
 
 - [[bash if]]
+- [[bash [[]]
 - [[bash arguments]]
+- [[regex]]

@@ -2,7 +2,7 @@
 tags: [initsystem, linux, systemd]
 title: systemctl
 created: '2019-07-30T06:19:49.250Z'
-modified: '2023-10-14T09:39:54.615Z'
+modified: '2024-06-16T18:19:26.629Z'
 ---
 
 # systemctl
@@ -46,6 +46,8 @@ systemctl is-failed application.service
 systemctl show sshd.service             # get all properties
 
 systemctl show unit.service --property=ActiveState
+
+systemctl show -p FragmentPath k3s.service | cut -d'=' -f2      # get systemd service file
 
 
 systemctl cat sshd.service              # cat unit-files fo service

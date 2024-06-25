@@ -2,7 +2,7 @@
 tags: [linux]
 title: ps
 created: '2019-07-30T06:19:49.218Z'
-modified: '2023-03-16T07:59:18.312Z'
+modified: '2024-04-04T12:36:07.546Z'
 ---
 
 # ps
@@ -54,6 +54,14 @@ ps xawf -eo pid,user,cgroup,args
 ps aux | sort -nrk 3,3 | head -n 5                      # top 5 processes
 ps aux | grep apache  | awk '{print $6/1024 " MB";}'    # Ram consumption per apache process
 ps aux | grep "[f]nord"                                 # don't show grep in result
+```
+
+## without ps
+
+```sh
+ls -l /proc/*/exe
+
+for prc in /proc/*/cmdline; { (printf "$prc "; cat -A "$prc") | sed 's/\^@/ /g;s|/proc/||;s|/cmdline||'; echo; }
 ```
 
 ## see also
