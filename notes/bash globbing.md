@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash globbing
 created: '2019-07-30T06:19:49.009Z'
-modified: '2022-04-27T14:23:05.524Z'
+modified: '2024-01-30T09:10:48.081Z'
 ---
 
 # bash globbing
@@ -55,7 +55,9 @@ ls !(+(ab|def)*+(.jpg|.gif))            # list all the files that aren't jpg or 
 
 ## see also
 
+- [[regex]]
 - [[bash shopt]]
+- [[bash test]], [[bash [[]]
 - [[bash parameter expansion]]
 - [linuxjournal.com/content/bash-extended-globbing](https://www.linuxjournal.com/content/bash-extended-globbing)
 - [Path name expansion - Linux Shell Scripting Tutorial - A Beginner's handbook](http://bash.cyberciti.biz/guide/Path_name_expansion)

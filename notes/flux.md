@@ -2,7 +2,7 @@
 tags: [container]
 title: flux
 created: '2022-01-17T13:49:51.051Z'
-modified: '2023-11-24T08:31:50.562Z'
+modified: '2024-01-12T10:31:42.885Z'
 ---
 
 # flux
@@ -31,11 +31,32 @@ flux bootstrap gitlab \
   --author-name $AUTHOR_NAME
 
 flux get kustomizations --watch
+
+flux get hr HELMRELEASE -n NS
+
+flux suspend hr HELMRELEASE -n NS
+
+flux resume hr HELMRELEASE -n NS
+
+flux reconcile source git flux-system
+
+flux tree kustomization flux-system
+
+flux logs --all-namespaces --level=error
+```
+
+## kubectl
+
+```sh
+kubectl get kustomizations.kustomize.toolkit.fluxcd.io/flux-system -o yaml | yq '.status.inventory'
+
+kubectl get helmreleases.helm.toolkit.fluxcd.io loki -n  monitoring -o yaml
 ```
 
 ## see also
 
-- [[kubectl]]
+- [[helm]], [[kustomize]]
+- [[kubectl]], [[kubeseal]]
 - [[gitops]]
 - [[argocd]]
 - [fluxcd.io/docs](https://fluxcd.io/docs/)

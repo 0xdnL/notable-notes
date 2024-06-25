@@ -2,7 +2,7 @@
 tags: [linux]
 title: perl
 created: '2019-07-30T06:19:49.150Z'
-modified: '2023-03-25T12:33:10.563Z'
+modified: '2024-05-06T12:23:07.534Z'
 ---
 
 # perl
@@ -22,6 +22,12 @@ perl -de 42         # starts debugger in repl-mode, 42 has no meaning it's just 
 
 perl -MHTTP::Server::Brick \
   -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
+
+
+perl -MCPAN -e'install Text::CSV_XS'
+
+perl -MCPAN -e shell
+cpan[1]> install Text::CSV_XS
 ```
 
 ## script
@@ -44,3 +50,4 @@ for my $var ( sort keys %ENV ) {
 - [[cpan]]
 - [[php]]
 - [[python]]
+- [[pgbadger]]

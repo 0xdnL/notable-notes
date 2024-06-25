@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2023-12-05T16:42:42.578Z'
+modified: '2024-06-18T07:02:37.688Z'
 ---
 
 # kubectl
@@ -19,8 +19,11 @@ kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl`
 ## environment
 
 ```sh
-KUBECONFIG          # alternative kube config
-KUBE_EDITOR         # -
+KUBECONFIG                        # path to kube config, specify multiple files by separating them with a colon
+KUBERNETES_MASTER                 # URL of api-server, alternative way to specify the cluster's API server URL if it's not set in the kubeconfig file
+KUBE_EDITOR, EDITOR               # editor to be used e.g. for `kubectl edit`
+KUBECTL_EXTERNAL_DIFF             # Specifies the diff command to use when comparing resources with `kubectl diff`. This allows you to use your preferred diff tool
+HTTP_PROXY, HTTPS_PROXY, NO_PROXY # proxy settings `kubectl` should use when communicating with the Kubernetes API server
 ```
 
 ## option
@@ -29,7 +32,7 @@ KUBE_EDITOR         # -
 -v
 --v=0 	# generally useful for this to always be visible to a cluster operator
 --v=1 	# reasonable default log level if you don't want verbosity
---v=2 	# useful steady state information about the service and important log messages that may correlate to significant changes in the system. recommended default log level for most systems
+--v=2 	# useful steady state information about the service and important log messages, recommended default log level for most systems
 --v=3 	# extended information about changes
 --v=4 	# debug level verbosity
 --v=5 	# trace level verbosity
@@ -38,66 +41,60 @@ KUBE_EDITOR         # -
 --v=8 	# display HTTP request contents
 --v=9 	# display HTTP request contents without truncation of contents
 
--o=json 	                    # output a JSON formatted API object
--o=yaml 	                    # output a YAML formatted API object
--o=name 	                    # print only the resource name and nothing else
--o=wide 	                    # output in the plain-text format with any additional information, and for pods, the node name is included
--o=custom-columns=SPEC 	      # Print a table using a comma separated list of custom columns
--o=custom-columns-file=FILE   # print a table using the custom columns template in the FILE file
--o=jsonpath=TEMPLATE  	      # print the fields defined in a jsonpath expression
--o=jsonpath-file=FILE 	      # print the fields defined by the jsonpath expression in the FILE file
+-o=json 	                          # output a JSON formatted API object
+-o=yaml 	                          # output a YAML formatted API object
+-o=name 	                          # print only the resource name and nothing else
+-o=wide 	                          # output in the plain-text format with any additional information, and for pods, the node name is included
+-o=custom-columns=SPEC 	            # Print a table using a comma separated list of custom columns
+-o=custom-columns-file=FILE         # print a table using the custom columns template in the FILE file
+-o=jsonpath=TEMPLATE  	            # print the fields defined in a jsonpath expression
+-o=jsonpath-file=FILE 	            # print the fields defined by the jsonpath expression in the FILE file
 
--A                        # all namespaces
--n, --namespace NS        # namespace scope for cli equest
+-A                                  # all namespaces
+-n, --namespace NS                  # namespace scope for cli equest
 
---as=""         # Username to impersonate for the operation. User could be a regular user or a service account in a namespace.
---as-group=[]   # Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
---as-uid=""     # UID to impersonate for the operation.
+--as=""                             # Username to impersonate for the operation. User could be a regular user or a service account in a namespace.
+--as-group=[]                       # Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+--as-uid=""                         # UID to impersonate for the operation.
 
---certificate-authority=""    # path to a cert file for the certificate authority
---client-certificate=""       # path to a client certificate file for TLS
---client-key=""               # path to a client key file for TLS
+--certificate-authority=""          # path to a cert file for the certificate authority
+--client-certificate=""             # path to a client certificate file for TLS
+--client-key=""                     # path to a client key file for TLS
 
---cluster CLUSTER     # name of the kubeconfig cluster to use
---context CONTEXT     # name of the kubeconfig context to use
---kubeconfig CONFIG   # path to the kubeconfig file to use for CLI requests.
--s, --server SERVER   # address and port of the Kubernetes API server
---token TOKEN         # bearer token for authentication to the API server
---user USER           # name of the kubeconfig user to use
---username USER       # Username for basic authentication to the API server
---password PASS       # password for basic authentication to the API server
+    --cluster CLUSTER               # name of the kubeconfig cluster to use
+    --context CONTEXT               # name of the kubeconfig context to use
+    --kubeconfig CONFIG             # path to the kubeconfig file to use for CLI requests.
+-s, --server SERVER                 # address and port of the Kubernetes API server
+    --token TOKEN                   # bearer token for authentication to the API server
+    --user USER                     # name of the kubeconfig user to use
+    --username USER                 # Username for basic authentication to the API server
+    --password PASS                 # password for basic authentication to the API server
 
 --insecure-skip-tls-verify=false    # true: don't check server's certificate for validity, makes https connections insecure
 --match-server-version=false        # Require server version to match client version
 
---profile="none"                   # name of profile to capture. One of (none|cpu|heap|goroutine|threadcreate|block|mutex)
---profile-output="profile.pprof"   # name of the file to write the profile to
+--profile="none"                    # name of profile to capture. One of (none|cpu|heap|goroutine|threadcreate|block|mutex)
+--profile-output="profile.pprof"    # name of the file to write the profile to
 
---request-timeout="0"         # time to wait before giving up on a single request; time unit (1s, 2m, 3h); zero means don't timeout requests
---tls-server-name=""          # server name to use for server certificate validation. If it is not provided, the hostname used to contact the server is used
---warnings-as-errors=false    # treat warnings received from the server as errors and exit with a non-zero exit code
---version=false               # print version information and quit
+--request-timeout="0"               # time to wait before giving up on a single request; time unit (1s, 2m, 3h); zero means don't timeout requests
+--tls-server-name=""                # server name to use for server certificate validation. If it is not provided, the hostname used to contact the server is used
+--warnings-as-errors=false          # treat warnings received from the server as errors and exit with a non-zero exit code
+--version=false                     # print version information and quit
 ```
 
 
-imperative commands / object configuration
+## declarative / imperative commands
 
 ```sh
-kubectl diff      # object configuration
-kubectl apply     # object configuration
-``````
-
-declarative commands / object configuration
-
-```sh
-kubectl create      # object configuration
-kubectl replace     # object configuration
-kubectl delete      # object configuration
-kubectl edit
-kubectl scale
+# declarative         imperative
+  kubectl create      kubectl diff
+  kubectl replace     kubectl apply
+  kubectl delete
+  kubectl edit
+  kubectl scale
 ```
 
-## usage
+## versions
 
 ```sh
 kubectl version -o yaml | yq e                                        # get client and server version
@@ -131,6 +128,38 @@ kubectl api-resources --namespaced=true                               # all name
 kubectl api-resources --verbs=list,get                                # all resources that support the "list" and "get" request verbs
 kubectl api-resources --verbs=list --namespaced -o name
 kubectl api-resources --api-group=extensions                          # all resources in the "extensions" API group
+
+kubectl api-resources --verbs=list --namespaced=true
+```
+
+## cluster-info
+
+> display addresses of the control plane and services with label `kubernetes.io/cluster-service=true`
+
+```sh
+kubectl cluster-info    # Print the address of the control plane and cluster services
+
+kubectl cluster-info dump --namespaces default,kube-sytem,csi --output-directory=$(pwd)/$(kubectl config current-context).cluster-dump
+```
+
+## copy
+
+> if [[tar]] is not present in container it will fail
+
+```sh
+tar cf - /tmp/foo | kubectl exec -i -n NAMESPACE <some-pod> -- tar xf - -C /tmp/bar    # Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace <some-namespace>
+
+kubectl exec POD -- tar cf - /tmp/foo | tar xf - -C /tmp/bar    # copy /tmp/foo from a remote pod to /tmp/bar locally
+
+kubectl cp /tmp/foo_dir POD:/tmp/bar_dir                        # copy /tmp/foo_dir local directory to /tmp/bar_dir in a remote pod in the default namespace
+
+kubectl cp /tmp/foo POD:/tmp/bar -c CONTAINER                   # copy /tmp/foo local file to /tmp/bar in a remote pod in a specific container
+
+kubectl cp /tmp/foo NAMESPACE/POD:/tmp/bar                      # copy /tmp/foo local file to /tmp/bar in a remote pod in namespace NAMESPACE
+
+kubectl cp NAMESPACE/POD:/tmp/foo /tmp/bar                      # copy /tmp/foo from a remote pod to /tmp/bar locally
+
+kubectl cp POD:/etc/nginx/nginx.conf nginx.conf                 # copy nginx.conf to local dir
 ```
 
 ## config
@@ -138,24 +167,28 @@ kubectl api-resources --api-group=extensions                          # all reso
 > view and edit kubectl config
 
 ```sh
-kubectl config view [--flatten|--raw]
+kubectl config view --minify
+kubectl config view --flatten
+kubectl config view --raw
 
 kubectl config current-context
 
 kubectl config get-contexts
-kubectl config use-context CONTEXT
-kubectl config set-context CONTEXT --user minikube --cluster minikube --namespace NAMESPACE
-
 kubectl config get-clusters
 
+kubectl config use-context CONTEXT
+
+kubectl config set-context CONTEXT --user minikube --cluster minikube --namespace NAMESPACE
+kubectl config set-context --current --namespace kube-node-lease    # sets namespace
+
 # merge configs
-KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten > ~/.kube/merged_kubeconfig \
-  && mv ~/.kube/merged_kubeconfig ~/.kube/config
+KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten \
+  > ~/.kube/merged_kubeconfig && mv ~/.kube/merged_kubeconfig ~/.kube/config
 ```
 
 ## certificate
 
-> cert,certs from `cert-manager.io/v1`
+> cert, certs from `cert-manager.io/v1`
 
 ```sh
 kubectl get certificate --all-namespaces -ojsonpath="{range .items[*]}{.metadata.name} not before: {.status.notBefore} not after: {.status.notAfter}{'\n'}{end}"
@@ -275,17 +308,19 @@ kubectl get pods -L
 ```sh
 kubectl run     # same as `kubectl create deployment`
 
-kubectl run debug-pod-dti --restart=Never --rm -i --tty --image ubuntu -- /bin/bash
+kubectl run NAME --image ubuntu --restart=Never --rm -i --tty -- /bin/bash
 
-kubectl run curl            --image=radial/busyboxplus:curl -i --tty   # then run: nslookup my-nginx
+kubectl run NAME --image=tutum/dnsutils --command -- sleep infinity
 
-kubectl run echoserver      --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+kubectl run NAME --image=radial/busyboxplus:curl -i --tty   # then run: nslookup my-nginx
 
-kubectl run dnsutils        --image=tutum/dnsutils --generator=run-pod/v1 --command -- sleep infinity
+kubectl run NAME --image=gcr.io/google_containers/echoserver:1.4 --port=8080
 
-kubectl run hello-minikube  --image=k8s.gcr.io/echoserver:1.4 --port=8080
+kubectl run NAME --image=k8s.gcr.io/echoserver:1.4 --port=8080
 
-kubectl run POD_NAME        --image=mongo:4.0 `# run pod on specific node `\
+kubectl run NAME --image=bitnami/postgresql --restart=Never --overrides='{"spec": {"securityContext": {"runAsUser": 0}}}' --command -- sleep infinity
+
+kubectl run NAME --image=mongo:4.0 `# run pod on specific node `\
   --overrides='{"apiVersion": "v1", "spec": {
     "affinity": {
       "nodeAffinity": {
@@ -328,6 +363,22 @@ KUBE_EDITOR="nano" kubectl edit svc/SERVICE                  # use alternative e
 kubectl edit svc/SERVICE                                     # edit the service named 'docker-registry'
 kubectl edit job.v1.batch/myjob -o json                      # edit the job 'myjob' in JSON using the v1 API format
 kubectl edit deployment/mydeployment -o yaml --save-config   # edit the deployment 'mydeployment' in YAML and save the modified config in its annotation
+```
+
+## taint
+
+> update taints on one or more nodes
+
+```sh
+# Update node 'foo' with a taint with key 'dedicated' and value 'special-user' and effect 'NoSchedule'
+# If a taint with that key and effect already exists, its value is replaced as specified
+kubectl taint nodes foo dedicated=special-user:NoSchedule
+
+kubectl taint nodes foo dedicated:NoSchedule-   # Remove from node 'foo' the taint with key 'dedicated' and effect 'NoSchedule' if one exists
+kubectl taint nodes foo dedicated-              # Remove from node 'foo' all the taints with key 'dedicated'
+
+kubectl taint node -l myLabel=X  dedicated=foo:PreferNoSchedule   # Add a taint with key 'dedicated' on nodes having label myLabel=X
+kubectl taint nodes foo bar:NoSchedule                            # Add to node 'foo' a taint with key 'bar' and no value
 ```
 
 ## ingress
@@ -381,16 +432,25 @@ kubectl logs INGRESS_CONTROLLER -c controller \
 
 > forward one or more local ports to a pod (requires node to have [[socat]] installed)
 
+> `kubectl port-forward [resource-type]/[resource-name] [local-port]:[resource-port]`
+
 ```sh
+kubectl port-forward deployment/mongo             28015:27017
+kubectl port-forward deployment/mongo                  :27017    # let's kubectl choose the local port
+kubectl port-forward deployment/mydeployment      5000 6000      # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
+
+kubectl port-forward replicaset/mongo-75f59d57f4  28015:27017
+
+kubectl port-forward service/mongo                28015:27017
+kubectl port-forward service/myservice            8443:https     # listen on port 8443 locally, forwarding to the targetPort of the service's port named "https" in a pod selected by the service
+
+kubectl port-forward mongo-75f59d57f4-4nd6q       28015:27017
+kubectl port-forward pods/mongo-75f59d57f4-4nd6q  28015:27017
 kubectl port-forward                                 pod/mypod 5000 6000  # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
 kubectl port-forward                                 pod/mypod 8888:5000  # listen on port 8888 locally, forwarding to 5000 in the pod
 kubectl port-forward                                 pod/mypod :5000      # listen on a random port locally, forwarding to 5000 in the pod
 kubectl port-forward --address 0.0.0.0               pod/mypod 8888:5000  # listen on port 8888 on all addresses, forwarding to 5000 in the pod
 kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000  # listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
-
-kubectl port-forward deployment/mydeployment 5000 6000                    # listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
-
-kubectl port-forward service/myservice 8443:https                         # listen on port 8443 locally, forwarding to the targetPort of the service's port named "https" in a pod selected by the service
 ```
 
 ## pv - persistant volume
@@ -404,6 +464,7 @@ kubectl get pv pvc-c7d68f31-4104-4827-b63d-0181ed25c50e -o jsonpath='{.spec.awsE
 ```sh
 kubectl get pvc
 ```
+
 
 ## sc - storageclass
 
@@ -420,19 +481,41 @@ kubectl get secrets --field-selector type=Opaque
 kubectl get secrets SECRET -o json | jq -r '.data | to_entries[] | "\(.key): \(.value | @base64d)"';    # print secrets base64-decoded
 ```
 
-## krew plugins
+## krew
+
+> a kubectl plugin manager
 
 ```sh
 # failed to retrieve plugin indexes: failed to list the remote URL for index default
 unset GIT_CONFIG
+```
 
-kubectl krew update
+```sh
+kubectl krew help        # Help about any command
+kubectl krew index       # Manage custom plugin indexes
+kubectl krew info        # Show information about an available plugin
+kubectl krew install     # Install kubectl plugins
+kubectl krew list        # List installed kubectl plugins
+kubectl krew search      # Discover kubectl plugins
+kubectl krew uninstall   # Uninstall plugins
+kubectl krew update      # Update the local copy of the plugin index
+kubectl krew upgrade     # Upgrade installed plugins to newer versions
+kubectl krew version     # Show krew version and diagnostics
 
-kubectl krew search
+
+kubectl krew  list
+PLUGIN         VERSION
+access-matrix  v0.5.0
+cert-manager   v1.13.0
+explore        v0.7.1
+krew           v0.4.4
+stern          v1.27.0
 
 kubectl krew install oidc-login     # install plugin
 
 kubectl access-matrix               # use plugin to see the level of access user has on namespaces
+
+kubectl stern some-pod-             # prints logs of all pods starting with some-pod-
 ```
 
 [[kubectl krew]], [krew.sigs.k8s.io/docs/user-guide/quickstart/](https://krew.sigs.k8s.io/docs/user-guide/quickstart/)
@@ -444,6 +527,7 @@ kubectl access-matrix               # use plugin to see the level of access user
 - [[cmctl]], [[nerdctl]]
 - [[bazel]]
 - [[kubectx]], [[kubens]], [[kubeseal]], [[kubeval]], [[kubie]]
+- [[rbac-lookup]]
 - [[kim]], [[opa]]
 - [[aws]], [[eksctl]], [[kops]]
 - [[minikube]], [[k3s]], [[k3d]], [[k0s]], [[k9s]]

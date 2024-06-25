@@ -2,7 +2,7 @@
 tags: [container]
 title: skopeo
 created: '2021-10-19T11:25:30.764Z'
-modified: '2023-04-24T08:05:06.507Z'
+modified: '2024-06-05T09:02:07.701Z'
 ---
 
 # skopeo
@@ -25,6 +25,7 @@ skopeo inspect docker://quay.io/PATH/IMAGE:TAG
 
 ## see also
 
+- [[dive]]
 - [[podman]]
 - [[buildah]]
 - [[crictl]]

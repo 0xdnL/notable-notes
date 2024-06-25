@@ -2,12 +2,18 @@
 tags: [shell]
 title: bc
 created: '2019-09-24T06:25:36.082Z'
-modified: '2023-03-22T09:48:39.898Z'
+modified: '2024-05-23T08:41:50.790Z'
 ---
 
 # bc
 
 > `basic calculator` is an `arbitrary-precision calculator language`
+
+## install
+
+```sh
+apt-get install bc
+```
 
 ## option
 

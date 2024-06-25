@@ -2,7 +2,7 @@
 tags: [crypto, linux, network]
 title: openssl
 created: '2019-07-30T06:19:49.183Z'
-modified: '2023-12-01T16:22:29.368Z'
+modified: '2024-06-20T09:18:08.627Z'
 ---
 
 # openssl
@@ -226,6 +226,7 @@ openssl rand -base64 128 | tr -dc 'a-zA-Z0-9' | head -c 32
 - [[p11-kit]]
 - [[keybase]]
 - [[xkcdpass]]
+- [[jwt]]
 - [megamorf.gitlab.io/cheat-sheets/openss/](https://megamorf.gitlab.io/cheat-sheets/openssl/)
 - [blog.filippo.io/mkcert-valid-https-certificates-for-localhost](https://blog.filippo.io/mkcert-valid-https-certificates-for-localhost/)
 - [madboa.com/geek/openssl/#how-do-i-get-a-list-of-the-available-commands](https://www.madboa.com/geek/openssl/#how-do-i-get-a-list-of-the-available-commands)

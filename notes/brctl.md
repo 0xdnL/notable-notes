@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: brctl
 created: '2019-08-28T12:22:49.494Z'
-modified: '2023-03-22T10:03:27.163Z'
+modified: '2024-01-11T12:44:53.836Z'
 ---
 
 # brctl
@@ -25,6 +25,6 @@ brctl show docker0
 
 ## see also
 
-- [[docker network]]
+- [[docker]]
 - [[ip]]
 

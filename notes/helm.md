@@ -2,7 +2,7 @@
 tags: [container]
 title: helm
 created: '2021-06-04T08:40:48.010Z'
-modified: '2023-11-29T16:47:23.575Z'
+modified: '2024-06-21T09:24:33.742Z'
 ---
 
 # helm
@@ -82,11 +82,15 @@ helm mapkubeapis # Map release deprecated Kubernetes APIs in-place
 helm package     # package a chart directory into a chart archive
 
 helm pull        # download a chart from a repository and (optionally) unpack it in local directory
+helm pull grafana/loki --version 6.6.3
+helm pull                                     # download chart to local dir
+helm pull stable/CHART --untar                # optionally untar chart
+
 helm push        # push a chart to remote
 helm registry    # login to or logout from a registry
 
 helm rollback RELEASE_NAME [REVISION] # roll back a release to a previous revision
-helm search      # search for a keyword in charts
+
 
 helm status RELEASE_NAME  # display the status of the named release
 
@@ -95,13 +99,6 @@ helm test        # run tests for a release
 helm upgrade     # upgrade a release
 helm verify      # verify that a chart at the given path has been signed and is valid
 helm version     # print the client version information
-
-
-helm search                   # search for charts
-helm search repo [REPONAME]
-
-helm pull                       # download chart to local dir
-helm pull stable/CHART --untar  # optionally untar chart
 ```
 
 ## install
@@ -126,6 +123,16 @@ helm install --debug --dry-run CHART ./PATH               # test the template re
 helm uninstall RELEASE
 
 helm uninstall mysql-1612624192   # uninstall release
+```
+
+## search
+
+> search for a keyword in charts
+
+```sh
+helm search repo REPONAME
+
+helm search repo grafana/loki --versions      # get all version of chart
 ```
 
 ## repo
@@ -219,16 +226,81 @@ helm get values   RELEASE_NAME -a             # get all computed values
 helm get values   RELEASE_NAME --revision 1   # get vals from other revision
 ```
 
-
 ## plugin
 
-> install, list, or uninstall Helm plugins
+> manage client side helm plugins
+
+```sh
+helm plugin install     # install one or more Helm plugins
+helm plugin install https://github.com/databus23/helm-diff
+
+helm plugin list        # list installed Helm plugins
+
+helm plugin uninstall   # uninstall one or more Helm plugins
+
+helm plugin update      # update one or more Helm plugins
+```
+
+## plugin: diff
+
+> plugin giving a preview of what a helm upgrade would change
 
 ```sh
 helm plugin install https://github.com/databus23/helm-diff
 
 helm diff revision RELEASE 100 55
 ```
+
+## plugin: mapkubeapis
+
+> plugin updates in-place helm release metadata that contains deprecated/removed Kubernetes APIs to a new instance with supported Kubernetes APIs
+
+```sh
+helm plugin install https://github.com/helm/helm-mapkubeapis
+
+helm mapkubeapis ...
+```
+
+## plugin: secrets
+
+> plugin for decrypt encrypted Helm value files on the fly
+
+```sh
+helm plugin install https://github.com/jkroepke/helm-secrets
+
+helm secrets
+```
+
+## plugin: s3
+
+> plugin that provides [[aws]] s3 protocol support
+
+```sh
+helm plugin install https://github.com/hypnoglow/helm-s3.git
+
+helm s3 init s3://bucket-name/charts
+
+helm s3 push ./epicservice-0.7.2.tgz mynewrepo
+
+helm s3 delete epicservice --version 0.7.2 mynewrepo
+```
+
+## plugin: helm-git
+
+> plugin that provides [[git]] protocol support
+
+```sh
+helm plugin install https://github.com/aslafy-z/helm-git --version 0.16.1
+
+helm repo add cert-manager git+https://github.com/jetstack/cert-manager@deploy/charts?ref=v0.6.2
+
+helm fetch cert-manager/cert-manager --version "0.6.6"
+helm fetch git+https://github.com/jetstack/cert-manager@deploy/charts/cert-manager-v0.6.2.tgz?ref=v0.6.2
+
+helm install . -f git+https://github.com/aslafy-z/helm-git@tests/fixtures/example-chart/values.yaml   # pull value files
+```
+
+
 
 ## template
 
@@ -253,8 +325,16 @@ helm template CHART -x templates/deployment.yaml      # render just one template
 {{if (((.Values.mrz).monitoring).enabled) }}    # value optional
 ```
 
+
+## k8s
+
+```sh
+kubectl get secrets --field-selector type=helm.sh/release.v1
+```
+
 ## see also
 
+- [[helmfile]]
 - [[go-template]]
 - [[kubectl]]
 - [[kustomize]]

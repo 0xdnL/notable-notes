@@ -2,7 +2,7 @@
 tags: [linux]
 title: od
 created: '2019-09-04T06:17:03.101Z'
-modified: '2023-05-19T10:35:14.864Z'
+modified: '2024-05-02T06:34:20.703Z'
 ---
 
 # od
@@ -42,6 +42,23 @@ echo -n '"' | od -An -t uC   # get decimal-set
 #                                              -t     select a type
 #                                                  u  type is unsigned decimal.
 #                                                  C  of size (one) char
+```
+
+## unicode characters
+
+```sh
+# The character U+a789 "꞉" could be confused with the ASCII  character U+003a ":", which is more common in source code
+
+printf "bash true false :" | od -An -t x1
+ 62 61 73 68 20 74 72 75 65 20 66 61 6c 73 65 20
+ 3a
+
+printf "bash true false ꞉" | od -An -t x1
+ 62 61 73 68 20 74 72 75 65 20 66 61 6c 73 65 20
+ ea 9e 89
+
+echo -e '\ua789'
+echo -e '\u003a'
 ```
 
 ## see also

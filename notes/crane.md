@@ -2,7 +2,7 @@
 tags: [container]
 title: crane
 created: '2021-10-19T11:44:42.215Z'
-modified: '2023-07-04T11:27:50.870Z'
+modified: '2024-06-05T09:01:57.844Z'
 ---
 
 # crane
@@ -48,6 +48,7 @@ crane digest IMAGE
 ## see also
 
 - [[skopeo]]
+- [[dive]]
 - [[coreutils]]
 - [[cosign]]
 - [[jq]]

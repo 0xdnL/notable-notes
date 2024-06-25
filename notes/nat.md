@@ -2,7 +2,7 @@
 tags: [network]
 title: nat
 created: '2020-01-30T11:33:30.256Z'
-modified: '2020-09-02T17:38:42.510Z'
+modified: '2024-01-11T12:42:59.795Z'
 ---
 
 # nat
@@ -10,5 +10,7 @@ modified: '2020-09-02T17:38:42.510Z'
 > network address translation
 
 ## see also
-- [[docker network]]
+
+- [[docker]]
 - [[pat]]
+- [[ip]], [[iptables]]

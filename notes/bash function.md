@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: bash function
 created: '2019-07-30T06:19:49.008Z'
-modified: '2023-12-08T13:14:06.182Z'
+modified: '2024-01-04T13:15:19.354Z'
 ---
 
 # bash function
@@ -71,6 +71,19 @@ func() (
   echo 0;
 )
 ```
+
+## accept input from pipe
+
+```sh
+jwt_decode () {
+  local JWT=${1:-$(</dev/stdin)};
+  jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$JWT"
+}
+
+echo $JWT | jwt_decode
+```
+
+[stackoverflow.com/pipe-output-to-bash-function](https://stackoverflow.com/questions/11454343/pipe-output-to-bash-function)
 
 ## poor man's bash database
 

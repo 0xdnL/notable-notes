@@ -2,7 +2,7 @@
 tags: [linux]
 title: xxd
 created: '2019-09-04T06:14:01.648Z'
-modified: '2023-05-19T10:15:51.022Z'
+modified: '2024-05-02T06:33:37.285Z'
 ---
 
 # xxd
@@ -48,9 +48,16 @@ xxd docker-compose.yml    # hexdump file
 
 xxd -plain                # output in postscript continuous hexdump style. Also known as plain hexdump style.
 
-echo '0 4a' | xxd -r
+echo '0 4a' 
 echo '0x4a' | xxd -r
 # xxd -r <<<'0 4a'          # decimal
+
+
+echo -n "bash true false :" | xxd -p
+6261736820747275652066616c7365203a
+
+echo -n "bash true false ꞉" | xxd -p
+6261736820747275652066616c736520ea9e89
 ```
 
 ## see also

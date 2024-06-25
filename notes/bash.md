@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash
 created: '2019-07-30T06:19:49.025Z'
-modified: '2023-11-18T13:21:35.972Z'
+modified: '2024-03-07T14:09:59.112Z'
 ---
 
 # bash
@@ -44,6 +44,14 @@ modified: '2023-11-18T13:21:35.972Z'
 -	                	            # end of options flag; all other arguments are positional parameters
 --	                	          # unset positional parameters. If arguments given (-- arg1 arg2), positional parameters set to arguments.
 ```
+
+```sh
+bash +o history
+mc alias set ALIAS HOSTNAME ACCESS_KEY SECRET_KEY
+bash -o history
+```
+
+[[bash set]]
 
 ## special parameter
 

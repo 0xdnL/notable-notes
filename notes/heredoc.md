@@ -2,7 +2,7 @@
 tags: [linux]
 title: heredoc
 created: '2019-07-30T06:19:49.079Z'
-modified: '2023-03-22T09:55:35.568Z'
+modified: '2024-02-08T09:56:44.792Z'
 ---
 
 # heredoc
@@ -51,6 +51,30 @@ cat <<EOF > .pre-commit-config.yaml
     - id: terraform_fmt
 EOF
 ```
+
+```sh
+cat > irp-trust-policy.json << EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "$PROVIDER_ARN"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "${ISSUER_HOSTPATH}:sub": "system:serviceaccount:default:my-serviceaccount"
+        }
+      }
+    }
+  ]
+}
+EOF
+```
+
+[[bash redirects]]
 
 ## sudo redirect cat
 

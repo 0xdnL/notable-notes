@@ -2,17 +2,25 @@
 tags: [linux]
 title: base64
 created: '2020-09-01T08:26:05.388Z'
-modified: '2022-05-17T19:21:12.184Z'
+modified: '2024-02-22T19:17:05.009Z'
 ---
 
 # base64
 
 > encode and decode using base64 representation
 
+## option
+
+```sh
+                  -w column         # wrap encoded output after column
+--input=input,    -i input          # read input from input.  The default is stdin; passing “-” also represents stdin.
+--output=output,  -o output         # write output to output_file.  The default is stdout; passing “-” also represents stdout.
+```
+
 ## usage
 
 ```sh
-base64 -w 0 FILE
+base64 -w 0 FILE      # encode in single line
 
 base64 -i IN_FILE -o OUT_FILE
 

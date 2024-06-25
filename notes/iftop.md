@@ -1,7 +1,8 @@
 ---
+tags: [network]
 title: iftop
 created: '2023-11-28T11:45:22.989Z'
-modified: '2023-11-28T12:18:05.149Z'
+modified: '2024-01-11T12:43:44.792Z'
 ---
 
 # iftop
