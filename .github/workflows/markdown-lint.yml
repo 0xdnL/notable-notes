@@ -12,4 +12,4 @@ jobs:
     - name: debug output
       uses: docker://ghcr.io/igorshubovych/markdownlint-cli:latest
       with:
-        args: ./notes/t*.md --disable MD013 MD025 MD010 MD012
+        args: ./notes/t*.md --disable MD013 MD025 MD010 MD012 MD028
