@@ -2,7 +2,7 @@
 tags: [Notebooks]
 title: yaml
 created: '2019-07-30T06:19:49.267Z'
-modified: '2023-05-24T11:35:21.366Z'
+modified: '2024-09-27T16:18:29.078Z'
 ---
 
 # yaml
@@ -63,6 +63,7 @@ example: >3     # indendation indicator
 
 - [[json]]
 - [[yq]], [[jq]]
+- [[awk]]
 - [[heredoc]]
 - [[python]], [[ruby]], [[javascript]], [[go]]
 - [[kubectl]], [[docker-compose]]

@@ -2,12 +2,14 @@
 tags: [container]
 title: ctr
 created: '2020-03-12T13:48:00.174Z'
-modified: '2024-04-15T12:19:40.188Z'
+modified: '2024-09-30T07:03:20.006Z'
 ---
 
 # ctr
 
-> default cli based on the GRPC api - create and manage containers run with [[containerd]]
+> manage containers run with [[containerd]]
+
+- cli based on the GRPC api
 
 ## environment
 
@@ -75,7 +77,7 @@ ctr events                # get events
 > manage images
 
 ```sh
-ctr
+ctr images list
 ```
 
 ## leases                     
@@ -123,7 +125,7 @@ ctr
 > manage tasks
 
 ```sh
-ctr
+ctr tasks
 ```
 
 ## install                    
@@ -147,17 +149,21 @@ ctr
 > interact with a shim directly
 
 ```sh
-ctr
+ctr shim
 ```
 
-   help, h                    Shows a list of commands or help for one command
+## help, h
 
+> Shows a list of commands or help for one command
+
+```sh
+ctr help
+```
 
 ## see also
 
-- [github.com/projectatomic/containerd/cli](https://github.com/projectatomic/containerd/blob/master/docs/cli.md)
-- [[containerd]]
+- [[docker]], [[containerd]]
 - [[linuxkit]]
-- [[docker]]
-- [[crictl]]
-- [[k3s]], [[kubectl]]
+- [[crictl]], [[kubectl]]
+- [github.com/projectatomic/containerd/cli](https://github.com/projectatomic/containerd/blob/master/docs/cli.md)
+

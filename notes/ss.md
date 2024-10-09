@@ -2,7 +2,7 @@
 tags: [iproute, network]
 title: ss
 created: '2019-08-18T19:35:04.208Z'
-modified: '2023-03-23T08:46:51.569Z'
+modified: '2024-09-19T08:02:09.999Z'
 ---
 
 # ss
@@ -14,7 +14,6 @@ modified: '2023-03-23T08:46:51.569Z'
 ```sh
 yum   install iproute
 apt   install iproute
-brew  install ss
 ```
 
 ## option
@@ -42,5 +41,5 @@ ss -tunapls       # tuna, please!
 ## see also
 
 - [[netstat]]
-- [[socat]]
+- [[socat]], [[nc]]
 - [[iproute]]

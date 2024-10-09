@@ -2,7 +2,7 @@
 tags: [linux]
 title: ps
 created: '2019-07-30T06:19:49.218Z'
-modified: '2024-04-04T12:36:07.546Z'
+modified: '2024-07-09T11:53:27.727Z'
 ---
 
 # ps
@@ -61,7 +61,7 @@ ps aux | grep "[f]nord"                                 # don't show grep in res
 ```sh
 ls -l /proc/*/exe
 
-for prc in /proc/*/cmdline; { (printf "$prc "; cat -A "$prc") | sed 's/\^@/ /g;s|/proc/||;s|/cmdline||'; echo; }
+for PRC in /proc/*/cmdline; { (printf "$PRC "; cat -A "$PRC") | sed 's/\^@/ /g;s|/proc/||;s|/cmdline||'; echo; }
 ```
 
 ## see also

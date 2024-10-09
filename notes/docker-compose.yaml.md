@@ -1,7 +1,8 @@
 ---
+tags: [container]
 title: docker-compose.yaml
 created: '2024-02-08T12:35:20.028Z'
-modified: '2024-02-08T12:35:59.498Z'
+modified: '2024-10-08T09:22:15.754Z'
 ---
 
 # docker-compose.yaml

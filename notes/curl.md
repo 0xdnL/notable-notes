@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: curl
 created: '2019-07-30T06:19:49.032Z'
-modified: '2023-04-21T07:24:28.378Z'
+modified: '2024-07-09T07:42:34.086Z'
 ---
 
 # curl
@@ -53,23 +53,38 @@ EOF
 ## usage
 
 ```sh
-curl -vv telnet://127.0.0.1:7878    # send data via telnet
+curl -H 'accept: json' 'https://ec2.shop'
 
-curl -v -XOPTIONS URL               # check for CORS - if headers Access-Control-Allow-{Headers,Methods,Origin} are present 
 curl -s -H "Origin: http://localhost" -v HOST 2>&1 | grep access    # check access-* headers
 
+curl -v -XOPTIONS URL               # check for CORS - if headers Access-Control-Allow-{Headers,Methods,Origin} are present
+
+
+curl "https://ec2.shop?region=eu-central-1&filter=$(kubectl get node -o yaml | yq '.items[].metadata.labels."beta.kubernetes.io/instance-type"' | tr '\n' ',')"
+````
+
+## sending data
+
+```sh
 curl -XGET --data "param1=val1&param2=val2" "http://HOST/resource"   # sending data via GET
 
 curl -XGET --form "fileupload=@FILENAME" "http://HOST/resource"      # sending data via GET
 
 curl -XPOST "URL" -d @FILENAME                                      # sending data via POST and filenamedescriptor
 
+# form urlencoded
+curl --location 'https://KEYCLOAK/auth/realms/REALM/protocol/openid-connect/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded'\
+  --data-urlencode 'username=USER' \
+  --data-urlencode 'password=PASS' \
+  --data-urlencode 'client_id=CLIENT_ID' \
+  --data-urlencode 'grant_type=password'
+
 # format json data und let curl use data from STDIN
 jq --null-input --arg yaml "$(<FILE.yml)" '.content=$yaml' \
   | curl "https://HOST/api/v4/ci/lint?include_merged_yaml=true" --header 'Content-Type: application/json' --data @-
 
-
-# data from heredoc
+# send data from heredoc
 curl -0 -v -XPOST "URL" -d @- << EOF  
 { "field1": "test" }
 EOF
@@ -78,10 +93,16 @@ curl -XPOST "URL" --data @<(cat << EOF
 [ $(curl -XGET --silent --url URL | jq -c '.data[]') ]
 EOF
 )
+```
 
-# proxy - resolve for not editing hosts
+## proxy - resolve for not editing hosts
+
+```sh
 curl --proxy "" --include --resolve HOST:PORT:ADDRESS "https://HOST/3ab655"
+```
 
+
+```sh
 curl --url "http://HOST/?$(date +%s)"                    # cache breaker
 curl -H 'Cache-Control: no-cache' --url "http://HOST"    # cache-control
 
@@ -104,24 +125,61 @@ curl --silent -H "Authorization: Beare eyJrABCDI6MX0=" \
   
 watch -d 'for HOST in A B C; do curl -s --write-out "%{http_code}\t%{url_effective}\n" --output foo https://${HOST}; done'
 
-curl -s -w "$(date +%FT%T)    dns %{time_namelookup}    connect %{time_connect}   firstbyte %{time_starttransfer}   total %{time_total}   HTTP %{http_code}\n" -o /dev/null "https://example.com"
+curl -s \
+  -w "$(date +%FT%T)    dns %{time_namelookup}    connect %{time_connect}   firstbyte %{time_starttransfer}   total %{time_total}   HTTP %{http_code}\n" \
+  -o /dev/null \
+  "https://example.com"
+```
 
-# `%.0s {1..10}` <= the number is not printed and string stays. this is a printf-loop WOAH !
+## looping
+
+> `%.0s {1..10}` <= the number is not printed and string stays. this is a printf-loop WOAH !
+
+```sh
 curl -s 
   -w "$(date +%FT%T)    dns %{time_namelookup}    connect %{time_connect}   firstbyte %{time_starttransfer}   total %{time_total}   HTTP %{http_code}\n" \
-  --keepalive -K <(printf 'url="https://example.com/"\n%.0s' {1..10000}) 2>/dev/null 
+  --keepalive \
+  -K <(printf 'url="https://example.com/"\n%.0s' {1..10000}) \
+  2>/dev/null 
+```
 
-# mesure time
-for i in {1..20}; do curl -s -w "%{time_total}\n" -o /dev/null URL; done  
+[[printf]]
+
+## mesure time
+
+```sh
+for i in {1..20}; do 
+  curl -s -w "%{time_total}\n" -o /dev/null URL; 
+done  
 curl -o /dev/null -s -w "%{time_connect}:%{time_starttransfer}:%{time_total}" URL
+```
 
+## "poor-mans-keep-alive"
 
-# "poor-mans-keep-alive"
+```sh
 nc -l 8080                  # seperate sessions
 curl HOST localhost:8080    #  "trick" curl to keep the first connection open 
 ```
 
-## dict protocol - aliases
+[[nc]]
+
+---
+
+## protocol: telnet
+
+```sh
+curl -vv telnet://127.0.0.1:7878    # send data via telnet
+```
+
+[[telnet]]
+
+## protocol: gopher
+
+```sh
+curl gopher://gopherddit.com
+```
+
+## protocol: dict - aliases
 
 ```sh
 curl dict://dict.org/m:curl                 # m  match and find
@@ -133,20 +191,13 @@ curl dict://dict.org/show:db
 curl dict://dict.org/show:strat
 ```
 
-## gopher
-
-```sh
-curl gopher://gopherddit.com
-```
-
 ## see also
 
-- [[nc]]
+- [[kubectl]]
+- [[socat]], [[nc]]
 - [[wget]]
-- [[telnet]]
 - [[xargs]]
-- [[bash exec]]
-- [[bash echo]]
+- [[bash exec]], [[bash echo]], [[bash while]]
 - [everything.curl.dev](https://everything.curl.dev/)
 - [curl and HTTP 1.1 keepalive test traffic](http://lzone.de/blog/curl+and+HTTP+1.1+keepalive+test+traffic)
 - [loige.co/extracting-data-from-wikipedia](http://loige.co/extracting-data-from-wikipedia-using-curl-grep-cut-and-other-bash-commands)

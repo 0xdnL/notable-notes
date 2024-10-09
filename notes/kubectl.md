@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2024-06-18T07:02:37.688Z'
+modified: '2024-08-02T11:00:14.566Z'
 ---
 
 # kubectl
@@ -406,6 +406,12 @@ kubectl autoscale deployment DEPLOYMENT \
 kubectl patch deployment NAME --type=json -p='[{"op": "add", "path": "/spec/template/metadata/labels/this", "value": "that"}]'
 ```
 
+## job
+
+```sh
+kubectl create job --from cronjob/some-job some-job-trigger-1   # manually trigger a job
+```
+
 ## label
 
 ```sh
@@ -451,6 +457,32 @@ kubectl port-forward                                 pod/mypod 8888:5000  # list
 kubectl port-forward                                 pod/mypod :5000      # listen on a random port locally, forwarding to 5000 in the pod
 kubectl port-forward --address 0.0.0.0               pod/mypod 8888:5000  # listen on port 8888 on all addresses, forwarding to 5000 in the pod
 kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000  # listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
+```
+
+## proxy
+
+> creates a proxy server or application-level gateway between localhost and the Kubernetes API server
+
+```sh
+kubectl proxy --api-prefix=/                                              # proxy all of the Kubernetes API and nothing else
+
+kubectl proxy --www=/my/files --www-prefix=/static/ --api-prefix=/api/    # proxy only part of the Kubernetes API and also some static files
+curl localhost:8001/api/v1/pods
+
+kubectl proxy --api-prefix=/custom/                                       # proxy the entire Kubernetes API at a different root
+curl localhost:8001/custom/api/v1/pods
+
+kubectl proxy --port=8011 --www=./local/www/        # run a proxy on port 8011, serving static content from ./local/www/
+
+kubectl proxy --port=0                              # run a proxy on an arbitrary local port
+
+kubectl proxy --api-prefix=/k8s-api                 # run a proxy and changing the API prefix to k8s-api
+curl localhost:8001/k8s-api/v1/pods/
+
+# force delete a namespace, when kubectl edit making the same change has no effect
+kubectl proxy &
+kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
+curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
 ```
 
 ## pv - persistant volume
@@ -528,6 +560,7 @@ kubectl stern some-pod-             # prints logs of all pods starting with some
 - [[bazel]]
 - [[kubectx]], [[kubens]], [[kubeseal]], [[kubeval]], [[kubie]]
 - [[rbac-lookup]]
+- [[krr]]
 - [[kim]], [[opa]]
 - [[aws]], [[eksctl]], [[kops]]
 - [[minikube]], [[k3s]], [[k3d]], [[k0s]], [[k9s]]

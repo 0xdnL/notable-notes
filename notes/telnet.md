@@ -2,10 +2,12 @@
 tags: [linux, network]
 title: telnet
 created: '2019-07-30T06:19:49.252Z'
-modified: '2022-02-01T14:42:21.375Z'
+modified: '2024-07-09T07:31:56.525Z'
 ---
 
 # telnet
+
+> is a protocol and stands for "Teletype Network"
 
 > user interface to the TELNET protocol
 > a protocol of `internet protocol suite`/[[tcp-ip]]
@@ -48,6 +50,7 @@ Connection closed by foreign host.
 
 ## see also
 
+- [[socat]]
 - [[nc]]
 - [[curl]]
 - [[tcp-ip]]

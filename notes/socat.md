@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: socat
 created: '2019-07-30T06:19:49.239Z'
-modified: '2023-11-18T13:39:51.230Z'
+modified: '2024-09-25T09:54:50.037Z'
 ---
 
 # socat
@@ -13,8 +13,8 @@ modified: '2023-11-18T13:39:51.230Z'
 
 ```sh
 brew install socat
-apt install socat
-yum install socat
+ apt install socat
+ yum install socat
 ```
 
 ## usage
@@ -60,16 +60,25 @@ socat -d -d -lmlocal2 \
   TCP4:www.nixcraft.net.in:80,bind=myaddr2
 ```
 
+## send http request like curl
+
+```sh
+echo -e  "GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n"  | socat - TCP4:example.com:80
+echo -ne "GET / HTTP/1.1\r\nHost:  example.com\r\nConnection: close\r\n\r\n" | socat - OPENSSL: example.com:443,verify=0
+```
+
+[[bash echo]], [[telnet]]
+
 ## see also
 
+- [[websocat]]
 - [[kubectl]] `port-forward`
-- [socat – Cindy Sridharan – Medium](https://medium.com/@copyconstruct/socat-29453e9fc8a6)
-- [[unix socket]]
+- [[unix socket]], [[ss]]
 - [[nmap]]
-- [[ncat]]
-- [[nc]]
+- [[nc]], [[ncat]]
 - [[kubectl]]
 - [[ssh proxy]]
 - [[tcp-ip model]]
 - [[12 factor app]]
+- [socat – Cindy Sridharan – Medium](https://medium.com/@copyconstruct/socat-29453e9fc8a6)
 

@@ -2,7 +2,7 @@
 tags: [go]
 title: yq
 created: '2019-08-20T12:05:18.926Z'
-modified: '2024-06-19T08:44:07.101Z'
+modified: '2024-07-21T12:42:05.272Z'
 ---
 
 # yq
@@ -58,7 +58,17 @@ strenv          # inject the contents from an environment variable
 
 sort_keys(.)    # sort keys of map
 sort_keys(..)   # sort keys recursively
-``` 
+```
+
+```sh
+yq eval '. as $item ireduce ({}; if $item.kind == "HelmRelease" and $item.metadata.name == "loki" then $item else . end)' FILE.yaml
+# expression iterates over all documents or elements in your YAML file. It temporarily stores each element in the variable `$item`
+# For each element, it checks if the `kind` is `HelmRelease` and the `metadata.name` is `loki`.
+#If both conditions are met, it returns the current item; otherwise, it does nothing with that item.
+
+yq eval 'select(.kind == "HelmRelease" and .metadata.name == "loki")' FILE.yaml
+```
+
 
 ## usage
 

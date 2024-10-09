@@ -1,7 +1,8 @@
 ---
+tags: [container]
 title: rbac-lookup
 created: '2024-06-18T07:02:42.324Z'
-modified: '2024-06-18T07:04:17.181Z'
+modified: '2024-10-08T09:22:15.714Z'
 ---
 
 # rbac-lookup

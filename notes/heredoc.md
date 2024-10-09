@@ -2,7 +2,7 @@
 tags: [linux]
 title: heredoc
 created: '2019-07-30T06:19:49.079Z'
-modified: '2024-02-08T09:56:44.792Z'
+modified: '2024-10-05T11:05:26.751Z'
 ---
 
 # heredoc
@@ -148,6 +148,16 @@ cat <<EOF |
 > echo $line;
 > done
 ```
+
+## pass script as heredoc
+
+```sh
+cat <<EOF | python3
+print(1)
+EOF
+```
+
+[[python]]
 
 ## see also
 

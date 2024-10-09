@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: pinky
 created: '2024-03-01T11:30:30.866Z'
-modified: '2024-03-01T11:32:03.419Z'
+modified: '2024-10-08T09:23:35.114Z'
 ---
 
 # pinky

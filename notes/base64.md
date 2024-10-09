@@ -2,7 +2,7 @@
 tags: [linux]
 title: base64
 created: '2020-09-01T08:26:05.388Z'
-modified: '2024-02-22T19:17:05.009Z'
+modified: '2024-09-19T09:13:37.603Z'
 ---
 
 # base64
@@ -33,3 +33,4 @@ echo FOO | python -m base64
 - [[echo]]
 - [[openssl]]
 - [[python]]
+- [[baudot]]
