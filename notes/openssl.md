@@ -2,7 +2,7 @@
 tags: [crypto, linux, network]
 title: openssl
 created: '2019-07-30T06:19:49.183Z'
-modified: '2024-06-20T09:18:08.627Z'
+modified: '2024-09-13T06:53:16.339Z'
 ---
 
 # openssl
@@ -26,10 +26,22 @@ openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 
 openssl x509   -in cert.crt -text -noout
 
-openssl crl2pkcs7 -nocrl -certfile CHAIN.pem | openssl pkcs7 -print_certs -text -noout
-
 openssl verify -CAfile foo.cain.crt foo.crt   # verify certificate against CAfile => foo.crt: OK
 ```
+
+## read two certificates at the same time
+
+```sh
+openssl crl2pkcs7 -nocrl -certfile CHAIN.pem | openssl pkcs7 -print_certs -text -noout
+
+openssl crl2pkcs7 \
+  -nocrl \
+  -certfile <(cat .kube/config | yq '.users[] | select(.name == "onpremise-prod" ) | .user.client-certificate-data | @base64d') \
+  -out multi_cert.p7b
+
+openssl pkcs7 -print_certs -in multi_cert.p7b -text|grep After
+```
+
 
 ## rsa 
 

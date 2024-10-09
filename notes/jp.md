@@ -1,7 +1,8 @@
 ---
+tags: [json]
 title: jp
 created: '2024-06-05T12:05:51.730Z'
-modified: '2024-06-05T12:07:05.320Z'
+modified: '2024-10-08T09:20:48.644Z'
 ---
 
 # jp

@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: logcli
 created: '2024-04-04T11:04:46.625Z'
-modified: '2024-06-06T08:32:51.867Z'
+modified: '2024-10-08T09:23:35.094Z'
 ---
 
 # logcli

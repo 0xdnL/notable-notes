@@ -1,8 +1,8 @@
 ---
-tags: [database/mysql]
+tags: [database/mysql, sql]
 title: mysql
 created: '2019-07-30T06:19:49.179Z'
-modified: '2023-11-18T13:25:59.632Z'
+modified: '2024-09-22T11:26:23.383Z'
 ---
 
 # mysql
@@ -13,6 +13,7 @@ modified: '2023-11-18T13:25:59.632Z'
 
 ```sh
 yum install mysql
+brew install community-mysql
 ```
 
 ## option
@@ -126,6 +127,7 @@ VALUES (value1, value2, value3, ...);
 
 - [[mongo]]
 - [[psql]]
+- [[sqlcmd]]
 - [[sqlite]]
 - [mysql-find-a-table-in-all-database - stackoverflow](http://stackoverflow.com/a/3756768)
 - [how-to-create-a-new-user-and-grant-permissions - digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)

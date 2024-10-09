@@ -2,7 +2,7 @@
 tags: [shell/bash/keyword]
 title: bash for
 created: '2019-07-30T06:19:49.007Z'
-modified: '2023-11-20T18:17:59.320Z'
+modified: '2024-08-03T09:15:51.150Z'
 ---
 
 # bash for
@@ -94,6 +94,18 @@ done
 IFS=$'\n'; # split on NL only, so iterating over files containing spaces would be safe
 for F in $(ls -1 webm/*); do 
   echo $F;
+done
+
+IFS=$'\n'; for F in $(ls -1 *.mp3); do 
+  TRACK="$(echo $F | cut -d '-' -f1 | xargs)"; 
+  TITLE="$(echo $F | cut -d '-' -f3 | xargs -0)"; 
+  eyed3 \
+    --add-image "cover.jpg:FRONT_COVER" \
+    --track "$TRACK" \
+    --artist "ARTIST" \
+    --album "ALBUM" \
+    --title "$TITLE" \
+    "$F";  
 done
 ```
 

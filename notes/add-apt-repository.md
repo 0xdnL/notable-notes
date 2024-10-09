@@ -2,7 +2,7 @@
 tags: [linux]
 title: add-apt-repository
 created: '2022-02-02T09:05:29.982Z'
-modified: '2023-03-23T10:17:46.175Z'
+modified: '2024-09-22T11:15:40.869Z'
 ---
 
 # add-apt-repository
@@ -10,6 +10,12 @@ modified: '2023-03-23T10:17:46.175Z'
 > script which adds an external [[apt]] repository to either `/etc/apt/sources.list` 
 > or a file in `/etc/apt/sources.list.d/` 
 > or removes an already existing repository
+
+## install
+
+```sh
+apt install software-properties-common
+```
 
 ## option
 
@@ -30,6 +36,8 @@ add-apt-repository "ppa:ian-berke/ppa-drawers"  # ppa
 
 add-apt-repository -r "deb https://download.srcclr.com/ubuntu stable/"
 add-apt-repository -r "ppa:ian-berke/ppa-drawers"
+
+add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list)"
 ```
 
 ## see also
@@ -37,3 +45,5 @@ add-apt-repository -r "ppa:ian-berke/ppa-drawers"
 - [[apt-key]]
 - [[apt]]
 - [[apt-get]]
+- [[lsb_release]]
+- [[sqlcmd]]

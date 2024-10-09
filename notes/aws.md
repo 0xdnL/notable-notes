@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2024-06-14T11:19:28.959Z'
+modified: '2024-07-29T08:43:23.174Z'
 ---
 
 # aws
@@ -149,6 +149,10 @@ aws cloudformation list-stacks --query "StackSummaries[*].StackName" --stack-sta
   UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS \
   UPDATE_ROLLBACK_COMPLETE \
   REVIEW_IN_PROGRESS 
+
+aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE CREATE_IN_PROGRESS
+
+aws cloudformation describe-stack-events --stack-name STACK | jq '.StackEvents[] | select(.ResourceStatus == "CREATE_IN_PROGRESS")'
 ```
 
 [[cdk]], [[cfn]], [[terraform]]
@@ -215,7 +219,6 @@ aws ec2 describe-snapshots --filters Name=tag:Stack,Values=prod           # base
 aws ec2 describe-snapshots --filters "Name=storage-tier,Values=archive"   # only archived snapshots
 aws ec2 describe-snapshots --filters Name=volume-id,Values=049df61146c4d7901 --query "Snapshots[*].[SnapshotId]"                   --output text
 aws ec2 describe-snapshots --filters Name=status,Values=pending              --query "Snapshots[*].{ID:SnapshotId,Time:StartTime}" --owner-ids self 
-
 ```
 
 #### find vpc dependencies when 'DependencyViolation' occure
@@ -274,6 +277,7 @@ curl 'https://ec2.shop?region=us-west-2&filter=m4,m5,ssd'
 curl 'https://ec2.shop' -H 'accept: json'
 ```
 
+- [[curl]]
 - [[ec2-instance-selector]]
 - [ec2.shop](https://ec2.shop)
 - [docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
@@ -348,6 +352,7 @@ aws iam list-virtual-mfa-devices \
 # if web console won't allow removal of mfa device
 aws iam delete-virtual-mfa-device --serial-number "arn:aws:iam::ACCOUNT_ID:mfa/root-account-mfa-device"  
 
+
 # aws iam - access advisor
 aws iam generate-service-last-accessed-details --arn ARN   # returns job-id
 
@@ -370,6 +375,8 @@ aws iam add-user-to-group --group-name GROUPE_NAME --user-name USER_NAME
 aws iam get-group --group-name GROUP_NAME
 
 aws iam create-access-key --user-name USER_NAME
+
+aws iam get-access-key-last-used --access-key-id AKIA3IBACK2K3LQC6PGS
 ```
 
 ## rds - relational database service

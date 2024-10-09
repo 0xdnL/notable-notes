@@ -2,12 +2,12 @@
 tags: [Notebooks]
 title: baudot
 created: '2020-04-16T08:49:57.649Z'
-modified: '2020-09-02T17:49:18.634Z'
+modified: '2024-09-19T09:14:35.624Z'
 ---
 
 # baudot
 
-> character encoding for telegraphy invented by Émile Baudot
+> base32 character encoding for telegraphy invented by Émile Baudot
 
 - was the predecessor to the International Telegraph Alphabet No. 2 (`ITA2`)
 - the most common teleprinter code in use until the advent of `ascii`
@@ -20,6 +20,24 @@ modified: '2020-09-02T17:49:18.634Z'
 1_ 	SP 0020 	- 002D 	X 0058 	Z 005A 	S 0053 	T 0054 	W 0057 	V 0056 	DEL 007F 	K 004B 	M 004D 	L 004C 	R 0052 	Q 0051 	N 004E 	P 0050
 ```
 * character + unicode-codepoint
+
+
+## 1888 patented printing telegraph sheet
+
+```
+    1 2 3 4 5
+A   + - - - -
+B   - - + + -
+C   + - + + -
+..  ..
+X   - + - - +
+Y   - - + - -
+Z   + + - - +
+```
+
 ## see also
+
 - [[baud]]
 - [[ascii]]
+- [[base64]]
+- [en.wikipedia.org/wiki/Base32](https://en.wikipedia.org/wiki/Base32)

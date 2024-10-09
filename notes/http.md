@@ -2,7 +2,7 @@
 tags: [python]
 title: http
 created: '2023-03-23T08:51:29.253Z'
-modified: '2023-03-23T08:55:59.995Z'
+modified: '2024-10-08T08:06:34.002Z'
 ---
 
 # http
@@ -38,3 +38,4 @@ http --form example.org name='bob' profile_picture@'bob.png'      # Send form-en
 
 - [[hyper text transfer protocol]]
 - [httpie.org](https://httpie.org)
+- [[nghttp]]

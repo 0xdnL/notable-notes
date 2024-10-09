@@ -1,7 +1,8 @@
 ---
+tags: [database/postgresql]
 title: pgbadger
 created: '2024-05-06T12:23:12.776Z'
-modified: '2024-05-06T12:25:39.952Z'
+modified: '2024-10-08T09:23:00.074Z'
 ---
 
 # pgbadger

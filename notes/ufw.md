@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: ufw
 created: '2024-03-23T13:23:02.476Z'
-modified: '2024-03-23T13:27:03.016Z'
+modified: '2024-10-08T09:20:37.169Z'
 ---
 
 # ufw

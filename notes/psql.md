@@ -2,7 +2,7 @@
 tags: [database/postgresql, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2024-06-17T09:53:42.564Z'
+modified: '2024-07-29T13:14:46.195Z'
 ---
 
 # psql
@@ -424,6 +424,7 @@ END $$;
 
 - [[pgenv]]
 - [[pg_dump]], [[pg_dumpall]]
+- [[pg_amcheck]]
 - [[mysql]], [[sqlite]]
 - [[mongo]]
 - [postgresql.org/docs/current](https://www.postgresql.org/docs/current/index.html)

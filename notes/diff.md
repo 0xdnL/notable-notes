@@ -2,7 +2,7 @@
 tags: [linux]
 title: diff
 created: '2019-07-30T06:19:49.036Z'
-modified: '2023-04-20T08:22:01.581Z'
+modified: '2024-07-15T13:43:02.708Z'
 ---
 
 # diff
@@ -37,6 +37,7 @@ diff -y <(curl -s URL) <(cat $(brew --prefix)/PATH/git-completion.bash)
 
 ## see also
 
+- [[paste]]
 - [[tput]]
 - [[column]]
 - [[colordiff]]

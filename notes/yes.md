@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: 'yes'
 created: '2020-05-06T11:21:08.436Z'
-modified: '2023-05-13T15:13:40.470Z'
+modified: '2024-09-27T16:17:36.571Z'
 ---
 
 # yes
@@ -34,4 +34,5 @@ yes | keytool -import -trustcacerts -alias "ALIAS" -file "CERT.pem" -cacerts -st
 
 - [[openssl]]
 - [[fsck]]
+- [[awk]]
 - [endler.dev/yes](https://endler.dev/2017/yes/)

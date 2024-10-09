@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: numfmt
 created: '2021-10-19T11:54:38.435Z'
-modified: '2023-11-21T08:50:52.159Z'
+modified: '2024-07-08T11:20:02.887Z'
 ---
 
 # numfmt
@@ -47,14 +47,51 @@ none    # no auto-scaling is done; suffixes will trigger an error
 auto    # accept optional single/two letter suffix:
         # 1K = 1000, 1Ki = 1024, 1M = 1000000, 1Mi = 1048576,
 
-si      # accept optional single letter suffix:
+si      # auto-scale numbers according to the International System of Units (SI) standard
+        # accept optional single letter suffix:
         # 1K = 1000, 1M = 1000000, ...
+        # ‘K’  =>  1000^1 = 10^3 (Kilo) (uppercase accepted on input)
+        # ‘k’  =>  1000^1 = 10^3 (Kilo) (lowercase used on output)
+        # ‘M’  =>  1000^2 = 10^6 (Mega)
+        # ‘G’  =>  1000^3 = 10^9 (Giga)
+        # ‘T’  =>  1000^4 = 10^{12} (Tera)
+        # ‘P’  =>  1000^5 = 10^{15} (Peta)
+        # ‘E’  =>  1000^6 = 10^{18} (Exa)
+        # ‘Z’  =>  1000^7 = 10^{21} (Zetta)
+        # ‘Y’  =>  1000^8 = 10^{24} (Yotta)
+        # ‘R’  =>  1000^9 = 10^{27} (Ronna)
+        # ‘Q’  =>  1000^{10} = 10^{30} (Quetta)
 
-iec     # accept optional single letter suffix:
+iec     # auto-scale numbers according to the International Electrotechnical Commission (IEC) standard
+        # accept optional single letter suffix:
         # 1K = 1024, 1M = 1048576, ...
+        # ‘K’  =>  1024^1 = 2^{10} (Kibi) (uppercase used on output)
+        # ‘k’  =>  1024^1 = 2^{10} (Kibi) (lowercase accepted on input)
+        # ‘M’  =>  1024^2 = 2^{20} (Mebi)
+        # ‘G’  =>  1024^3 = 2^{30} (Gibi)
+        # ‘T’  =>  1024^4 = 2^{40} (Tebi)
+        # ‘P’  =>  1024^5 = 2^{50} (Pebi)
+        # ‘E’  =>  1024^6 = 2^{60} (Exbi)
+        # ‘Z’  =>  1024^7 = 2^{70} (Zebi)
+        # ‘Y’  =>  1024^8 = 2^{80} (Yobi)
+        # ‘R’  =>  1024^9 = 2^{90} (Robi)
+        # ‘Q’  =>  1024^{10} = 2^{100} (Quebi)
 
-iec-i   # accept optional two-letter suffix:
+
+iec-i   # auto-scale numbers according to the International Electrotechnical Commission (IEC) standard
+        # accept optional two-letter suffix:
         # 1Ki = 1024, 1Mi = 1048576, ...
+        # ‘Ki’  =>  1024^1 = 2^{10} (Kibi) (uppercase used on output)
+        # ‘ki’  =>  1024^1 = 2^{10} (Kibi) (lowercase accepted on input)
+        # ‘Mi’  =>  1024^2 = 2^{20} (Mebi)
+        # ‘Gi’  =>  1024^3 = 2^{30} (Gibi)
+        # ‘Ti’  =>  1024^4 = 2^{40} (Tebi)
+        # ‘Pi’  =>  1024^5 = 2^{50} (Pebi)
+        # ‘Ei’  =>  1024^6 = 2^{60} (Exbi)
+        # ‘Zi’  =>  1024^7 = 2^{70} (Zebi)
+        # ‘Yi’  =>  1024^8 = 2^{80} (Yobi)
+        # ‘Ri’  =>  1024^9 = 2^{90} (Robi)
+        # ‘Qi’  =>  1024^{10} = 2^{100} (Quebi)
 ```
 
 ### usage
@@ -87,6 +124,6 @@ numfmt --field=2 --from-unit=1024 --to=iec-i --suffix B < <(echo 'MemTotal:     
 - [[coreutils]]
 - [[free]]
 - [[dd]], [[du]], [[df]]
-- [[crane]]
+- [[crane]], [[kubectl]]
 - [gnu.org/coreutils/manual/numfmt](https://www.gnu.org/software/coreutils/manual/html_node/numfmt-invocation.html)
 - [pixelbeat.org/docs/numfmt](https://www.pixelbeat.org/docs/numfmt.html)

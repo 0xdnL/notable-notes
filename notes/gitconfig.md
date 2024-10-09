@@ -1,7 +1,8 @@
 ---
+tags: [linux]
 title: gitconfig
 created: '2024-02-20T09:28:56.717Z'
-modified: '2024-02-20T09:29:39.904Z'
+modified: '2024-10-08T09:23:35.087Z'
 ---
 
 # gitconfig

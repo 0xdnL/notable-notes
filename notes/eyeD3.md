@@ -2,7 +2,7 @@
 tags: [linux, macos, python]
 title: eyed3
 created: '2019-08-23T14:52:21.967Z'
-modified: '2023-11-20T18:38:52.056Z'
+modified: '2024-08-27T08:36:16.591Z'
 ---
 
 # eyed3
@@ -58,3 +58,4 @@ find . -type f -name "*.mp3" -exec eyed3 {} \;    # read metadata form all mp3's
 - [[youtube-dl]]
 - [[python]]
 - [[ffmpeg]]
+- [[exiftool]]

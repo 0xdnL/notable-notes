@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: fzf
 created: '2019-07-30T06:19:49.058Z'
-modified: '2023-04-21T12:26:49.837Z'
+modified: '2024-07-27T12:52:55.724Z'
 ---
 
 # fzf
@@ -50,6 +50,12 @@ FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 ⌥-C     # cd into the selected directory
         # Set FZF_ALT_C_COMMAND to override the default command
         # Set FZF_ALT_C_OPTS to pass additional options
+```
+
+## cool stuff
+
+```sh
+kill -9 **  # then tab tab -> fzf find processe .. awesome !!
 ```
 
 ## see also

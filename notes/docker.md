@@ -2,7 +2,7 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2024-06-06T06:31:03.099Z'
+modified: '2024-09-30T11:00:09.407Z'
 ---
 
 # docker
@@ -48,6 +48,177 @@ DOCKER_TMPDIR                     # location for temporary Docker files
 # connect to docker host
 export DOCKER_API_VERSION=1.38 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/path/to/certs DOCKER_HOST=tcp://10.32.23.187:2376
 ```
+
+## option
+
+```sh
+    --config string      # location of client config files (default "~/.docker")
+-c, --context string     # name of context to use to connect to the daemon
+-D, --debug              # enable debug mode
+-H, --host list          # daemon socket to connect to
+-l, --log-level string   # set logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+    --tls                # use TLS; implied by --tlsverify
+    --tlscacert string   # trust certs signed only by this CA (default "~/.docker/ca.pem")
+    --tlscert string     # path to TLS certificate file       (default "~/.docker/cert.pem")
+    --tlskey string      # path to TLS key file               (default "~/.docker/key.pem")
+    --tlsverify          # use TLS and verify the remote
+-v, --version            # print version information and quit
+```
+
+## run
+
+> Create and run a new container from an image
+
+```sh
+docker run
+```
+
+## exec
+
+> Execute a command in a running container
+
+```sh
+docker exec
+```
+
+## ps
+
+> List containers
+
+```sh
+docker ps
+```
+
+## build
+
+> Build an image from a Dockerfile
+
+```sh
+docker build
+```
+
+## pull
+
+> Download an image from a registry
+
+```sh
+docker pull
+```
+
+## push
+
+> Upload an image to a registry
+
+```sh
+docker push
+```
+
+## images
+
+> List images
+
+```sh
+docker images
+```
+
+## login
+
+> Log in to a registry
+
+```sh
+docker login
+```
+
+## logout
+
+> Log out from a registry
+
+```sh
+docker logout
+```
+
+## search
+
+> Search docker-hub for images
+
+```sh
+docker search
+```
+
+## version
+
+> Show the Docker version information
+
+```sh
+docker version
+```
+
+## info
+
+> Display system-wide information
+
+```sh
+docker info
+```
+
+```                                          
+Management Commands:                                                                                                                                                              
+  builder     Manage builds                                                                                                                                                       
+  buildx*     Docker Buildx                                                              
+  compose*    Docker Compose                                                             
+  container   Manage containers                                                                                                                                                   
+  context     Manage contexts                                                            
+  debug*      Get a shell into any image or container                                                                                                                             
+  desktop*    Docker Desktop commands (Alpha)                                                                                                                                     
+  dev*        Docker Dev Environments                                                                                                                                             
+  extension*  Manages Docker extensions                                                  
+  feedback*   Provide feedback, right in your terminal!                      
+  image       Manage images         
+  init*       Creates Docker-related starter files for your project              
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks                                                            
+  plugin      Manage plugins              
+  sbom*       View the packaged-based Software Bill Of Materials (SBOM) for an image
+  scout*      Docker Scout                                                               
+  system      Manage Docker                                                              
+  trust       Manage trust on Docker images                                              
+  volume      Manage volumes               
+                                                                                         
+Swarm Commands:                                                                          
+  swarm       Manage Swarm      
+                                                                                         
+Commands:                                  
+  attach      Attach local standard input, output, and error streams to a running container                                                                                                                                                       
+  commit      Create a new image from a container's changes                           
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container                                                     
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server                 
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image                                               
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects                      
+  kill        Kill one or more running containers                                                                        
+  load        Load an image from a tar archive or STDIN                                                                  
+  logs        Fetch the logs of a container                                                                                                                                       
+  pause       Pause all processes within one or more containers                                                                                                                   
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container                                                                         
+  restart     Restart one or more containers                                                                                                                                                                       
+  rm          Remove one or more containers                                                              
+  rmi         Remove one or more images                                                                                                                                                                            
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)                                                                                                                             
+  start       Start one or more stopped containers                                                       
+  stats       Display a live stream of container(s) resource usage statistics                            
+  stop        Stop one or more running containers                                                        
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE                                                      
+  top         Display the running processes of a container                                               
+  unpause     Unpause all processes within one or more containers                                                        
+  update      Update configuration of one or more containers                                             
+  wait        Block until one or more containers stop, then print their exit codes  
+```
+
+-------------------
 
 ## login
 
@@ -172,6 +343,7 @@ docker run -itd --name c1-1 --network host busybox sh
 
 ## see also
 
+- [[podman]], [[crictl]], [[nerdctl]] [[ctr]]
 - [[Dockerfile]]
 - [[brew]]
 - [[kubectl]]

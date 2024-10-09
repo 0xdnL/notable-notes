@@ -1,7 +1,8 @@
 ---
+tags: [container]
 title: Dockerfile
 created: '2024-02-08T12:22:45.265Z'
-modified: '2024-02-08T12:34:45.060Z'
+modified: '2024-10-08T09:22:15.749Z'
 ---
 
 # Dockerfile
