@@ -2,7 +2,7 @@
 tags: [javascript, json]
 title: json
 created: '2022-12-02T10:57:31.255Z'
-modified: '2023-05-24T11:44:03.727Z'
+modified: '2024-11-01T11:23:18.795Z'
 ---
 
 # json
@@ -37,6 +37,7 @@ curl -is HOST | json -H forks           # drop headers
 
 ## see also
 
+- [[json5]]
 - [[jq]], [[yq]]
 - [[npm]]
 - [[curl]]

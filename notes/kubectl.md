@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2024-08-02T11:00:14.566Z'
+modified: '2024-10-26T14:48:44.677Z'
 ---
 
 # kubectl
@@ -14,7 +14,15 @@ modified: '2024-08-02T11:00:14.566Z'
 ```sh
 brew install kubectl
 kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl`
+
+# linux
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
+
+[[install]]
 
 ## environment
 
@@ -170,6 +178,7 @@ kubectl cp POD:/etc/nginx/nginx.conf nginx.conf                 # copy nginx.con
 kubectl config view --minify
 kubectl config view --flatten
 kubectl config view --raw
+kubectl config view --minify --output 'jsonpath={..namespace}'
 
 kubectl config current-context
 
@@ -184,6 +193,18 @@ kubectl config set-context --current --namespace kube-node-lease    # sets names
 # merge configs
 KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten \
   > ~/.kube/merged_kubeconfig && mv ~/.kube/merged_kubeconfig ~/.kube/config
+```
+
+## create
+
+```sh
+kubectl create configmap go-websocket-cm \
+  --from-file=index.html \
+  --from-file=main.go \
+  --from-file=go.sum \
+  --from-file=go.mod \
+  --dry-run=client \
+  -o yaml > configmap.yaml 
 ```
 
 ## certificate
@@ -222,37 +243,10 @@ kubectl get events --sort-by='.metadata.creationTimestamp' \
 
 [[go-template]]
 
-## get
-
-> display one or many resources
-
-```sh
-kubectl api-resources   # for a complete list of supported resources
-
-kubectl get nodes
-kubectl get crd volumesnapshotcontent -o yaml
-
-kubectl get pods                          # List all pods in ps output format
-kubectl get pods -o wide                  # List all pods in ps output format with more information (such as node name)
-kubectl get replicationcontroller web     # List a single replication controller with specified NAME in ps output format
-kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
-kubectl get -o json pod web-pod-13je7     # List a single pod in JSON output format
-kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
-kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
-kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}    # Return only the phase value of the specified pod
-kubectl get pod test-pod -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # List resource information in custom columns
-kubectl get rc,services                                   # List all replication controllers and services together in ps output format
-kubectl get rc/web service/frontend pods/web-pod-13je7    # List one or more resources by their type and names
-```
 
 ## node
 
 ```sh
-kubectl get node NODE_NAME -o name
-kubectl get node NODE_NAME -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
-
-kubectl get nodes --selector='!node-role.kubernetes.io/master' --no-headers -o custom-columns=":metadata.name"
-
 kubectl label node --all 'vpc.amazonaws.com/has-trunk-attached'-                # remove all labels 'vpc.ama..'
 
 
@@ -288,6 +282,8 @@ kubectl exec -it POD -- cat /data/out.txt | tail -n 3
 
 ## get
 
+> display one or many resources
+
 ```sh
 kubectl get all     # get alle resoruce of current namespace
 
@@ -298,7 +294,29 @@ kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
 kubectl get po POD_NAME -o yaml
 kubectl get pod
 kubectl get pods --show-labels | awk '{print $6}' | column -s, -t
-kubectl get pods -L 
+kubectl get pods -L
+
+
+kubectl get nodes
+kubectl get node NODE_NAME -o name
+kubectl get node NODE_NAME -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
+kubectl get nodes --selector='!node-role.kubernetes.io/master' --no-headers -o custom-columns=":metadata.name"
+
+kubectl get crd volumesnapshotcontent -o yaml
+
+kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
+kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
+
+kubectl get pod POD -o json               # List a single pod in JSON output format
+kubectl get pod POD -o template --template={{.status.phase}}     # return only the phase value of the specified pod
+kubectl get pods -A -o wide --field-selector spec.nodeName=NODE  # list all pods running on NODE
+kubectl get pod POD -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # list resource information in custom columns
+
+kubectl get replicationcontroller web     # List a single replication controller with specified NAME in ps output format
+kubectl get rc,services                                   # List all replication controllers and services together in ps output format
+kubectl get rc/web service/frontend pods/web-pod-13je7    # List one or more resources by their type and names
+
+kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
 ```
 
 ## run

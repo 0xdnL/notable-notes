@@ -2,7 +2,7 @@
 tags: [linux]
 title: perl
 created: '2019-07-30T06:19:49.150Z'
-modified: '2024-05-06T12:23:07.534Z'
+modified: '2024-10-22T12:21:48.958Z'
 ---
 
 # perl
@@ -23,6 +23,7 @@ perl -de 42         # starts debugger in repl-mode, 42 has no meaning it's just 
 perl -MHTTP::Server::Brick \
   -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
 
+perl -e 'use Cwd "abs_path";use File::Basename;print dirname(abs_path(shift))' "$0"     # get a script path
 
 perl -MCPAN -e'install Text::CSV_XS'
 

@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash echo
 created: '2019-08-02T06:42:37.582Z'
-modified: '2023-11-15T09:26:57.114Z'
+modified: '2024-12-05T08:50:18.182Z'
 ---
 
 # bash echo
@@ -26,7 +26,7 @@ echo $'\112'  # print character from octal
 echo $'\x4a'  # print character from hex 
 ```
 
-## url encoding
+## [[url encoding]]
 
 > urls can only be sent over the Internet using the ASCII character-set.
 
@@ -46,6 +46,8 @@ url_decode ()
     echo -e "${_//%/\\x}"
 }
 ```
+
+[[jq]] 
 
 ## see also
 

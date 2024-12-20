@@ -2,12 +2,12 @@
 tags: [linux]
 title: grep
 created: '2019-07-30T06:19:49.077Z'
-modified: '2022-11-29T08:07:27.584Z'
+modified: '2024-11-29T12:26:02.953Z'
 ---
 
 # grep
 
-> file pattern searcher - derived from [[ed]] operation `g/re/p`
+> derived from [[ed]] operation `g`/`re`/`p` - file pattern searcher
 
 ## option
 
@@ -77,6 +77,8 @@ $        (Question)           # match expression at the end of a line, as in `A$
 ## usage
 
 ```sh
+cat conf | grep .                         # pattern matches any character except a newline, ignore completely empty
+
 find | grep 'pattern' FILE /dev/null      # show filename with find !
 
 grep -l 'pattern' FILE                    # show only matching filename
@@ -107,8 +109,10 @@ echo "${CF_STACKS[*]}" | \
 - [[grepcidr]]
 - [[wc]]
 - [[pkill]]
+- [[nginx]]
 - [[regex]]
 - [REGEX Cheat Sheet](https://staff.washington.edu/weller/grep.html)
 - [Regular Expressions in grep](http://www.robelle.com/smugbook/regexpr.html)
 - [ntu.edu.sg/home/ehchua/programming/howto/Regexe](https://www.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html)
 - [zwischenzugs.com/2022/02/02/grep-flags-the-good-stuff/](https://zwischenzugs.com/2022/02/02/grep-flags-the-good-stuff/)
+

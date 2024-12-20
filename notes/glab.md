@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: glab
 created: '2023-09-13T11:14:09.200Z'
-modified: '2023-11-10T07:50:01.228Z'
+modified: '2024-12-04T14:35:15.140Z'
 ---
 
 # glab
@@ -45,5 +45,6 @@ glab config set browser mybrowser
 
 ## see also
 
+- [[trivy]]
 - [[gh]]
 - [gitlab.com/gitlab-org/cli](https://gitlab.com/gitlab-org/cli)

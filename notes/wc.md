@@ -2,12 +2,12 @@
 tags: [linux]
 title: wc
 created: '2022-11-29T08:07:33.392Z'
-modified: '2023-04-21T12:12:25.443Z'
+modified: '2024-12-04T10:19:36.064Z'
 ---
 
 # wc
 
-> displays the number of lines, words, and bytes contained in each input
+> word, line, character, and byte count contained in each input
 
 ## option
 
@@ -29,6 +29,16 @@ history | wc
 8744   61819  628428
 # no lines, words, bytes
 ```
+
+```sh
+wc -l < FILE 
+61
+
+wc -l FILE 
+61 FILE
+```
+
+[[bash redirects]]
 
 ## see also
 

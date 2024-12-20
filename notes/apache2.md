@@ -2,12 +2,14 @@
 tags: [linux]
 title: apache2
 created: '2019-07-30T06:19:48.985Z'
-modified: '2023-04-11T15:53:46.578Z'
+modified: '2024-11-26T08:15:29.562Z'
 ---
 
 # apache2
 
-> `A Patchy Server` and package
+> "a patchy server" and package
+
+alternative to: [[nginx]]
 
 ## install
 
@@ -24,23 +26,6 @@ apache2 -S                      # Show settings as parsed from the config file
 apache2 -v
 
 service apache2 restart
-```
-
-## apachectl
-
-```sh
-
-apachectl configtest                # test config
-
-/usr/local/apache/bin/apachectl configtest
-
-
-apache2ctl -M                     # list loaded modules
-
-apachectl -t -D DUMP_MODULES      # list loaded modules
-
-ls /etc/apache2/mods-enabled/		  # list enabled modules
-ls /etc/apache2/mods-available/		# list available modules
 ```
 
 ## a2enmode
@@ -72,5 +57,7 @@ a2dissite 000-default
 
 ## see also
 
+- [[ab]]
+- [[apachectl]]
 - [Generate Mozilla Security Recommended Web Server Configuration Files](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 - [manpages.debian.org/jessie/apache2/a2ensite.8.en.html](https://manpages.debian.org/jessie/apache2/a2ensite.8.en.html)

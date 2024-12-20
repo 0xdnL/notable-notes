@@ -2,14 +2,14 @@
 tags: [linux]
 title: dmesg
 created: '2019-08-28T06:45:42.937Z'
-modified: '2021-06-08T05:40:59.995Z'
+modified: '2024-11-29T12:30:49.212Z'
 ---
 
 # dmesg
 
 > `display message or driver message` prints the message buffer of the kernel
 
-## usage
+## option
 
 ```sh
 -C, --clear                   # clear the kernel ring buffer
@@ -55,6 +55,8 @@ modified: '2021-06-08T05:40:59.995Z'
 -V, --version                 # output version information and exit
 ```
 
+## usage
+
 ```sh
 /var/log/dmesg              # log file
 
@@ -72,5 +74,7 @@ dmesg --level=err,warn
 ```
 
 ## see also
+
 - [[sysctl]]
 - [[syslog]]
+- [[tail]]

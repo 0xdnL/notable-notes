@@ -2,12 +2,12 @@
 tags: [lua, packagemanager]
 title: luarocks
 created: '2020-09-02T13:03:43.096Z'
-modified: '2023-04-11T20:14:40.089Z'
+modified: '2024-11-22T11:42:20.715Z'
 ---
 
 # luarocks
 
-> package manager for lua modules
+> package manager for [[lua]] modules
 
 ## install
 
@@ -30,6 +30,7 @@ luarocks make
 ```
 
 ## see also
-- [[lua]]
+
+- [[nvim]]
 - [[luac]]
 - [[make]]

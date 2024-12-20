@@ -2,12 +2,12 @@
 tags: [linux]
 title: websocat
 created: '2024-09-25T09:54:54.708Z'
-modified: '2024-10-08T09:23:35.049Z'
+modified: '2024-11-10T18:26:18.903Z'
 ---
 
 # websocat
 
-> [[nc]], [[curl]] and [[socat]] for websockets
+> [[nc]], [[curl]] and [[socat]] for [[websockets]]
 
 ## install
 
@@ -35,6 +35,8 @@ ABC
 
 ## see also
 
+- [[mitmproxy]]
+- [[curl]]
 - [[socat]]
 - [[nghttp]]
 - [github.com/vi/websocat](https://github.com/vi/websocat)

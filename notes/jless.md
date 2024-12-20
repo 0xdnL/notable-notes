@@ -2,7 +2,7 @@
 tags: [json, rust]
 title: jless
 created: '2022-05-17T19:12:45.216Z'
-modified: '2023-05-10T14:13:31.135Z'
+modified: '2024-11-12T09:48:07.835Z'
 ---
 
 # jless
@@ -37,6 +37,18 @@ cargo install jless
 alias yless="jless --yaml"
 
 cat file.json | jless
+```
+
+## Copying and Printing
+
+```sh
+yy, pp    # copy/print the value of the currently focused node, pretty printed
+yv, pv    # copy/print the value of the currently focused node in a "nicely" printed one-line format
+ys, ps    # if currently focused value is a string, copy/print the contents of the string unescaped (except control characters)
+yk, pk    # copy/print the key of the current key/value pair
+yp, pP    # copy/print the path from the root JSON element to the currently focused node, e.g., .foo[3].bar
+yb, pb    # like yp, but always uses the bracket form for object keys, e.g., ["foo"][3]["bar"], which is useful if the environment where you'll paste the path doesn't support the .key format, like in Python
+yq, pq    # copy/print a jq style path that will select the currently focused node, e.g., .foo[].bar 
 ```
 
 ## see also

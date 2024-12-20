@@ -2,7 +2,7 @@
 tags: [json, linux]
 title: jq
 created: '2019-07-30T06:19:49.141Z'
-modified: '2024-06-05T12:05:48.481Z'
+modified: '2024-12-05T08:44:49.205Z'
 ---
 
 # jq
@@ -91,9 +91,38 @@ jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$TOKEN"    # decode jwt-tok
 jq -n -c '[{"foo": 1, "bar": 2}, {"foo": 3, "quux": 4}] | map(select( .bar ))'  # get element containing bar-field
 ```
 
+## strftime
+
+```sh
+curl -s 'http://127.0.0.1:8080/loki/api/v1/delete' |  jq '.[] | .start_time |= (strftime("%Y-%m-%d %H:%M:%S")) | .end_time |= (strftime("%Y-%m-%d %H:%M:%S")) | .created_at |= (strftime("%Y-%m-%d %H:%M:%S"))'
+{
+  "start_time": "2024-11-05 08:21:42",
+  "end_time": "2024-12-05 08:21:42",
+  "created_at": "2024-12-05 08:21:53"
+}
+```
+
+[[date]]
+
+## @uri - url encoding
+
+```sh
+echo '{"a": "text with / and spaces &"}' | jq '@uri "\(.a)"'
+# "texte%20with%20%2F%20and%20spaces%20%26"
+
+echo '{"search":"what is jq?"}' | jq '@uri "https://www.google.com/search?q=\(.search)"'
+# "https://www.google.com/search?q=what%20is%20jq%3F"
+
+printf %s "same text as above with / and spaces &"|jq -sRr @uri
+# same%20text%20as%20above%20with%20%2F%20and%20spaces%20%26
+```
+
+[[url encoding]], [gitlab.in2p3.fr/-/snippets/609](https://gitlab.in2p3.fr/-/snippets/609)
+
 ## see also
 
 - [[jless]], [[fx]], [[jsonpath]]
+- [[json5]]
 - [[jp]]
 - [[yq]]
 - [[jwt]]

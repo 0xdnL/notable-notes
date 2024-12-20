@@ -2,7 +2,7 @@
 tags: [database/postgresql, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2024-07-29T13:14:46.195Z'
+modified: '2024-12-11T13:36:56.444Z'
 ---
 
 # psql
@@ -294,7 +294,7 @@ psql -U postgres -d DATABASE -c "SELECT * FROM some_table"  # run query
 \unset NAME             -- unset (delete) internal variable
 ```
 
-## sql
+## info: server & cluster
 
 ```sql
 SELECT current_database();  -- get currently connected db           \conninfo
@@ -313,7 +313,11 @@ SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
 SELECT version();                           -- get server version
 SELECT current_setting('LC_MESSAGES');      -- locale..
 
-SELECT pg_size_pretty( pg_database_size('DATABASE') );    -- get db size
+-- get database size
+SELECT pg_size_pretty(pg_database_size('DATABASE'));
+
+-- get cluster size
+SELECT pg_size_pretty(sum(pg_tablespace_size(oid))) AS "total cluster size" FROM pg_tablespace;
 
 
 SHOW hba_file;            -- show host-based-access conf file
@@ -329,6 +333,12 @@ SELECT * FROM pg_roles;
 
 -- shows which user has which grant on table mytable
 SELECT grantee, privilege_type FROM information_schema.role_table_grants WHERE table_name='mytable';
+
+SELECT * FROM information_schema.role_table_grants WHERE grantee = 'readonlyRole';
+SELECT * FROM information_schema.role_table_grants WHERE table_name = 'InvoiceData';
+ 
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;
+
 
 SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'name_of_table') AS table_existence;
 

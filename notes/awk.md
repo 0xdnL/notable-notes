@@ -2,14 +2,14 @@
 tags: [linux, macos]
 title: awk
 created: '2019-07-30T06:19:48.989Z'
-modified: '2024-09-27T16:23:05.160Z'
+modified: '2024-11-29T12:25:31.059Z'
 ---
 
 # awk
 
-> domain-specific-language for text processing, data extraction and reporting
-> data-driven scripting language
-> name derived from authors surnames: Alfred Aho, Peter Weinberger, and Brian Kernighan
+> `A`lfred Aho, Peter `W`einberger, and Brian `K`ernighan - data-driven dsl for text processing, data extraction and reporting
+
+[[sed]], [[grep]]
 
 ### implementations
 

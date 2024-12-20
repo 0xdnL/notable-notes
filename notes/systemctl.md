@@ -2,12 +2,12 @@
 tags: [initsystem, linux, systemd]
 title: systemctl
 created: '2019-07-30T06:19:49.250Z'
-modified: '2024-06-16T18:19:26.629Z'
+modified: '2024-11-26T08:14:15.999Z'
 ---
 
 # systemctl
 
-> Query or send control commands to the systemd manager.
+> query or send control commands to the [[systemd]] manager
 
 ## usage
 ```sh
@@ -81,4 +81,5 @@ systemctl --output=json status docker-volume-netshare.service
 
 - [[sudo]]
 - [[journalctl]]
+- [[apachectl]]
 - [difference between service and systemctl? - serverfault.com](https://serverfault.com/questions/867322/what-is-the-difference-between-service-and-systemctl)

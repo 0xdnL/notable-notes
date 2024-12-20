@@ -2,12 +2,14 @@
 tags: [linux, packagemanager, python]
 title: apt
 created: '2019-07-30T20:20:43.614Z'
-modified: '2023-10-14T10:05:01.188Z'
+modified: '2024-12-04T15:27:35.811Z'
 ---
 
 # apt
 
 > high-level commandline interface for the package management system, frontend to [[apt-get]]
+
+[[dpkg]]
 
 ## usage
 
@@ -30,10 +32,8 @@ apt autoremove         # remove former dependencies
 ## see also
 
 - [[sudo]]
-- [[apt-get]]
-- [[apt-key]]
-- [[apt-file]]
-- [[apt-cache]]
+- [[apt-get]], [[apt-key]], [[apt-file]], [[apt-cache]]
 - [[journalctl]]
 - [[brew]]
 - [[nix]]
+- [[apk]]

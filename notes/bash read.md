@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash read
 created: '2019-07-30T06:19:49.017Z'
-modified: '2023-11-20T18:28:18.689Z'
+modified: '2024-12-04T10:33:29.298Z'
 ---
 
 # bash read
@@ -26,13 +26,19 @@ REPLY       #
 -p          # prompt output the string PROMPT without a trailing newline before attempting to read
 ```
 
-## usage
+## save to multiple vairables
 
 ```sh
 echo 1 2 | { read a b; echo $a $b; }
 
-read a b < <(echo 1 2);  echo $a $b;            # save to multiple vairables
+read a b < <(echo 1 2);  echo $a $b;            
 
+CMD | awk '{pritn $1,$2}' | while read NS RB; do echo "NS: $NS, RB: $RB"; done
+```
+
+## usage
+
+```sh
 read -a foo < <(echo 1 2);                      # save to array
 
 
@@ -73,7 +79,6 @@ done < <(find . -print0)
 - [[bash exec]]
 - [[bash mapfile]] [[bash readarray]]
 - [[bash while]]
-- [[bash process substitution]]
 - [computerhope.com/unix/bash/read](https://www.computerhope.com/unix/bash/read.htm)
 - [why-piping-input-to-read-only-works-when-fed-into-while-read-construct](https://stackoverflow.com/questions/13763942/why-piping-input-to-read-only-works-when-fed-into-while-read-construct)
 - [stackoverflow.com/read-input-in-bash-inside-a-while-loop](https://stackoverflow.com/questions/6883363/read-input-in-bash-inside-a-while-loop)

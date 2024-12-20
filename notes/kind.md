@@ -2,7 +2,7 @@
 tags: [container]
 title: kind
 created: '2021-11-29T09:47:11.585Z'
-modified: '2023-11-08T14:33:37.614Z'
+modified: '2024-11-16T04:57:11.644Z'
 ---
 
 # kind
@@ -30,10 +30,9 @@ kind load docker-image my-custom-image-0 my-custom-image-1 --name NAME    # imag
 
 ## see also
 
-- [[k3s]], [[k3d]]
+- [[docker]], [[podman]]
 - [[rdctl]]
 - [[flux]]
 - [[kubectl]]
-- [[minikube]]
-- [[docker]]
+- [[minikube]], [[rdctl]], [[k3s]], [[k3d]]
 - [kind.sigs.k8s.io/](https://kind.sigs.k8s.io/)

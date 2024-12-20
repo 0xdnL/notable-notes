@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: telnet
 created: '2019-07-30T06:19:49.252Z'
-modified: '2024-07-09T07:31:56.525Z'
+modified: '2024-10-09T10:10:20.595Z'
 ---
 
 # telnet
@@ -50,7 +50,7 @@ Connection closed by foreign host.
 
 ## see also
 
-- [[socat]]
+- [[socat]], [[websocat]]
 - [[nc]]
 - [[curl]]
 - [[tcp-ip]]

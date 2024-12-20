@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectx
 created: '2020-10-09T09:19:33.429Z'
-modified: '2023-10-16T10:44:59.785Z'
+modified: '2024-11-16T05:17:47.796Z'
 ---
 
 # kubectx
@@ -45,4 +45,4 @@ kubectx -                 # switch to the previous context
 - [[kubectl]]
 - [[kubens]]
 - [[k9s]]
-- [[kubie]]
+- [[kubie]], [[kuberlr]]

@@ -2,7 +2,7 @@
 tags: [Notebooks]
 title: wasm
 created: '2020-08-19T07:23:59.679Z'
-modified: '2023-05-25T16:16:56.382Z'
+modified: '2024-11-16T05:24:44.537Z'
 ---
 
 # wasm
@@ -52,3 +52,4 @@ int sign(int x) { return (x % 2) * (2 - (x % 4)); }
 - [[emcc]]
 - [evilmartians.com/chronicles/hands-on-webassembly-try-the-basics](https://evilmartians.com/chronicles/hands-on-webassembly-try-the-basics)
 - [wingolog.org/archives/2021/12/13/webassembly-the-new-kubernetes](https://wingolog.org/archives/2021/12/13/webassembly-the-new-kubernetes)
+- [[spin]]

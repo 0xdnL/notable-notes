@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: wget
 created: '2019-07-30T06:19:49.266Z'
-modified: '2024-04-05T12:09:13.603Z'
+modified: '2024-10-27T07:10:11.158Z'
 ---
 
 # wget
@@ -33,6 +33,13 @@ wget -O- 10.43.135.151:9000/minio/v2/metrics/node       # print response to stdo
 wget -qO- URL | CMD
 
 wget --quiet --tries=1 --spider http://localhost/
+
+
+wget -q --show-progress \
+  --https-only \
+  --timestamping \
+  -P downloads \
+  -i downloads.txt
 ```
 
 ## see also

@@ -2,7 +2,7 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2023-12-19T14:52:25.428Z'
+modified: '2024-12-02T16:25:47.976Z'
 ---
 
 # tmux
@@ -143,8 +143,9 @@ join-pane -t :1               # moves current pane to window target 1
 ## keybindings / shortcuts
 
 ```sh
-⌃-b + :         # prompt for command
 ⌃-b + ?         # show keybindings
+
+⌃-b + :         # prompt for command
 
 ⌃-b + &         # kill window
 ⌃-b + x         # kill pane
@@ -166,6 +167,7 @@ join-pane -t :1               # moves current pane to window target 1
 
 ## see also
 
+- [[nvim]]
 - [[fzf]]
 - [[freedesktop xdg]]
 - [[macos keyboard shortcuts]]

@@ -2,85 +2,39 @@
 tags: [container]
 title: kubernetes rbac
 created: '2022-03-23T21:22:09.880Z'
-modified: '2024-06-18T08:20:35.008Z'
+modified: '2024-10-20T13:16:11.098Z'
 ---
 
 # kubernetes rbac
 
 > `role base access controll` - defines user privileges in cluster
 
-## notes
-
-maps http-vers to permissions -> POST to CREATE
-
-ROLE -> What
-ROLEBINDING -> WHO
-
-ROLE,ROLEBINDING -> namespace wide
-CLUSTERROLE,CLUSTEROLEBINDING -> cluster wide
+- maps http-verbs to permissions -> POST to CREATE
+- ROLE -> What
+- ROLEBINDING -> WHO
+- ROLE,ROLEBINDING -> namespace wide
+- CLUSTERROLE,CLUSTEROLEBINDING -> cluster wide
 
 
-default ClusterRoles
+### default ClusterRoles
 
-cluster-admin: Cluster-wide superuser
-admin: Full access within a Namespace
-edit: Read/write within a Namespace
-view: Read-only within a Namespace
+- cluster-admin: Cluster-wide superuser
+- admin: Full access within a Namespace
+- edit: Read/write within a Namespace
+- view: Read-only within a Namespace
 
 
-rbac.authorization.k8s.io
+## list bindings
 
-## example
-
-> admin serviceaccount
-
-```yaml
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: cluster-test
-  namespace: kube-system
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  annotations:
-    rbac.authorization.kubernetes.io/autoupdate: "true"
-  labels:
-    kubernetes.io/bootstrapping: rbac-defaults
-  name: cluster-test
-rules:
-- apiGroups:
-  - '*'
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- nonResourceURLs:
-  - '*'
-  verbs:
-  - '*'
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: cluster-test
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-test
-subjects:
-- kind: ServiceAccount
-  name: cluster-test
-  namespace: kube-system
+```sh
+kubectl get rolebindings,clusterrolebindings --all-namespaces \
+-o custom-columns='KIND:kind,NAMESPACE:metadata.namespace,NAME:metadata.name,SERVICE_ACCOUNTS:subjects[?(@.kind=="ServiceAccount")].name' 
 ```
+
+[[rbac-lookup]], [[rbac-tool]], [[k9s]]
 
 
 ## see also
-
 
 - [https://aws.github.io/aws-eks-best-practices/security/docs/iam/](https://aws.github.io/aws-eks-best-practices/security/docs/iam/)
 - [anaisurl.com/kubernetes-rbac/](https://anaisurl.com/kubernetes-rbac/)

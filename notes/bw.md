@@ -2,7 +2,7 @@
 tags: [crypto]
 title: bw
 created: '2023-09-21T11:32:26.885Z'
-modified: '2023-11-10T07:48:21.137Z'
+modified: '2024-11-12T09:45:28.594Z'
 ---
 
 # bw
@@ -35,6 +35,7 @@ bw
 
 ## see also
 
+- [[jq]], [[jless]]
 - [[op]]
 - [[ykman]]
 - [[node]]

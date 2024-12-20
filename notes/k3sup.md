@@ -1,18 +1,24 @@
 ---
-tags: [container]
+tags: [container, go, linux]
 title: k3sup
 created: '2022-01-12T16:50:10.912Z'
-modified: '2023-12-20T15:04:44.532Z'
+modified: '2024-10-26T14:48:23.968Z'
 ---
 
 # k3sup
 
+> light-weight utility to get from zero to KUBECONFIG with [[k3s]] on any local or remote VM
+
+needs [[ssh]]
+
 ## install 
 
 ```sh
-curl -sLS https://get.k3sup.dev | sh && sudo install k3sup /usr/local/bin/
+curl -sLS https://get.k3sup.dev | sh
+install k3sup /usr/local/bin/
 ```
 
+[[install]]
 
 ## option
 

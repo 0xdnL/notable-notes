@@ -2,13 +2,15 @@
 tags: [linux, macos]
 title: nerdfonts
 created: '2023-04-15T09:17:30.144Z'
-modified: '2023-04-15T09:53:55.589Z'
+modified: '2024-11-18T11:45:45.088Z'
 ---
 
 # nerdfonts
 
 > patches developer targeted fonts with a high number of glyphs (icons)
 > Specifically to adds a high number of extra glyphs from popular ‘iconic fonts’ such as `Font Awesome`, `Devicons`, `Octicons`
+
+[nerdfonts.com](https://www.nerdfonts.com/)
 
 - `mono` - monospaced font, also called a fixed-pitch, fixed-width, or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space
 
@@ -40,9 +42,6 @@ fc-cache    # scan font files or directories
 
 ## see also
 
-- [nerdfonts.com](https://www.nerdfonts.com/)
 - [[brew]]
 - [[alacritty]]
-- [[nvim]]
-- [[nvchad]]
-- [[vim]]
+- [[vim]], [[nvim]], [[nvchad]]

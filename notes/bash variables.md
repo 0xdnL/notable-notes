@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash variables
 created: '2019-07-30T06:19:49.023Z'
-modified: '2022-06-02T12:13:10.661Z'
+modified: '2024-12-04T10:34:41.251Z'
 ---
 
 # bash variables
@@ -51,5 +51,5 @@ ${#varname}                  # returns the length of the value of the variable a
 
 - [[bash export]]
 - [[bash echo]]
-- [[bash parameter expansion ]]
+- [[bash parameter expansion]]
 - [[env]]

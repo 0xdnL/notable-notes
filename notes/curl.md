@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: curl
 created: '2019-07-30T06:19:49.032Z'
-modified: '2024-07-09T07:42:34.086Z'
+modified: '2024-10-09T16:52:53.392Z'
 ---
 
 # curl
@@ -193,9 +193,10 @@ curl dict://dict.org/show:strat
 
 ## see also
 
+- [[wget]]
+- [[ab]]
 - [[kubectl]]
 - [[socat]], [[nc]]
-- [[wget]]
 - [[xargs]]
 - [[bash exec]], [[bash echo]], [[bash while]]
 - [everything.curl.dev](https://everything.curl.dev/)

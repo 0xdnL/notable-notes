@@ -2,7 +2,7 @@
 tags: [container]
 title: docker-compose
 created: '2019-08-28T09:08:43.657Z'
-modified: '2024-02-08T12:36:38.972Z'
+modified: '2024-11-16T05:06:17.278Z'
 ---
 
 # docker-compose
@@ -25,4 +25,4 @@ docker-compose up -d service_name
 - [[Dockerfile]], [[docker-compose.yaml]]
 - [[docker]], [[kubectl]]
 - [[localstack]], [[minikube]]
-
+- [[rdctl]]

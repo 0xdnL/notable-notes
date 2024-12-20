@@ -2,7 +2,7 @@
 tags: [linux, macos, Notebooks]
 title: ascii
 created: '2019-07-30T06:19:48.987Z'
-modified: '2024-06-20T09:15:11.305Z'
+modified: '2024-12-05T08:55:21.459Z'
 ---
 
 # ascii
@@ -109,6 +109,7 @@ m(_ _)mApology
 
 - [[jwt]]
 - [[unicode]]
+- [[url encoding]]
 - [[bash printf]]
 - [[bash echo]]
 - [[man]]

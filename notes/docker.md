@@ -2,12 +2,14 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2024-09-30T11:00:09.407Z'
+modified: '2024-12-07T12:34:15.961Z'
 ---
 
 # docker
 
 > self-sufficient runtime for containers
+
+[[podman]]
 
 ## install
 
@@ -23,7 +25,13 @@ curl -LO https://desktop.docker.com/mac/main/{arm64,amd64}/Docker.dmg
 hdiutil attach Docker.dmg
 /Volumes/Docker/Docker.app/Contents/MacOS/install
 hdiutil detach /Volumes/Docker
+
+
+colima start --network-address
+docker context use colime
 ```
+
+[[colima]]
 
 ## env
 
@@ -86,7 +94,7 @@ docker exec
 > List containers
 
 ```sh
-docker ps
+docker ps --no-trunc     # wide view, full command
 ```
 
 ## build
@@ -94,8 +102,21 @@ docker ps
 > Build an image from a Dockerfile
 
 ```sh
-docker build
+docker build BUILD_CONTEXT
+
+docker build -t spilo:local --target ubuntu-18 .       # in multistage-build only build unto a target and exit
 ```
+
+build without a Dockerfile using 
+
+```sh
+docker build -t example.com/test:latest - <<EOF
+FROM busybox:latest
+CMD ["echo", "just a test"]
+EOF
+```
+
+[[Dockerfile]], [[heredoc]]
 
 ## pull
 
@@ -239,8 +260,6 @@ aws ecr get-login-password --region region | docker login --username AWS --passw
 ## usage
 
 ```sh
-docker ps --no-trunc                                          # wide view, full command
-
 docke pull REGISTRY/IMAGE:TAG
 docke pull REGISTRY/IMAGE@sha256:0afbf10990f3a9e4fbe8328740055ae86e531863b59307127ff2e531fa90b3bd
 

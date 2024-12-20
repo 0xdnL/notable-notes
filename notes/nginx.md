@@ -2,12 +2,14 @@
 tags: [lua]
 title: nginx
 created: '2021-08-31T08:55:05.976Z'
-modified: '2023-05-05T08:15:51.100Z'
+modified: '2024-11-26T08:15:58.200Z'
 ---
 
 # nginx
 
->
+> "engine x" - [[http]] and reverse proxy server, mail proxy server 
+
+alternative to: [[apache2]]
 
 ## option
 
@@ -24,6 +26,14 @@ modified: '2023-05-05T08:15:51.100Z'
 -c filename       # set configuration file (default: /etc/nginx/nginx.conf)
 -g directives     # set global directives out of configuration file
 ```
+
+## usage
+
+```sh
+/usr/sbin/nginx -T | grep .       # print config, filter out empty lines
+```
+
+[[grep]]
 
 ## module
 

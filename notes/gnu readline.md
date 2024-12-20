@@ -2,7 +2,7 @@
 tags: [shell]
 title: gnu readline
 created: '2019-07-30T06:19:49.019Z'
-modified: '2023-12-06T12:16:50.035Z'
+modified: '2024-11-16T07:24:20.223Z'
 ---
 
 # gnu readline
@@ -58,6 +58,8 @@ EOT
 
 ## see also
 
+- [[macos keyboard shortcuts]]
+- [[nvim]]
 - [[bash bind]]
 - [[bash complete]]
 - [stackoverflow.com/is-there-a-way-to-make-alt-f-and-alt-b-jump-word-forward-and-backward-instead-of](https://stackoverflow.com/questions/20146972/is-there-a-way-to-make-alt-f-and-alt-b-jump-word-forward-and-backward-instead-of)

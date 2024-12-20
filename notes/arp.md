@@ -2,7 +2,7 @@
 tags: [linux, net-tools, network]
 title: arp
 created: '2019-09-03T11:30:41.018Z'
-modified: '2023-03-22T08:28:25.338Z'
+modified: '2024-10-26T09:44:49.265Z'
 ---
 
 # arp
@@ -18,6 +18,8 @@ apt install net-tools
 ## usage
 
 ```sh
+nmap -T4 -F 192.168.178.0/24    # mac adress is added to arp table only after something was sent to machine
+
 arp -a    # display (all) hosts in alternative (BSD) style
 
 arp -a | awk '{ ahost=$1; aip=$2; gsub("()","",aip); print aip }'
@@ -37,7 +39,8 @@ cat /proc/net/arp
 
 ## see also
 
-- [[arping]]
+- [[nmap]]
+- [[arp-scan]], [[arping]]
 - [[procfs]]
 - [[ip]]
 - [[net-tools vs iproute]]

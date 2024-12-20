@@ -2,7 +2,7 @@
 tags: [coreutils, macos]
 title: mv
 created: '2020-08-03T12:08:55.090Z'
-modified: '2023-05-10T14:15:01.809Z'
+modified: '2024-12-03T07:29:08.128Z'
 ---
 
 # mv
@@ -12,12 +12,18 @@ modified: '2023-05-10T14:15:01.809Z'
 ## usage
 
 ```sh
-mv -f foo bar     # rename file without confirmation
+mv -f foo bar                 # rename file without confirmation
+
+mv ~/.config/nvim{,.bak}      # rename dir using bash expansion
+mv ~/.config/nvim{.bak,}    # reverse previous renaming
+
 ```
+
+[[bash braces]] `brace expansion`
 
 ## see also
 
 - [[rnr]]
-- [[cp]]
-- [[rm]]
-- [[rsync]]
+- [[cp]], [[rm]]
+- [[find]], [[rsync]]
+- [[mc]], [[aws]]
