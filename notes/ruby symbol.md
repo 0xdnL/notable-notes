@@ -2,12 +2,14 @@
 tags: [ruby]
 title: ruby symbol
 created: '2019-07-30T06:19:49.226Z'
-modified: '2020-01-02T13:09:08.526Z'
+modified: '2024-11-17T10:56:47.644Z'
 ---
 
 # ruby symbol
 
-> symbols are often used as the equivalent to enums in Ruby, as well as keys to a dictionary (hash).
+> symbols are often used as the equivalent to enums in [[ruby]], as well as keys to a dictionary (hash)
+
+[[tagged union]]
 
 - symbol is immutable
 - used in hashes
@@ -26,7 +28,8 @@ y = "my_str"
 ```
 
  ## see also
- - https://softwareengineering.stackexchange.com/a/24461/276395
- - [[go enum]]
- - [[yaml]]
+
+- [softwareengineering.stackexchange.com/What is a symbol in Ruby?](https://softwareengineering.stackexchange.com/a/24461/276395)
+- [[go datastructures]]
+- [[yaml]]
 

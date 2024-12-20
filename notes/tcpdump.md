@@ -2,7 +2,7 @@
 tags: [network]
 title: tcpdump
 created: '2020-01-27T14:43:35.111Z'
-modified: '2023-11-02T14:01:09.750Z'
+modified: '2024-11-10T18:23:44.698Z'
 ---
 
 # tcpdump
@@ -104,6 +104,7 @@ tcpdump -i flannel.1 host 10.42.4.239 -n
 
 ## see also
 
+- [[mitmproxy]]
 - [tcpdump.org/manpages/tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html)
 - [danielmiessler.com/tcpdump](https://danielmiessler.com/study/tcpdump/)
 - [andreafortuna.org/tcpdump-a-simple-cheatsheet](https://www.andreafortuna.org/2018/07/18/tcpdump-a-simple-cheatsheet/)

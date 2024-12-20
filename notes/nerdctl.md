@@ -2,7 +2,7 @@
 tags: [container]
 title: nerdctl
 created: '2022-01-27T09:39:31.754Z'
-modified: '2023-11-08T14:18:29.014Z'
+modified: '2024-11-16T05:13:53.622Z'
 ---
 
 # nerdctl
@@ -14,6 +14,8 @@ modified: '2023-11-08T14:18:29.014Z'
 ```sh
 brew install nerdctl
 ```
+
+bundled with [[rdctl]]
 
 ## usage
 
@@ -33,7 +35,6 @@ nerdctl run -d -p 8080:80 --name nginx nginx:alpine   # run a container with roo
 
 ## see also
 
-- [[rdctl]]
 - [[ctr]]
 - [[kim]]
 - [[colima]]

@@ -2,7 +2,7 @@
 tags: [linux]
 title: diff
 created: '2019-07-30T06:19:49.036Z'
-modified: '2024-07-15T13:43:02.708Z'
+modified: '2024-12-04T10:34:02.086Z'
 ---
 
 # diff
@@ -41,5 +41,5 @@ diff -y <(curl -s URL) <(cat $(brew --prefix)/PATH/git-completion.bash)
 - [[tput]]
 - [[column]]
 - [[colordiff]]
-- [[bash process substitution]]
+- [[bash redirects]]
 - [Make diff Use Full Terminal Width in Side-by-Side Mode - Unix & Linux Stack Exchange](https://unix.stackexchange.com/a/9303)

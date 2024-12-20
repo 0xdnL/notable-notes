@@ -2,15 +2,33 @@
 tags: [shell/bash]
 title: bash
 created: '2019-07-30T06:19:49.025Z'
-modified: '2024-03-07T14:09:59.112Z'
+modified: '2024-11-14T13:45:52.753Z'
 ---
 
 # bash
 
-> at its base, a shell is simply a `macro processor` that executes commands
-> the term `macro processor` means functionality where text and symbols are expanded to create larger expressions
+> gnu `bourne again shell` - [[sh]]-compatible command language interpreter that executes commands, reads from STDIN or from a file
 
-[gnu.org/what-is-a-shell](https://www.gnu.org/software/bash/manual/html_node/What-is-a-shell_003f.html)
+[[zsh]]
+
+## What is a shell ?
+
+```
+At its base, a shell is simply a macro processor that executes commands. 
+The term macro processor means functionality where text and symbols are expanded to create larger expressions. 
+```
+
+[gnu.org/what-is-a-shell](https://www.gnu.org/software/bash/manual/html_node/What-is-a-shell_003f.html), [[ash]], [[dash]], [[zsh]], [[fish]]
+
+## install
+
+```sh
+brew install bash                 # install new version than default bash on macos
+brew install bash-completion@2    # bash version 4 or later
+brew install bash-completion      # older versions of bash
+```
+
+[[brew]]
 
 ## option
 
@@ -237,7 +255,7 @@ echo \
 man builtin
 ```
 
-builtin, !, %, ., :, @, [, {, }, [[bash alias]], alloc, bg, bind, bindkey, break, breaksw, builtins, case, [[bash cd]], chdir, command, [[bash complete]], continue, default, dirs, do, done, echo, echotc, elif, else, end, endif, endsw, esac, eval, exec, exit, export, false, fc, fg, filetest, fi, for, foreach, getopts, glob, goto, hash, hashstat, [[bash history]], hup, if, jobid, jobs, kill, limit, local, log, login, logout, ls-F, nice, nohup, notify, onintr, popd, printenv, printf, pushd, pwd, read, [[bash readonly]], rehash, repeat, return, sched, set, setenv, settc, setty, setvar, shift, source, stop, suspend, switch, telltc, test, then, time, times, trap, true, type, ulimit, umask, unalias, uncomplete, unhash, unlimit, unset, unsetenv, until, wait, where, which, while
+builtin, !, %, ., :, @, [, {, }, [[bash alias]], alloc, bg, bind, bindkey, break, breaksw, builtins, case, [[bash cd]], chdir, command, [[bash complete]], continue, default, dirs, do, done, echo, echotc, elif, else, end, endif, endsw, esac, eval, exec, exit, export, false, fc, fg, filetest, fi, for, foreach, getopts, glob, goto, hash, hashstat, [[bash history]], hup, if, jobid, jobs, kill, limit, local, log, login, logout, ls-F, nice, nohup, notify, onintr, popd, printenv, printf, pushd, pwd, read, [[bash readonly]], rehash, repeat, return, sched, set, setenv, settc, setty, setvar, shift, source, stop, suspend, switch, telltc, test, then, time, times, trap, true, type, ulimit, umask, unalias, uncomplete, unhash, unlimit, unset, unsetenv, until, wait, where, [[bash which]], [[bash while]]
 
 ```sh
 compgen -b        # list built-ins
@@ -259,13 +277,11 @@ time grep '^#' ~/.bashrc | { i=0; while read -r; do printf '%4d %s\n' "$((++i))"
 
 ## see also
 
-- [[ash]], [[dash]], [[zsh]]
 - [[bash prompt]]
 - [[bash debugging]]
 - [[bash parameter expansion]]
 - [[bash compgen]]
 - [[bash variables]]
-- [[brew]]
 - [man7.org/linux/man-pages/man1/bash](https://man7.org/linux/man-pages/man1/bash.1.html)
 - [gnu.org/software/bash/manual/bash](https://www.gnu.org/software/bash/manual/bash.html?#What-is-a-shell_003f)
 - [tldp.org/html/internalvariables.html](https://www.tldp.org/LDP/abs/html/internalvariables.html)

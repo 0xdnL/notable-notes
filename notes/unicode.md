@@ -2,10 +2,14 @@
 tags: [linux]
 title: unicode
 created: '2023-12-06T11:58:13.706Z'
-modified: '2024-02-08T09:33:56.871Z'
+modified: '2024-12-05T08:58:12.917Z'
 ---
 
 # unicode
+
+> computing industry standard designed to consistently encode, represent, and handle text expressed in most of the world's writing systems
+
+It provides a unique number (code point) for every character, no matter the platform, program, or language, facilitating the global exchange of text and data
 
 ## usage
 
@@ -28,13 +32,22 @@ This will create a file with a heart symbol (♥) and then display its content u
 
 heart_symbol=$'\u2665'
 echo $heart_symbol        # print a heart symbol (♥) 🍕
-
-
 ```
+
+[[bash echo]], [[bash printf]]
+
+## encoding
+
+UTF-8 - `Unicode Transformation Format – 8-bit`
+UTF-16
+UTF-32
+
+[[url encoding]]
 
 ## see also
 
 - [[uniname]]
 - [[ascii]]
-- [[bash echo]], [[bash printf]]
 - [[gnu readline]], [[bash bind]]
+- [[macos keyboard shortcuts]]
+- [[nvim]]

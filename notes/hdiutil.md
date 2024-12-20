@@ -2,7 +2,7 @@
 tags: [macos]
 title: hdiutil
 created: '2023-05-30T08:54:56.544Z'
-modified: '2023-11-08T14:14:56.641Z'
+modified: '2024-10-13T12:41:29.887Z'
 ---
 
 # hdiutil
@@ -25,21 +25,29 @@ hdiutil checksum IMAGE -type TYPE         # Calculate the specified checksum on 
                                           # TYPE: UDIF-CRC32 , UDIF-MD5 , CRC32 , MD5 , SHA , SHA1 , SHA256 , SHA384 , SHA512
 ```
 
-```sh
-imagehdiutil attach IMAGE.dmg    # mount the IMAGE.dmg to /Volumes/IMAGE
+## convert .iso to .dmg
 
-sudo installer -package /Volumes/IMAGE/IMAGE.pkg -target /
+```sh
+hdiutil convert proxmox-ve_8.2-2.iso -format UDRW -o proxmox-ve_8.2-2.dmg
+```
+
+## install image to volume
+
+```sh
+hdiutil attach IMAGE.dmg    # mount the IMAGE.dmg to /Volumes/IMAGE
+
+installer -package /Volumes/IMAGE/IMAGE.pkg -target /
 
 hdiutil detach /Volumes/IMAGE   # unmount the image
 ```
 
+[[imagehdiutil]], [[installer]], [apple.stackexchange.com/Is-there-a-command-to-install-a-dmg](https://apple.stackexchange.com/a/73931/394965)
+
 ## see also
 
-- [[installer]]
 - [[brew]]
 - [[mount]]
 - [[diskutil]]
 - [[docker]]
 - [[sha256sum]]
 - [[rdctl]]
-- [apple.stackexchange.com/Is-there-a-command-to-install-a-dmg](https://apple.stackexchange.com/a/73931/394965)

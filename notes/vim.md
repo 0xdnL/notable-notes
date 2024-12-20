@@ -2,12 +2,14 @@
 tags: [editor]
 title: vim
 created: '2019-07-30T06:19:49.263Z'
-modified: '2023-04-26T17:27:29.240Z'
+modified: '2024-12-14T08:27:11.764Z'
 ---
 
 # vim
 
 > `vi-mproved`
+
+[[nvim]]
 
 ## install
 
@@ -58,16 +60,10 @@ Ctl+d   ; 1/2 page down
 Ctl+u   ; 1/2 page up
 
 ''      ; move prev curser position
-
-gd             ; goto local declartion
-gD             ; goto global declartion
-g*             ; goto/jump to next occurrence under cursor
-g#             ; goto/jump to prev occurrence under cursor
-gt             ; goto next tab
-gT             ; goto prev tab
-[nnn] gt       ; goto numbered tab
+```
 
 
+```vim
 ; shares
 md    ; marks share `d`
 `d    ; navigate to exact position
@@ -89,13 +85,43 @@ c i w { Ctrl + r " }  wrap word in `{}`
 ; c i w         Delete the word the cursor is on, and end up in insert mode.
 ; {             add the first curly-brace
 ; ctrl + r"     Insert the contents of the `"` register, aka the last yank/delete
-; }             add the closing curly-brace 
+; }             add the closing curly-brace
 
 di'hPl2x  Unquote a word that's enclosed in single quotes
 ;   di'   Delete the word enclosed by single quotes
 ;   hP    Move the cursor left one place (on top of the opening quote) and put the just deleted text before the quote
 ;   l     Move the cursor right one place (on top of the opening quote)
 ;   2x    Delete the two quotes
+```
+
+## commands staring with 'g'
+
+```sh
+:help *g*
+
+gg        # move cursor to the first line of the document
+G         # move cursor to the last line of the document
+
+gU        # make text uppercase until the motion is complete (e.g., `gUw` makes the word under cursor uppercase)
+gu        # make text lowercase until the motion is complete (e.g., `guw` makes the word under cursor lowercase)
+
+g~        # Toggles the case of the text until the motion is complete (e.g., `g~w` toggles the case of the word under cursor)
+g$        # move cursor to the end of the screen line in a wrapped line, which can be different from the end of the actual line (`$`) if word wrap is enabled
+g^        # move cursor to the first non-blank character of the screen line in a wrapped line
+g?        # Applies rot13 encoding to the selected text.
+gv        # Reselects the last visual selection.
+g; g,     # Navigate through the change list backward and forward, respectively.
+
+gd        # goto local declartion, ctrl + o to go back
+gD        # goto global declartion
+g*        # goto/jump to next occurrence under cursor
+g#        # goto/jump to prev occurrence under cursor
+
+gx        # open href
+
+gt        # goto next tab
+gT        # goto prev tab
+[nnn] gt  # goto numbered tab
 ```
 
 ### marks
@@ -134,7 +160,7 @@ mi            ; mark current position with i
 :w                        ; write
 :w !sudo tee %            ; write with sudo permission
 :wq                       ; write and quit
-:x  
+:x
 
 :n
 :prev
@@ -229,15 +255,15 @@ set options that configure Vim are of three types:
 option         short    example               description
 
 shellcmdflag            shellcmdflag=-ic      make Vim’s :! shell behave like your command prompt e.g. for aliases
-encoding                encoding=utf-8        
+encoding                encoding=utf-8
 
 filetype       ft       ft=json
-autoindent                          
-pastetoggle             pastetoggle=<F3>     
-ignorecase                        
-list                              
-number                            
-wrap                              
+autoindent
+pastetoggle             pastetoggle=<F3>
+ignorecase
+list
+number
+wrap
 hlsearch       hls                                 highlight search result (.vimrc)
 
 
@@ -291,6 +317,25 @@ C-w | -  Max out the width of the current split
 C-w = -  Normalize all split sizes, which is very handy when resizing terminal
 ```
 
+## substitute
+
+```sh
+:%s/ -/ \\\r  /g
+# %s            # tells Vim to search the entire file
+# / -/          # is the pattern to search for — a space followed by a dash
+# / \\\r  /     # is the replacement pattern. `\\` is used to insert a backslash, `\r` is used to insert a newline, and then two spaces are added for indentation
+# /g            # flag tells Vim to perform the substitution globally across each line, not just the first occurrence in each line
+
+
+# \r is newline, \n is a null byte (0x00# \r is newline, \n is a null byte (0x00))
+
+```
+
+
+
+
+[[grep]], [[sed]]
+
 ## resize
 
 ```sh
@@ -324,7 +369,7 @@ C-w = -  Normalize all split sizes, which is very handy when resizing terminal
 
 ```sh
 # -*- mode: ruby -*-
-# vi: set ft=ruby : 
+# vi: set ft=ruby :
 
 # vim: ft=json
 ```
@@ -333,7 +378,7 @@ C-w = -  Normalize all split sizes, which is very handy when resizing terminal
 
 ## see also
 
-- [[nvim]]
+- [[macos keyboard shortcuts]]
 - [[less]]
 - [[code]]
 - [[atom]]

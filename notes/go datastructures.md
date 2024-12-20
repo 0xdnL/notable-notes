@@ -2,11 +2,12 @@
 tags: [go]
 title: go datastructures
 created: '2019-07-30T06:19:49.068Z'
-modified: '2023-05-10T12:14:55.554Z'
+modified: '2024-11-17T10:56:53.316Z'
 ---
 
 # go datastructures
 
+[[datastructures]]
 
 ## enum
 
@@ -26,7 +27,9 @@ const (                     // results in:
 )
 ```
 
-[[ruby symbol]]
+- [[tagged union]], [[ruby symbol]]
+- [https://www.reddit.com/r/golang/comments/uvpygm/why_are_enums_not_a_thing_in_go/](r/golang/why_are_enums_not_a_thing_in_go)
+- [threedots.tech/post/safer-enums-in-go/](https://threedots.tech/post/safer-enums-in-go/)
 
 ## slice
 

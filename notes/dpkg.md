@@ -2,7 +2,7 @@
 tags: [linux, packagemanager]
 title: dpkg
 created: '2019-07-30T20:19:32.637Z'
-modified: '2020-01-22T14:21:53.378Z'
+modified: '2024-12-04T15:12:47.544Z'
 ---
 
 # dpkg
@@ -21,14 +21,6 @@ apt --fix-broken install
 dpkg -S $(which ip)   # find out package
 
 dpkg -S free.         # find out package
-
-
-# search in dpkg database
-dpkg-query -S '/bin/ls'
-dpkg-query -S 'passwd*'
-dpkg-query --search '/path/to/file'
-dpkg-query --search '/usr/bin/passwd'
-dpkg-query --search '/etc/passwd'
 
 
 dpkg -l | head -3       # find install packages
@@ -60,6 +52,19 @@ grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*     # list-all-repos
 dpkg -r srcclr      # remove ?!
 ```
 
+## dpkg-query
+
+```sh
+# search in dpkg database
+dpkg-query -S '/bin/ls'
+dpkg-query -S 'passwd*'
+dpkg-query --search '/path/to/file'
+dpkg-query --search '/usr/bin/passwd'
+dpkg-query --search '/etc/passwd'
+```
+
 ## see also
+
+- [[apt-get]]
 - [[packagemanagers]]
 - [What do the various dpkg flags like 'ii' 'rc' mean? - Ask Ubuntu](http://askubuntu.com/a/18807)

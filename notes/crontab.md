@@ -2,7 +2,7 @@
 tags: [linux]
 title: crontab
 created: '2019-07-30T06:19:49.031Z'
-modified: '2020-09-01T12:56:04.468Z'
+modified: '2024-12-04T10:33:51.182Z'
 ---
 
 # crontab
@@ -10,6 +10,7 @@ modified: '2020-09-01T12:56:04.468Z'
 > maintains crontab files for individual users
 
 ## usage
+
 ```sh
 crontab FILE            # install crontab from FILE or stdin if the pseudo-filename `-' is given
 
@@ -51,7 +52,7 @@ crontab -l | tee >(head -n1) | grep "^[^#;]"      # show only active jobs
 
 - [[crond]]
 - [[tree]]
-- [[bash process substitution]]
+- [[bash redirects]]
 - [[bash eval]]
 - [crontab.guru](https://crontab.guru/)
 - [Location of the crontab file](http://unix.stackexchange.com/a/196010)

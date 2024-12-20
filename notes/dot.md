@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: dot
 created: '2020-01-20T08:57:17.661Z'
-modified: '2023-03-25T12:30:47.828Z'
+modified: '2024-10-20T11:36:25.325Z'
 ---
 
 # dot
@@ -33,3 +33,4 @@ dot -Tsvg > graph.svg
 - [[terraform]]
 - [[open]]
 - [[markdown]]
+- [[rbac-tool]]

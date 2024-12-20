@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash redirects
 created: '2019-07-30T06:19:49.011Z'
-modified: '2023-04-21T12:07:35.076Z'
+modified: '2024-12-04T10:31:58.474Z'
 ---
 
 # bash redirects
@@ -10,36 +10,75 @@ modified: '2023-04-21T12:07:35.076Z'
 ## usage
 
 ```sh
-# "pipe"
-COMMAND1 | COMMAND2            # takes stdout of COMMAND1 as stdin to COMMAND2
+>     # Output Redirection          - Redirects STDOUT to a file, overwriting the file if it exists
+>>    # Append Output Redirection   - Redirects STDOUT to a file, appending the output to the file if it exists
+<     # Input Redirection           - Redirects the content of a file to the standard input STDIN of a command
 
-# "redirect"
-1> FILE              # directs stdout to FILE
-> FILE               # directs stdout to FILE
+1>    # STDOUT Redirection
+2>    # STDERR Redirection          - Redirects the standard error STDERR output to a file, overwriting the file if it exists
+&>    # Redirect STDOUT and stderr  - Redirects both standard output STDOUT and standard error STDERR to a file, overwriting the file if it exists
+>>&   # Append STDOUT and stderr    - appends both STDOUT and stderr to a file instead of overwriting it
+2>&1  # Redirect stderr to STDOUT   - Redirects standard error STDERR to the same destination as standard output STDOUT
 
-CMD > FILE
-CMD 1> FILE
+<()   # Process Substitution        - Replaces the command with a temporary file that contains the output of the command
+|     # Pipe                        - Redirects STDOUT of one command to the standard input STDIN of another command
 
-< FILE               # takes stdin from FILE
+echo "Hello" > file.txt
+echo "World" >> file.txt`
+grep "Hello" < file.txt
+ls non_existing_file 2> error.txt
+command &> output.txt
+command >>& output.txt
+command > output.txt 2>&1
+diff <(command1) <(command2)
+echo "Hello" | grep "H"
 
->> FILE              # directs stdout to FILE; append to FILE if it already exists
->|FILE               # forces stdout to FILE even if noclobber is set
+
+
+>|FILE               # forces STDOUT to FILE even if noclobber is set
+
 n>|FILE              # forces output to FILE from FILE descriptor n even if noclobber is set
-<> FILE              # uses FILE as both stdin and stdout
+
+<> FILE              # uses FILE as both STDIN and STDOUT
+
 n<>FILE              # uses FILE as both input and output for file descriptor n
 ```
+
+## process substitution
+
+> process substiution feeds the output of a process (or processes) into the stdin of another process.
+> process substitution uses `/dev/fd/<n>` files to send the results of the process(es)
+
+```sh
+>(COMMAND_LIST)
+
+<(COMMAND_LIST)
+
+echo >(true)
+/dev/fd/63
+
+echo <(true)
+/dev/fd/63
+```
+
+[[bash read]]
+[tldp.org/.../process-sub.html](http://tldp.org/LDP/abs/html/process-sub.html)
+[what-is-the-portable-posix-way-to-achieve-process-substitution](https://unix.stackexchange.com/questions/309547/what-is-the-portable-posix-way-to-achieve-process-substitution)
+
 
 ## here-doc
 
 ```sh
-[n]<<[-]word         # here-document
+[n]<<[-]WORD         # here-document
   here-document
-delimiter
+DELIMITER
 
 echo <<EOF> FILE
 Hello World
 EOF
 ```
+
+[[echo]], [[cat]], [[yq]]
 
 ## here-string
 
@@ -57,14 +96,14 @@ n>>FILE              # directs FILE description n to FILE; append to file if it 
 
 &[FILEDESCRIPTOR]     # reference to value of filedescriptor
 
-n>&                  # duplicates stdout to file descriptor n
-n<&                  # duplicates stdin from file descriptor n
+n>&                  # duplicates STDOUT to file descriptor n
+n<&                  # duplicates STDIN from file descriptor n
 n>&m                 # file descriptor n is made to be a copy of the output file descriptor
 n<&m                 # file descriptor n is made to be a copy of the input file descriptor
-&>FILE               # directs stdout and standard error to FILE
+&>FILE               # directs STDOUT and standard error to FILE
 
-<&-                  # closes the stdin
->&-                  # closes the stdout
+<&-                  # closes the STDIN
+>&-                  # closes the STDOUT
 n>&-                 # closes the ouput from FILE descriptor n
 n<&-                 # closes the input from FILE descripor n
 
@@ -78,11 +117,11 @@ command 1>&- 2>&-  &        # additional & at end of command to put it in backgr
 
 ## dash
 
-> redirection from  stdin to stdout  or  stdout to stdin
+> redirection from STDIN to STDOUT or STDOUT to STDIN
 
 ```sh
-cat -                           # redirects from stdin to stdout
-echo "whatever" | cat -         # redirects from stdin to stdout
+cat -                           # redirects from STDIN to STDOUT
+echo "whatever" | cat -         # redirects from STDIN to STDOUT
 grep "foo" FILE | diff FILE2 -
 ```
 
@@ -90,10 +129,10 @@ grep "foo" FILE | diff FILE2 -
 
 - [[tee]]
 - [[tar]]
+- [[wc]]
 - [[heredoc]]
 - [[bash read]]
 - [[bash readarray]]
 - [[bash history]]
 - [[bash exec]]
-- [[bash process substitution]]
 - [tldp.org/special-chars.html](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)

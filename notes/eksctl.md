@@ -2,12 +2,14 @@
 tags: [container]
 title: eksctl
 created: '2021-10-13T09:32:12.878Z'
-modified: '2023-11-10T12:14:27.436Z'
+modified: '2024-11-29T12:29:38.628Z'
 ---
 
 # eksctl
 
-> for creating and managing clusters on [[aws]] EKS, written in [[go]], uses `cloudformation`, was created by weaveworks
+> for creating and managing eks clusters on [[aws]]
+
+written in [[go]], uses `cloudformation`, was created by weaveworks
 
 ## install
 
@@ -24,11 +26,6 @@ brew tap weaveworks/tap && brew install weaveworks/tap/eksctl
 ## usage
 
 ```sh
-eksctl utils write-kubeconfig PROFILE_NAME
-
-eksctl utils associate-iam-oidc-provider `# create iam oicd provider` \
-  --region AWS_REGION --cluster CLUSTER_NAME --approve
-
 eksctl get cluster --name NAME --region REGION
 eksctl get iamidentitymapping --cluster CLUSTER_NAME
 
@@ -52,6 +49,19 @@ eksctl delete iamidentitymapping  --cluster CLUSTER_NAME  --arn arn:aws:iam::ACC
 eksctl create iamserviceaccount--name NAME --namespace default --cluster CLUSTER_NAME \
   --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess \
   --approve--override-existing-serviceaccounts
+```
+
+## utils
+
+```sh
+eksctl utils write-kubeconfig PROFILE_NAME
+
+eksctl utils associate-iam-oidc-provider      `# create iam oicd provider` \
+  --region AWS_REGION \
+  --cluster CLUSTER_NAME \
+  --approve
+
+eksctl utils schema                            # get the raw JSON schema
 ```
 
 ## see also

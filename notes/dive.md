@@ -2,7 +2,7 @@
 tags: [container, go, linux]
 title: dive
 created: '2024-06-05T09:00:36.921Z'
-modified: '2024-06-05T09:02:14.440Z'
+modified: '2024-12-05T15:59:25.765Z'
 ---
 
 # dive
@@ -26,3 +26,4 @@ dive iamge
 - [[docker]]
 - [[crane]]
 - [[skopeo]]
+- [[diffoci]]

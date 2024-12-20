@@ -2,14 +2,27 @@
 tags: [container]
 title: runc
 created: '2020-03-12T13:59:22.450Z'
-modified: '2020-09-02T17:26:09.381Z'
+modified: '2024-10-26T16:45:38.611Z'
 ---
 
 # runc
 
-> runc is a CLI tool for spawning and running containers according to the OCI specification.
+> cli for spawning and running containers according to OCI specification
+
+## install
+
+```sh
+curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64
+curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.sha256sum
+cat runc.sha256sum | grep runc.amd64 | sha256sum --check
+
+install -m 755 runc.amd64 /usr/local/sbin/runc
+```
+
+[[install]]
 
 ## usage
+
 ```sh
 runc create mycontainerid       # run as root
 
@@ -23,5 +36,8 @@ runc delete mycontainerid       # now delete the container
 ```
 
 ## see also
+
 - [[docker]]
+- [[ctr]], [[nerdctl]]
+- [[kubectl]]
 - [github.com/opencontainers/runc](https://github.com/opencontainers/runc)

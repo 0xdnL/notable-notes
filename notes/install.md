@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: install
 created: '2019-09-25T07:09:47.701Z'
-modified: '2022-04-06T08:37:58.499Z'
+modified: '2024-10-26T14:48:36.839Z'
 ---
 
 # install
@@ -38,3 +38,4 @@ install -m 0644 FILE.1 DIR/man1/FILE.1
 - [[mv]]
 - [[make]]
 - [ss64.com/bash/install.html](https://ss64.com/bash/install.html)
+- [[kubectl]], [[k3sup]]

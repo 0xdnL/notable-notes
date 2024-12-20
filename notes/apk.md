@@ -2,12 +2,15 @@
 tags: [container, linux, packagemanager, shell]
 title: apk
 created: '2019-07-30T20:26:52.476Z'
-modified: '2023-03-27T05:51:34.613Z'
+modified: '2024-12-05T14:38:50.253Z'
 ---
 
 # apk
 
-> packages for `Alpine Linux` are digitally signed `tar.gz` archives containing programs, configuration files, and dependency metadata. They have the extension `.apk`, and are often called `"a-packs"`
+> packages for `alpine linux`
+
+digitally signed `tar.gz` archives containing programs, configuration files, and dependency metadata
+have the extension `.apk`, and are often called `"a-packs"`
 
 ## usage
 
@@ -27,6 +30,8 @@ echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositorie
 
 ## see also
 
+- [[busybox]]
+- [[apt]], [[apt-get]]
 - [wiki.alpinelinux.org](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
 - [docker-alpine :: viewdocs.io](http://gliderlabs.viewdocs.io/docker-alpine/)
 - [BusyBox - The Swiss Army Knife of Embedded Linux](https://busybox.net/downloads/BusyBox.html)

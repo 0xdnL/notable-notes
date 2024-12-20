@@ -2,14 +2,14 @@
 tags: [linux]
 title: apt-cache
 created: '2019-11-28T11:57:30.886Z'
-modified: '2020-04-21T08:30:28.253Z'
+modified: '2024-12-05T14:36:28.577Z'
 ---
 
 # apt-cache
 
-> performs a variety of operations on apt's package cache - does not manipulate the state of the system, but provides operations to search and generate interesting output from the package metadata
+> performs a variety of operations on apt's package cache - does not manipulate the state of the system
 
-## usage
+## search
 
 ```sh
 apt-cache search REGEX    # full text search on available package lists; searches package names and descriptions         
@@ -19,14 +19,25 @@ apt-cache search REGEX    # full text search on available package lists; searche
 apt-cache search lint
 
 apt-cache search $i | grep -E "^$i\s"
+```
+
+## madison
+
+```sh
+apt-cache madison PACKAGE    # displays available versions of a package in a tabular format
 
 apt-cache madison rabbitmq-server
+```
 
-apt-cache showpkg
+## usage
 
-apt-cache policy
+```sh
+apt-cache showpkg    # showpkg displays information about the packages
+
+apt-cache policy     # meant to help debug issues relating to the preferences file
 ```
 
 ## see also
 
 - [[apt]]
+- [[apt-get]]

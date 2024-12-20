@@ -2,7 +2,7 @@
 tags: [container]
 title: ctr
 created: '2020-03-12T13:48:00.174Z'
-modified: '2024-09-30T07:03:20.006Z'
+modified: '2024-10-26T16:43:43.507Z'
 ---
 
 # ctr
@@ -10,6 +10,21 @@ modified: '2024-09-30T07:03:20.006Z'
 > manage containers run with [[containerd]]
 
 - cli based on the GRPC api
+
+## install
+
+```sh
+curl -LO https://github.com/containerd/containerd/releases/download/v1.7.23/containerd-1.7.23-linux-amd64.tar.gz
+curl -LO https://github.com/containerd/containerd/releases/download/v1.7.23/containerd-1.7.23-linux-amd64.tar.gz.sha256sum
+cat containerd-1.7.23-linux-amd64.tar.gz.sha256sum | sha256sum --check
+tar Cxzvf /usr/local containerd-1.7.23-linux-amd64.tar.gz
+
+# start containerd via systemd
+curl -LO https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+mv containerd.service /etc/systemd/system
+systemctl daemon-reload
+systemctl enable --now containerd
+```
 
 ## environment
 
@@ -78,6 +93,18 @@ ctr events                # get events
 
 ```sh
 ctr images list
+
+ctr -n=k8s.io image export  xxx.tar  IMAGE_LIST
+ctr -n=k8s.io image import  xxx.tar
+
+ctr image export /tmp/nginx.tar docker.io/library/nginx:latest          # saves image's content to tarball
+mkdir /tmp/nginx_image
+tar -xf /tmp/nginx.tar -C /tmp/nginx_image/                             # extract raw image layers
+
+mkdir /tmp/nginx_rootfs
+ctr image mount docker.io/library/nginx:latest /tmp/nginx_rootfs   # mount image to explore its root filesystem
+ls -l /tmp/nginx_rootfs/                                           # view image root fs
+ctr image unmount /tmp/nginx_rootfs                                # unmount image
 ```
 
 ## leases                     
@@ -162,6 +189,7 @@ ctr help
 
 ## see also
 
+- [[runc]]
 - [[docker]], [[containerd]]
 - [[linuxkit]]
 - [[crictl]], [[kubectl]]

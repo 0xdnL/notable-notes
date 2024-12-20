@@ -2,12 +2,14 @@
 tags: [linux, regex]
 title: find
 created: '2019-07-30T06:19:49.054Z'
-modified: '2023-11-20T13:50:50.784Z'
+modified: '2024-11-21T07:56:10.142Z'
 ---
 
 # find
 
 > walk a file hierarchy
+
+[[fd]]
 
 ## option
 
@@ -68,6 +70,7 @@ find . -mtime +1    # find files modified more than 48 hours ago
 
 ## see also
 
+- [[grep]], [[rg]]
 - [[ls]], [[du]]
 - [unix.stackexchange.com/manipulate-file-name-piped-from-find-command](https://unix.stackexchange.com/a/60470/193945)
 - [Exclude hidden files when searching with Unix/Linux find? - Super User](https://superuser.com/a/999448)

@@ -2,7 +2,7 @@
 tags: [shell]
 title: ash
 created: '2021-05-12T08:58:17.934Z'
-modified: '2023-03-22T09:24:17.335Z'
+modified: '2024-10-29T17:02:43.478Z'
 ---
 
 # ash
@@ -12,7 +12,7 @@ modified: '2023-03-22T09:24:17.335Z'
 ## usage
 
 ```sh
-zsh
+ash
 ```
 
 ## see also

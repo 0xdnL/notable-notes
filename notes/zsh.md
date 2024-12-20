@@ -1,13 +1,36 @@
 ---
-tags: [shell]
+tags: [shell/zsh]
 title: zsh
 created: '2021-05-12T09:00:09.604Z'
-modified: '2023-03-22T09:24:02.613Z'
+modified: '2024-11-14T13:47:59.305Z'
 ---
 
 # zsh
 
-> `z shell` - unix shell, extended bourne shell `sh` with many improvements
+> `z shell` - unix shell, extended bourne shell [[sh]] with many improvements
+
+[[bash]]
+
+## environment
+
+```zsh
+```
+
+## files
+
+```zsh
+$ZDOTDIR/.zshenv
+$ZDOTDIR/.zprofile
+$ZDOTDIR/.zshrc
+$ZDOTDIR/.zlogin
+$ZDOTDIR/.zlogout
+${TMPPREFIX}*         # (default is /tmp/zsh*)
+/etc/zshenv
+/etc/zprofile
+/etc/zshrc
+/etc/zlogin
+/etc/zlogout          # (installation-specific - /etc is the default)
+```
 
 ## usage
 
@@ -17,4 +40,5 @@ zsh
 
 ## see also
 
-- [[sh]], [[ash]], [[bash]], [[dash]]
+- [[ash]], [[bash]], [[dash]]
+- [www.zsh.org](https://www.zsh.org/)

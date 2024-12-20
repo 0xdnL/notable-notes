@@ -2,7 +2,7 @@
 tags: [container]
 title: kubeseal
 created: '2020-11-05T12:49:58.867Z'
-modified: '2024-01-03T07:30:44.010Z'
+modified: '2024-12-18T11:57:27.424Z'
 ---
 
 # kubeseal
@@ -44,6 +44,21 @@ kubeseal -f mysecret.json -w mysealedsecret.json
 kubectl create -f mysealedsecret.json
 kubectl get secret mysecret
 ```
+
+```sh
+kubectl create secret generic SECRET_NAME \
+  --from-literal=AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID \
+  --from-literal=AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY \
+  --dry-run=client \
+  -o yaml > SECRET.yaml
+
+kubeseal -v=8 \
+  --format=yaml \
+  --cert=../sealed-secret-pub.crt \
+  --controller-name=sealed-secrets < SECRET.yaml > SECRET-enc.yaml
+```
+
+[[bash redirects]]
 
 ## see also
 

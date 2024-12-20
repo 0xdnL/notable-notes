@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash help
 created: '2019-08-02T06:42:37.601Z'
-modified: '2022-11-25T10:57:31.810Z'
+modified: '2024-11-14T13:43:34.403Z'
 ---
 
 # bash help
@@ -34,3 +34,4 @@ info bash       # find out more about the shell in general
 - [[man]]
 - [[command-not-found]]
 - [[bash \[\[]]
+- [[zsh run-help]]

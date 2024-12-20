@@ -2,7 +2,7 @@
 tags: [container]
 title: podman
 created: '2021-09-06T12:17:24.319Z'
-modified: '2024-09-30T11:04:33.214Z'
+modified: '2024-11-27T12:22:46.858Z'
 ---
 
 # podman
@@ -38,7 +38,7 @@ CONTAINER_HOST
 -v, --version                   # version for podman
 ```
 
-## usage
+## setup
 
 ```sh
 podman machine init
@@ -49,6 +49,17 @@ podman machine list
 
 podman machine ssh
 
+podman build -t TAG .
+
+podman run -ti --rm IMAGE
+```
+
+[developer.ibm.com/tutorials/running-x86-64-containers-mac-silicon-m1](https://developer.ibm.com/tutorials/running-x86-64-containers-mac-silicon-m1/)
+
+
+## usage
+
+```sh
 podman build -t TAG .
 
 podman run -ti --rm IMAGE

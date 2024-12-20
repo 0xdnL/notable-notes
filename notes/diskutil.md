@@ -2,7 +2,7 @@
 tags: [macos]
 title: diskutil
 created: '2019-07-30T06:19:49.184Z'
-modified: '2024-07-21T11:07:18.092Z'
+modified: '2024-10-13T12:29:58.845Z'
 ---
 
 # diskutil
@@ -29,5 +29,6 @@ diskutil secureErase freespace 4 /Volumes/Macintosh\ HD
 ## see also
 
 - [[dd]]
+- [[mount]]
 - [[hdiutil]]
 - [[fdesetup]]

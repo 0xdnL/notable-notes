@@ -2,7 +2,7 @@
 tags: [dns]
 title: dns
 created: '2019-07-30T06:19:49.040Z'
-modified: '2023-03-20T08:28:39.786Z'
+modified: '2024-11-29T12:31:28.527Z'
 ---
 
 # dns
@@ -16,10 +16,13 @@ modified: '2023-03-20T08:28:39.786Z'
 - DNS-DB: NameServer
 - ZoneFile: SOA (=Start of Authority), NAS, A, AAAA, CNAME, MX, PTR, TXT
 
-
 ## namespace
 
+..
+
 ## zone
+
+..
 
 ## record
 
@@ -28,7 +31,6 @@ modified: '2023-03-20T08:28:39.786Z'
 ## resource records
 
 ```sh
-Resource records
 Type 	    Type ID 	Defining RFC 	Description 	        Function
 A 	        1 	    RFC 1035 	    Address record 	      Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host, but it is also used for DNSBLs, storing subnet masks in RFC 1101, etc.
 AAAA 	      28 	    RFC 3596 	    IPv6 address record 	Returns a 128-bit IPv6 address, most commonly used to map hostnames to an IP address of the host.

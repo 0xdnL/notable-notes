@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash builtin
 created: '2023-11-18T13:07:36.770Z'
-modified: '2023-11-18T13:24:24.595Z'
+modified: '2024-11-14T13:40:20.922Z'
 ---
 
 # bash builtin
@@ -17,4 +17,4 @@ builtin alias
 
 ## see also
 
-- [[bash]]
+- [[zsh builtin]]

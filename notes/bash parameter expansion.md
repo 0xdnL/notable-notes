@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash parameter expansion
 created: '2019-07-30T06:19:49.015Z'
-modified: '2024-05-02T06:16:35.524Z'
+modified: '2024-11-14T13:26:26.467Z'
 ---
 
 # bash parameter expansion 
@@ -152,6 +152,29 @@ echo ${foo^^}   # all to upercase
 @(pattern-list)     # Matches one of the given patterns
 !(pattern-list)     # Matches anything except one of the given patterns
 ```
+
+## ${parameter@operator}
+
+> either a transformation of the value of parameter or information about parameter itself
+
+```sh
+U   # string value of parameter with lowercase alphabetic characters converted to uppercase
+u   # string value of parameter with the first character converted to uppercase, if it is alphabetic
+L   # string value of parameter with uppercase alphabetic characters converted to lowercase
+Q   # string value of parameter quoted in a format that can be reused as input
+E   # string value of parameter with backslash escape sequences expanded as with the $'…' quoting mechanism
+P   # string result of expanding the value of parameter as if it were a prompt string (see Controlling the Prompt)
+A   # string in the form of an assignment statement or declare command that, if evaluated, will recreate parameter with its attributes and value
+K   # produces a possibly-quoted version of the value of parameter
+a   # string consisting of flag values representing parameter’s attributes
+k   # like the 'K' transformation, but expands the keys and values of indexed and associative arrays to separate words after word splitting
+
+USERATHOST='\u@\h'
+echo ${USERATHOST}      # \u@\h
+echo ${USERATHOST@P}    # root@mysystem
+```
+
+[gnu.org/bash/Shell-Parameter-Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 
 ## see also
 

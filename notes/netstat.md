@@ -2,7 +2,7 @@
 tags: [net-tools, network]
 title: netstat
 created: '2019-08-28T22:19:06.348Z'
-modified: '2023-11-18T12:28:37.492Z'
+modified: '2024-11-25T09:45:18.686Z'
 ---
 
 # netstat
@@ -11,7 +11,7 @@ modified: '2023-11-18T12:28:37.492Z'
 
 ## install
 
-```
+```sh
 apt-get install net-tools
 yum     install net-tools
 zypper  install net-tools
@@ -23,6 +23,7 @@ pacman  -S      netstat-nat
 ```sh
 -l, --listening     # show only listening sockets.  (These are omitted by default.)
 -p, --program       # show the PID and name of the program to which each socket belongs
+-r                  # show the routing tables
 -t, --tcp           # TCP  sockets
 -u, --udp           # UDP  sockets
 -w                  # Raw  sockets

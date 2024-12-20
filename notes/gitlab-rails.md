@@ -2,7 +2,7 @@
 tags: [ruby]
 title: gitlab-rails
 created: '2019-12-30T13:15:51.142Z'
-modified: '2023-03-16T09:11:52.887Z'
+modified: '2024-10-17T10:22:56.536Z'
 ---
 
 # gitlab-rails
@@ -26,6 +26,8 @@ gitlab-rails console
 gitlab-rails console -e production
 ```
 
+## Reset root/admin password
+
 ```ruby
 # Reset root/admin password
 
@@ -46,6 +48,12 @@ appsettings.password_authentication_enabled_for_web = true
 appsettings.save!
 
 Gitlab::LDAP::Config.providers
+```
+
+## feature flags
+
+```ruby
+feature.enabled?('go-proxy') # check up again, command from memory
 ```
 
 ### dbconsole
