@@ -2,19 +2,22 @@
 tags: [python]
 title: python
 created: '2019-07-30T06:19:49.222Z'
-modified: '2023-11-18T14:50:28.084Z'
+modified: '2025-06-07T08:55:27.190Z'
 ---
 
 # python
 
 > interpreted, interactive, object-oriented programming language
 
+[[python3]], [[pip]]
+
 ## install
 
 ```sh
 curl -LO https://www.python.org/ftp/python/3.12.0/python-3.12.0-macos11.pkg
-
 sudo installer -pkg python-3.12.0-macos11.pkg -target /
+
+apt-get install python3
 ```
 
 ## usage

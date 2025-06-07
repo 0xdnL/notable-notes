@@ -2,12 +2,14 @@
 tags: [container]
 title: nerdctl
 created: '2022-01-27T09:39:31.754Z'
-modified: '2024-11-16T05:13:53.622Z'
+modified: '2025-04-16T09:51:44.909Z'
 ---
 
 # nerdctl
 
-> [[docker]] compatible cli for [[containerd]]
+> [[docker]]like compatible cli for [[containerd]]
+
+[[crictl]]
 
 ## install
 

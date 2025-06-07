@@ -2,17 +2,40 @@
 tags: [container]
 title: crictl
 created: '2021-05-27T09:57:46.096Z'
-modified: '2024-09-30T08:09:35.462Z'
+modified: '2025-04-27T16:28:49.113Z'
 ---
 
 # crictl
 
 > `cri-o`, interact with container runtimes that implement the kubernetes cri
 
+> cri-o is an implementation of the Kubernetes ContainerRuntimeInterface to enable using OpenContainerInitiative compatible runtimes
+
+[cri-o.io](https://cri-o.io/)
+
+[[ctr]] [[docker]] [[nerdctl]]
+
 ## install
 
 ```sh
 dnf install cri-tools
+```
+
+## default endpoints
+
+```sh
+unix:///run/containerd/containerd.sock
+unix:///run/crio/crio.sock
+unix:///run/crio-dockerd.sock
+```
+
+## usage
+
+```sh
+crictl pull busybox
+crictl images
+crictl ps -a
+circtl exec -it CONTAINER ls
 ```
 
 ## attach
@@ -252,6 +275,7 @@ crictl help
 
 ## see also
 
+- [[kubeadm]]
 - [[docker]], [[podman]], [[ctr]], [[kubectl]]
 - [[skopeo]], [[buildah]]
 - [cri-o.io](https://cri-o.io/)

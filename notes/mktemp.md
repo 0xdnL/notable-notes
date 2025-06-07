@@ -2,12 +2,14 @@
 tags: [linux]
 title: mktemp
 created: '2019-11-26T08:13:04.385Z'
-modified: '2023-04-12T11:53:31.043Z'
+modified: '2025-01-07T13:59:38.375Z'
 ---
 
 # mktemp
 
 > create a temporary file or directory, safely, and print its name
+
+[[mkdir]]
 
 ## env
 

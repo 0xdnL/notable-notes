@@ -2,7 +2,7 @@
 tags: [javascript, runtime]
 title: node
 created: '2020-02-28T21:20:20.353Z'
-modified: '2023-05-19T13:02:14.871Z'
+modified: '2025-03-01T17:09:02.756Z'
 ---
 
 # node
@@ -66,6 +66,40 @@ process.version     // current nodejs version
 
 
 var data = require('./FILE')   // load a FILE
+```
+
+---
+
+## CommonJS (`module.exports = { someFunc };`)
+
+- widely used for server-side development
+- designed for synchronous loading, which is suitable for server environments but not ideal for browsers
+- uses `require()` for importing modules and `module.exports` or `exports` for exporting
+
+```js
+function sayHello(name) {
+    console.log(`Hello, ${name}!`);
+}
+
+module.exports = { sayHello };
+
+> const foo = require('./hello.js');
+> foo.sayHello('World');
+```
+
+## ESM/ESModules (`export function someFunc() {}`)
+
+- standard js module system, introduced in ES6 (ECMAScript 2015)
+- supports both synchronous and asynchronous module loading
+- suitable for both server-side and client-side development
+- uses `import` for importing modules and `export` for exporting
+
+```js
+export function someFunc() {
+  console.log("This is someFunc");
+}
+
+import { someFunc } from './path/to/module.js';
 ```
 
 ## see also

@@ -2,12 +2,23 @@
 tags: [container]
 title: runc
 created: '2020-03-12T13:59:22.450Z'
-modified: '2024-10-26T16:45:38.611Z'
+modified: '2025-04-27T12:21:28.038Z'
 ---
 
 # runc
 
 > cli for spawning and running containers according to OCI specification
+
+`runc` is a component of [[containerd]] and handles kernel level interactions for running containers
+
+```sh
+╭────────╮        ╭──────────────────╮  ╭──────────╮  ╭──────╮  ╭───────────╮
+│ docker ├────────┤ containerd/cri-o ├──┤ OCI spec ├──┤ runc ├──┤ container │
+╰────────╯        ╰──────────────────╯  ╰──────────╯  ╰──────╯  ╰───────────╯
+╭─────╮  ╭─────╮  ╭──────────────────╮  ╭──────────╮  ╭──────╮  ╭───────────╮
+│ k8s ├──┤ CRI ├──┤ containerd/cri-o ├──┤ OCI spec ├──┤ runc ├──┤ container │
+╰─────╯  ╰─────╯  ╰──────────────────╯  ╰──────────╯  ╰──────╯  ╰───────────╯
+```
 
 ## install
 

@@ -2,7 +2,7 @@
 tags: [linux]
 title: ps
 created: '2019-07-30T06:19:49.218Z'
-modified: '2024-07-09T11:53:27.727Z'
+modified: '2025-03-29T09:03:21.125Z'
 ---
 
 # ps
@@ -66,6 +66,7 @@ for PRC in /proc/*/cmdline; { (printf "$PRC "; cat -A "$PRC") | sed 's/\^@/ /g;s
 
 ## see also
 
+- [[pidof]]
 - [[procs]]
 - [[pgrep]]
 - [[pkill]]

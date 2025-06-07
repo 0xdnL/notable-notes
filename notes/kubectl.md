@@ -2,12 +2,14 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2024-10-26T14:48:44.677Z'
+modified: '2025-05-21T13:33:56.707Z'
 ---
 
 # kubectl
 
 > kubectl controls the Kubernetes cluster manager
+
+[[kuberlr]], [[kubie]]
 
 ## installation
 
@@ -15,7 +17,6 @@ modified: '2024-10-26T14:48:44.677Z'
 brew install kubectl
 kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl`
 
-# linux
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
@@ -49,14 +50,13 @@ HTTP_PROXY, HTTPS_PROXY, NO_PROXY # proxy settings `kubectl` should use when com
 --v=8 	# display HTTP request contents
 --v=9 	# display HTTP request contents without truncation of contents
 
--o=json 	                          # output a JSON formatted API object
--o=yaml 	                          # output a YAML formatted API object
--o=name 	                          # print only the resource name and nothing else
--o=wide 	                          # output in the plain-text format with any additional information, and for pods, the node name is included
--o=custom-columns=SPEC 	            # Print a table using a comma separated list of custom columns
--o=custom-columns-file=FILE         # print a table using the custom columns template in the FILE file
--o=jsonpath=TEMPLATE  	            # print the fields defined in a jsonpath expression
--o=jsonpath-file=FILE 	            # print the fields defined by the jsonpath expression in the FILE file
+-o=[json|yaml] 	                    # output [JSON|YAML] formatted API object
+-o=name 	                          # print only the resource name
+-o=wide 	                          # output plain-text format with any additional information
+-o=custom-columns=SPEC 	            # output table using a comma separated list of custom columns
+-o=custom-columns-file=FILE         # output table using the custom columns template in the FILE file
+-o=jsonpath=TEMPLATE  	            # output fields defined in a jsonpath expression
+-o=jsonpath-file=FILE 	            # output fields defined by the jsonpath expression in the FILE file
 
 -A                                  # all namespaces
 -n, --namespace NS                  # namespace scope for cli equest
@@ -181,7 +181,6 @@ kubectl config view --raw
 kubectl config view --minify --output 'jsonpath={..namespace}'
 
 kubectl config current-context
-
 kubectl config get-contexts
 kubectl config get-clusters
 
@@ -193,6 +192,11 @@ kubectl config set-context --current --namespace kube-node-lease    # sets names
 # merge configs
 KUBECONFIG="$HOME/.kube/config:file2:file3" kubectl config view --merge --flatten \
   > ~/.kube/merged_kubeconfig && mv ~/.kube/merged_kubeconfig ~/.kube/config
+
+# remove cluster, context and user from .kube/config
+kubectl config delete-cluster MY_CLUSTER
+kubectl config delete-context MY_CLUSTER_CONTXT
+kubectl config unset users.MY_CLUSTER_USER
 ```
 
 ## create
@@ -233,6 +237,8 @@ kubectl explain deployment.spec.template.spec.containers --recursive    # 🤩 r
 ## events
 
 ```sh
+kubectl events --for postgresql/postgres-cluster
+
 kubectl get events --sort-by='.lastTimestamp'
 
 kubectl get events --sort-by=.metadata.creationTimestamp
@@ -285,39 +291,55 @@ kubectl exec -it POD -- cat /data/out.txt | tail -n 3
 > display one or many resources
 
 ```sh
-kubectl get all     # get alle resoruce of current namespace
-
-kubectl get --raw /apis/
-
-kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
-
-kubectl get po POD_NAME -o yaml
-kubectl get pod
-kubectl get pods --show-labels | awk '{print $6}' | column -s, -t
-kubectl get pods -L
+kubectl get RESOURCE    # kubectl api-resources -o name
+kubectl get all         # get alle resoruce of current namespace
 
 
-kubectl get nodes
-kubectl get node NODE_NAME -o name
-kubectl get node NODE_NAME -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
-kubectl get nodes --selector='!node-role.kubernetes.io/master' --no-headers -o custom-columns=":metadata.name"
+kubectl get apiservices
 
 kubectl get crd volumesnapshotcontent -o yaml
 
-kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
-kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
-
-kubectl get pod POD -o json               # List a single pod in JSON output format
-kubectl get pod POD -o template --template={{.status.phase}}     # return only the phase value of the specified pod
-kubectl get pods -A -o wide --field-selector spec.nodeName=NODE  # list all pods running on NODE
-kubectl get pod POD -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # list resource information in custom columns
+kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
 
 kubectl get replicationcontroller web     # List a single replication controller with specified NAME in ps output format
 kubectl get rc,services                                   # List all replication controllers and services together in ps output format
 kubectl get rc/web service/frontend pods/web-pod-13je7    # List one or more resources by their type and names
 
-kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
+kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
 ```
+
+```sh
+kubectl get --raw /.well-known/openid-configuration
+
+kubectl get --raw /apis/
+
+kubectl get --raw /metrics
+
+kubectl get --raw /apis/flowcontrol.apiserver.k8s.io/v1beta3/flowschemas/eks-workload-high | yq -P
+
+kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
+kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
+```
+
+```sh
+kubectl get pod
+kubectl get pod -L app.kubernetes.io/component,app.kubernetes.io/part-of  # labels that are going to be presented as columns
+kubectl get pods --show-labels | awk '{print $6}' | column -s, -t         # show all labels as the last column
+kubectl get pods -A -o wide --field-selector spec.nodeName=NODE  # list all pods running on NODE
+
+kubectl get pod POD -o [yaml|json]
+kubectl get pod POD -o template --template={{.status.phase}}     # return only the phase value of the specified pod
+kubectl get pod POD -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # list resource information in custom columns
+```
+
+```sh
+kubectl get nodes
+kubectl get node NODE -o name
+kubectl get node NODE -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
+kubectl get nodes --selector='!node-role.kubernetes.io/master' --no-headers -o custom-columns=":metadata.name"
+kubectl get node -L $(kubectl get node NODE -o json | jq -r '.metadata.labels | keys | join(",")')
+```
+
 
 ## run
 
@@ -407,7 +429,7 @@ kubectl taint nodes foo bar:NoSchedule                            # Add to node 
 kubectl patch ingress INGRESS_NAME -p '{"metadata":{"finalizers":[]}}' --type=merge
 ```
 
-## deployment
+## deployment/statefulset
 
 ```sh
 kubectl expose deployment DEPLOYMENT --type=NodePort

@@ -2,7 +2,7 @@
 tags: [container, rust]
 title: kubie
 created: '2023-10-16T10:43:44.965Z'
-modified: '2023-11-17T12:29:06.241Z'
+modified: '2025-05-17T08:54:14.784Z'
 ---
 
 # kubie
@@ -15,6 +15,8 @@ modified: '2023-11-17T12:29:06.241Z'
 brew install kubie
 ```
 
+[[kubectl]]
+
 ## usage
 
 ```sh
@@ -23,16 +25,24 @@ kubie ctx CONTEXT               # switch the current shell to the given context 
 kubie ctx -                     # switch back to the previous context
 kubie ctx CONTEXT -r            # spawn a recursive shell in the given context
 kubie ctx CONTEXT -n NAMESPACE  # spawn a shell in the given context and namespace
+```
 
+```sh
 kubie ns              # display a selectable menu of namespaces
 kubie ns NAMESPACE    # switch the current shell to the given namespace
 kubie ns -            # switch back to the previous namespace
 kubie ns NAMESPACE -r # spawn a recursive shell in the given namespace
+```
 
+```sh
 kubie exec CONTEXT NAMESPACE CMD ARGS..       # execute a command in the given context and namespace
 kubie exec WILDCARD NAMESPACE CMD ARGS..      # execute a command in all the contexts matched by the wildcard and in the given namespace
-kubie exec WILDCARD NAMESPACE -e CMD ARGS..   # execute a command in all the contexts matched by the wildcard and in the given namespace but fail early if any of the commands executed return a non-zero exit code
 
+kubie exec WILDCARD NAMESPACE -e CMD ARGS..   # execute a command in all the contexts matched by the wildcard and in the given namespace 
+                                              # but fail early if any of the commands executed return a non-zero exit code
+```
+
+```sh
 kubie edit          # display a selectable menu of contexts to edit
 kubie edit CONTEXT  # edit the file that contains this context
 
@@ -52,4 +62,3 @@ kubie update        # will check the latest kubie version and update your local 
 - [[bash prompt]]
 - [[kubectx]]
 - [[kubens]]
-- [[kubectl]]

@@ -2,7 +2,7 @@
 tags: [rust]
 title: exa
 created: '2021-05-12T16:04:08.292Z'
-modified: '2023-03-22T10:21:27.168Z'
+modified: '2025-04-01T07:47:53.898Z'
 ---
 
 # exa
@@ -15,6 +15,8 @@ modified: '2023-03-22T10:21:27.168Z'
 cargo install exa
 brew install exa
 ```
+
+[[cargo]]
 
 ## usage
 
@@ -29,4 +31,3 @@ exa -la
 - [[ls]]
 - [[procs]]
 - [[rust]]
-- [[cargo]]

@@ -2,12 +2,14 @@
 tags: [crypto, ssh]
 title: ssh-keygen
 created: '2019-07-30T06:19:49.245Z'
-modified: '2023-03-25T12:05:18.585Z'
+modified: '2025-04-06T12:14:22.200Z'
 ---
 
 # ssh-keygen
 
 > tool for creating new authentication key pairs for [[ssh]]
+
+[[openssl]]
 
 ## option
 

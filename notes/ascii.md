@@ -2,7 +2,7 @@
 tags: [linux, macos, Notebooks]
 title: ascii
 created: '2019-07-30T06:19:48.987Z'
-modified: '2024-12-05T08:55:21.459Z'
+modified: '2025-04-27T12:10:14.363Z'
 ---
 
 # ascii
@@ -13,6 +13,8 @@ modified: '2024-12-05T08:55:21.459Z'
 `codespace` - set of all codepoints
 
 ascii is comprised of 128 `codepoints` from `0x00` to `0x7F`
+
+[[unicode]]
 
 ## install
 

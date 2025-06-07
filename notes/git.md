@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: git
 created: '2019-07-30T06:19:49.063Z'
-modified: '2024-02-22T07:47:21.705Z'
+modified: '2025-06-04T08:45:52.822Z'
 ---
 
 # git
@@ -24,6 +24,26 @@ EDITOR      # see commit
 ```
 
 [[gitconfig]]
+
+## special references
+
+```sh
+HEAD                # Points to current branch or commit the repository is on
+ORIG_HEAD           # stores previous state of HEAD before dangerous operations
+FETCH_HEAD          # tip of the last fetch operation
+MERGE_HEAD          # Refers to the commit(s) that you're merging into your current branch when performing a merge
+CHERRY_PICK_HEAD    # Used during a cherry-pick operation to reference the commit being cherry-picked
+REVERT_HEAD         # Used during a revert operation to reference the commit being reverted
+REFLOG              # mechanism to record updates to the tip of branches and other references in your repository
+
+index               # Represents the staging area
+master              # The default branch name in older repositories (newer Git versions use `main`)
+main                # The default branch name in repositories created with newer versions of Git
+
+@                   # shorthand for HEAD
+@{upstream} @{u}    # Refers to the upstream branch of the current branch
+@{-1} @{-2}         # Refers to the previous branch you were on, to access earlier branches in your history of checked-out branches
+```
 
 ## commands (145)
 
@@ -105,8 +125,13 @@ git clean -d -f -x      # remove all files not under source control
 
 ```sh
 git commit -v                         # using $EDITOR
+
+git commit -c ORIG_HEAD               # re-use previous commit message
+
 git commit -m "title" -m "message"
+
 git commit -am ..
+
 git commit --allow-empty              # empty commit without changes -> for retriggers !
 
 git commit --amend -c COMMIT_SHA       # edith commit message of specific commit

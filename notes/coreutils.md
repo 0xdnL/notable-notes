@@ -2,12 +2,14 @@
 tags: [coreutils]
 title: coreutils
 created: '2020-09-01T07:42:52.948Z'
-modified: '2023-11-11T16:12:05.129Z'
+modified: '2025-03-15T10:28:33.975Z'
 ---
 
 # coreutils
 
 > basic file, shell, and text manipulation utilities of the gnu operating system
+
+[[uutils]]
 
 [[numfmt]] - see [[crane]]
 

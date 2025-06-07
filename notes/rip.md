@@ -1,8 +1,8 @@
 ---
-tags: [rust]
+tags: [linux, macos, rust]
 title: rip
 created: '2021-05-27T09:10:45.980Z'
-modified: '2023-03-25T12:51:12.336Z'
+modified: '2024-12-20T11:01:41.563Z'
 ---
 
 # rip
@@ -11,6 +11,8 @@ modified: '2023-03-25T12:51:12.336Z'
 > does not implement the `xdg-trash`
 > deleted files get sent to the graveyard (`/tmp/graveyard-$USER` by default
 
+alternative to [[rm]]
+
 ## install
 
 ```sh
@@ -18,6 +20,8 @@ cargo install rm-improved
 
 brew install rm-improved
 ```
+
+[[cargo]]
 
 ## option
 
@@ -34,7 +38,4 @@ rip -u      # undo last deletion
 ## see also
 
 - [github.com/nivekuil/rip](https://github.com/nivekuil/rip)
-- [[rm]]
 - [[unlink]]
-- [[rust]]
-- [[cargo]]

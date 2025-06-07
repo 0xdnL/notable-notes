@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2024-07-29T08:43:23.174Z'
+modified: '2025-05-29T10:38:47.006Z'
 ---
 
 # aws
@@ -282,6 +282,17 @@ curl 'https://ec2.shop' -H 'accept: json'
 - [ec2.shop](https://ec2.shop)
 - [docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 
+## ecr - elastic container registr
+
+```sh
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 000011110000.dkr.ecr.eu-central-1.amazonaws.com
+
+aws ecr describe-images --repository-name REPO --output json \
+  | jq -r ' .imageDetails | sort_by(.imagePushedAt) | reverse | map(select(.imageTags != null)) | map(select(any(.imageTags[]; contains("feat-")))) | .[0].imageTags[] | select(contains("feat-")) | first '
+```
+
+[[jq]]
+
 ## ecs - elastic container service
 
 ```sh
@@ -317,11 +328,24 @@ aws eks describe-cluster --output text --name CLUSTER_NAME `# get vpc id` \
 
 aws eks get-token --cluster-name CLUSTER_NAME | jq -r '.status.token'
 
-aws eks update-kubeconfig --region REGION --name CLUSTER_NAME
-
+## nodegroup
 aws eks describe-nodegroup --nodegroup-name NODE_GROUP-202200000012 --cluster-name CLUSTER_NAME
 
+## kubeconfig
 aws eks update-kubeconfig --name CONTEXT
+aws eks update-kubeconfig --region REGION --name CLUSTER_NAME
+
+## addons
+aws eks describe-addon --cluster-name CLUSTER_NAME --addon-name coredns 
+
+aws eks update-addon --cluster-name CLUSTER_NAME \
+  --addon-name aws-ebs-csi-driver \
+  --addon-version v1.38.1-eksbuild.1 \
+  --resolve-conflicts OVERWRITE
+
+aws eks update-addon --cluster-name CLUSTER_NAME --addon-name coredns \
+  --resolve-conflicts PRESERVE \
+  --configuration-values '{"autoScaling":{"enabled":true}}'
 ```
 
 ## elb - elastic load balancers
@@ -443,7 +467,7 @@ aws ssm describe-parameters --max-items 100 --query 'Parameters[*].Name'
 
 aws ssm get-parameter --name "/PATH/TO/PARAMETER"
 
-aws ssm get-parameters-by-path --path "/PATH/TO/PARAMETER" --recursive --query "Parameters[*].Name"
+
 
 aws ssm list-tags-for-resource --resource-type Parameter --resource-id "/PATH/TO/PARAMETER"
 
@@ -452,6 +476,10 @@ aws ssm put-parameter --name='NAME' --value='VALUE' --type='String' --tags Key=A
 # get latest ecs-optimized amazon-linux 2 ami
 aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended | jq '.Parameters[].Value | fromjson'
 aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended --query "Parameters[0].Value" | jq 'fromjson'
+
+
+aws ssm get-parameters-by-path --path "/PATH/TO/PARAMETER" --recursive --query "Parameters[*].Name"
+aws ssm get-parameters-by-path --path "/PATH/" --recursive | jq -r ".Parameters[] | select(.Name | contains(\"api\")).Name"
 ```
 
 ## sts - security token service

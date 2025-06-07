@@ -2,14 +2,14 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2024-12-07T12:34:15.961Z'
+modified: '2025-04-16T09:47:53.380Z'
 ---
 
 # docker
 
 > self-sufficient runtime for containers
 
-[[podman]]
+[[podman]] [[crictl]]
 
 ## install
 
