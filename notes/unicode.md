@@ -2,7 +2,7 @@
 tags: [linux]
 title: unicode
 created: '2023-12-06T11:58:13.706Z'
-modified: '2024-12-05T08:58:12.917Z'
+modified: '2025-04-27T12:20:37.615Z'
 ---
 
 # unicode
@@ -10,6 +10,8 @@ modified: '2024-12-05T08:58:12.917Z'
 > computing industry standard designed to consistently encode, represent, and handle text expressed in most of the world's writing systems
 
 It provides a unique number (code point) for every character, no matter the platform, program, or language, facilitating the global exchange of text and data
+
+[[ascii]]
 
 ## usage
 
@@ -44,6 +46,29 @@ UTF-32
 
 [[url encoding]]
 
+## box drawing
+
+```sh
+  	    0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	A 	B 	C 	D 	E 	F
+U+250x 	─ 	━ 	│ 	┃ 	┄ 	┅ 	┆ 	┇ 	┈ 	┉ 	┊ 	┋ 	┌ 	┍ 	┎ 	┏
+U+251x 	┐ 	┑ 	┒ 	┓ 	└ 	┕ 	┖ 	┗ 	┘ 	┙ 	┚ 	┛ 	├ 	┝ 	┞ 	┟
+U+252x 	┠ 	┡ 	┢ 	┣ 	┤ 	┥ 	┦ 	┧ 	┨ 	┩ 	┪ 	┫ 	┬ 	┭ 	┮ 	┯
+U+253x 	┰ 	┱ 	┲ 	┳ 	┴ 	┵ 	┶ 	┷ 	┸ 	┹ 	┺ 	┻ 	┼ 	┽ 	┾ 	┿
+U+254x 	╀ 	╁ 	╂ 	╃ 	╄ 	╅ 	╆ 	╇ 	╈ 	╉ 	╊ 	╋ 	╌ 	╍ 	╎ 	╏
+U+255x 	═ 	║ 	╒ 	╓ 	╔ 	╕ 	╖ 	╗ 	╘ 	╙ 	╚ 	╛ 	╜ 	╝ 	╞ 	╟
+U+256x 	╠ 	╡ 	╢ 	╣ 	╤ 	╥ 	╦ 	╧ 	╨ 	╩ 	╪ 	╫ 	╬ 	╭ 	╮ 	╯
+U+257x 	╰ 	╱ 	╲ 	╳ 	╴ 	╵ 	╶ 	╷ 	╸ 	╹ 	╺ 	╻ 	╼ 	╽ 	╾ 	╿
+
+┌─────┐  ╭─────╮
+│ box ├──┤ box │
+└─────┘  ╰─────╯
+```
+
+
+
+[wikipedia.org/wiki/Box-drawing_characters](https://en.wikipedia.org/wiki/Box-drawing_characters)
+[wikipedia.org/wiki/Arrows_(Unicode_block)](https://en.wikipedia.org/wiki/Arrows_(Unicode_block))
+
 ## see also
 
 - [[uniname]]
@@ -51,3 +76,4 @@ UTF-32
 - [[gnu readline]], [[bash bind]]
 - [[macos keyboard shortcuts]]
 - [[nvim]]
+

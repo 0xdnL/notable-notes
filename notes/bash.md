@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash
 created: '2019-07-30T06:19:49.025Z'
-modified: '2024-11-14T13:45:52.753Z'
+modified: '2025-05-09T09:07:41.466Z'
 ---
 
 # bash
@@ -184,10 +184,16 @@ MAIL                  #
 MAILCHECK
 MAILPATH
 OPTERR                # if set to the value 1, bash displays error messages
+
 PATH                  # search path for commands.  It is a colon-separated
 POSIXLY_CORRECT
 PROMPT_COMMAND
 PROMPT_DIRTRIM
+
+PIPESTATUS
+${PIPESTATUS[0]} ${PIPESTATUS[1]}
+# get $? from commands
+
 PS0                   # value of this parameter is expanded (see PROMPTING
 PS1                   # value of this parameter is expanded (see PROMPTING
 PS2                   # value of this parameter is expanded as with PS1 and
@@ -201,7 +207,7 @@ auto_resume
 histchars
 ```
 
-[[bash export]] [[env]] [[bash set]]
+[[bash export]] [[env]] [[bash set]] [[bash redirects]]
 
 ## usage
 
@@ -277,6 +283,7 @@ time grep '^#' ~/.bashrc | { i=0; while read -r; do printf '%4d %s\n' "$((++i))"
 
 ## see also
 
+- [[bash redirects]]
 - [[bash prompt]]
 - [[bash debugging]]
 - [[bash parameter expansion]]

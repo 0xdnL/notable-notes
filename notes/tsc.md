@@ -2,7 +2,7 @@
 tags: [compiler, javascript, typescript]
 title: tsc
 created: '2022-12-02T14:15:06.277Z'
-modified: '2023-05-13T15:13:12.297Z'
+modified: '2025-03-01T16:52:17.458Z'
 ---
 
 # tsc
@@ -44,11 +44,17 @@ tsc -p ./path/to/tsconfig.json    # compiles the TypeScript project located at t
 tsc --help --all                  # an expanded version of this information, showing all possible compiler options
 
 tsc --noEmit
+
+
+    --target, -t  # Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
+                  # one of:  es5, es6/es2015, es2016, es2017, es2018, es2019, es2020, es2021, es2022, es2023, es2024, esnext
+                  # default:  es5
+
 tsc --target esnext               # compiles the current project, with additional settings
 ```
 
 ## see also
 
-- [[javascript]]
+- [[node]]
 - [[npm]], [[npx]]
 - [[rustc]], [[javac]]

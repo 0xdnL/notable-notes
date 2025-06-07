@@ -2,7 +2,7 @@
 tags: [database/postgresql, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2024-12-11T13:36:56.444Z'
+modified: '2025-03-25T12:09:51.592Z'
 ---
 
 # psql
@@ -317,12 +317,23 @@ SELECT current_setting('LC_MESSAGES');      -- locale..
 SELECT pg_size_pretty(pg_database_size('DATABASE'));
 
 -- get cluster size
-SELECT pg_size_pretty(sum(pg_tablespace_size(oid))) AS "total cluster size" FROM pg_tablespace;
+SELECT pg_size_pretty(sum(pg_tablespace_size(oid))) AS "total cluster size" 
+FROM pg_tablespace;
 
 
 SHOW hba_file;            -- show host-based-access conf file
 SHOW data_directory;      -- show log file
 DESCRIBE TABLE
+```
+
+## info: database
+
+```sql
+-- get sizes of all databases
+SELECT datname AS database_name,
+       pg_size_pretty(pg_database_size(datname)) AS size
+FROM pg_database
+ORDER BY pg_database_size(datname) DESC;
 ```
 
 ## roles and priviliges
@@ -435,6 +446,7 @@ END $$;
 - [[pgenv]]
 - [[pg_dump]], [[pg_dumpall]]
 - [[pg_amcheck]]
+- [[patronictl]]
 - [[mysql]], [[sqlite]]
 - [[mongo]]
 - [postgresql.org/docs/current](https://www.postgresql.org/docs/current/index.html)

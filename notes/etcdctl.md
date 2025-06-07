@@ -2,7 +2,7 @@
 tags: [systemd]
 title: etcdctl
 created: '2019-09-24T04:24:49.035Z'
-modified: '2024-03-01T12:00:07.929Z'
+modified: '2025-04-17T08:52:23.444Z'
 ---
 
 # etcdctl
@@ -18,6 +18,7 @@ brew install etcd
 ## env
 
 ```sh
+ETCDCTL_API           # set api version
 ETCDCTL_CACERT        # tmp/ca.pem
 ETCDCTL_CERT          # tmp/cert.pem
 ETCDCTL_KEY           # tmp/key.pem
@@ -48,21 +49,58 @@ ETCDCTL_ENDPOINTS     #
 -w, --write-out="simple"                     # output format: json, protobuf, simple, table
 ```
 
-## usage
+## api v2
 
 ```sh
-etcdctl member list
+export ETCDCTL_API=2
+etcdctl --version
+etcdctl --u "root:${ETCD_ROOT_PASSWORD}" set v2key1 v2val1
+etcdctl --u "root:${ETCD_ROOT_PASSWORD}" get v2key1 v2val1
 
-etcdctl put foo "Hello World!"
-
-etcdctl get foo
+etcdctl backup
+etcdctl cluster-health
+etcdctl mk
+etcdctl mkdir
+etcdctl set
 ```
+
+## api v3
+
+```sh
+export ETCDCTL_API=3
+etcdctl version
+etcdctl --u "root:${ETCD_ROOT_PASSWORD}" put foo "Hello World!"
+etcdctl --u "root:${ETCD_ROOT_PASSWORD}" get foo
+
+etcdctl member list
+etcdctl snapshot save 
+etcdctl endpoint health
+etcdctl get
+etcdctl put
+
+etcdctl \
+  --cacert /var/lib/rancher/k3s/server/tls/etcd/server-ca.crt \
+  --cert /var/lib/rancher/k3s/server/tls/etcd/server-client.crt \
+  --key /var/lib/rancher/k3s/server/tls/etcd/server-client.key \
+  member list
+
+kubectl exec etcd-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl get / \
+  --prefix \
+  --keys-only \
+  --limit=10 \
+  --cacert /etc/kubernetes/pki/etcd/ca.crt \
+  --cert /etc/kubernetes/pki/etcd/server.crt  \
+  --key /etc/kubernetes/pki/etcd/server.key" 
+```
+
+[[kubectl]]
 
 ## see also
 
 - [github.com/etcd-io/etcd/etcdctl](https://github.com/etcd-io/etcd/tree/main/etcdctl)
-- [[kubectl]], [[k3s]]
+- [[kubeadm]], [[k3s]]
 - [[consul]]
 - [[zookeeper-shell]]
 - [[redis-cli]]
 - [[raft consesus algorithm]]
+

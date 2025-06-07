@@ -2,12 +2,14 @@
 tags: [linux, macos]
 title: ffmpeg
 created: '2021-03-10T11:11:18.975Z'
-modified: '2024-08-03T19:30:56.885Z'
+modified: '2025-03-20T09:35:59.593Z'
 ---
 
 # ffmpeg
 
 > video and audio converter 
+
+[[ffprobe]], [[ffplay]]
 
 ## install
 
@@ -52,7 +54,5 @@ ffmpeg -ss 00:01:30 -i downloaded_video.mp4 -frames:v 1 thumbnail.jpg       # ex
 
 ## see also
 
-- [[ffprobe]]
-- [[ffplay]]
 - [[imagemagick]]
 - [[youtube-dl]]

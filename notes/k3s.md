@@ -2,12 +2,14 @@
 tags: [container]
 title: k3s
 created: '2021-10-15T07:36:40.840Z'
-modified: '2024-03-23T13:27:27.145Z'
+modified: '2025-04-28T05:50:27.529Z'
 ---
 
 # k3s
 
 > lightweight kubernetes distro aimed for developers & IoT devices
+
+[[kubeadm]]
 
 ## install
 
@@ -85,7 +87,7 @@ etcdctl endpoint status --cluster --write-out=table
 etcdctl get /registry/clusterrolebindings/system:basic-user -w json|jq '.kvs[].key|=@base64d|.kvs[].value|=@base64d'
 ```
 
-[[etcdctl]]
+[[etcdctl]] [[sqlite]]
 
 ## see also
 

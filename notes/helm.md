@@ -2,7 +2,7 @@
 tags: [container]
 title: helm
 created: '2021-06-04T08:40:48.010Z'
-modified: '2024-06-21T09:24:33.742Z'
+modified: '2025-06-07T08:40:39.914Z'
 ---
 
 # helm
@@ -179,7 +179,7 @@ helm repo update          # update information of available charts locally from 
 
 ```sh
 helm list                         # lists all of the releases for a specified namespace
-helm ls                           # alias
+helm ls -a                        # alias, list all, some might be pending which wouldn't show
 
 helm list --filter 'ara[a-z]+'    # filter names by regex
 ```
@@ -224,6 +224,14 @@ helm get values   RELEASE_NAME                # download the values file for a n
 helm get values   RELEASE_NAME -o yaml        # -o, --output format   prints the output in the specified format. Allowed values: table, json, yaml (default table)
 helm get values   RELEASE_NAME -a             # get all computed values
 helm get values   RELEASE_NAME --revision 1   # get vals from other revision
+```
+
+## history
+
+> prints historical revisions for a given release
+
+```sh
+helm history RELEASE_NAME
 ```
 
 ## plugin

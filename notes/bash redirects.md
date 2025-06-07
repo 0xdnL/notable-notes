@@ -2,10 +2,12 @@
 tags: [shell/bash]
 title: bash redirects
 created: '2019-07-30T06:19:49.011Z'
-modified: '2024-12-04T10:31:58.474Z'
+modified: '2025-05-09T09:08:10.326Z'
 ---
 
 # bash redirects
+
+[[bash]]
 
 ## usage
 
@@ -43,6 +45,32 @@ n>|FILE              # forces output to FILE from FILE descriptor n even if nocl
 
 n<>FILE              # uses FILE as both input and output for file descriptor n
 ```
+
+## pipe
+
+> Redirects STDOUT of one command to the standard input STDIN of another command
+
+```sh
+command | cat
+
+command_which_exit_10 | command_which_exit_1      
+echo "${PIPESTATUS[0]} ${PIPESTATUS[1]}"        # get $? from commands
+
+# see also
+set -o pipefail
+```
+
+[[bash set]]
+
+```sh
+ mkfifo pipe
+ tee out.txt < pipe &
+ command > pipe
+ echo $?
+```
+
+[stackoverflow.com/pipe-output-and-capture-exit-status-in-bash](https://stackoverflow.com/a/1221844/14523221), [[mkfifo]]
+
 
 ## process substitution
 

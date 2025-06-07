@@ -2,12 +2,14 @@
 tags: [linux, macos]
 title: ffplay
 created: '2023-03-21T13:41:50.499Z'
-modified: '2023-11-20T07:09:07.947Z'
+modified: '2025-03-20T09:36:21.272Z'
 ---
 
 # ffplay
 
 > ffplay media player
+
+[[ffprobe]], [[ffmpeg]]
 
 ## install
 
@@ -23,5 +25,4 @@ ffplay FILE.mp4
 
 ## see also
 
-- [[ffmpeg]]
 - [[cvlc]]

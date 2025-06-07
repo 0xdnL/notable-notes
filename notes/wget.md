@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: wget
 created: '2019-07-30T06:19:49.266Z'
-modified: '2024-10-27T07:10:11.158Z'
+modified: '2025-06-04T12:22:20.879Z'
 ---
 
 # wget
@@ -23,6 +23,7 @@ brew    install wget
 -q        # no stdout
 -O        # redirect output to file
 -O-       # redirect output to stout, 'dash' -> stdout
+
 ```
 
 ## usage
@@ -34,12 +35,13 @@ wget -qO- URL | CMD
 
 wget --quiet --tries=1 --spider http://localhost/
 
+ wget -S -O /dev/null http://172.51.187.134:9402/metrics    # print only headers
 
 wget -q --show-progress \
   --https-only \
   --timestamping \
-  -P downloads \
-  -i downloads.txt
+  -P downloads      `# download to dir` \
+  -i downloads.txt   # download from urls in file
 ```
 
 ## see also

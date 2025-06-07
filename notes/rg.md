@@ -1,18 +1,23 @@
 ---
-tags: [linux, macos, rust]
+tags: [rust]
 title: rg
-created: '2024-10-16T06:23:12.301Z'
-modified: '2024-11-21T07:56:59.191Z'
+created: '2024-11-18T07:58:19.992Z'
+modified: '2025-04-01T07:50:10.955Z'
 ---
 
 # rg
 
-> `ripgrep` - a line-oriented search tool that recursively searches the current directory for a regex pattern
+> ripgrep - recursively search the current directory for lines matching a pattern
+
+alternative to: [[grep]]
+
+[[uutils]]
 
 ## install
 
 ```sh
 brew install ripgrep
+apt-get install ripgrep
 ```
 
 ## usage
@@ -23,6 +28,7 @@ rg -n -w '[A-Z]+_SUSPEND'
 
 ## see also
 
-- [[nvchad]]
+- [[nvim]], [[nvchad]]
 - [[grep]]
 - [[find]], [[fd]]
+

@@ -2,7 +2,7 @@
 tags: [database]
 title: sqlite
 created: '2019-07-30T06:19:49.240Z'
-modified: '2023-12-07T13:39:57.992Z'
+modified: '2025-03-06T08:54:29.854Z'
 ---
 
 # sqlite
@@ -62,8 +62,10 @@ SELECT rowid, text FROM playsearch WHERE text MATCH "whether tis nobler"; -- Now
 
 ## see also
 
+- [[duckdb]]
 - [[mysql]]
 - [[psql]]
 - [[mongo]]
 - [[fossil]]
 - [[c]]
+- [[k3s]]

@@ -2,14 +2,14 @@
 tags: [container]
 title: ctr
 created: '2020-03-12T13:48:00.174Z'
-modified: '2024-10-26T16:43:43.507Z'
+modified: '2025-04-16T09:44:27.080Z'
 ---
 
 # ctr
 
-> manage containers run with [[containerd]]
+> manage containers run with [[containerd]], based on the GRPC api
 
-- cli based on the GRPC api
+[[crictl]] [[docker]] [[nerdctl]]
 
 ## install
 

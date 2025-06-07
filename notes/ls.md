@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: ls
 created: '2019-07-30T06:19:49.165Z'
-modified: '2023-11-20T18:29:27.005Z'
+modified: '2025-04-01T07:41:40.957Z'
 ---
 
 # ls
@@ -31,6 +31,7 @@ ls -lisa
 ls -d .*	                        # list only .dotfiles and .dotdirs
 
 ls -d */                          # only directories
+
 ls -l | grep "^d"                 # list only directories
 
 ls -l --ignore=*.gz --ignore=*.1  # ignore extensions

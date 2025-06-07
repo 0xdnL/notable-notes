@@ -2,7 +2,7 @@
 tags: [javascript, packagemanager]
 title: npm
 created: '2019-07-30T06:19:49.182Z'
-modified: '2023-05-23T07:55:34.842Z'
+modified: '2025-03-01T17:22:18.628Z'
 ---
 
 # npm
@@ -61,6 +61,9 @@ npm init @SCOPE         # same as `npx <@scope>/create`
 
 ```sh
 -S, --save, --no-save, --save-prod, --save-dev, --save-optional, --save-peer, --save-bundle
+
+-D, --save-dev      # save to package.json
+
 -E, --save-exact
 -g, --global
     --global-style
@@ -81,6 +84,9 @@ npm init @SCOPE         # same as `npx <@scope>/create`
 
 ```sh
 npm --registry HOST/repository/npm-all/ install gulp-coffee
+
+npm install -g typescript
+npm install -D @types/node
 ```
 
 ## ls - list installed packages
@@ -128,7 +134,7 @@ npm config edit
 
 ## see also
 
-- [[javascript]]
+- [[javascript]], [[typescript]]
 - [[node]]
 - [[nxm]]
 - [[yarn]]

@@ -2,18 +2,35 @@
 tags: [container]
 title: containerd
 created: '2020-03-12T13:44:44.636Z'
-modified: '2023-11-08T14:38:33.532Z'
+modified: '2025-04-27T12:25:43.051Z'
 ---
 
 # containerd
 
 > container runtime with an emphasis on simplicity, robustness and portability
 
+needs [[runc]] to start containers
+contains[[ctr]] for basic management
+
+[[crictl]] [[docker]]
+
 ## install
 
 ```sh
-wget https://github.com/containerd/containerd/archive/v1.3.2.zip && unzip v1.3.2.zip
+curl -LO https://github.com/containerd/containerd/releases/download/v2.0.5/containerd-2.0.5-linux-amd64.tar.gz
+curl -LO https://github.com/containerd/containerd/releases/download/v2.0.5/containerd-2.0.5-linux-amd64.tar.gz.sha256sum
+sha256sum -c containerd-2.0.5-linux-ajmd64.tar.gz.sha256sum containerd-2.0.5-linux-amd64.tar.gz
+tar Cxzvf /usr/local/ containerd-2.0.5-linux-amd64.tar.gz
+
+curl -LO https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+mkdir -p /usr/local/lib/systemd/system/
+mv containerd.service /usr/local/lib/systemd/system/containerd.service
+systemctl daemon-reload
+systemctl enable --now containerd
+systemctl status containerd.service
 ```
+
+[github.com/containerd/containerd/docs/getting-started.md](https://github.com/containerd/containerd/blob/main/docs/getting-started.md) | [[sha256sum]] | [[tar]] | [[systemctl]]
 
 ## usage
 
@@ -54,3 +71,4 @@ CNCF Cloud Native Computing Foundation
 - [[nerdctl]]
 - [[container]]
 - [containerd.io/docs/getting-started](https://containerd.io/docs/getting-started/)
+- [[sysctl]]
