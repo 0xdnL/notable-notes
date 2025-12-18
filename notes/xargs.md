@@ -2,12 +2,14 @@
 tags: [linux, macos]
 title: xargs
 created: '2019-07-30T06:19:49.266Z'
-modified: '2023-03-22T10:39:44.062Z'
+modified: '2025-11-08T15:31:29.414Z'
 ---
 
 # xargs
 
-> cli utility for building an execution pipeline from STDIN
+> cli utility for building an execution pipeline from `STDIN`
+
+[[bash for]], [[find]]
 
 ## install
 
@@ -47,6 +49,7 @@ for FILE in "$(ls)"; do echo "$FILE rugal"; done
 ls | xargs -I% echo "% rugal"
 
 xargs -I % -P 5 curl -I "https://HOST" < <(printf '%s\n' {1..10})
+
 seq 1 10 | xargs -n1 -P 5 curl -I "https://HOST"
 ```
 

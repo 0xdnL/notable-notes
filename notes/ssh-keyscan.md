@@ -2,12 +2,14 @@
 tags: [crypto, linux]
 title: ssh-keyscan
 created: '2021-06-30T12:48:52.502Z'
-modified: '2023-03-25T12:05:18.593Z'
+modified: '2025-12-03T14:03:50.636Z'
 ---
 
 # ssh-keyscan
 
 > gather ssh host public keys from servers
+
+[[ssh]]
 
 ## option
 
@@ -40,5 +42,4 @@ ssh-keyscan -t rsa,dsa HOST 2>&1 | sort -u - ~/.ssh/known_hosts
 
 ## see also
 
-- [[ssh]]
 - [[git]]

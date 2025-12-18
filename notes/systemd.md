@@ -2,7 +2,7 @@
 tags: [initsystem, linux]
 title: systemd
 created: '2019-08-20T14:38:14.235Z'
-modified: '2024-06-26T05:22:18.717Z'
+modified: '2025-12-09T13:10:13.167Z'
 ---
 
 # systemd
@@ -16,6 +16,8 @@ modified: '2024-06-26T05:22:18.717Z'
 - Maintains `mount` and `automount` points
 - Implements an elaborate transactional dependency-based service control logic
 - systemd manages `units`, which are representations of system resources and services `systemd unit`
+
+[[systemctl]], [[journalctl]]
 
 ## usage
 
@@ -61,7 +63,7 @@ portablectl   # for managing portable service images, a feature that allows you 
 ## see also
 
 
-- [[systemctl]], [[journalctl]], [[loginctl]], [[hostnamectl]], [[timedatectl]], [[localectl]], [[machinectl]], [[busctl]], [[networkctl]], [[bootctl]], [[coredumpctl]], [[portablectl]], [[resolvectl]]
+- [[loginctl]], [[hostnamectl]], [[timedatectl]], [[localectl]], [[machinectl]], [[busctl]], [[networkctl]], [[bootctl]], [[coredumpctl]], [[portablectl]], [[resolvectl]]
 - [[unix socket]]
 - [[d-bus]]
 - [[cgroups]]

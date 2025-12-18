@@ -2,7 +2,7 @@
 tags: [python]
 title: yt-dlp
 created: '2025-06-07T08:51:50.009Z'
-modified: '2025-06-07T08:58:48.001Z'
+modified: '2025-10-30T18:33:57.990Z'
 ---
 
 # yt-dlp
@@ -21,6 +21,12 @@ pip install yt-dlp --upgrade
 ```
 
 [[python]], [[pip]], [[virtualenv]]
+
+```sh
+docker run --rm -v $(pwd):/app -w /app -it thr3a/yt-dlp  FLAGS YOUTUBE_URL
+```
+
+[[docker]]
 
 ## usage
 

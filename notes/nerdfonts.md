@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: nerdfonts
 created: '2023-04-15T09:17:30.144Z'
-modified: '2024-11-18T11:45:45.088Z'
+modified: '2025-10-09T08:07:10.486Z'
 ---
 
 # nerdfonts
@@ -17,15 +17,19 @@ modified: '2024-11-18T11:45:45.088Z'
 ## install
 
 ```sh
-brew tap homebrew/cask-fonts
 brew search '/font-.*-nerd-font/'                   # list available nerdfonts
+
 brew install --cask font-ubuntu-mono-nerd-font      # install font
 ```
 
 ## usage
 
 ```sh
-ls -lah ~/Library/Fonts
+# possible path for installed fonts
+/System/Library/Fonts/
+/Library/Fonts/
+~/Library/Fonts/
+
 
 fc-list | grep -v "/System" | column -t -s:
 /PATH/TO/Library/Fonts/Ubuntu Mono Bold Italic Nerd Font Complete Mono.ttf: UbuntuMono Nerd Font Mono:style=Bold Italic
@@ -43,5 +47,5 @@ fc-cache    # scan font files or directories
 ## see also
 
 - [[brew]]
-- [[alacritty]]
+- [[alacritty]], [[ghostty]]
 - [[vim]], [[nvim]], [[nvchad]]

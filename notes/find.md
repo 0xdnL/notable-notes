@@ -2,14 +2,14 @@
 tags: [linux, regex]
 title: find
 created: '2019-07-30T06:19:49.054Z'
-modified: '2024-11-21T07:56:10.142Z'
+modified: '2025-11-08T15:30:50.055Z'
 ---
 
 # find
 
 > walk a file hierarchy
 
-[[fd]]
+[[fd]], [[eza]], [[ls]], [[tree]]
 
 ## option
 
@@ -40,6 +40,22 @@ find PATH \( -name '*.txt' -o -name '*.md' \) \! -empty                        #
 
 find PATH -iname '*expenses*'                                                  # case insensitive way to search for filenames
 
+
+
+# patterns / regex .. `-name` uses pattern
+find . -type f -name "[!.]*"    # ignore all dotfiles
+find . -type f -name "*.txt"    # only .txt files
+
+find . -mtime +0    # find files modified greater than 24 hours ago
+find . -mtime 0     # find files modified between now and 1 day ago
+find . -mtime -1    # find files modified less than 1 day ago (SAME AS -mtime 0)
+find . -mtime 1     # find files modified between 24 and 48 hours ago
+find . -mtime +1    # find files modified more than 48 hours ago
+```
+
+## -exec
+
+```sh
 find PATH -exec CMD {} \;                                                      # escape semicolon to prevent shell from interpreting it
 find PATH -exec CMD {} +                                                       # each result is appended to CMD and executed afterwards
 
@@ -57,21 +73,17 @@ find . \( -exec echo {} \; -o -exec true \; \) -exec grep banana {} \;      # bo
 
 find . -type d -maxdepth 1 -exec bash -c 'pushd $(pwd) >/dev/null; cd {}; git remote get-url origin; popd >/dev/null;' \;
 
-# patterns / regex .. `-name` uses pattern
-find . -type f -name "[!.]*"    # ignore all dotfiles
-find . -type f -name "*.txt"    # only .txt files
-
-find . -mtime +0    # find files modified greater than 24 hours ago
-find . -mtime 0     # find files modified between now and 1 day ago
-find . -mtime -1    # find files modified less than 1 day ago (SAME AS -mtime 0)
-find . -mtime 1     # find files modified between 24 and 48 hours ago
-find . -mtime +1    # find files modified more than 48 hours ago
+find .bash_func/ -maxdepth 1 -type f -name '*.sh' -print -quit
+find .bash_func/ -maxdepth 1 -type f -name '*.sh' -print0 | xargs -0 -I{} echo source "{}"
+find .bash_func/ -maxdepth 1 -type f -name '*.sh' -exec echo source {} \;
 ```
+
+[[xargs]]
 
 ## see also
 
 - [[grep]], [[rg]]
-- [[ls]], [[du]]
+- [[du]]
 - [unix.stackexchange.com/manipulate-file-name-piped-from-find-command](https://unix.stackexchange.com/a/60470/193945)
 - [Exclude hidden files when searching with Unix/Linux find? - Super User](https://superuser.com/a/999448)
 - [stackoverflow.com/find-exec-with-multiple-commands](https://stackoverflow.com/questions/5119946/find-exec-with-multiple-commands)

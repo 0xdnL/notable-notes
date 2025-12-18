@@ -2,7 +2,7 @@
 tags: [macos]
 title: installer
 created: '2020-06-10T09:03:37.546Z'
-modified: '2023-11-18T15:09:03.889Z'
+modified: '2025-11-10T14:55:19.314Z'
 ---
 
 # installer
@@ -60,10 +60,11 @@ installer -pkg InstallMe.pkg -file /tmp/InstallConfigFile
 installer -pkg InstallMe.pkg -target /dev/disk0s5
 ```
 
+examples: [[go]], [[aws]], [[python]]
+
 ## see also
 
 - [[pkgutil]]
 - [[hdiutil]]
-- [[aws]], [[python]]
 - [[crc]]
 - [[xar]]

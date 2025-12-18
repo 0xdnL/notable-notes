@@ -2,13 +2,15 @@
 tags: [linux, network]
 title: ping
 created: '2019-07-30T06:19:49.207Z'
-modified: '2022-11-04T10:53:17.986Z'
+modified: '2025-12-05T12:19:39.670Z'
 ---
 
 # ping 
 
 > `Packet InterNet Groper` find out if a host is reachable from your network and how fast you get a response
 > calculates the "Round Trip Time" `RTT` that it takes a packet to reach a host
+
+[[sleep]]
 
 ## install
 

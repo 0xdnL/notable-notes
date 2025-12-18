@@ -2,10 +2,12 @@
 tags: [linux]
 title: free
 created: '2019-07-30T06:19:49.055Z'
-modified: '2023-03-22T08:23:16.512Z'
+modified: '2025-11-12T19:20:58.023Z'
 ---
 
 # free
+
+> display amount of free and used memory in the system
 
 ## install
 
@@ -39,10 +41,10 @@ cat /proc/meminfo
 sudo sync && sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"     # clear memory cache
 ```
 
+[[procps]], [[procfs]]
+
 ## see also
 
-- [[procps]]
-- [[procfs]]
 - [[docker]]
 - [[numfmt]]
 - [[top]]

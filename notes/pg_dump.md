@@ -2,12 +2,14 @@
 tags: [database/postgresql, python]
 title: pg_dump
 created: '2021-03-15T07:59:51.829Z'
-modified: '2023-12-19T15:03:59.521Z'
+modified: '2025-11-21T12:33:33.639Z'
 ---
 
 # pg_dump
 
 > extract a postgresql database into a script file or other archive file
+
+[[pg_dumpall]], [[pg_restore]]
 
 ## install
 
@@ -123,6 +125,15 @@ pg_dump -t 'detroit.emp*' -T detroit.employee_log DATABASE > db.sql   # dump all
 pg_dump -n 'east*gsm' -n 'west*gsm' -N '*test*' DATABASE > db.sql     # dump all schemas whose names start with east or west and end in gsm, excluding schemas whose names contain word test
 pg_dump -n '(east|west)*gsm' -N '*test*' DATABASE > db.sql            # same as above, using regular expression notation to consolidate the switches
 pg_dump -T 'ts_*' DATABASE > db.sql                                   # dump all database objects except for tables whose names begin with ts_
+```
+
+```sh
+-F  # custom format for pg_restore
+-O  # do not output ownership commands (important: prevents objects from being restored with old roles/owners)
+-x  # do not dump privileges (grants), making it cleaner to reassign later
+pg_restore -h host_bar -U bar_role -d bar -n public foo.dump
+
+pg_restore -h host_bar -U bar_role -d bar -n public foo.dump
 ```
 
 ## see also

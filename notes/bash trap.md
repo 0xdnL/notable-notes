@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash trap
 created: '2019-08-02T06:42:37.638Z'
-modified: '2022-02-10T10:09:42.974Z'
+modified: '2025-11-24T19:39:53.784Z'
 ---
 
 # bash trap
@@ -37,11 +37,12 @@ SIGTERM    15               Terminate-Signal
 SIGSTOP    17, 19, 23       Stop proc                 ctl + z       cannot be caught, blocked or ignored !
 ```
 
-## go defer
+
+## golang like defer
+
+> [twitter.com/TheNikhita/status/1061973769470795776](https://twitter.com/TheNikhita/status/1061973769470795776)
 
 ```sh
-# golang like defer
-# https://twitter.com/TheNikhita/status/1061973769470795776
 scratch=$(mktemp -d -t tmp.XXXXXXXX)
 function finish {
   rm -rf "$scratch"

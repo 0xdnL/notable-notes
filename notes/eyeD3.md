@@ -2,7 +2,7 @@
 tags: [linux, macos, python]
 title: eyed3
 created: '2019-08-23T14:52:21.967Z'
-modified: '2024-08-27T08:36:16.591Z'
+modified: '2025-11-24T19:43:04.538Z'
 ---
 
 # eyed3
@@ -52,6 +52,20 @@ eyeD3 --remove-all-images FILE
 
 find . -type f -name "*.mp3" -exec eyed3 {} \;    # read metadata form all mp3's
 ```
+
+```sh
+find . -name "*.mp3" -print0 | while IFS= read -r -d '' FILE; do
+  FILE="${FILE#./}"
+  echo "$FILE"
+  IFS='-' read -r TRACK ARTIST ALBUM TITLE <<< $FILE;
+  cp "${TRACK}.jpg" cover.jpg
+  COVER=cover.jpg
+  eyed3 --add-image "${COVER}:FRONT_COVER" --track "${TRACK}" --album "${ALBUM}" --artist "${ARTIST}" --title "${TITLE}" "$FILE"
+  rm cover.jpg
+done
+```
+
+[[find]] [[bash read]]
 
 ## see also
 

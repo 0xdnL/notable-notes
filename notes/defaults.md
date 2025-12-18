@@ -2,7 +2,7 @@
 tags: [macos]
 title: defaults
 created: '2019-07-30T06:19:49.183Z'
-modified: '2023-06-02T06:21:34.519Z'
+modified: '2025-10-28T12:48:26.498Z'
 ---
 
 # defaults
@@ -36,6 +36,10 @@ defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 defaults delete NSGlobalDomain KeyRepeat          # revert to default
 defaults delete NSGlobalDomain InitialKeyRepeat   # revert to default
+
+# disable dot after double space
+# System Settings -> Keyboard -> Text Input -> Input Sources -> Edit. (New dialog appears). "Add full stop to double space" -> toggle OFF
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 ```
 
 [apple.stackexchange.com/how-to-increase-keyboard-key-repeat-rate-on-os-x](https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x/83923#83923)

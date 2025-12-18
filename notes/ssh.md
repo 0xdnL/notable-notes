@@ -2,18 +2,32 @@
 tags: [crypto, ssh]
 title: ssh
 created: '2019-07-30T06:19:49.245Z'
-modified: '2024-02-02T10:39:36.535Z'
+modified: '2025-12-03T14:07:16.991Z'
 ---
 
 # ssh
 
-> `secure shell`
+> `secure shell` - connectivity tool for remote login with the SSH protocol which encrypts all traffic
+
+The OpenSSH suite consists of the following tools:
+
+- Remote operations are done using [[ssh]], [[scp]], and [[sftp]].
+- Key management with [[ssh-add]], [[ssh-keysign]], [[ssh-keyscan]], and [[ssh-keygen]].
+- The service side consists of [[sshd]], [[sftp-server]], and [[ssh-agent]]. 
+
+[openssh.org](https://www.openssh.org/) [[tty]]
 
 ## install
 
 ```sh
-apt-get install
+# usuall present at /usr/bin/ssh
+
+apt-get install openssh-client
+
+brew install openssh   # /usr/local/bin/ssh
 ```
+
+[[brew]]
 
 ## env
 
@@ -44,13 +58,14 @@ SSH_TTY                   # set by sshd       - name of allocated tty
 -o UserKnownHostsFile=/PATH/TO/.ssh/known_hosts 
 -o PreferredAuthentications=password
 -o PubkeyAuthentication=no
+
+
+-T                              # disable pseudo-terminal allocation.
 ```
 
 ## usage
 
 ```sh
-ssh whoami.filippo.io           # prints _o/ Hello! and closes
-
 ssh -T git@github.com           # test ssh-connection
 
 ssh -t                          # Force pseudo-terminal allocation.
@@ -63,6 +78,18 @@ ssh -n user@host 'uptime'       # don't read from stdin, e.g. in a loop
 
 ssh -C                          # compress all data stdin, stdout, stderr, x11, tpc, unix-domain-connections via gzip
 ```
+
+## public ssh servers
+
+```sh
+ssh whoami.filippo.io           # prints _o/ Hello! and closes
+
+ssh terminal.shop               # terminal shop
+
+ssh menu@tty.sdf.org
+```
+
+[sdf.org/?ssh](https://sdf.org/?ssh), [sdf.org/?tutorials/SSH-SDF](https://sdf.org/?tutorials/SSH-SDF)
 
 ## see also
 

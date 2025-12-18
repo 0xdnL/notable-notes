@@ -2,12 +2,14 @@
 tags: [linux]
 title: ps
 created: '2019-07-30T06:19:49.218Z'
-modified: '2025-03-29T09:03:21.125Z'
+modified: '2025-11-24T10:04:12.960Z'
 ---
 
 # ps
 
 > prints a line of information about the current running login shell and any processes running under it
+
+[[procs]], [[procfs]]
 
 ## install
 
@@ -67,7 +69,6 @@ for PRC in /proc/*/cmdline; { (printf "$PRC "; cat -A "$PRC") | sed 's/\^@/ /g;s
 ## see also
 
 - [[pidof]]
-- [[procs]]
 - [[pgrep]]
 - [[pkill]]
 - [[sort]]

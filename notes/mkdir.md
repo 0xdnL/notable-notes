@@ -1,12 +1,14 @@
 ---
 title: mkdir
 created: '2025-01-07T14:00:16.121Z'
-modified: '2025-01-07T15:18:34.868Z'
+modified: '2025-11-24T19:41:04.071Z'
 ---
 
 # mkdir
 
 > make directories
+
+[[mktemp]]
 
 ## option
 
@@ -28,6 +30,19 @@ mkdir foobar                  # Create a directory named foobar
 mkdir -m 700 foobar           # Create a directory named foobar and set its file mode to 700
 
 mkdir -p cow/horse/monkey     # Create a directory named cow/horse/monkey, creating any non-existent intermediate directories as necessary
+```
+
+## helper func
+
+```sh
+mkd ()
+{
+  [ "$#" -ne 1 ] && {
+    echo "missing dir name: ${FUNCNAME[0]} NAME";
+    return 1
+  };
+  mkdir -pv -p -- "$1" && cd -P -- "$1"
+}
 ```
 
 ## see also

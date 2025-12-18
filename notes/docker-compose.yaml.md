@@ -2,10 +2,14 @@
 tags: [container]
 title: docker-compose.yaml
 created: '2024-02-08T12:35:20.028Z'
-modified: '2024-10-08T09:22:15.754Z'
+modified: '2025-11-18T11:50:14.265Z'
 ---
 
 # docker-compose.yaml
+
+[[docker-compose]]
+
+## limits
 
 ```yml
 # compose file version 2 reference
@@ -32,6 +36,8 @@ cap_drop:
 ```
 
 [[capabilities]], [[ulimit]]
+
+## terraform workbench
 
 ```yml
 # terrafrom dev setup

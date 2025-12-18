@@ -2,12 +2,14 @@
 tags: [container]
 title: argocd
 created: '2020-10-26T12:29:59.372Z'
-modified: '2022-03-16T07:10:31.142Z'
+modified: '2025-11-14T10:25:14.547Z'
 ---
 
 # argocd
 
 > declarative, gitops continuous delivery tool for k8s
+
+[[gitops]], [[flux]]
 
 ## install
 
@@ -34,7 +36,5 @@ argocd app list
 
 ## see also
 
-- [[flux]]
-- [[gitops]]
-- [[kubectl]]
+- [[kubectl]], [[helm]], [[kustomize]]
 - [[minikube]]

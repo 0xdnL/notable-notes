@@ -2,7 +2,7 @@
 tags: [crypto, linux, network]
 title: openssl
 created: '2019-07-30T06:19:49.183Z'
-modified: '2024-09-13T06:53:16.339Z'
+modified: '2025-12-17T12:34:24.779Z'
 ---
 
 # openssl
@@ -226,7 +226,7 @@ openssl rand -base64 32      # generate random numner
 openssl rand -base64 128 | tr -dc 'a-zA-Z0-9' | head -c 32
 ```
 
-[[shuf]]
+[[tr]], [[shuf]]
 
 
 ## see also

@@ -2,13 +2,15 @@
 tags: [shell/bash/builtin]
 title: bash command
 created: '2019-08-02T06:42:37.566Z'
-modified: '2023-09-14T06:47:26.878Z'
+modified: '2025-12-05T12:20:02.074Z'
 ---
 
 # bash command
 
 > execute a simple command or display information about commands 
 suppressing  shell function lookup, or display information about the specified COMMANDs
+
+[[sleep]]
 
 ## option
 

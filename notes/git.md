@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: git
 created: '2019-07-30T06:19:49.063Z'
-modified: '2025-06-04T08:45:52.822Z'
+modified: '2025-12-18T15:14:52.390Z'
 ---
 
 # git
@@ -215,11 +215,17 @@ git help GUIDE
 ```
 
 ```sh
+git log --max-parents=0       # show root commit(s)
+
 git log ref..                 # list commits that are present on current branch and not merged into ref.A ref can be e.g. a branch name or a tag name.
 git log ..ref                 # list commit, that are present on ref and not merged into current branch.
 git reflog                    # list operations (like checkouts, commits etc.) made on local repository.
 
-git log --follow -p -- file   # follow file history
+
+git log -- FILE               # follow file history
+git log --follow -p -- FILE   # follow file history
+
+
 
 git log -L:<function>:file    # git log of a specific function in a file
 
@@ -241,6 +247,14 @@ git ls-files -o --exclude-standard    # show new files
 
 git ls-files --deleted | xargs -d "\n" git add --all    # add deleted files
 git ls-files -z --deleted | xargs -0 git add            # add deleted files
+```
+
+## ls-remote 
+
+```sh
+git ls-remote --symref git@gitlab.foo.bar:group/backend.git HEAD      # get current primary branch
+ref: refs/heads/develop HEAD
+1af22b31688a111c5b7e89add654dbdcc122fbff        HEAD
 ```
 
 ## merge

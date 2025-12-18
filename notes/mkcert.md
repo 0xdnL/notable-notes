@@ -2,12 +2,14 @@
 tags: [crypto, go]
 title: mkcert
 created: '2023-07-11T11:08:25.241Z'
-modified: '2023-07-12T07:32:53.565Z'
+modified: '2025-11-24T19:40:23.573Z'
 ---
 
 # mkcert
 
 > generate locally-trusted development certificates
+
+[[mktemp]]
 
 ## install
 

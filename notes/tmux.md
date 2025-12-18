@@ -2,7 +2,7 @@
 tags: [linux]
 title: tmux
 created: '2019-07-30T06:19:49.253Z'
-modified: '2024-12-02T16:25:47.976Z'
+modified: '2025-11-11T13:39:35.798Z'
 ---
 
 # tmux
@@ -33,11 +33,12 @@ A device that interleaves several activities; a switching device.
 ## config
 
 ```sh
-/opt/homebrew/etc/tmux.conf
-$HOME/.tmux.conf
-$XDG_CONFIG_HOME/tmux/tmux.conf
-$HOME/.config/tmux/tmux.conf
+~/.tmux.conf
+
+~/.config/tmux/tmux.conf      # XDG_CONFIG_HOME
 ```
+
+[[freedesktop xdg]]
 
 ## env
 
@@ -167,6 +168,7 @@ join-pane -t :1               # moves current pane to window target 1
 
 ## see also
 
+- [[ghostty]], [[alacritty]]
 - [[nvim]]
 - [[fzf]]
 - [[freedesktop xdg]]

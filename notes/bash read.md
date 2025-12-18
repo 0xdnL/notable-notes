@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash read
 created: '2019-07-30T06:19:49.017Z'
-modified: '2024-12-04T10:33:29.298Z'
+modified: '2025-10-30T18:54:01.142Z'
 ---
 
 # bash read
@@ -35,6 +35,20 @@ read a b < <(echo 1 2);  echo $a $b;
 
 CMD | awk '{pritn $1,$2}' | while read NS RB; do echo "NS: $NS, RB: $RB"; done
 ```
+
+```sh
+func()
+{
+  : ${1?' no filename given'}
+  local ARTIST TITLE FILE="$1"
+  [ -f "$FILE" ] || { echo "not a file: '$FILE'"; return; }
+  IFS='-' read -r ARTIST TITLE <<< $FILE    # split $1 by seperator via herestring into two variables
+  echo "artist: $ARTIST, title: $TITLE"
+}
+```
+
+[[bash redirects]] `herestring`
+
 
 ## usage
 

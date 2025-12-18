@@ -2,12 +2,12 @@
 tags: [linux]
 title: procps
 created: '2023-03-22T07:58:03.748Z'
-modified: '2023-05-05T08:14:29.615Z'
+modified: '2025-11-24T10:03:40.189Z'
 ---
 
 # procps
 
-> set of utilities that provide info out of the pseudo-filesystem most commonly located at `/proc`
+> set of utilities providing info out of the pseudo-filesystem [[procfs]] located at `/proc`
 
 ## usage
 

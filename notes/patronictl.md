@@ -1,7 +1,7 @@
 ---
 title: patronictl
 created: '2025-02-18T11:26:13.896Z'
-modified: '2025-02-26T14:03:25.591Z'
+modified: '2025-12-05T13:48:47.375Z'
 ---
 
 # patronictl
@@ -36,7 +36,10 @@ patronictl remove         # Remove cluster from DCS
 patronictl restart        # Restart cluster member
 patronictl resume         # Resume auto failover
 patronictl show-config    # Show cluster configuration
+
 patronictl switchover     # Switchover to a replica
+patronictl -c /etc/patroni/patroni.yml switchover --master CURRENT_LEAADER --candidate STANDBY_TO_PROMOTE
+
 patronictl topology       # Prints ASCII topology for given cluster
 patronictl version        # Output version of patronictl command or a running Patroni...
 ```
@@ -51,3 +54,4 @@ select * from pg_stat_replication;    -- find out state, sync-state etc
 
 - [[psql]]
 - [patroni.readthedocs.io/en/latest/patronictl](https://patroni.readthedocs.io/en/latest/patronictl.html)
+- [[kubectl]]

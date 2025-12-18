@@ -2,7 +2,7 @@
 tags: [coreutils]
 title: coreutils
 created: '2020-09-01T07:42:52.948Z'
-modified: '2025-03-15T10:28:33.975Z'
+modified: '2025-11-08T15:36:24.397Z'
 ---
 
 # coreutils
@@ -18,11 +18,15 @@ modified: '2025-03-15T10:28:33.975Z'
 
 ```sh
 brew install coreutils
+```
 
+```sh
 brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
 ```
 
-[[find]], [[tar]], [[sed]], [[gawk]] [[gnutls]], [[indent]], [[getopt]], [[grep]]
+[[findutils]]: [[find]], [[xargs]]
+
+[[tar]], [[sed]], [[gawk]] [[gnutls]], [[indent]], [[getopt]], [[grep]]
 
 [apple.stackexchange.com/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities](https://apple.stackexchange.com/a/69332/394965)
 
@@ -36,6 +40,7 @@ PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"     # used commands with
 
 ```sh
 brew info coreutils
+brew list coreutils
 ```
 
 [[brew]]

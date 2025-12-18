@@ -2,16 +2,19 @@
 tags: [linux, macos]
 title: gs
 created: '2021-04-14T13:59:38.784Z'
-modified: '2023-03-24T08:21:15.715Z'
+modified: '2025-10-16T13:15:55.612Z'
 ---
 
 # gs
 
 > ghostscript - postscript and pdf language interpreter and previewer
 
+[[imagemagick]]
+
 ## install
 
 ```sh
+brew install gs
 brew install ghostscript
 ```
 
@@ -42,4 +45,3 @@ gs -dNOPAUSE -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dQ
 
 - [ghostscript.com/doc/current/Devices](https://www.ghostscript.com/doc/current/Devices.htm)
 - [tex.stackexchange.com/pdftex-reduce-pdf-size-reduce-image-quality](https://tex.stackexchange.com/a/41273)
-- [[imagemagick]]

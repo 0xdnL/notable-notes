@@ -2,7 +2,7 @@
 tags: [shell/bash/builtin]
 title: bash readarray
 created: '2019-08-02T06:42:37.622Z'
-modified: '2022-05-03T07:44:31.166Z'
+modified: '2025-10-26T13:28:27.310Z'
 ---
 
 # bash readarray
@@ -27,7 +27,9 @@ modified: '2022-05-03T07:44:31.166Z'
 ```sh
 readarray ARRAY < <(yq e '.coolActions[]' sample.yaml)
  echo "${ARRAY[1]}"
+```
 
+```sh
 string='Paris, France, Europe';
 readarray -td, ARRAY <<<"$string"; 
 declare -p ARRAY;
@@ -35,6 +37,8 @@ declare -p ARRAY;
 
 readarray -td: ARRAY <<<$STRING    # split here-string into array STRING="8:30"
 ```
+
+[[bash declare]]
 
 ## see also
 

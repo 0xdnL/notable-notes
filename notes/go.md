@@ -2,7 +2,7 @@
 tags: [go]
 title: go
 created: '2019-07-30T06:19:49.075Z'
-modified: '2023-11-29T10:34:02.359Z'
+modified: '2025-11-10T14:58:54.115Z'
 ---
 
 # go
@@ -13,10 +13,14 @@ modified: '2023-11-29T10:34:02.359Z'
 
 ```sh
 curl -O https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
-curl -O https://go.dev/dl/go1.21.4.darwin-arm64.pkg
-
 tar xvzf go1.13.7.linux-amd64.tar.gz && mv go /usr/local/
+
+curl -O https://go.dev/dl/go1.21.4.darwin-arm64.pkg
+curl -O https://go.dev/dl/go1.24.10.darwin-amd64.pkg
+installer -pkg ./go1.24.10.darwin-amd64.pkg -target /       # /usr/local/go/bin/go
 ```
+
+[[installer]], [go.dev/dl/](https://go.dev/dl/)
 
 ## environment
 

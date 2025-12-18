@@ -2,12 +2,14 @@
 tags: [linux]
 title: lsof
 created: '2019-07-30T06:19:49.166Z'
-modified: '2023-04-29T17:15:11.789Z'
+modified: '2025-12-06T17:15:24.698Z'
 ---
 
 # lsof
 
 > list open files
+
+[[ls]]
 
 ## install
 

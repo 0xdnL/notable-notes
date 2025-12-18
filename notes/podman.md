@@ -2,12 +2,14 @@
 tags: [container]
 title: podman
 created: '2021-09-06T12:17:24.319Z'
-modified: '2024-11-27T12:22:46.858Z'
+modified: '2025-11-18T11:57:12.899Z'
 ---
 
 # podman
 
 > manage pods, containers and images
+
+[[docker]]
 
 ## install
 
@@ -67,7 +69,6 @@ podman run -ti --rm IMAGE
 
 ## see also
 
-- [[docker]]
 - [[colima]]
 - [[skopeo]]
 - [[crc]]

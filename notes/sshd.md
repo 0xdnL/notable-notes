@@ -2,12 +2,12 @@
 tags: [crypto, ssh, systemd]
 title: sshd
 created: '2019-07-30T06:19:49.246Z'
-modified: '2023-03-25T12:05:18.600Z'
+modified: '2025-12-03T14:05:06.875Z'
 ---
 
 # sshd
 
-> `openssh` ssh daemon 
+> `openssh` [[ssh]] daemon 
 
 ## usage
 
@@ -42,6 +42,7 @@ UseDNS no     # defaults to `yes` if line doesn't exist, can delay login time
 ```
 
 ## see also
+
 - [[systemctl]]
 - [[pkill]]
 - [linux-tips.com/disabling-reverse-dns-lookups](https://linux-tips.com/t/disabling-reverse-dns-lookups-in-ssh/222)

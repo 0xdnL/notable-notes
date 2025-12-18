@@ -2,7 +2,7 @@
 tags: [iac]
 title: terragrunt
 created: '2023-09-15T07:56:46.974Z'
-modified: '2023-09-15T07:58:31.971Z'
+modified: '2025-11-05T12:25:12.015Z'
 ---
 
 # terragrunt
@@ -19,15 +19,23 @@ brew install terragrunt
 
 ```sh
 terragrunt run-all
+
 terragrunt terragrunt-info
+
 terragrunt validate-inputs
+
 terragrunt graph-dependencies
+
 terragrunt hclfmt
+
 terragrunt aws-provider-patch
+
 terragrunt render-json
+
 terragrunt output-module-groups
 ```
 
 ## see also
 
 - [[terraform]]
+- [[aws]]

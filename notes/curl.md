@@ -2,7 +2,7 @@
 tags: [linux, network]
 title: curl
 created: '2019-07-30T06:19:49.032Z'
-modified: '2024-10-09T16:52:53.392Z'
+modified: '2025-12-17T16:45:18.883Z'
 ---
 
 # curl
@@ -48,6 +48,10 @@ EOF
 --trace-ascii FILE         # enables full trace dump of all incoming and outgoing data
                            # overrides --trace and -v, --verbose.
 --trace FILE               # full trace dump of all incoming and outgoing data
+
+
+-d @FILE                   # read FILE and send via POST body with Content-Type: application/x-www-form-urlencoded
+--data-binary @FILE        # sends FILE as raw bytes, not url-encoded
 ```
 
 ## usage
