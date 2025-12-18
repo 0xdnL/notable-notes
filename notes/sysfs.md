@@ -2,12 +2,14 @@
 tags: [filesystem, linux]
 title: sysfs
 created: '2019-09-03T11:46:08.503Z'
-modified: '2023-03-22T08:23:56.055Z'
+modified: '2025-11-12T18:37:57.445Z'
 ---
 
 # sysfs
 
 > mounted on `/sys` as a way of exporting information from the kernel to various applications. "sysfs" generally contains 
+
+[[filesystem hierarchy standard]], [[procfs]]
 
 ## usage
 
@@ -33,7 +35,6 @@ cat /sys/fs/cgroup/memory/memory.stat
 ## see also
 
 - [[container]]
-- [[procfs]]
 - [[mount]]
 - [[arp]]
 - [[ip]]

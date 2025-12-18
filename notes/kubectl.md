@@ -2,7 +2,7 @@
 tags: [container]
 title: kubectl
 created: '2019-07-30T06:19:49.145Z'
-modified: '2025-05-21T13:33:56.707Z'
+modified: '2025-12-05T13:55:47.899Z'
 ---
 
 # kubectl
@@ -112,6 +112,35 @@ kubectl cluster-info                                                  # get addr
 kubectl api-versions                                                  # get all supported api version
 ```
 
+## auth
+
+> inspect authorization
+
+```sh
+kubectl auth can-i VERB [TYPE | TYPE/NAME | NONRESOURCEURL] [options]     # check whether an action is allowed
+# VERB is a logical Kubernetes API verb like: 'get', 'list', 'watch', 'delete'
+# TYPE is a Kubernetes resource
+# NAME is the name of a particular Kubernetes resource
+# NONRESOURCEURL is a partial URL that starts with "/"
+
+kubectl auth can-i create pods --all-namespaces                           # check to see if I can create pods in any namespace
+kubectl auth can-i list deployments.apps                                  # check to see if I can list deployments in my current namespace
+kubectl auth can-i list pods --as=system:serviceaccount:dev:foo -n prod   # check to see if service account "foo" of namespace "dev" can list pods in the namespace "prod"
+kubectl auth can-i '*' '*'                        # check to see if I can do everything in my current namespace ("*" means all)
+kubectl auth can-i list jobs.batch/bar -n foo     # check to see if I can get the job named "bar" in namespace "foo"
+kubectl auth can-i get pods --subresource=log     # check to see if I can read pod logs
+kubectl auth can-i get /logs/                     # check to see if I can access the URL /logs/
+kubectl auth can-i approve certificates.k8s.io    # check to see if I can approve certificates.k8s.io
+kubectl auth can-i --list --namespace=foo         # List all allowed actions in namespace "foo"
+
+kubectl auth can-i --as=system:serviceaccount:NAMESPACE:SERVICE_ACCOUNT get pods
+
+
+kubectl auth reconcile    # reconciles rules for RBAC role, role binding, cluster role, and cluster role binding objects
+
+kubectl auth whoami       # experimental: Check self subject attributes
+```
+
 ## api-resources
 
 > get all resource-names, alias and kinds
@@ -155,7 +184,7 @@ kubectl cluster-info dump --namespaces default,kube-sytem,csi --output-directory
 > if [[tar]] is not present in container it will fail
 
 ```sh
-tar cf - /tmp/foo | kubectl exec -i -n NAMESPACE <some-pod> -- tar xf - -C /tmp/bar    # Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace <some-namespace>
+tar cf - /tmp/foo | kubectl exec -i -n NAMESPACE <some-pod> -- tar xf - -C /tmp/bar    # copy /tmp/foo local file to /tmp/bar in a remote pod in namespace <some-namespace>
 
 kubectl exec POD -- tar cf - /tmp/foo | tar xf - -C /tmp/bar    # copy /tmp/foo from a remote pod to /tmp/bar locally
 
@@ -291,37 +320,39 @@ kubectl exec -it POD -- cat /data/out.txt | tail -n 3
 > display one or many resources
 
 ```sh
+-l, --selector=''       # Selector (label query) to filter on, supports '=', '==', '!=', 'in', 'notin'
+```
+
+```sh
 kubectl get RESOURCE    # kubectl api-resources -o name
 kubectl get all         # get alle resoruce of current namespace
 
 
 kubectl get apiservices
-
-kubectl get crd volumesnapshotcontent -o yaml
-
-kubectl get deployments.v1.apps -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
-
 kubectl get replicationcontroller web     # List a single replication controller with specified NAME in ps output format
 kubectl get rc,services                                   # List all replication controllers and services together in ps output format
 kubectl get rc/web service/frontend pods/web-pod-13je7    # List one or more resources by their type and names
 
-kubectl get svc SERVICE -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
-```
 
-```sh
+kubectl get crd volumesnapshotcontent -o yaml
+kubectl get deployments.v1.apps       -o json   # List deployments in JSON output format, in the "v1" version of the "apps" API group
+kubectl get svc SERVICE               -o jsonpath="{.status.loadBalancer.ingress[*].hostname}"
+
+kuebctl get pod   -l key1=value1,key2=value2,key3 in (value3))
+kubectl get jobs  -l 'cron in (sync-status-s05,sync-status-s09,sync-status-s13)'
+
+
+
 kubectl get --raw /.well-known/openid-configuration
-
 kubectl get --raw /apis/
-
 kubectl get --raw /metrics
-
 kubectl get --raw /apis/flowcontrol.apiserver.k8s.io/v1beta3/flowschemas/eks-workload-high | yq -P
 
 kubectl get -k dir/                       # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
 kubectl get -f pod.yaml -o json           # List a pod identified by type and name specified in "pod.yaml" in JSON output format
-```
 
-```sh
+
+
 kubectl get pod
 kubectl get pod -L app.kubernetes.io/component,app.kubernetes.io/part-of  # labels that are going to be presented as columns
 kubectl get pods --show-labels | awk '{print $6}' | column -s, -t         # show all labels as the last column
@@ -330,9 +361,9 @@ kubectl get pods -A -o wide --field-selector spec.nodeName=NODE  # list all pods
 kubectl get pod POD -o [yaml|json]
 kubectl get pod POD -o template --template={{.status.phase}}     # return only the phase value of the specified pod
 kubectl get pod POD -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image   # list resource information in custom columns
-```
 
-```sh
+
+
 kubectl get nodes
 kubectl get node NODE -o name
 kubectl get node NODE -o json | jq -r '.status.capacity.memory' | numfmt --from=iec-i --to=iec     # get avail memory
@@ -499,6 +530,25 @@ kubectl port-forward --address 0.0.0.0               pod/mypod 8888:5000  # list
 kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000  # listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
 ```
 
+## patch
+
+> Update fields of a resource using strategic merge patch, a JSON merge patch, or a JSON patch
+
+Note: Strategic merge patch is not supported for custom resources.
+
+```sh
+# causes the StatefulSet controller to trigger a rolling restart
+kubectl patch statefulset SOME_STS -p '{"spec":{"template":{"metadata":{"annotations":{"kubectl.kubernetes.io/restartedAt": "'$(date +%s)'"}}}}}'
+
+kubectl patch node SOME_NODE -p '{"spec":{"unschedulable":true}}'       # Partially update a node using a strategic merge patch, patch as JSON
+kubectl patch node SOME_NODE -p $'spec:\n unschedulable: true'          # Partially update a node using a strategic merge patch, patch as YAML
+kubectl patch -f node.json -p '{"spec":{"unschedulable":true}}'         # Partially update a node identified by type and name specified in "node.json" using strategic merge patch
+
+kubectl patch pod SOME_POD               -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'   # Update a container's image; spec.containers[*].name is required because it's a merge key
+kubectl patch pod SOME_POD --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"newimage"}]'          # Update a container's image using a JSON patch with positional arrays
+kubectl patch deployment SOME_DEPLOYMENT --subresource='scale' --type='merge' -p '{"spec":{"replicas":2}}'                         # Update a deployment's replicas through the 'scale' subresource using a merge patch
+```
+
 ## proxy
 
 > creates a proxy server or application-level gateway between localhost and the Kubernetes API server
@@ -574,19 +624,8 @@ kubectl krew update      # Update the local copy of the plugin index
 kubectl krew upgrade     # Upgrade installed plugins to newer versions
 kubectl krew version     # Show krew version and diagnostics
 
-
-kubectl krew  list
-PLUGIN         VERSION
-access-matrix  v0.5.0
-cert-manager   v1.13.0
-explore        v0.7.1
-krew           v0.4.4
-stern          v1.27.0
-
 kubectl krew install oidc-login     # install plugin
-
 kubectl access-matrix               # use plugin to see the level of access user has on namespaces
-
 kubectl stern some-pod-             # prints logs of all pods starting with some-pod-
 ```
 

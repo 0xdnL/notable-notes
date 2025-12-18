@@ -2,12 +2,14 @@
 tags: [linux, macos, rust]
 title: alacritty
 created: '2023-03-07T07:58:26.959Z'
-modified: '2023-05-10T14:13:42.703Z'
+modified: '2025-10-09T08:10:43.446Z'
 ---
 
 # alacritty
 
 > terminal emulator, sensible defaults, extensive configuration
+
+[[ghostty]]
 
 ## install
 

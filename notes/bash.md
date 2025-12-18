@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash
 created: '2019-07-30T06:19:49.025Z'
-modified: '2025-05-09T09:07:41.466Z'
+modified: '2025-12-06T22:12:14.731Z'
 ---
 
 # bash
@@ -26,9 +26,12 @@ The term macro processor means functionality where text and symbols are expanded
 brew install bash                 # install new version than default bash on macos
 brew install bash-completion@2    # bash version 4 or later
 brew install bash-completion      # older versions of bash
+
+sudo chsh -s /usr/local/bin/bash    $(whoami)   # x86
+sudo chsh -s /opt/homebrew/bin/bash $(whoami)   # arm
 ```
 
-[[brew]]
+[[chsh]], [apple.stackexchange.com/a/400546/394965](https://apple.stackexchange.com/a/400546/394965)
 
 ## option
 
@@ -107,6 +110,10 @@ BASH_VERSINFO
 BASH_VERSION
 ${BASH_VERSINFO[@]}     # as array
 
+BASH_COMPAT
+BASH_ENV
+BASH_XTRACEFD
+
 COMP_CWORD
 COMP_KEY
 COMP_LINE
@@ -144,15 +151,14 @@ READLINE_LINE
 READLINE_MARK
 READLINE_POINT
 REPLY                 # Set to the line of input read by the `read` builtin command 
-SECONDS
+
+SECONDS             # special bash variable that counts seconds since script started [[bash while]]
+
 SHELLOPTS
 SHLVL                 # incremented by one each time an instance of bash is
 SRANDOM
 UID                   # expands to the user ID of the current user, initialized at
 
-BASH_COMPAT
-BASH_ENV
-BASH_XTRACEFD
 
 CDPATH The search path for the cd command.  This is a colon-
 CHILD_MAX
@@ -172,6 +178,7 @@ IFS                   # Internal Field Separator that is used for word
 IGNOREEOF
 INPUTRC
 INSIDE_EMACS
+
 LANG                  # used to determine the locale category for any category not
 LC_ALL                # overrides the value of LANG and any other
 LC_COLLATE
@@ -179,13 +186,15 @@ LC_CTYPE
 LC_MESSAGES
 LC_NUMERIC
 LC_TIME
+
 LINES                 # Used by the select compound command to determine the
+OPTERR                # if set to the value 1, bash displays error messages
+PATH                  # search path for commands.  It is a colon-separated
+
 MAIL                  #
 MAILCHECK
 MAILPATH
-OPTERR                # if set to the value 1, bash displays error messages
 
-PATH                  # search path for commands.  It is a colon-separated
 POSIXLY_CORRECT
 PROMPT_COMMAND
 PROMPT_DIRTRIM
@@ -199,10 +208,13 @@ PS1                   # value of this parameter is expanded (see PROMPTING
 PS2                   # value of this parameter is expanded as with PS1 and
 PS3                   # value of this parameter is used as the prompt for the
 PS4                   # value of this parameter is expanded as with PS1 and
+
 SHELL                 # expands to the full pathname to the shell
+
 TIMEFORMAT
 TMOUT                 # if set to a value greater than zero, TMOUT is treated as
 TMPDIR                # if set, bash uses its value as the name of a directory in
+
 auto_resume
 histchars
 ```

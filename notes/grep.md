@@ -2,12 +2,14 @@
 tags: [linux]
 title: grep
 created: '2019-07-30T06:19:49.077Z'
-modified: '2024-11-29T12:26:02.953Z'
+modified: '2025-12-07T17:49:09.446Z'
 ---
 
 # grep
 
 > derived from [[ed]] operation `g`/`re`/`p` - file pattern searcher
+
+[[rg]]
 
 ## option
 

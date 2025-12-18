@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash declare
 created: '2019-07-30T06:19:48.996Z'
-modified: '2023-11-20T18:26:07.769Z'
+modified: '2025-10-26T13:30:36.305Z'
 ---
 
 # bash declare
@@ -33,22 +33,36 @@ modified: '2023-11-20T18:26:07.769Z'
 ```sh
 declare -r foo=bar        # readonly
 
-declare -a arr=('aa' 'bb' 'cc' 'dd' 'ee')
-
-declare -x var=$value
-
-# useful for identifying variables, environmental, ..
 declare | grep foo      # foo=bar
-declare | grep Colors   # Colors=([0]="purple" [1]="reddish-orange" [2]="light green")
 ```
+
+## export
+
+```sh
+declare -x var=$value   # bash specific 
+
+export VAR=value        # posix
+```
+
+[[bash export]]
+
+## arrays
+
+```sh
+declare -a ARRAY=('aa' 'bb' 'cc' 'dd' 'ee')
+
+declare -A ASSOC_ARRAY=([a]=a/string-value [b]=b/string-value)    # associative array
+
+declare | grep ARRAY        # print array and indexes
+declare | grep ASSOC_ARRAY  # print array and keys
+```
+
+[[bash array]], [[bash readarray]]
 
 ## see also
 
 - [[bash export]]
-- [[bash set]]
-- [[bash unset]]
+- [[bash set]], [[bash unset]]
 - [[bash typeset]]
-- [[bash array]]
-- [[bash readarray]]
 - [[bash function]]
 - [declareref - tldp.org](http://tldp.org/LDP/abs/html/declareref.html)

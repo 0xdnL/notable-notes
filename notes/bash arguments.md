@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash arguments
 created: '2019-07-30T06:19:48.991Z'
-modified: '2022-04-06T11:38:10.410Z'
+modified: '2025-12-18T10:57:17.263Z'
 ---
 
 # bash arguments
@@ -37,30 +37,33 @@ for i in "$@"; do
       ;;
   esac
 done
+```
 
+```sh
+docker_env_flag()
+{
+  local CMD=(docker exec -it)
+  local ARGS=()
 
-CMD=(docker exec -it)
-ARGS=()
-
-for i in "$@"; do
-  echo "i: $i"
-  case $i in
+  for i in "$@"; do
+    echo "i: $i"
+    case $i in
       -e=*|--environment=*)
-      # CMD="${i#*=}"
       echo "case i: ${i#*=}"
       CMD+=('-e '${i#*=})
       shift # past argument=value
-      # shift
       ;;
       *)
       ARGS+=($i)
       ;;
-  esac
-  # shift
-done
+    esac
+  done
 
-echo ${CMD[*]} ${ARGS[*]}
+  echo ${CMD[*]} ${ARGS[*]}
+}
 ```
+
+[[bash for]], [[bash case]], [[bash shift]], [[bash array]]
 
 ## see also
 
@@ -69,6 +72,4 @@ echo ${CMD[*]} ${ARGS[*]}
 - [Passing named arguments to shell scripts](https://unix.stackexchange.com/a/204927)
 - [What is the meaning of "${1#*-}"](https://stackoverflow.com/a/41806827)
 - [Parameter expansion [Bash Hackers Wiki]](http://wiki.bash-hackers.org/syntax/pe#substring_removal)
-- [[bash for]]
-- [[bash case]]
-- [[bash shift]]
+

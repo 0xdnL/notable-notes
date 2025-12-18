@@ -2,12 +2,18 @@
 tags: [linux]
 title: watch
 created: '2019-07-30T06:19:49.265Z'
-modified: '2023-03-25T12:31:26.967Z'
+modified: '2025-12-11T13:04:31.376Z'
 ---
 
 # watch
 
 > execute a program periodically, showing output fullscreen
+
+## install
+
+```sh
+brew install watch
+```
 
 ## env
 

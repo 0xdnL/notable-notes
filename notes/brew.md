@@ -2,7 +2,7 @@
 tags: [macos, packagemanager]
 title: brew
 created: '2019-07-30T06:19:49.028Z'
-modified: '2023-11-18T13:19:44.681Z'
+modified: '2025-11-08T15:40:51.014Z'
 ---
 
 # brew
@@ -39,6 +39,7 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 ```sh
 brew list           # list all installed formulae and casks
 brew list --cask    # list casks only
+brew list FORMULAE  # list programs part of formulae
 
 brew bundle --help
 brew bundle dump      # write all installed casks/formulae/images/taps into Brewfile in current directory

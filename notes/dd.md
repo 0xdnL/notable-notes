@@ -2,12 +2,14 @@
 tags: [coreutils, macos]
 title: dd
 created: '2019-07-30T06:19:49.033Z'
-modified: '2024-10-14T06:04:09.029Z'
+modified: '2025-12-09T21:40:57.914Z'
 ---
 
 # dd
 
 > `disk dump` - convert and copy a file
+
+[[coreutils]]
 
 ## operands
 
@@ -35,12 +37,6 @@ oflag=VALUE   # VALUE:
 oflag=direct  # use direct I/O for data, allowed to make use of kernel buffering (it just causes a flush+wait for completion periodically
 oflag=dsync   # use synchronized I/O for data trust that all my parameters are sensible and turn off as much kernel buffering as you can"
 oflag=sync    # likewise, but also for metadata
-```
-
-## usage
-
-```sh
-
 ```
 
 ## write zeros to device
@@ -79,13 +75,29 @@ dd if=/dev/zero of=/data/$(date +"%m-%d-%y_%H-%M").test bs=1G count=1 oflag=dire
 ```sh
 hdiutil convert proxmox-ve_*.iso -format UDRW -o proxmox-ve_*.dmg
 diskutil list
-# insert usb-drive
-diskutil list
 diskutil unmountDisk /dev/diskX
+
 dd if=proxmox-ve_*.dmg bs=1M of=/dev/rdiskX
 ```
 
 [[hdiutil]], [[diskutil]], [superuser.com/why-is-dev-rdisk-about-20-times-faster-than-dev-disk-in-mac-os-x](https://superuser.com/questions/631592/why-is-dev-rdisk-about-20-times-faster-than-dev-disk-in-mac-os-x)
+
+
+```sh
+diskutil list
+diskutil unmountDisk /dev/disk2
+
+sudo dd if=/Users/USER/Downloads/Win11_25H2_EnglishInternational_x64.iso of=/dev/disk2 bs=1m
+dd: invalid number: '1m'
+
+sudo dd if=/Users/USER/Downloads/Win11_25H2_EnglishInternational_x64.iso of=/dev/disk2 bs=1M      # gnu version of dd
+
+# check progress in other terminal:
+sudo kill -USR1 $(pgrep ^dd$)   # linux
+sudo kill -INFO $(pgrep ^dd$)   # bsd/macos
+```
+
+[[kill]]
 
 ## see also
 

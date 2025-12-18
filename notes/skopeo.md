@@ -2,12 +2,14 @@
 tags: [container]
 title: skopeo
 created: '2021-10-19T11:25:30.764Z'
-modified: '2025-03-21T19:37:12.664Z'
+modified: '2025-12-08T13:29:10.861Z'
 ---
 
 # skopeo
 
 > performs various operations on container images and image repositories
+
+[[oras]] [[crane]]
 
 ## install
 
@@ -44,8 +46,7 @@ skopeo sync                           # Synchronize one or more images from one 
 ## see also
 
 - [[dive]]
-- [[kubectl]], [[docker]], [[podman]]
+- [[kubectl]]
+- [[docker]], [[podman]], [[crictl]]
 - [[buildah]]
-- [[crictl]]
-- [[crane]]
 - [[pack]]

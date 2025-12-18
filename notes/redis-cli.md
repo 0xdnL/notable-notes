@@ -2,10 +2,12 @@
 tags: [cloud, linux]
 title: redis-cli
 created: '2022-10-05T12:58:56.515Z'
-modified: '2023-05-24T08:40:38.318Z'
+modified: '2025-10-28T12:28:30.671Z'
 ---
 
 # redis-cli
+
+[[valkey-cli]]
 
 ## install
 

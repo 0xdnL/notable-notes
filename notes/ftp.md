@@ -2,15 +2,18 @@
 tags: [linux]
 title: ftp
 created: '2019-07-30T06:19:49.056Z'
-modified: '2020-04-14T07:16:21.955Z'
+modified: '2025-12-03T14:02:21.758Z'
 ---
 
 # ftp
 
 > ftp is the user interface to the `Internet standard File Transfer Protocol`, which transfers files to and from a remote network site
 
+[[sftp]]
+
 - ftp sessions operate on a `command-/control-channel` and `data-channel` which are separate TCP connections
 - connection mode determines how a `data-connection` is established (`active`/`passive`)
+
 ```sh
 # active mode: client establishes the command-channel but the server is responsible for establishing the data channel
 #  client port:rand-1  ---1-->  port:21 ftp-server
@@ -22,9 +25,13 @@ modified: '2020-04-14T07:16:21.955Z'
 ```
 
 ## install
-`yum install ftp`
+
+```sh
+yum install ftp
+```
 
 ## usage
+
 ```sh
 ftp IP
 ftp HOST

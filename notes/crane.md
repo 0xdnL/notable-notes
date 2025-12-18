@@ -2,12 +2,14 @@
 tags: [container]
 title: crane
 created: '2021-10-19T11:44:42.215Z'
-modified: '2024-06-05T09:01:57.844Z'
+modified: '2025-12-08T13:23:43.227Z'
 ---
 
 # crane
 
 > tool for interacting with remote images and registries
+
+[[oras]] [[docker]] [[crictl]]
 
 ## install
 

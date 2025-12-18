@@ -2,7 +2,7 @@
 tags: [database/postgresql, linux]
 title: psql
 created: '2019-07-30T06:19:49.220Z'
-modified: '2025-03-25T12:09:51.592Z'
+modified: '2025-11-18T13:09:09.015Z'
 ---
 
 # psql
@@ -18,11 +18,21 @@ apk add postgresql-client
 brew install postgresql@14
 brew services start postgresql@14                                                       # start postgresql@14 service
 $HOMEBREW_PREFIX/opt/postgresql@14/bin/postgres -D $HOMEBREW_PREFIX/var/postgresql@14   # start background service directly
+```
 
-docker run -ti --rm -e POSTGRES_PASSWORD=password postgres psql -U postgres
+```sh
+docker run -tid --rm -e POSTGRES_PASSWORD=password postgres:14.15
+docker exec -it CONTAINER psql -Upostgres
+# docker run -ti --rm -e POSTGRES_PASSWORD=password postgres psql -U postgres # needs to attach to host network..
+```
 
+[[docker]]
+
+```sh
 pgenv build 15.0 && pgenv use 15.0
 ```
+
+[[pgenv]]
 
 ## .psqlrc
 
@@ -443,6 +453,7 @@ END $$;
 
 ## see also
 
+- [[createdb]]
 - [[pgenv]]
 - [[pg_dump]], [[pg_dumpall]]
 - [[pg_amcheck]]

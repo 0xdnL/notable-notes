@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash braces
 created: '2019-09-24T06:43:14.231Z'
-modified: '2023-11-20T18:15:15.508Z'
+modified: '2025-12-18T12:34:36.904Z'
 ---
 
 # bash braces
@@ -16,6 +16,15 @@ $(...)        # execute the command in the parens in a subshell and return its s
 
 (...)         # run the commands listed in the parens in a subshell
 ```
+
+## process substituation
+
+```sh
+<(...)  # produces a filename (a FIFO or /dev/fd/N) that refers to the output of a command as a readable file
+$(...)  # produces command’s output as a string substituted into the command line
+```
+
+[[bash redirects]], [[mkfifo]]
 
 ## group
 
@@ -41,7 +50,7 @@ $((16#FF))        # 255
 
 ## parameter expansion
 
-```
+```sh
 ${...}        # parameter expansion and return the value
 ```
 

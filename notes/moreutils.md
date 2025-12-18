@@ -2,10 +2,12 @@
 tags: [linux, moreutils]
 title: moreutils
 created: '2020-09-01T07:32:18.091Z'
-modified: '2023-05-15T13:06:06.171Z'
+modified: '2025-11-08T15:37:52.846Z'
 ---
 
 # moreutils
+
+[[coreutils]], [[findutils]]
 
 ## install
 
@@ -16,6 +18,12 @@ brew install moreutils --without-parallel && brew install parallel
 ```
 
 ## usage
+
+```sh
+brew list moreutils 
+```
+
+[[brew]]
 
 - [[chronic]] - runs a command quietly unless it fails
 - [[combine]] - combine the lines in two files using boolean operations
@@ -37,6 +45,5 @@ brew install moreutils --without-parallel && brew install parallel
 
 - [[parallel]]
 - [[procps]]
-- [[coreutils]]
 - [[bsdmainutils]]
 - [joeyh.name/code/moreutils](https://joeyh.name/code/moreutils/)

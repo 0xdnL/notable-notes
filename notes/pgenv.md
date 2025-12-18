@@ -2,7 +2,7 @@
 tags: [database]
 title: pgenv
 created: '2023-11-17T12:30:24.512Z'
-modified: '2023-12-19T15:00:33.950Z'
+modified: '2025-10-29T10:17:48.061Z'
 ---
 
 # pgenv
@@ -24,7 +24,7 @@ pgenv build 15.0 && pgenv use 15.0
 
 ## see also
 
-- [[pgsql]]
+- [[psql]]
 - [[pg_activity]]
 - [[tfswitch]]
 - [github.com/theory/pgenv](https://github.com/theory/pgenv)

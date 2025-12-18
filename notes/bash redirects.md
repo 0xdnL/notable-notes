@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash redirects
 created: '2019-07-30T06:19:49.011Z'
-modified: '2025-05-09T09:08:10.326Z'
+modified: '2025-11-24T20:15:36.253Z'
 ---
 
 # bash redirects
@@ -44,6 +44,36 @@ n>|FILE              # forces output to FILE from FILE descriptor n even if nocl
 <> FILE              # uses FILE as both STDIN and STDOUT
 
 n<>FILE              # uses FILE as both input and output for file descriptor n
+
+
+####
+
+<()                  # process substitution
+< <()                  # process substitution
+
+n>FILE               # directs FILE descriptor n to FILE
+n<FILE               # takes FILE descriptor n from FILE
+n>>FILE              # directs FILE description n to FILE; append to file if it already exists
+
+&[FILEDESCRIPTOR]     # reference to value of filedescriptor
+
+n>&                  # duplicates STDOUT to file descriptor n
+n<&                  # duplicates STDIN from file descriptor n
+n>&m                 # file descriptor n is made to be a copy of the output file descriptor
+n<&m                 # file descriptor n is made to be a copy of the input file descriptor
+&>FILE               # directs STDOUT and standard error to FILE
+
+<&-                  # closes the STDIN
+>&-                  # closes the STDOUT
+n>&-                 # closes the ouput from FILE descriptor n
+n<&-                 # closes the input from FILE descripor n
+
+
+&>/dev/null         # shorthand for `1> /dev/null 2> /dev/null`
+
+command 1>&- 2>&-           # http://www.cyberciti.biz/faq/how-to-redirect-output-and-errors-to-devnull/#comment-40252
+job 1>&- 2>&-  &            # additional & at end of job to put it in backgrounds
+command 1>&- 2>&-  &        # additional & at end of command to put it in backgrounds
 ```
 
 ## pipe
@@ -114,34 +144,7 @@ EOF
 [n]<<< word          # here-string
 ```
 
-```sh
-<()                  # process substitution
-< <()                  # process substitution
-
-n>FILE               # directs FILE descriptor n to FILE
-n<FILE               # takes FILE descriptor n from FILE
-n>>FILE              # directs FILE description n to FILE; append to file if it already exists
-
-&[FILEDESCRIPTOR]     # reference to value of filedescriptor
-
-n>&                  # duplicates STDOUT to file descriptor n
-n<&                  # duplicates STDIN from file descriptor n
-n>&m                 # file descriptor n is made to be a copy of the output file descriptor
-n<&m                 # file descriptor n is made to be a copy of the input file descriptor
-&>FILE               # directs STDOUT and standard error to FILE
-
-<&-                  # closes the STDIN
->&-                  # closes the STDOUT
-n>&-                 # closes the ouput from FILE descriptor n
-n<&-                 # closes the input from FILE descripor n
-
-
-&>/dev/null         # shorthand for `1> /dev/null 2> /dev/null`
-
-command 1>&- 2>&-           # http://www.cyberciti.biz/faq/how-to-redirect-output-and-errors-to-devnull/#comment-40252
-job 1>&- 2>&-  &            # additional & at end of job to put it in backgrounds
-command 1>&- 2>&-  &        # additional & at end of command to put it in backgrounds
-```
+[[bash read]]
 
 ## dash
 
@@ -152,6 +155,22 @@ cat -                           # redirects from STDIN to STDOUT
 echo "whatever" | cat -         # redirects from STDIN to STDOUT
 grep "foo" FILE | diff FILE2 -
 ```
+
+
+```sh
+echo $FOO | while IFS= read -r F; do
+   export ${F^^}="$F"
+done
+
+while IFS= read -r F; do
+   export ${F^^}="$F"
+done <<< "$FOO"
+
+echo "First: $$" | awk '{ print "Second: " PROCINFO["pid"] }'
+sh -c 'echo "Left PID: $$"' | sh -c 'echo "Mid PID: $$"; cat' | sh -c 'echo "Right PID: $$"; cat'
+```
+
+I set variables in a loop that's in a pipeline. Why do they disappear after the loop terminates?: [https://mywiki.wooledge.org/BashFAQ/024](https://mywiki.wooledge.org/BashFAQ/024)
 
 ## see also
 

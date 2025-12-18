@@ -2,7 +2,7 @@
 tags: [rust]
 title: aichat
 created: '2023-12-07T14:28:53.121Z'
-modified: '2024-02-12T14:00:43.511Z'
+modified: '2025-10-09T11:34:40.148Z'
 ---
 
 # aichat
@@ -33,6 +33,16 @@ brew install aichat
     --list-sessions        # List all available sessions
 -h, --help                 # Print help
 -V, --version              # Print version
+```
+
+## config
+
+```sh
+aichat --info | grep config_file
+
+C:\Users\Alice\AppData\Roaming\aichat\config.yaml               # windows
+/Users/Alice/Library/Application Support/aichat/config.yaml     # macos
+/home/alice/.config/aichat/config.yaml                          # linux
 ```
 
 ## usage

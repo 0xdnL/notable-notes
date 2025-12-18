@@ -2,7 +2,7 @@
 tags: [iac]
 title: aws
 created: '2019-07-30T06:19:48.990Z'
-modified: '2025-05-29T10:38:47.006Z'
+modified: '2025-11-12T10:21:39.163Z'
 ---
 
 # aws
@@ -16,6 +16,8 @@ curl -LO "https://awscli.amazonaws.com/AWSCLIV2.pkg"
 
 installer -pkg ./AWSCLIV2.pkg -target /
 ```
+
+[[installer]]
 
 ## environment
 
@@ -438,18 +440,30 @@ aws rds delete-db-instance \
 
 ## dynamodb
 
+> fully managed [[NoSQL]] database service
+
 ```sh
 aws dynamodb list-tables
 
 aws dynamodb scan --table-name "TABLE" \
   --filter-expression "userId = :name" \
   --expression-attribute-values '{":name":{"S":"7b13....99ea"}}'
+
+aws dynamodb scan --table-name terraform-locks
+
+aws dynamodb get-item --table-name terraform-locks --key '{"LockID": {"S": "terraform/infrastructure/project/terraform.tfstate"}}'
 ```
+
+[[terraform]], [[terragrunt]]
 
 ## route53
 
 ```
 aws route53 list-hosted-zones | jq -r '.HostedZones[] | .Id, .Name'
+
+aws route53 list-resource-record-sets \
+  --hosted-zone-id HOSTED_ZONE_ID \
+  --query "ResourceRecordSets[?Type == 'A' && Name == 'host.foo.com.']"
 ```
 
 ## route53domains

@@ -2,18 +2,25 @@
 tags: [container]
 title: flux
 created: '2022-01-17T13:49:51.051Z'
-modified: '2024-01-12T10:31:42.885Z'
+modified: '2025-11-14T10:25:39.634Z'
 ---
 
 # flux
 
 > tool for keeping Kubernetes clusters in sync with sources of configuration, and automating updates to configuration when there is new code to deploy
 
+[[gitops]], [[argocd]]
+
 ## install
 
 ```sh
 brew install fluxcd/tap/flux
+
+
+curl -LO https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_darwin_arm64.tar.gz
 ```
+
+[[brew]]
 
 ## usage
 
@@ -53,10 +60,10 @@ kubectl get kustomizations.kustomize.toolkit.fluxcd.io/flux-system -o yaml | yq 
 kubectl get helmreleases.helm.toolkit.fluxcd.io loki -n  monitoring -o yaml
 ```
 
+[[kubectl]]
+
 ## see also
 
 - [[helm]], [[kustomize]]
-- [[kubectl]], [[kubeseal]]
-- [[gitops]]
-- [[argocd]]
+- [[kubeseal]]
 - [fluxcd.io/docs](https://fluxcd.io/docs/)

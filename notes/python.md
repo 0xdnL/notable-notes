@@ -2,7 +2,7 @@
 tags: [python]
 title: python
 created: '2019-07-30T06:19:49.222Z'
-modified: '2025-06-07T08:55:27.190Z'
+modified: '2025-11-10T14:55:07.947Z'
 ---
 
 # python
@@ -19,6 +19,8 @@ sudo installer -pkg python-3.12.0-macos11.pkg -target /
 
 apt-get install python3
 ```
+
+[[installer]]
 
 ## usage
 

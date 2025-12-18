@@ -2,12 +2,14 @@
 tags: [linux, macos]
 title: mkfifo
 created: '2021-06-16T15:59:45.047Z'
-modified: '2025-05-09T08:52:04.927Z'
+modified: '2025-12-18T12:35:03.211Z'
 ---
 
 # mkfifo
 
 > `make fifos` aka `"named pipes"`
+
+[[mktemp]]
 
 ## usage
 
@@ -37,6 +39,6 @@ ls >PIPE_NAME
 
 ## see also
 
-- [[bash redirects]]
+- [[bash redirects]], [[bash braces]]
 - [[script]]
 - [[cat]]

@@ -2,12 +2,14 @@
 tags: [go]
 title: chezmoi
 created: '2023-05-15T15:31:24.441Z'
-modified: '2023-11-21T16:01:13.142Z'
+modified: '2025-10-07T15:58:32.047Z'
 ---
 
 # chezmoi
 
 > manage dotfiles across multiple diverse machines, securely
+
+[[stow]]
 
 ## install
 

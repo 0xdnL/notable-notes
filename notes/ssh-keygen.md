@@ -2,14 +2,14 @@
 tags: [crypto, ssh]
 title: ssh-keygen
 created: '2019-07-30T06:19:49.245Z'
-modified: '2025-04-06T12:14:22.200Z'
+modified: '2025-12-03T14:04:26.643Z'
 ---
 
 # ssh-keygen
 
 > tool for creating new authentication key pairs for [[ssh]]
 
-[[openssl]]
+[[ssh]], [[ssh-copy-id]], [[openssl]]
 
 ## option
 
@@ -40,9 +40,7 @@ ssh-keygen -R [host]:1234       # when non standart port is used
 
 ## see also
 
-- [[ssh]] 
-- [[ssh-keygen]]
-- [[ssh-copy-id]]
+- [[vagrant]]
 - [medium.com/risan/upgrade-your-ssh-key-to-ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)
 - [en.wikibooks.org/wiki/OpenSSH/Client_Configuration_Files](https://en.wikibooks.org/wiki/OpenSSH/Client_Configuration_Files)
-- [[vagrant]]
+

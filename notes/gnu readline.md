@@ -2,7 +2,7 @@
 tags: [shell]
 title: gnu readline
 created: '2019-07-30T06:19:49.019Z'
-modified: '2024-11-16T07:24:20.223Z'
+modified: '2025-12-03T07:45:27.275Z'
 ---
 
 # gnu readline
@@ -43,8 +43,12 @@ CTRL + S      # searches forward
 ## .inputrc
 
 ```sh
-" ":" "     # map NBSP to regular space (left part has NBSP in quotes, right part has space)
+" ":" "            # map NBSP to regular space (left part has NBSP in quotes, right part has space)
+
+"\xC2\xA0": " "   # maps non-breaking spaces to normal ones
 ```
+
+[relativkreativ.at/articles/why-chaining-commands-with-pipes-in-mac-os-x-does-not-always-work](https://relativkreativ.at/articles/why-chaining-commands-with-pipes-in-mac-os-x-does-not-always-work)
 
 > create canned macros by mapping key sequences to input strings
 

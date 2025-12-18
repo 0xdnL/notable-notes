@@ -2,7 +2,7 @@
 tags: [linux, macos]
 title: ffmpeg
 created: '2021-03-10T11:11:18.975Z'
-modified: '2025-03-20T09:35:59.593Z'
+modified: '2025-10-07T14:01:05.431Z'
 ---
 
 # ffmpeg
@@ -55,4 +55,4 @@ ffmpeg -ss 00:01:30 -i downloaded_video.mp4 -frames:v 1 thumbnail.jpg       # ex
 ## see also
 
 - [[imagemagick]]
-- [[youtube-dl]]
+- [[yt-dlp]]

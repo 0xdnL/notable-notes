@@ -2,7 +2,7 @@
 tags: [shell/bash]
 title: bash prompt
 created: '2019-07-30T06:19:49.017Z'
-modified: '2023-11-17T12:28:56.454Z'
+modified: '2025-10-24T09:25:59.323Z'
 ---
 
 # bash prompt
@@ -40,18 +40,18 @@ PROMPT_COMMAND='[ $? -eq 0 ] || printf "(╯°□°）╯︵ ┻━┻\n"'  #  f
 ## prompt color
 
 ```sh
-__aws_ps1() {
-
+__aws_ps1()
+{
   local YELLOW="\001$(tput setaf 3)\002"
   local RESET="\001$(tput sgr0)\002"
-
   printf "{%b} " "${YELLOW}${AWS_PROFILE}${RESET}";
   #echo -e "{${YELLOW}${AWS_PROFILE}${RESET}}";
 }
 
 export PS1='$(__aws_ps1)..'
 ```
-[[bash tput]]
+
+[[tput]] [[printf]]
 
 ## escape sequences
 

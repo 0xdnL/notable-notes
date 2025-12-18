@@ -2,12 +2,14 @@
 tags: [container]
 title: helm
 created: '2021-06-04T08:40:48.010Z'
-modified: '2025-06-07T08:40:39.914Z'
+modified: '2025-12-08T13:20:12.295Z'
 ---
 
 # helm
 
 > package manager for `k8s`
+
+[[kustomize]], [[helmfile]], [[oras]]
 
 ## install
 
@@ -81,11 +83,6 @@ helm lint        # examine a chart for possible issues
 helm mapkubeapis # Map release deprecated Kubernetes APIs in-place
 helm package     # package a chart directory into a chart archive
 
-helm pull        # download a chart from a repository and (optionally) unpack it in local directory
-helm pull grafana/loki --version 6.6.3
-helm pull                                     # download chart to local dir
-helm pull stable/CHART --untar                # optionally untar chart
-
 helm push        # push a chart to remote
 helm registry    # login to or logout from a registry
 
@@ -133,7 +130,14 @@ helm uninstall mysql-1612624192   # uninstall release
 helm search repo REPONAME
 
 helm search repo grafana/loki --versions      # get all version of chart
+
+helm search repo sealed-secrets
+
+
+curl -sL https://bitnami-labs.github.io/sealed-secrets/index.yaml | yq '.entries[][].urls'
 ```
+
+[[curl]]
 
 ## repo
 
@@ -141,6 +145,7 @@ helm search repo grafana/loki --versions      # get all version of chart
 
 ```sh
 helm repo add NAME REPO   # add a chart repository
+
 helm repo add stable  https://charts.helm.sh/stable       # add as "stable" -> prepends "stable/REPO"
 helm repo add datadog https://helm.datadoghq.com
 helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -150,6 +155,17 @@ helm repo list            # list chart repositories
 helm repo remove          # remove one or more chart repositories
 helm repo update          # update information of available charts locally from chart repositories
 ```
+
+```sh
+helm repo add bitnami-full-index https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+helm search repo bitnami-full-index/postgresql --versions           # list avail versions
+helm search repo bitnami-full-index/postgresql --version 11.1.26
+curl -i https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami/index.yaml
+
+
+```
+
+[[curl]], [github.com/bitnami/charts/issues/14060](https://github.com/bitnami/charts/issues/14060)
 
 ## list
 
@@ -189,16 +205,20 @@ helm list --filter 'ara[a-z]+'    # filter names by regex
 > show information of a chart
 
 ```sh
-helm show all    CHART_NAME     # show all information of the chart
-helm show chart  CHART_NAME     # show the chart's definition
-helm show crds   CHART_NAME     # show the chart's CRDs
-helm show readme CHART_NAME     # show the chart's README
-helm show values CHART_NAME     # show the chart's values
-
+helm show all CHART_NAME        # show all information of the chart
 helm show all CHART
+helm show all bitnami/mysql
+
+helm show crds CHART_NAME       # show the chart's CRDs
+
+helm show readme CHART_NAME     # show the chart's README
+
+helm show chart CHART_NAME      # show the chart's definition
 helm show chart datadog --repo https://helm.datadoghq.com --version 2.6.11
 helm show chart bitnami/mysql
-helm show all bitnami/mysql
+
+helm show values CHART_NAME     # show the chart's values
+helm show values oci://ghcr.io/prometheus-community/charts/prometheus-postgres-exporter
 ```
 
 ## get
@@ -232,6 +252,18 @@ helm get values   RELEASE_NAME --revision 1   # get vals from other revision
 
 ```sh
 helm history RELEASE_NAME
+```
+
+## pull
+
+> download a chart from a repository and (optionally) unpack it in local directory
+
+```sh
+helm pull grafana/loki --version 6.6.3        
+helm pull stable/CHART --untar                # optionally untar chart
+helm pull codecentric/keycloak --version 18.1.1
+
+helm pull oci://ghcr.io/codecentric/helm-charts/keycloak --version 18.10.0    # form oci
 ```
 
 ## plugin
@@ -323,6 +355,30 @@ helm template CHART -x templates/deployment.yaml      # render just one template
 
 ---
 
+## state secrets
+
+```sh
+kubectl get secret --field-selector type=helm.sh/release.v1 -o name
+kubectl get secret --field-selector type=helm.sh/release.v1 --no-headers -o custom-columns=":metadata.name"
+kubectl get secret --field-selector type=helm.sh/release.v1 -l name=external-dns --sort-by=.metadata.creationTimestamp -o jsonpath='{.items[-1].metadata.name}'
+
+
+kubectl get secrets sh.helm.release.v1.external-dns.v11 -o json | jq -r '.data.release' | base64 -d | base64 -d | gzip -d  | jq '.chart.metadata.dependencies[].repository'
+
+
+kubectl get ns -o custom-columns=":.metadata.name" --no-headers | while read NS; do
+  helm -n $NS list -q | while read; do 
+    [ -z $REPLY ] && continue;
+    SEC=$(kubectl -n $NS get secret --field-selector type=helm.sh/release.v1 -l name=$REPLY --sort-by=.metadata.creationTimestamp -o jsonpath='{.items[-1].metadata.name}'); 
+    echo kubectl -n $NS get secret $SEC -o json '| jq -r '.data.release' | base64 -d | base64 -d | gzip -d  | jq '.chart.metadata.dependencies[].repository''
+  done
+done
+```
+
+[[kubectl]]
+
+---
+
 
 ## helmfile
 
@@ -333,17 +389,12 @@ helm template CHART -x templates/deployment.yaml      # render just one template
 {{if (((.Values.mrz).monitoring).enabled) }}    # value optional
 ```
 
+[[helmfile]]
 
-## k8s
-
-```sh
-kubectl get secrets --field-selector type=helm.sh/release.v1
-```
 
 ## see also
 
-- [[helmfile]]
 - [[go-template]]
-- [[kubectl]]
 - [[kustomize]]
-- [helm.sh/docs/intro/quickstart](https://helm.sh/docs/intro/quickstart/)
+- [helm.sh/docs/intro/quickstart](https://helm.sh/docs/intro/quickstart/)#
+- [[flux]], [[argocd]]

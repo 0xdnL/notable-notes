@@ -2,12 +2,14 @@
 tags: [crypto, ssh]
 title: ssh-add
 created: '2019-07-30T06:19:49.243Z'
-modified: '2023-07-19T11:16:41.316Z'
+modified: '2025-12-03T14:03:38.624Z'
 ---
 
 # ssh-add
 
 >  adds private key identities to the authentication agent
+
+[[ssh]]
 
 ## option
 
@@ -27,6 +29,5 @@ eval "$(ssh-agent -s)"        # add-ssh-key-to-agent
 
 ## see also
 
-- [[ssh]]
 - [[keychain]]
 - [[bash eval]]

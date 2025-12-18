@@ -2,7 +2,7 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2025-04-16T09:47:53.380Z'
+modified: '2025-12-17T11:30:28.547Z'
 ---
 
 # docker
@@ -73,13 +73,67 @@ export DOCKER_API_VERSION=1.38 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/path/to/cer
 -v, --version            # print version information and quit
 ```
 
+## compose
+
+```sh
+    --all-resources              # Include all resources, even those not used by services
+    --ansi string                # Control when to print ANSI control characters ("never"|"always"|"auto") (default "auto")
+    --compatibility              # Run compose in backward compatibility mode
+    --dry-run                    # Execute command in dry run mode
+    --env-file stringArray       # Specify an alternate environment file
+-f, --file stringArray           # Compose configuration files
+    --parallel int               # Control max parallelism, -1 for unlimited (default -1)
+    --profile stringArray        # Specify a profile to enable
+    --progress string            # Set type of progress output (auto, tty, plain, json, quiet)
+    --project-directory string   # Specify an alternate working directory (default: the path of the, first specified, Compose file)
+-p, --project-name string        # Project name
+```
+
+```sh
+docker compose -f compose.yaml up -d
+
+docker compose --project-name this_dir ps
+
+docker compose logs -f pgadmin
+
+docker compose exec -it pgadmin bash
+
+docker compose down -v --remove-orphans     # when seeing "Network db_default Resource is still in use"
+```
+
+[[docker-compose]], [[podman]], [[kubectl]]
+
 ## run
 
 > Create and run a new container from an image
 
 ```sh
-docker run
+    --entrypoint string  # overwrite the default ENTRYPOINT of the image
+-i, --interactive        # keep STDIN open even if not attached
+    --rm                 # remove container and associated anonymous volumes when it exits
+-t, --tty                # allocate a pseudo-TTY
+-v, --volume list        # bind mount a volume
 ```
+
+```sh
+docker run --rm -ti ubuntu bash 
+
+docker run --rm -v $(pwd):$(pwd) -w $(pwd) IMAGE CMD                              # run CMD and place result in working dir
+
+
+docker run -it 
+  -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest \       `# run docker from inside container`
+  sh -c "apt-get update ; apt-get install docker.io -y ; bash"
+
+docker run --rm httpd:2.4-alpine htpasswd -nbB admin PASSWORD | cut -d ":" -f 2   # generate password and exit
+
+
+docker run -d --shm-size=2gb IMAGE:TAG         # increase shared memory from 64M to 2G
+
+docker run -d -v /dev/shm:/dev/shm IMAGE:TAG   # acces shared memory of host system
+```
+
+[[shm]], [[filsystem hierarchy standard]]
 
 ## exec
 
@@ -140,6 +194,8 @@ docker push
 
 ```sh
 docker images
+
+docker images --format table
 ```
 
 ## login
@@ -267,13 +323,6 @@ docker system prune --all --volumes --force
 
 docker exec -it --env 'PS1=[CMD]\w \$ ' IMGAE CMD             # setting prompt for interactive use
 docker exec -it --env 'PS1=['$ENV'] \s-\v\$ ' IMAGE CMD
-
-docker run --rm -v $(pwd):$(pwd) -w $(pwd) IMAGE CMD                              # run CMD and place result in working dir
-
-docker run --rm httpd:2.4-alpine htpasswd -nbB admin PASSWORD | cut -d ":" -f 2   # generate password and exit
-
-docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest \       `# run docker from inside container`
-  sh -c "apt-get update ; apt-get install docker.io -y ; bash"
 
 
 # filter

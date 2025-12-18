@@ -2,12 +2,14 @@
 tags: [container]
 title: docker-compose
 created: '2019-08-28T09:08:43.657Z'
-modified: '2024-11-16T05:06:17.278Z'
+modified: '2025-11-18T11:50:45.359Z'
 ---
 
 # docker-compose
 
 > for defining and running multi-container [[docker]] applications
+
+use `docker compose` instead
 
 ## usage
 

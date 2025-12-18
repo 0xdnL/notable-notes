@@ -2,7 +2,7 @@
 tags: [container]
 title: crictl
 created: '2021-05-27T09:57:46.096Z'
-modified: '2025-04-27T16:28:49.113Z'
+modified: '2025-12-08T13:23:36.318Z'
 ---
 
 # crictl
@@ -13,7 +13,7 @@ modified: '2025-04-27T16:28:49.113Z'
 
 [cri-o.io](https://cri-o.io/)
 
-[[ctr]] [[docker]] [[nerdctl]]
+[[ctr]] [[docker]] [[nerdctl]] [[crane]] [[oras]]
 
 ## install
 
