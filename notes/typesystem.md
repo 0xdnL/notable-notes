@@ -2,7 +2,7 @@
 tags: [c, java, javascript, Notebooks, python]
 title: typesystem
 created: '2019-07-30T06:19:49.256Z'
-modified: '2023-03-25T12:41:37.282Z'
+modified: '2025-12-18T15:57:17.805Z'
 ---
 
 # typesystem
@@ -23,12 +23,12 @@ modified: '2023-03-25T12:41:37.282Z'
 ### language differences
 
 Language       | `static` | implicit conversion | rules enforced  | memory-safe
---             |--       |--                     |--               |--
-[[c]]          | Strong  | Depends               | Weak            | Weak
-[[java]]       | Strong  | Depends               | Strong          | Strong
-[[haskell ]]   | Strong  | Strong                | Strong          | Strong
-[[python]]     | Weak    | Depends               | Strong          | Strong
-[[javascript]] | Weak    | Weak                  | Weak            | Strong
+--             |--        |--                   |--               |--
+[[c]]          | Strong   | Depends             | Weak            | Weak
+[[java]]       | Strong   | Depends             | Strong          | Strong
+[[haskell ]]   | Strong   | Strong              | Strong          | Strong
+[[python]]     | Weak     | Depends             | Strong          | Strong
+[[javascript]] | Weak     | Weak                | Weak            | Strong
 
 ## see also
 
