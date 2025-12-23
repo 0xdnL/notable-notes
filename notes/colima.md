@@ -2,12 +2,14 @@
 tags: [container, linux, macos, virtualization]
 title: colima
 created: '2023-05-30T07:23:59.486Z'
-modified: '2024-11-28T11:54:11.708Z'
+modified: '2025-12-22T16:30:02.416Z'
 ---
 
 # colima
 
 > containers in [[lim]] - container runtimes on macoss (and Linux) with minimal setup
+
+[[docker]], [[wsl]]
 
 ## install
 

@@ -1,11 +1,15 @@
 ---
-tags: [powershell]
+tags: [powershell, windows]
 title: powershell
 created: '2019-07-30T06:19:49.207Z'
-modified: '2023-05-24T08:44:46.566Z'
+modified: '2025-12-23T10:03:13.169Z'
 ---
 
 # powershell
+
+> cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework, runs on windows, linux, and macos
+
+[[wsl]]
 
 ## usage
 
@@ -33,6 +37,12 @@ Get-TimeResult -a 6 -b 8
 
 
 Foo-Bar | Out-File docker.json -Append  #  write output to file
+
+
+Restart-Computer
+
+Get-NetIPAddress | format-table
+Get-NetIPAddress -AddressFamily IPv6
 ```
 
 ## cmdlets
@@ -58,11 +68,11 @@ https://www.youtube.com/watch?v=zps_3l0TQDY
 
 ## Snap-ins
 
-* cmdlets are "packaged" in a snap-in (similar to ms-management-console: start->run->"mmc")
-* multiple snap-ins can be loaded into the shell (Add-PSSnapIn)
-* 120+ cmdlets provided by default snapins (Get-PSSnapin)
+- cmdlets are "packaged" in a snap-in (similar to ms-management-console: start->run->"mmc")
+- multiple snap-ins can be loaded into the shell (Add-PSSnapIn)
+- 120+ cmdlets provided by default snapins (Get-PSSnapin)
 
-```
+```sh
 Get-PSSnapin
 
 Get-Command -pssnapin Microsoft.PowerShell.Management       # list cmdlets from a perticular snapin
