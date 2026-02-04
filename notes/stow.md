@@ -1,7 +1,7 @@
 ---
 title: stow
 created: '2025-10-07T15:58:03.187Z'
-modified: '2025-10-10T08:01:17.050Z'
+modified: '2026-01-22T12:59:25.620Z'
 ---
 
 # stow
@@ -11,7 +11,8 @@ modified: '2025-10-10T08:01:17.050Z'
 ## install
 
 ```sh
-brew install stow
+brew    install stow
+apt-get install stow
 ```
 
 ## .stow-global-ignore

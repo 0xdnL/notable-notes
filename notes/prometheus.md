@@ -2,10 +2,12 @@
 tags: [container]
 title: prometheus
 created: '2019-11-17T17:42:41.438Z'
-modified: '2023-05-05T06:58:17.552Z'
+modified: '2026-01-22T14:09:25.644Z'
 ---
 
 # prometheus
+
+[[influxdb3]]
 
 ## usage
 
