@@ -2,7 +2,7 @@
 tags: [crypto]
 title: jwt
 created: '2020-01-27T08:04:24.079Z'
-modified: '2024-06-20T09:17:56.706Z'
+modified: '2026-01-27T21:55:15.076Z'
 ---
 
 # jwt
@@ -60,6 +60,44 @@ echo $JWT | jq -R 'split(".") | .[0:2] | map(@base64d) | map(fromjson)
     "exp": 1718960204
   }
   # VERIFY SIGNATURE ??
+]
+```
+
+```sh
+cat /var/run/secrets/kubernetes.io/serviceaccount/token | jq -R 'split(".") | .[0:2] | map(@base64d | fromjson)'
+[
+  {
+    "alg": "RS256",
+    "kid": "LPlu7Vmh6r7wA2Ie811IjjboQGrFOZP_K0VizyNJZ00"
+  },
+  {
+    "aud": [
+      "https://kubernetes.default.svc.cluster.local",
+      "k3s"
+    ],
+    "exp": 1801086288,
+    "iat": 1769550288,
+    "iss": "https://kubernetes.default.svc.cluster.local",
+    "jti": "af045bdc-bc07-4088-8651-7f97f3b43645",
+    "kubernetes.io": {
+      "namespace": "default",
+      "node": {
+        "name": "node-01",
+        "uid": "5a1b3d58-8d00-424b-afcf-ad5a186244f9"
+      },
+      "pod": {
+        "name": "attacker",
+        "uid": "3cf56272-c608-4295-bc91-0746085606b9"
+      },
+      "serviceaccount": {
+        "name": "attacker",
+        "uid": "15cd50bb-b0f4-4707-917c-c2379127901b"
+      },
+      "warnafter": 1769553895
+    },
+    "nbf": 1769550288,
+    "sub": "system:serviceaccount:default:attacker"
+  }
 ]
 ```
 
