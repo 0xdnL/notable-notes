@@ -2,12 +2,16 @@
 tags: [buildsystem, java]
 title: sbt
 created: '2019-07-30T06:19:49.228Z'
-modified: '2023-03-23T08:44:44.431Z'
+modified: '2025-12-26T10:08:40.062Z'
 ---
 
 # sbt
 
 > `simple build tool` for [[scala]]
+
+## installation
+
+[[sdk]]
 
 ## usage
 

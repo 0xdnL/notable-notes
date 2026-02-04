@@ -2,19 +2,16 @@
 tags: [database/mongodb, javascript]
 title: mongo
 created: '2019-07-30T06:19:49.178Z'
-modified: '2023-11-18T13:25:18.013Z'
+modified: '2026-01-29T01:10:08.761Z'
 ---
 
 # mongo
 
 > `mongo` shell is an interactive javascript interface to `mongodb` used to query and update data and perform administrative operations
 
+[[mongosh]]
+
 ## install
-
-```sh
-```
-
-## option
 
 ```sh
 ```
@@ -56,14 +53,16 @@ show log [name]      // prints out the last segment of log in memory, 'global' i
 
 
 use DATABASE                              // select DATABASE
+```
 
-
+```js
 db.runCommand("ismaster")                       // find out master node
 rs.isMaster().primary                           // find out master node
 rs.stepDown(60)                                 // cause a new master to be elected, not be eligible for re-election for 60s
 rs.status().members.find(r=>r.state===1).name   // current primary server's IP
+```
 
-
+```js
 db                                        // list current database
 
 db.adminCommand( { listDatabases: 1 } )   // list databases
@@ -115,11 +114,9 @@ for (var i=0; i<states.length; i++) {
 
 ## see also
 
-- [[mongosh]]
 - [[mongod]]
 - [[mongodump]]
-- [[mysql]]
-- [[psql]]
+- [[mysql]], [[psql]]
 - [docs.mongodb.com/manual/reference/mongo-shell/#command-helpers](https://docs.mongodb.com/manual/reference/mongo-shell/#command-helpers)
 - [scalegrid.io/blog/understanding-managing-disk-space-on-your-mongodb-server](https://scalegrid.io/blog/understanding-managing-disk-space-on-your-mongodb-server/)
 

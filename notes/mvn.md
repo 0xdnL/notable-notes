@@ -2,7 +2,7 @@
 tags: [buildsystem, java]
 title: mvn
 created: '2019-07-30T06:19:49.084Z'
-modified: '2023-04-13T07:17:39.285Z'
+modified: '2025-12-26T10:03:47.420Z'
 ---
 
 # mvn
@@ -18,11 +18,15 @@ modified: '2023-04-13T07:17:39.285Z'
 
 `pom.xml` = Project Object Model of a project
 
+[[gradel]]
+
 ## install
 
 ```sh
 sdk install maven
 ```
+
+[[sdk]]
 
 ## env
 
@@ -146,8 +150,6 @@ mvn --no-transfer-progress org.apache.maven.plugins:maven-help-plugin:2.1.1:eval
 
 - [maven-in-five-minutes - apache.org](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
 - [Maven – Password Encryption](https://maven.apache.org/guides/mini/guide-encryption.html)
-- [[sdk]]
 - [[java]]
-- [[gradle]]
 - [[xmllint]]
 - [[sbt]]

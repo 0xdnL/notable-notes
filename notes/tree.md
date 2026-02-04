@@ -2,12 +2,18 @@
 tags: [linux, macos]
 title: tree
 created: '2019-10-05T03:18:36.580Z'
-modified: '2025-06-05T11:40:31.402Z'
+modified: '2025-12-28T09:12:26.716Z'
 ---
 
 # tree
 
 > list contents of directories in a tree-like format
+
+## install
+
+```sh
+brew install tree
+```
 
 ## environment
 

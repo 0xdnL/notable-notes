@@ -2,14 +2,14 @@
 tags: [shell]
 title: asdf
 created: '2021-03-29T06:54:55.237Z'
-modified: '2024-09-03T12:24:11.417Z'
+modified: '2025-12-26T10:04:23.420Z'
 ---
 
 # asdf
 
 > manage multiple language runtime versions on a per-project basis
 
-[[gvm]], [[nvm]], [[rbenv]],[[pyenv]], [[kubectl]]
+[[sdk]], [[gvm]], [[nvm]], [[rbenv]],[[pyenv]], [[kubectl]]
 
 ## install
 
