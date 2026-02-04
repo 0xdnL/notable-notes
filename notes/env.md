@@ -2,12 +2,14 @@
 tags: [shell]
 title: env
 created: '2020-01-17T07:48:51.293Z'
-modified: '2024-12-04T10:34:35.346Z'
+modified: '2026-01-27T22:13:26.859Z'
 ---
 
 # env
 
 > set environment and execute command, or print environment
+
+[[printenv]]
 
 ## option
 
@@ -33,4 +35,3 @@ env         # print environment
 - [[bash shopt]]
 - [[bash set]]
 - [[envsubst]]
-- [[printenv]]

@@ -2,7 +2,7 @@
 tags: [macos, net-tools, network]
 title: ifconfig
 created: '2020-01-16T07:17:37.287Z'
-modified: '2023-11-28T11:45:19.989Z'
+modified: '2025-12-19T12:37:58.658Z'
 ---
 
 # ifconfig
@@ -32,5 +32,5 @@ ipconfig getifaddr en7        # get addr of interface en7
 - [[iftop]]
 - [[scutil]]
 - [[nslookup]]
-- [[ip]]
+- [[ip]], [[iw]]
 - [[netstat]] `netstat -i`

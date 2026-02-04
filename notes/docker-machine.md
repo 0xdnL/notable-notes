@@ -2,18 +2,14 @@
 tags: [container]
 title: docker-machine
 created: '2019-07-30T06:19:49.044Z'
-modified: '2023-03-22T10:10:46.214Z'
+modified: '2025-12-19T09:30:54.512Z'
 ---
 
 # docker-machine
 
 > tool that lets you install and manage [[docker]] on virtual hosts
 
-## option
-
-```sh
-
-```
+[[colima]]
 
 ## usage
 
