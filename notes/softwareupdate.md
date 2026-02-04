@@ -2,7 +2,7 @@
 tags: [macos]
 title: softwareupdate
 created: '2021-09-30T06:53:42.930Z'
-modified: '2023-05-30T08:51:48.799Z'
+modified: '2026-01-15T11:49:21.065Z'
 ---
 
 # softwareupdate
@@ -35,6 +35,18 @@ softwareupdate --all --install --force
 
 softwareupdate --install-rosetta            # install Rosetta 2 manually, used for docker-for-macos
 ```
+
+## macos installer
+
+```sh
+softwareupdate --list-full-installers
+
+softwareupdate --fetch-full-installer --full-installer-version <number>
+softwareupdate --fetch-full-installer --full-installer-version 26.1
+softwareupdate --fetch-full-installer --full-installer-version 15.7.2
+```
+
+[support.apple.com/en-us/102662](https://support.apple.com/en-us/102662)
 
 ## see also
 
