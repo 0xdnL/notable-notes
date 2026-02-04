@@ -2,12 +2,12 @@
 tags: [database/mongodb]
 title: mongosh
 created: '2021-09-07T07:21:44.793Z'
-modified: '2023-11-18T13:25:18.044Z'
+modified: '2026-01-29T01:06:55.590Z'
 ---
 
 # mongosh
 
-> [[javascript]] and [[node]] REPL environment for interacting with MongoDB deployments. Used to test queries and operations directly
+> [[node]] REPL environment for interacting with mongodb
 
 ## install
 
@@ -19,6 +19,14 @@ brew install mongosh
 
 ```sh
 mongosh --port 28015      # connects to instance running on localhost with a non-default port
+
+mongosh mongodb://user:pass@mongodb
+```
+
+## repl
+
+```sh
+> show dbs;
 ```
 
 ## see also

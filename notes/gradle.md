@@ -2,23 +2,27 @@
 tags: [buildsystem, java]
 title: gradle
 created: '2019-08-20T07:46:19.821Z'
-modified: '2022-02-01T14:40:40.568Z'
+modified: '2025-12-26T10:02:15.239Z'
 ---
 
 # gradle
 
-> `gradle` is an advanced general purpose build management system based on `groovy` and `kotlin`
+> an advanced general purpose build management system based on [[groovy]] and [[kotlin]]
 
 - `gradle` supports multi-project and multi-artifact builds
 - `gradle` has the notion of `projects` and `tasks`
 
+[[mvn]]
 
 ## install
+
 ```sh
 sdk install gradle        # install the latest Gradle
 
 sdk install gradle 3.0    # install a spefic gradle version
 ```
+
+[[sdkman]]
 
 ## option
 
@@ -47,6 +51,4 @@ installDist
 ## see also
 
 - [[java]]
-- [[mvn]]
-- [[sdkman]]
 - [nikgrozev.com/2017/02/10/gradle-quickstart](https://nikgrozev.com/2017/02/10/gradle-quickstart/)

@@ -2,12 +2,18 @@
 tags: [java]
 title: java
 created: '2019-07-30T06:19:49.143Z'
-modified: '2023-05-15T07:28:48.598Z'
+modified: '2025-12-26T10:23:56.474Z'
 ---
 
 # java
 
 > `java virtual machine` - java application launcher
+
+## install
+
+```sh
+sdk install java
+```
 
 ## option
 
