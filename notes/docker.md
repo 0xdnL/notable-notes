@@ -2,14 +2,14 @@
 tags: [container]
 title: docker
 created: '2019-07-30T06:19:49.045Z'
-modified: '2025-12-17T11:30:28.547Z'
+modified: '2025-12-19T09:37:27.091Z'
 ---
 
 # docker
 
 > self-sufficient runtime for containers
 
-[[podman]] [[crictl]]
+[[podman]], [[crictl]], [[nerdctl]] [[ctr]]
 
 ## install
 
@@ -73,301 +73,166 @@ export DOCKER_API_VERSION=1.38 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/path/to/cer
 -v, --version            # print version information and quit
 ```
 
-## compose
+## Common Commands
 
 ```sh
-    --all-resources              # Include all resources, even those not used by services
-    --ansi string                # Control when to print ANSI control characters ("never"|"always"|"auto") (default "auto")
-    --compatibility              # Run compose in backward compatibility mode
-    --dry-run                    # Execute command in dry run mode
-    --env-file stringArray       # Specify an alternate environment file
--f, --file stringArray           # Compose configuration files
-    --parallel int               # Control max parallelism, -1 for unlimited (default -1)
-    --profile stringArray        # Specify a profile to enable
-    --progress string            # Set type of progress output (auto, tty, plain, json, quiet)
-    --project-directory string   # Specify an alternate working directory (default: the path of the, first specified, Compose file)
--p, --project-name string        # Project name
-```
-
-```sh
-docker compose -f compose.yaml up -d
-
-docker compose --project-name this_dir ps
-
-docker compose logs -f pgadmin
-
-docker compose exec -it pgadmin bash
-
-docker compose down -v --remove-orphans     # when seeing "Network db_default Resource is still in use"
-```
-
-[[docker-compose]], [[podman]], [[kubectl]]
-
-## run
-
-> Create and run a new container from an image
-
-```sh
-    --entrypoint string  # overwrite the default ENTRYPOINT of the image
--i, --interactive        # keep STDIN open even if not attached
-    --rm                 # remove container and associated anonymous volumes when it exits
--t, --tty                # allocate a pseudo-TTY
--v, --volume list        # bind mount a volume
-```
-
-```sh
-docker run --rm -ti ubuntu bash 
-
+docker run         # Create and run a new container from an image
+docker run --rm -ti ubuntu bash
 docker run --rm -v $(pwd):$(pwd) -w $(pwd) IMAGE CMD                              # run CMD and place result in working dir
-
-
-docker run -it 
+docker run --rm httpd:2.4-alpine htpasswd -nbB admin PASSWORD | cut -d ":" -f 2   # generate password and exit
+docker run --rm -v $(pwd):/app -w /app -it --entrypoint="" node:25-alpine ash     # override entryponit
+docker run -it
   -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest \       `# run docker from inside container`
   sh -c "apt-get update ; apt-get install docker.io -y ; bash"
 
-docker run --rm httpd:2.4-alpine htpasswd -nbB admin PASSWORD | cut -d ":" -f 2   # generate password and exit
-
-
 docker run -d --shm-size=2gb IMAGE:TAG         # increase shared memory from 64M to 2G
-
 docker run -d -v /dev/shm:/dev/shm IMAGE:TAG   # acces shared memory of host system
 ```
 
 [[shm]], [[filsystem hierarchy standard]]
 
-## exec
-
-> Execute a command in a running container
-
 ```sh
-docker exec
-```
+docker exec        # Execute a command in a running container
+docker exec -it --env 'PS1=[CMD]\w \$ ' IMGAE CMD             # setting prompt for interactive use
+docker exec -it --env 'PS1=['$ENV'] \s-\v\$ ' IMAGE CMD
 
-## ps
-
-> List containers
-
-```sh
+docker ps          # List containers
 docker ps --no-trunc     # wide view, full command
-```
+docker ps -a --no-trunc --filter name=^/foo$            # list container who's name is "/foo"
 
-## build
-
-> Build an image from a Dockerfile
-
-```sh
+docker build       # Build an image from a Dockerfile
 docker build BUILD_CONTEXT
-
 docker build -t spilo:local --target ubuntu-18 .       # in multistage-build only build unto a target and exit
-```
 
-build without a Dockerfile using 
-
-```sh
+# build without a Dockerfile using
 docker build -t example.com/test:latest - <<EOF
 FROM busybox:latest
 CMD ["echo", "just a test"]
 EOF
-```
 
-[[Dockerfile]], [[heredoc]]
+docker bake        # Build from a file
 
-## pull
-
-> Download an image from a registry
-
-```sh
-docker pull
-```
-
-## push
-
-> Upload an image to a registry
-
-```sh
-docker push
-```
-
-## images
-
-> List images
-
-```sh
-docker images
-
-docker images --format table
-```
-
-## login
-
-> Log in to a registry
-
-```sh
-docker login
-```
-
-## logout
-
-> Log out from a registry
-
-```sh
-docker logout
-```
-
-## search
-
-> Search docker-hub for images
-
-```sh
-docker search
-```
-
-## version
-
-> Show the Docker version information
-
-```sh
-docker version
-```
-
-## info
-
-> Display system-wide information
-
-```sh
-docker info
-```
-
-```                                          
-Management Commands:                                                                                                                                                              
-  builder     Manage builds                                                                                                                                                       
-  buildx*     Docker Buildx                                                              
-  compose*    Docker Compose                                                             
-  container   Manage containers                                                                                                                                                   
-  context     Manage contexts                                                            
-  debug*      Get a shell into any image or container                                                                                                                             
-  desktop*    Docker Desktop commands (Alpha)                                                                                                                                     
-  dev*        Docker Dev Environments                                                                                                                                             
-  extension*  Manages Docker extensions                                                  
-  feedback*   Provide feedback, right in your terminal!                      
-  image       Manage images         
-  init*       Creates Docker-related starter files for your project              
-  manifest    Manage Docker image manifests and manifest lists
-  network     Manage networks                                                            
-  plugin      Manage plugins              
-  sbom*       View the packaged-based Software Bill Of Materials (SBOM) for an image
-  scout*      Docker Scout                                                               
-  system      Manage Docker                                                              
-  trust       Manage trust on Docker images                                              
-  volume      Manage volumes               
-                                                                                         
-Swarm Commands:                                                                          
-  swarm       Manage Swarm      
-                                                                                         
-Commands:                                  
-  attach      Attach local standard input, output, and error streams to a running container                                                                                                                                                       
-  commit      Create a new image from a container's changes                           
-  cp          Copy files/folders between a container and the local filesystem
-  create      Create a new container                                                     
-  diff        Inspect changes to files or directories on a container's filesystem
-  events      Get real time events from the server                 
-  export      Export a container's filesystem as a tar archive
-  history     Show the history of an image                                               
-  import      Import the contents from a tarball to create a filesystem image
-  inspect     Return low-level information on Docker objects                      
-  kill        Kill one or more running containers                                                                        
-  load        Load an image from a tar archive or STDIN                                                                  
-  logs        Fetch the logs of a container                                                                                                                                       
-  pause       Pause all processes within one or more containers                                                                                                                   
-  port        List port mappings or a specific mapping for the container
-  rename      Rename a container                                                                         
-  restart     Restart one or more containers                                                                                                                                                                       
-  rm          Remove one or more containers                                                              
-  rmi         Remove one or more images                                                                                                                                                                            
-  save        Save one or more images to a tar archive (streamed to STDOUT by default)                                                                                                                             
-  start       Start one or more stopped containers                                                       
-  stats       Display a live stream of container(s) resource usage statistics                            
-  stop        Stop one or more running containers                                                        
-  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE                                                      
-  top         Display the running processes of a container                                               
-  unpause     Unpause all processes within one or more containers                                                        
-  update      Update configuration of one or more containers                                             
-  wait        Block until one or more containers stop, then print their exit codes  
-```
-
--------------------
-
-## login
-
-> log in to a registry, if no server is specified, the default is defined by daemon
-
-```sh
--p, --password string   # password
-    --password-stdin    # password from stdin
--u, --username string   # username
-```
-
-```sh
-aws ecr get-login-password --region region | docker login --username AWS --password-stdin AWS_ACCOUNT_ID.dkr.ecr.region.amazonaws.com
-```
-
-[[aws]]
-
-## usage
-
-```sh
+docker pull        # Download an image from a registry
 docke pull REGISTRY/IMAGE:TAG
 docke pull REGISTRY/IMAGE@sha256:0afbf10990f3a9e4fbe8328740055ae86e531863b59307127ff2e531fa90b3bd
 
-docker system prune --all --volumes --force
+docker push        # Upload an image to a registry
 
-docker exec -it --env 'PS1=[CMD]\w \$ ' IMGAE CMD             # setting prompt for interactive use
-docker exec -it --env 'PS1=['$ENV'] \s-\v\$ ' IMAGE CMD
+docker images      # List images
+docker images --format table
+
+docker login       # Authenticate to a registry
+docker login dhi.io     # docker hardened images
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 123412341234.dkr.ecr.eu-central-1.amazonaws.com
+
+docker logout      # Log out from a registry
+docker search      # Search Docker Hub for images
+docker version     # Show the Docker version information
+docker info        # Display system-wide information
+```
+
+## Management Commands
+
+```sh
+docker ai*         # Docker AI Agent - Ask Gordon
+docker builder     # Manage builds
+docker buildx*     # Docker Buildx
+
+docker compose*    # Docker Compose
+docker compose -f compose.yaml up -d
+docker compose --project-name this_dir ps
+docker compose logs -f pgadmin
+docker compose exec -it pgadmin bash
+docker compose down -v --remove-orphans     # when seeing "Network db_default Resource is still in use"
 
 
-# filter
-docker ps -a --no-trunc --filter name=^/foo$            # list container who's name is "/foo"
+docker container   # Manage containers
+docker context     # Manage contexts
+docker debug*      # Get a shell into any image or container
+docker desktop*    # Docker Desktop commands
+docker extension*  # Manages Docker extensions
 
+docker image       # Manage images
 docker image ls --filter label=org.opencontainers.image.vendor="Elastic"
 
+docker init*       # Creates Docker-related starter files for your project
+docker manifest    # Manage Docker image manifests and manifest lists
+docker mcp*        # Docker MCP Plugin
+docker network     # Manage networks
+docker offload*    # Docker Offload
+docker plugin      # Manage plugins
+docker sandbox*    # Docker Sandbox
+docker sbom*       # View the packaged-based Software Bill Of Materials (SBOM) for an image
+docker scout*      # Docker Scout
 
-docker logs nginx 2>&1 | grep "127."    # debugging: grepping logs with 2>&1
+docker system      # Manage Docker
+docker system prune --all --volumes --force
 
-docker events
+docker volume      # Manage volumes
+```
 
+## Swarm Commands
+
+```sh
+docker swarm       # Manage Swarm
 docker swarm update --task-history-limit=1        # swarm task-history
 
+# (deprecated and/or docker machine ?)
 docker node inspect $(docker node ls --format '{{.Hostname}}')| jq -r '.[].ManagerStatus.Addr'    # get node ip
 ```
 
-## inspect
+## Commands
 
 ```sh
+docker attach     # Attach local standard input, output, and error streams to a running container
+docker commit     # Create a new image from a container's changes
+docker cp         # Copy files/folders between a container and the local filesystem
+docker create     # Create a new container
+docker diff       # Inspect changes to files or directories on a container's filesystem
+docker events     # Get real time events from the server
+docker export     # Export a container's filesystem as a tar archive
+docker history    # Show the history of an image
+docker import     # Import the contents from a tarball to create a filesystem image
+
+docker inspect    # Return low-level information on Docker objects
 docker inspect 0                        # low level information about container
-
 docker inspect CONTAINER_ID | jq '.[] | .Config .Image'
-
 docker inspect --format '{{.State.Running}}' CONTAINER_ID    # container running
-
 docker inspect --format '{{ index .Config.Labels "com.foo.bar" }}' foo   # index function: can lookup arbitrary strings in the map
-
 docker inspect --format "{{.State.Status}}" CONTAINER_ID &>/dev/null
-```
 
-## stats
+docker kill       # Kill one or more running containers
+docker load       # Load an image from a tar archive or STDIN
 
-```sh
+docker logs       # Fetch the logs of a container
+docker logs nginx 2>&1 | grep "127."    # debugging: grepping logs with 2>&1
+
+docker pause      # Pause all processes within one or more containers
+docker port       # List port mappings or a specific mapping for the container
+docker rename     # Rename a container
+docker restart    # Restart one or more containers
+docker rm         # Remove one or more containers
+docker rmi        # Remove one or more images
+docker save       # Save one or more images to a tar archive (streamed to STDOUT by default)
+docker start      # Start one or more stopped containers
+
+docker stats      # Display a live stream of container(s) resource usage statistics
 docker stats $(docker inspect -f '{{.Name}}' $(docker ps -q) | cut -c 2-)
-
 docker stats $(docker ps --format={{.Names}})
+
+docker stop       # Stop one or more running containers
+docker tag        # Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+docker top        # Display the running processes of a container
+docker unpause    # Unpause all processes within one or more containers
+docker update     # Update configuration of one or more containers
+docker wait       # Block until one or more containers stop, then print their exit codes
 ```
+
+---
 
 ## network / docker overlay network
 
-- network namepsace
-- XVLAN
-- Netlink
-- distributed KV-Store (consul)
+network namepsace / XVLAN / Netlink / distributed KV-Store ([[consul]])
 
 ```
 ┌─────────────┐              (VXLAN Tunnel Endpoint)
@@ -390,7 +255,7 @@ docker network inspect -f '{{range $container_id, $container_def := .Containers}
 
 docker network disconnect -f NETWORK CONTAINER
 
-docker exec container ip addr show    # debugging inside container
+docker exec container ip addr show
 docker exec container ip route
 
 docker network create -d bridge --subnet 1.2.3.0/24 my_bridge   # create entwork and attach container
@@ -405,15 +270,14 @@ docker run -itd --name c1-1 --network host busybox sh
 ```
 
 [[ip]], [[brctl]], [[nat]], [[servicemesh]]
+
 - [Docker Reference Architecture - success.docker.com](http://success.docker.com/article/networking)
 - [Demystifying Docker overlay networking – nigelpoulton.com](http://blog.nigelpoulton.com/demystifying-docker-overlay-networking/)
 
 
 ## see also
 
-- [[podman]], [[crictl]], [[nerdctl]] [[ctr]]
 - [[Dockerfile]]
-- [[brew]]
 - [[kubectl]]
 - [[docker-compose]]
 - [[minikube]]
